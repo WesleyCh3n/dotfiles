@@ -14,6 +14,7 @@ Plug 'camspiers/animate.vim'
 Plug 'dominikduda/vim_current_word'
 
 " Efficiency
+Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
@@ -53,6 +54,9 @@ Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  coc plugin                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:coc_global_extensions = [
 \ 'coc-json',
