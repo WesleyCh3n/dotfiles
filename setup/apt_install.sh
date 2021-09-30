@@ -22,5 +22,14 @@ sudo apt-get install \
   wget \
   zsh
 
+################################################################################
+#                               install lazygit                                #
+################################################################################
+print_info "install lazygit"
+curl -fLo lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
+tar xf lazygit.tar.gz
+mv lazygit $HOME/.local/bin/
+rm -rf lazygit.tar.gz
+
 sudo apt autoclean
 sudo apt autoremove

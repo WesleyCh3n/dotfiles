@@ -11,6 +11,7 @@ setup_color
 brew install \
   curl \
   git \
+  lazygit \
   make \
   stow \
   tmux \
