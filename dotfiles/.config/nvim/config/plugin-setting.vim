@@ -17,8 +17,6 @@ let g:repl_filetype_commands = {
 let g:repl_split = 'vertical'
 " let g:repl_height = 15
 " let g:repl_width = ''
-" For virtual env
-" let g:repl_python_pre_launch_command = "source /path_to_new_venv/bin/activate"
 
 " Plugin: rainbow
 let g:rainbow_active = 1
