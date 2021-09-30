@@ -1,32 +1,40 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]];
+then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 ################################################################################
 #                              Zsh Basic setting                               #
 ################################################################################
-source ~/.zplug/init.zsh
-zplug plugins/git,        from:oh-my-zsh
-zplug plugins/virtualenv, from:oh-my-zsh
-zplug plugins/docker, from:oh-my-zsh
-zplug plugins/vi-mode, from:oh-my-zsh
-zplug romkatv/powerlevel10k, as:theme, depth:1
-zplug zsh-users/zsh-autosuggestions, as:plugin
-zplug zsh-users/zsh-syntax-highlighting, as:plugin
-zplug zsh-users/zsh-completions, as:plugin
+if [ -f $HOME/.zplug/init.zsh ]; then
+  source $HOME/.zplug/init.zsh
+  zplug plugins/git,                       from:oh-my-zsh
+  zplug plugins/virtualenv,                from:oh-my-zsh
+  zplug plugins/docker,                    from:oh-my-zsh
+  zplug plugins/vi-mode,                   from:oh-my-zsh
+  zplug romkatv/powerlevel10k,             as:theme, depth:1
+  zplug zsh-users/zsh-autosuggestions,     as:plugin
+  zplug zsh-users/zsh-syntax-highlighting, as:plugin
+  zplug zsh-users/zsh-completions,         as:plugin
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  # Install plugins if there are plugins that have not been installed
+  if ! zplug check --verbose; then
+      printf "Install? [y/N]: "
+      if read -q; then
+          echo; zplug install
+      fi
+  fi
+  # Then, source plugins and add commands to $PATH
+  zplug load #--verbose
+else
+  echo "zplug not installed, so no plugins available"
 fi
-# Then, source plugins and add commands to $PATH
-zplug load #--verbose
 
+################################################################################
+#                                plugin setting                                #
+################################################################################
 bindkey '^[[Z' autosuggest-accept
 
 ################################################################################
