@@ -41,7 +41,6 @@ bindkey '^[[Z' autosuggest-accept
 #                             environment variable                             #
 ################################################################################
 export PATH=$PATH:$HOME/.local/bin/
-export PATH=$PATH:$HOME/.local/nvim-osx64/bin/
 if [[ $(command -v go) ]]; then
   export PATH=$PATH:/usr/local/go/bin
   export PATH=$PATH:$(go env GOPATH)/bin
