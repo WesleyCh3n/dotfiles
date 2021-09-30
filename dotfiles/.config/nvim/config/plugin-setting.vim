@@ -9,6 +9,7 @@ let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
 
 " Plugin: nvim-repl
+tnoremap <Esc> <C-\><C-n>
 let g:repl_filetype_commands = {
     \ 'javascript': 'node',
     \ 'python': 'python3',
