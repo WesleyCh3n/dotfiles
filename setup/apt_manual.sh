@@ -43,6 +43,15 @@ mv nnn-nerd-static $HOME/.local/bin/nnn
 rm -rf nnn-nerd-static-4.3.x86_64.tar.gz
 
 ################################################################################
+#                               install lazygit                                #
+################################################################################
+print_info "install lazygit"
+curl -fLo lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
+tar xf lazygit.tar.gz
+mv lazygit $HOME/.local/bin/
+rm -rf lazygit.tar.gz
+
+################################################################################
 #                         install tmux plugin manager                          #
 ################################################################################
 print_info "install tmp"
