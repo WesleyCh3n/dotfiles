@@ -7,8 +7,6 @@ fi
 ################################################################################
 #                              Zsh Basic setting                               #
 ################################################################################
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 source ~/.zplug/init.zsh
 zplug plugins/git,        from:oh-my-zsh
 zplug plugins/virtualenv, from:oh-my-zsh
