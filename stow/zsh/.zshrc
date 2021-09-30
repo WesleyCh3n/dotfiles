@@ -8,10 +8,26 @@ fi
 #                              Zsh Basic setting                               #
 ################################################################################
 ZSH_THEME="powerlevel10k/powerlevel10k"
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(git virtualenv docker vi-mode \
-    zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
-source $ZSH/oh-my-zsh.sh
+
+source ~/.zplug/init.zsh
+zplug plugins/git,        from:oh-my-zsh
+zplug plugins/virtualenv, from:oh-my-zsh
+zplug plugins/docker, from:oh-my-zsh
+zplug plugins/vi-mode, from:oh-my-zsh
+zplug romkatv/powerlevel10k, as:theme, depth:1
+zplug zsh-users/zsh-autosuggestions, as:plugin
+zplug zsh-users/zsh-syntax-highlighting, as:plugin
+zplug zsh-users/zsh-completions, as:plugin
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+# Then, source plugins and add commands to $PATH
+zplug load #--verbose
 
 bindkey '^[[Z' autosuggest-accept
 
