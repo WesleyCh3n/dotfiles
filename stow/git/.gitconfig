@@ -1,0 +1,7 @@
+[user]
+	name = WesleyCh3n
+	email = wesley.ch3n.0530@gmail.com
+[core]
+  editor = nvim
+[init]
+	defaultBranch = main
