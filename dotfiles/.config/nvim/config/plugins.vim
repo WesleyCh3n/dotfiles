@@ -56,6 +56,7 @@ call plug#end()
 
 let g:coc_global_extensions = [
 \ 'coc-json',
+\ 'coc-snippets',
 \ 'coc-floaterm',
 \ 'coc-explorer',
 \ 'coc-tsserver'

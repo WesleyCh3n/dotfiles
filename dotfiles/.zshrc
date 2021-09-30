@@ -42,8 +42,10 @@ bindkey '^[[Z' autosuggest-accept
 ################################################################################
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.local/nvim-osx64/bin/
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+if [[ $(command -v go) ]]; then
+  export PATH=$PATH:/usr/local/go/bin
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
