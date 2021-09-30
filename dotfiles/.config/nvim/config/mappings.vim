@@ -1,41 +1,24 @@
-"===================================="
-"|            Mapping               |"
-"===================================="
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Mapping                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 
-"================================"
-"|             vimrc            |"
-"================================"
-map <silent> \rc :tabe ~/.vim/config<cr>
-augroup source_vimrc
-    au!
-    au bufwritepost *.vim source $MYVIMRC | AirlineRefresh | call webdevicons#refresh()
-augroup END
+" Goyo
+nnoremap <silent> <space>g :Goyo<CR>
 
-
-"================================"
-"|        Plugin Mapping        |"
-"================================"
-" Plugin: nvim-repl
+" nvim-repl
 nnoremap ,r :ReplToggle<CR>
 nmap <leader>w <Plug>ReplSendLine
 vmap <leader>w <Plug>ReplSendVisual
 
 " hop.nvim
-nnoremap <leader>f :lua require'hop'.hint_words()<cr>
-nnoremap <leader>l :lua require'hop'.hint_lines()<cr>
+nnoremap <silent> <leader>f :lua require'hop'.hint_words()<cr>
+nnoremap <silent> <leader>l :lua require'hop'.hint_lines()<cr>
 
-" floaterm intergrated
+" vim-floaterm
 let g:floaterm_keymap_toggle = '<space>at'
 let g:floaterm_keymap_prev   = '<space>fp'
 let g:floaterm_keymap_next   = '<space>fn'
-let g:floaterm_opener        = 'tabe'
-let g:floaterm_borderchars   = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
-nnoremap <silent> <space>fl :CocList floaterm<cr>
-" nnoremap <silent> <space>ac :cal Nac()<cr>
-fun! Nac()
-    execute ":FloatermNew --height=0.8 --width=0.9 --name=floaterm1 nnn ".$HOME."/.vim/config/"
-endf
 nnoremap <silent> <space>ar :call CPlusCompile()<CR>
 nnoremap <silent> <space>as :FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1<CR>
 nnoremap <silent> <space>ag :FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazygit<CR>
@@ -43,12 +26,13 @@ nnoremap <silent> <space>ad :FloatermNew --height=0.8 --width=0.8 --name=floater
 nnoremap <silent> <space>an :FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 nnn<CR>
 nnoremap <silent> <space>ab :FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop<CR>
 
+" GNU boxes intergration
 vnoremap <space>bv !boxes -s 80 -a c -d vim-box<CR>
 vnoremap <space>bc !boxes -s 80 -a c -d cc<CR>
 vnoremap <space>bp !boxes -s 80 -a c -d shell<CR>
 vnoremap <space>bb !boxes -s 80 -a c -d 
 
-" window size
+" animate.vim
 nnoremap <space>H :call animate#window_percent_height()<left>
 nnoremap <silent> <space>h :call animate#window_percent_height(1)<cr>
 nnoremap <silent> <space>l :call animate#window_percent_height(0)<cr>
@@ -106,3 +90,7 @@ augroup aucmd_
     au filetype md setlocal wrap
 augroup END
 
+augroup source_vimrc
+    au!
+    au bufwritepost *.vim source $MYVIMRC | AirlineRefresh | call webdevicons#refresh()
+augroup END
