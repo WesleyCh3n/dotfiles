@@ -18,6 +18,10 @@ let g:repl_split = 'vertical'
 " let g:repl_height = 15
 " let g:repl_width = ''
 
+" Plugin: vim-floaterm
+let g:floaterm_opener        = 'tabe'
+let g:floaterm_borderchars   = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
+
 " Plugin: rainbow
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -30,36 +34,40 @@ let g:rainbow_conf = {
 let g:indentLine_char = '│'
 
 " PLugin: vim-startify
-let g:ascii = [
-\'                     !!!!                      ',
-\'                   ::::::::                    ',
-\'       __________ ;;;;;;;;; __________         ',
-\'       \________/ ????????> \________/         ',
-\'        |......| $$$$$$$"  :......."           ',
-\'        |::::::| $$$$$"" .::::::; ,OO          ',
-\'       O|;;;;;;| $$$" .;;;;;;;;  ,OOOO`        ',
-\'     GDD|;;;;;;| ?  .;;;;;;;  ,OOOOONHF`       ',
-\'      `D|IIIIII|  IIIIII7I  ,DDDDDDDNF`        ',
-\'        |IIIIIII7IIIIII7 ,DDDDDDDNFF`          ',
-\'        |EEEEEEEEEEEZ  ,DDDDDDDNF`             ',
-\'        |888888888Z  ,DNNNDDDNF`               ',
-\'        |8888888Z  .DDDDDDDNF`                 ',
-\'        |8888Z    ,DNNNNNNF`                   ',
-\'        `""`       "MMMMM"                     ',
-\'                     """                       ',
-\'']
-" let g:startify_custom_header = startify#center(g:ascii)
-let g:startify_custom_header = g:ascii
-let g:startify_bookmarks = ['$HOME/.vimrc', '$HOME/.tmux.conf', '$HOME/.zshrc', '$HOME/Documents/GitHub/']
-let g:startify_files_number = 5
+let g:startify_ascii = [
+\ "                     .            .      ",
+\ "                   .,;'           :,.    ",
+\ "                 .,;;;,,.         ccc;.  ",
+\ "               .;c::::,,,'        ccccc: ",
+\ "               .::cc::,,,,,.      cccccc.",
+\ "               .cccccc;;;;;;'     llllll.",
+\ "               .cccccc.,;;;;;;.   llllll.",
+\ "               .cccccc  ';;;;;;'  oooooo.",
+\ "               'lllllc   .;;;;;;;.oooooo'",
+\ "               'lllllc     ,::::::looooo'",
+\ "               'llllll      .:::::lloddd'",
+\ "               .looool       .;::coooodo.",
+\ "                 .cool         'ccoooc.  ",
+\ "                   .co          .:o:.    ",
+\ "                     .           .'      ",
+\]
+let g:startify_custom_header = g:startify_ascii
+let g:startify_bookmarks = [
+\ '$HOME/.zshrc',
+\ '$HOME/.tmux.conf',
+\ '$HOME/.config/nvim/init.vim']
+let g:startify_files_number = 10
 let g:startify_lists = [
-      \ { 'type': 'files',     'header': ['   MRU']            },
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ { 'type': 'files',     'header': ['   Recent']   },
+      \ { 'type': 'sessions',  'header': ['   Sessions'] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']},
+      \ { 'type': 'commands',  'header': ['   Commands'] },
       \ ]
 let g:startify_commands = [
-    \ {'n': 'CocCommand explorer'},
+    \ {'n': 'CocCommand explorer --preset floating'},
+    \ {'v': 'CocCommand explorer --preset .vim'},
+    \ {'g': 'FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazygit'},
+    \ {'t': 'FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop'},
     \ ]
 let g:indentLine_bufNameExclude = ['startify']
 highlight StartifyHeader ctermfg=115
@@ -119,16 +127,37 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsEditSplit="vertical"
 
+" Plugin: python-syntax
+let g:python_highlight_all=1
 
-" " Plugin: Tablemode
-" nnoremap ,t :TableModeEnable<cr>
-" nnoremap ,dt :TableModeDisable<cr>
-
-" " Plugin: animate
-" nnoremap <silent> <Up>    :call animate#window_delta_height(5)<CR>
-" nnoremap <silent> <Down>  :call animate#window_delta_height(-5)<CR>
-" nnoremap <silent> <Left>  :call animate#window_delta_width(5)<CR>
-" nnoremap <silent> <Right> :call animate#window_delta_width(-5)<CR>
-
-" " Plugin: python-syntax
-" let g:python_highlight_all=1
+" Plugin: coc.nvim
+call coc#config('suggest', {
+\  'completionItemKindLabels': {
+\     "keyword": "\uf1de",
+\     "variable": "\ue79b",
+\     "value": "\uf89f",
+\     "operator": "\u03a8",
+\     "constructor": "\uf0ad",
+\     "function": "\u0192",
+\     "reference": "\ufa46",
+\     "constant": "\uf8fe",
+\     "method": "\uf09a",
+\     "struct": "\ufb44",
+\     "class": "\uf0e8",
+\     "interface": "\uf417",
+\     "text": "\ue612",
+\     "enum": "\uf435",
+\     "enumMember": "\uf02b",
+\     "module": "\uf40d",
+\     "color": "\ue22b",
+\     "property": "\ue624",
+\     "field": "\uf9be",
+\     "unit": "\uf475",
+\     "event": "\ufacd",
+\     "file": "\uf723",
+\     "folder": "\uf114",
+\     "snippet": "\ue60b",
+\     "typeParameter": "\uf728",
+\     "default": "\uf29c"
+\   }
+\})
