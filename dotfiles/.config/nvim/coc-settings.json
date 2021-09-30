@@ -25,7 +25,7 @@
         "--generate-members"
     ],
     "explorer.icon.enableNerdfont": true,
-    "explorer.width": 30,
+    "explorer.width": 35,
     "explorer.quitOnOpen": true,
 
     "snippets.extends": {

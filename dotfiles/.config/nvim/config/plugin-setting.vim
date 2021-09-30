@@ -101,15 +101,13 @@ let g:coc_explorer_global_presets = {
 \     'floating-width': 120,
 \     'open-action-strategy': 'sourceWindow',
 \   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'open-action-strategy': 'sourceWindow',
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
 \   },
 \ }
+nnoremap <silent> <space>e  :CocCommand explorer<CR>
+nnoremap <silent> <space>E  :CocCommand explorer --preset floating<CR>
 nnoremap <silent> <space>ac :CocCommand explorer --preset .vim<cr>
-nnoremap <silent> <space>e  :CocCommand explorer --preset floating<CR>
-" nnoremap <silent> <space>e :CocCommand explorer<CR>
 
 " Plugin: vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
