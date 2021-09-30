@@ -10,14 +10,14 @@ fi
 ################################################################################
 if [ -f $HOME/.zplug/init.zsh ]; then
   source $HOME/.zplug/init.zsh
-  zplug plugins/git,                       from:oh-my-zsh
-  zplug plugins/virtualenv,                from:oh-my-zsh
-  zplug plugins/docker,                    from:oh-my-zsh
-  zplug plugins/vi-mode,                   from:oh-my-zsh
-  zplug romkatv/powerlevel10k,             as:theme, depth:1
-  zplug zsh-users/zsh-autosuggestions,     as:plugin
-  zplug zsh-users/zsh-syntax-highlighting, as:plugin
-  zplug zsh-users/zsh-completions,         as:plugin
+  zplug "plugins/git",                       from:oh-my-zsh
+  zplug "plugins/virtualenv",                from:oh-my-zsh
+  zplug "plugins/docker",                    from:oh-my-zsh
+  zplug "plugins/vi-mode",                   from:oh-my-zsh
+  zplug "romkatv/powerlevel10k",             as:theme, depth:1
+  zplug "zsh-users/zsh-autosuggestions",     as:plugin
+  zplug "zsh-users/zsh-syntax-highlighting", as:plugin
+  zplug "zsh-users/zsh-completions",         as:plugin
 
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
@@ -51,6 +51,11 @@ export LC_ALL=en_US.UTF-8
 ################################################################################
 #                                    alias                                     #
 ################################################################################
+export CLICOLOR=1
+export LSCOLORS=Exfxcxdxbxegedabagacad
+alias l='ls'
+alias ll='ls -lh'
+alias la='ls -lah'
 alias vi='nvim'
 alias python='python3 -B'
 alias lg='lazygit'
