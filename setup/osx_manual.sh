@@ -45,7 +45,7 @@ cd .. && rm -rf nnn
 ################################################################################
 #                         install tmux plugin manager                          #
 ################################################################################
-print_info "install tmp"
+print_info "install tpm"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 
