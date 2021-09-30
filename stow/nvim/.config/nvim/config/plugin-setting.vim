@@ -84,7 +84,7 @@ let g:coc_explorer_global_presets = {
 \   '.vim': {
 \     'position': 'floating',
 \     'floating-width': 120,
-\     'root-uri': '~/.vim/config',
+\     'root-uri': '~/.config/nvim/config',
 \   },
 \   'cocConfig': {
 \      'root-uri': '~/.config/coc',
