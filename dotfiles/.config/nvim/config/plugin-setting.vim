@@ -112,14 +112,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Plugin: coc-snippet
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-xmap <leader>x  <Plug>(coc-convert-snippet)
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsEditSplit="vertical"
+" let g:coc_snippet_next = '<c-j>'
+" let g:coc_snippet_prev = '<c-k>'
+" imap <C-l> <Plug>(coc-snippets-expand)
+" vmap <C-j> <Plug>(coc-snippets-select)
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
+" xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " Plugin: python-syntax
 let g:python_highlight_all=1

@@ -25,6 +25,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'phaazon/hop.nvim'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " 3dParty: REQUIRED nnn lazygit
 Plug 'voldikss/vim-floaterm'
