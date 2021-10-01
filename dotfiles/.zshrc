@@ -71,7 +71,7 @@ alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export NNN_BMS="\
-g:$HOME/Documents/GitHub;\
+g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles"
 

@@ -17,6 +17,9 @@ print_info "Extracting and Installing"
 tar xf nvim.tar.gz
 cp -r nvim-osx64/* $HOME/.local/
 
+print_info "installing pynvim"
+pip3 install pynvim
+
 print_info "${ORANGE}Cleaning workspace${NC}"
 rm -rf ./nvim-osx64 nvim.tar.gz
 print_info "${CYAN}Finished!${NC}"

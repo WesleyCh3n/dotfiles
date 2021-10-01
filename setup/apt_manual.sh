@@ -11,6 +11,7 @@ set -e
 ################################################################################
 #                         change default shell to zsh                          #
 ################################################################################
+print_info "change default shell to zsh"
 chsh -s "$(which zsh)"
 
 ################################################################################
@@ -54,7 +55,7 @@ rm -rf lazygit.tar.gz
 ################################################################################
 #                         install tmux plugin manager                          #
 ################################################################################
-print_info "install tmp"
+print_info "install tpm"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 

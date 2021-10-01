@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 print_info "install package"
-sudo apt-get install \
+sudo apt-get install -y \
   curl \
   git \
   make \
