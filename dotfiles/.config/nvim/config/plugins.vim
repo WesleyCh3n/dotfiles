@@ -64,5 +64,6 @@ let g:coc_global_extensions = [
 \ 'coc-snippets',
 \ 'coc-floaterm',
 \ 'coc-explorer',
-\ 'coc-tsserver'
+\ 'coc-tsserver',
+\ 'coc-pyright'
 \ ]
