@@ -38,6 +38,7 @@ Plug 'vim-python/python-syntax'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-repeat'
 Plug 'pappasam/nvim-repl', {'branch': 'main'}
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Html
 Plug 'mattn/emmet-vim'
