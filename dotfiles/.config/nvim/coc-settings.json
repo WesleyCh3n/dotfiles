@@ -25,6 +25,7 @@
         }
     },
     "python.pythonPath": "/usr/local/bin/python3",
+    "python.analysis.typeCheckingMode": "off",
     "python.linting.pylintArgs":[
         "--extension-pkg-whitelist=PyQt5,cv2",
         "--generate-members"

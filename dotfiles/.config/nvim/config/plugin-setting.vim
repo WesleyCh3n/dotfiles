@@ -124,6 +124,8 @@ let g:UltiSnipsEditSplit="vertical"
 " Plugin: python-syntax
 let g:python_highlight_all=1
 
+" Plugin: goyo
+let g:goyo_height=95
 " Plugin: coc.nvim
 call coc#config('suggest', {
 \  'completionItemKindLabels': {
