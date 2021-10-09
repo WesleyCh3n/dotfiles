@@ -81,6 +81,9 @@ nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " Plugin: nerd-commentor
 let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = {
+      \ 'python': { 'left': '#', 'right': '' }
+      \ }
 
 " Plugin: coc-explorer
 let g:coc_explorer_global_presets = {
