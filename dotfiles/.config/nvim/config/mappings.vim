@@ -87,8 +87,8 @@ augroup aucmd_
     au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
     au filetype python nnoremap gf [<C-D>
     au filetype html let b:AutoPairs = {"<": ">"}
-    au filetype html,javascript,sh,zsh set tabstop=2 softtabstop=2 shiftwidth=2
-    au filetype md setlocal wrap
+    au filetype html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    au filetype md setlocal wrap spell
 augroup END
 
 augroup source_vimrc

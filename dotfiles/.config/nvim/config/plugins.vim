@@ -49,8 +49,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Color Picker
 Plug 'KabbAmine/vCoolor.vim'
+Plug 'lilydjwg/colorizer'
 
-" coc-json, coc-explorer
+" coc server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " self
