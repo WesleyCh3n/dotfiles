@@ -32,8 +32,8 @@ else
   echo "zplug not installed, so no plugins available"
 fi
 
-SAVEHIST=1000  # Save most-recent 1000 lines
-HISTFILE=$HOME/.zsh_history
+# SAVEHIST=1000  # Save most-recent 1000 lines
+# HISTFILE=$HOME/.zsh_history
 
 ################################################################################
 #                                plugin setting                                #
