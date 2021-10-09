@@ -79,7 +79,8 @@ nnoremap <silent> <space>fw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 
 augroup aucmd_
-    au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr>
+    " au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr>
+    au filetype python nnoremap <buffer> ,m :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
     au filetype go nnoremap ,m :w<bar>:GoRun<space>%<cr>
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     au filetype tex setl updatetime=1000
