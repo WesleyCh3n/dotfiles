@@ -1,1 +1,2 @@
- *.sh linguist-vendored
+setup/* linguist-vendored
+.p10k linguist-vendored
