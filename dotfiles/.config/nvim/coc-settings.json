@@ -30,6 +30,7 @@
         "--extension-pkg-whitelist=PyQt5,cv2",
         "--generate-members"
     ],
+    "explorer.file.showHiddenFiles": true,
     "explorer.icon.enableNerdfont": true,
     "explorer.width": 35,
     "explorer.quitOnOpen": true,

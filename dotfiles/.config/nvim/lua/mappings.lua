@@ -79,7 +79,7 @@ vim.api.nvim_set_keymap('v', 'J', ':m\'>+<CR>gv=gv', { noremap = true, silent = 
 --------------------------------------------------------------------------------
 -- Dashboard
 vim.api.nvim_set_keymap('n', '<space>dh', ':DashboardFindHistory<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>df', ':DashboardFindFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>df', ':Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<space>dc', ':DashboardChangeColorscheme<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<space>dw', ':DashboardFindWord<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<space>db', ':DashboardJumpMark<CR>', { noremap = true, silent = true })
