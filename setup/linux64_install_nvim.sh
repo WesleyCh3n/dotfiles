@@ -17,7 +17,7 @@ print_info "Extracting and Installing"
 tar xf nvim.tar.gz
 cp -r nvim-linux64/* $HOME/.local/
 
-sed -i '/wakatim/s/^/"/g'  $HOME/.config/nvim/config/plugins.vim
+# sed -i '/wakatim/s/^/"/g'  $HOME/.config/nvim/config/plugins.vim
 
 print_info "Installing pynvim"
 pip3 install pynvim
