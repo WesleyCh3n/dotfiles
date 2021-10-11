@@ -1,131 +1,154 @@
-vim.g.mapleader = ','
+--------------------------------------------------------------------------------
+--                                  Helper                                    --
+--------------------------------------------------------------------------------
+local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
+local g = vim.g      -- a table to access global variables
+local opt = vim.opt  -- to set options
+local function map(mode, lhs, rhs, opts)
+  local options = {noremap = true, silent = true}
+  if opts then options = vim.tbl_extend('force', options, opts) end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 --------------------------------------------------------------------------------
 --                                  Default                                   --
 --------------------------------------------------------------------------------
+g.mapleader = ','
 -- no ESC
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+map('i', 'jk', '<Esc>')
+map('i', 'kj', '<Esc>')
+map('i', 'jj', '<Esc>')
+
+-- tab completion (Tab/S-Tab/CR)
+function _G.check_back_space()
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match('%s')) and true
+end
+map('i', '<Tab>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab>" : coc#refresh()', {expr = true})
+map('i', '<C-j>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab>" : coc#refresh()', {expr = true})
+map('i', '<S-Tab>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
+map('i', '<C-k>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
+map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
 
 -- no EX mode
-vim.api.nvim_set_keymap('n', 'Q', '<NOP>', { noremap = true, silent = true })
+map('n', 'Q', '<NOP>')
 
 -- write/close file
-vim.api.nvim_set_keymap('n', '<space>w', ':w<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>q', ':q<cr>', { noremap = true, silent = true })
+map('n', '<space>w', ':w<cr>')
+map('n', '<space>q', ':q<cr>')
 
 -- start/end word
-vim.api.nvim_set_keymap('n', '0', '^', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '9', '$', { noremap = true, silent = true })
+map('n', '0', '^')
+map('n', '9', '$')
 
 -- easy indent
-vim.api.nvim_set_keymap('n', '>', '>>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<', '<<', { noremap = true, silent = true })
+map('n', '>', '>>')
+map('n', '<', '<<')
 
 -- nohlsearch
-vim.api.nvim_set_keymap('n', '<leader>n', ':set hlsearch!<cr>', { noremap = true, silent = true })
+map('n', '<leader>n', ':set hlsearch!<cr>')
 
 -- yank to system clipboard
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
+map('v', '<leader>y', '"+y')
 
 -- yank to end line
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true, silent = true })
+map('n', 'Y', 'y$')
 
 -- Tab
-vim.api.nvim_set_keymap('n', '<leader>1', '1gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>2', '2gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>3', '3gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>4', '4gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>5', '5gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>6', '6gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>7', '7gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>8', '8gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>9', '9gt', { noremap = true, silent = true })
+map('n', '<leader>1', '1gt')
+map('n', '<leader>2', '2gt')
+map('n', '<leader>3', '3gt')
+map('n', '<leader>4', '4gt')
+map('n', '<leader>5', '5gt')
+map('n', '<leader>6', '6gt')
+map('n', '<leader>7', '7gt')
+map('n', '<leader>8', '8gt')
+map('n', '<leader>9', '9gt')
 -- New/Close tab
-vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-x>', ':tabclose<cr>', { noremap = true, silent = true })
+map('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>')
+map('n', '<C-x>', ':tabclose<cr>')
 -- Move tab
-vim.api.nvim_set_keymap('n', '<leader>>', ':tabmove +<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><', ':tabmove -<cr>', { noremap = true, silent = true })
+map('n', '<leader>>', ':tabmove +<cr>')
+map('n', '<leader><', ':tabmove -<cr>')
 
 -- retab
-vim.api.nvim_set_keymap('n', '<space>rt', ':retab<cr>', { noremap = true, silent = true })
+map('n', '<space>rt', ':retab<cr>')
 
 -- reindent
-vim.api.nvim_set_keymap('n', '<space>ri', 'gg=G<cr><C-o><C-o>', { noremap = true, silent = true })
+map('n', '<space>ri', 'gg=G<cr><C-o><C-o>')
 
 -- move left/right
-vim.api.nvim_set_keymap('n', '<right>', '10zl', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<left>', '10zh', { noremap = true, silent = true })
+map('n', '<right>', '10zl')
+map('n', '<left>', '10zh')
 
 -- toggle paste mode
-vim.api.nvim_set_keymap('n', '<space>p', ':set paste!<cr>', { noremap = true, silent = true })
+map('n', '<space>p', ':set paste!<cr>')
 
 -- replace text
-vim.api.nvim_set_keymap('n', '<leader>s', ':%s//gc<left><left><left>', { noremap = true, silent = false })
+map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
 
 -- escape terminal
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = false })
+map('t', '<Esc>', '<C-\\><C-n>', {silent = false})
 
 -- remove trailing white space
-vim.api.nvim_set_keymap('n', '<space>fw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', { noremap = true, silent = false })
+map('n', '<space>fw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
 
 -- move line up/down in visual
-vim.api.nvim_set_keymap('v', 'K', ':m-2<CR>gv=gv', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('v', 'J', ':m\'>+<CR>gv=gv', { noremap = true, silent = false })
+map('v', 'K', ':m-2<CR>gv=gv')
+map('v', 'J', ':m\'>+<CR>gv=gv')
 
 --------------------------------------------------------------------------------
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
 -- Dashboard
-vim.api.nvim_set_keymap('n', '<space>dh', ':DashboardFindHistory<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>df', ':Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dc', ':DashboardChangeColorscheme<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dw', ':DashboardFindWord<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>db', ':DashboardJumpMark<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dn', ':DashboardNewFile<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>ss', ':<C-u>SessionSave<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>sl', ':<C-u>SessionLoad<CR>', { noremap = true, silent = true })
+map('n', '<space>dh', ':Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>df', ':Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>dc', ':Telescope colorscheme prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>db', ':Telescope marks prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>dw', ':DashboardFindWord<CR>')
+map('n', '<space>dn', ':DashboardNewFile<CR>')
+map('n', '<space>ss', ':<C-u>SessionSave<CR>')
+map('n', '<space>sl', ':<C-u>SessionLoad<CR>')
 
 -- Goyo
-vim.api.nvim_set_keymap('n', '<space>g', ':Goyo<cr>', { noremap = true, silent = true })
+map('n', '<space>g', ':Goyo<cr>')
 
 -- coc-explorer
-vim.api.nvim_set_keymap('n', '<space>e', ':CocCommand explorer<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>E', ':CocCommand explorer --preset floating<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>ac', ':CocCommand explorer --preset config<cr>', { noremap = true, silent = true })
+map('n', '<space>e', ':CocCommand explorer<cr>')
+map('n', '<space>E', ':CocCommand explorer --preset floating<cr>')
+map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
 
 -- vim-easy-align
-vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
-vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
+map('x', 'ga', '<Plug>(EasyAlign)')
+map('n', 'ga', '<Plug>(EasyAlign)')
 
 -- nvim-repl
-vim.api.nvim_set_keymap('n', '<leader>r', ':ReplToggle<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w', ':ReplSend<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>w', ':ReplSend<cr>', { silent = true })
+map('n', '<leader>r', ':ReplToggle<cr>')
+map('n', '<leader>w', ':ReplSend<cr>')
+map('v', '<leader>w', ':ReplSend<cr>')
 
 -- hop.nvim
-vim.api.nvim_set_keymap('n', '<leader>f', ":lua require'hop'.hint_words()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>l', ":lua require'hop'.hint_lines()<cr>", { noremap = true, silent = true })
+map('n', '<leader>f', ":lua require'hop'.hint_words()<cr>")
+map('n', '<leader>l', ":lua require'hop'.hint_lines()<cr>")
 
 -- vim-floaterm
 vim.g.floaterm_keymap_toggle = '<space>at'
 vim.g.floaterm_keymap_prev   = '<space>fp'
 vim.g.floaterm_keymap_next   = '<space>fn'
-vim.api.nvim_set_keymap('n', '<space>as', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>ag', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazygit <cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>ad', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazydocker <cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>an', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 nnn <cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>ab', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop <cr>", { noremap = true, silent = true })
+map('n', '<space>as', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1<cr>")
+map('n', '<space>ag', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazygit <cr>")
+map('n', '<space>ad', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazydocker <cr>")
+map('n', '<space>an', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 nnn <cr>")
+map('n', '<space>ab', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop <cr>")
 
 -- vim-markdown
-vim.api.nvim_set_keymap('n', '<leader>p', ":MarkdownPreviewToggle<cr>", { noremap = true, silent = true })
+map('n', '<leader>p', ":MarkdownPreviewToggle<cr>")
 
 -- GNU boxes intergration
-vim.api.nvim_set_keymap('v', '<space>bv', "!boxes -s 80 -a c -d vim-box<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<space>bc', "!boxes -s 80 -a c -d cc<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<space>bp', "!boxes -s 80 -a c -d shell<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<space>bb', "!boxes -s 80 -a c -d ", { noremap = true, silent = true })
+map('v', '<space>bv', "!boxes -s 80 -a c -d vim-box<CR>")
+map('v', '<space>bc', "!boxes -s 80 -a c -d cc<CR>")
+map('v', '<space>bp', "!boxes -s 80 -a c -d shell<CR>")
+map('v', '<space>bb', "!boxes -s 80 -a c -d ")
 
 --------------------------------------------------------------------------------
 --                                 Augroup                                    --
@@ -140,7 +163,7 @@ augroup myaucmd
     au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
     au filetype python nnoremap gf [<C-D>
     au filetype html let b:AutoPairs = {"<": ">"}
-    au filetype html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
     au filetype md setlocal wrap spell
 augroup END
 augroup source_vimrc

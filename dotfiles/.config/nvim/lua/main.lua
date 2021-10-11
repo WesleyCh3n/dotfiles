@@ -1,38 +1,50 @@
-vim.api.nvim_command('syntax enable')
-vim.api.nvim_command('set smartindent')
-vim.api.nvim_command('set expandtab')
-vim.api.nvim_command('set tabstop=4')
-vim.api.nvim_command('set softtabstop=4')
-vim.api.nvim_command('set shiftwidth=4')
-vim.api.nvim_command('set ruler')
-vim.api.nvim_command('set confirm')
-vim.api.nvim_command('set history=200')
-vim.api.nvim_command('set cursorline')
-vim.api.nvim_command('set number')
-vim.api.nvim_command('set relativenumber')
-vim.api.nvim_command('set spr')
-vim.api.nvim_command('set sb')
-vim.api.nvim_command('set timeout timeoutlen=1000 ttimeoutlen=0')
-vim.api.nvim_command('set noswapfile')
-vim.api.nvim_command('set mouse=a')
-vim.api.nvim_command('set fillchars+=vert:│')
-vim.api.nvim_command('set showmatch')
-vim.api.nvim_command('set ignorecase')
-vim.api.nvim_command('set nowrap')
-vim.api.nvim_command('set path=.,**')
-vim.api.nvim_command('set nofoldenable')
-vim.api.nvim_command('set list')
-vim.api.nvim_command('set listchars=tab:•\\ ,trail:█,extends:»,precedes:«')
-vim.api.nvim_command('set termguicolors')
-vim.api.nvim_command('set colorcolumn=80')
-vim.api.nvim_command('set guifont=MesloLGS-NF-Regular:h18')
-vim.api.nvim_command('set autochdir')
-vim.api.nvim_command('set hidden')
-vim.api.nvim_command('set nobackup')
-vim.api.nvim_command('set nowritebackup')
-vim.api.nvim_command('set updatetime=300')
-vim.api.nvim_command('set shortmess+=c')
+--------------------------------------------------------------------------------
+--                                  Helper                                    --
+--------------------------------------------------------------------------------
+local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
+local g = vim.g      -- a table to access global variables
+local opt = vim.opt  -- to set options
 
+--------------------------------------------------------------------------------
+--                                  Option                                    --
+--------------------------------------------------------------------------------
+cmd('silent! colorscheme gruvbox-material')
+opt.background = 'dark'
+opt.syntax = 'enable'
+opt.smartindent = true
+opt.expandtab = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.ruler = true
+opt.confirm = true
+opt.history = 200
+opt.cursorline = true
+opt.number = true
+opt.relativenumber = true
+opt.spr = true
+opt.sb = true
+opt.timeout = true
+opt.timeoutlen = 1000
+opt.ttimeoutlen = 0
+opt.swapfile = false
+opt.mouse = 'a'
+opt.showmatch = true
+opt.ignorecase = true
+opt.wrap = false
+opt.path = '.,**'
+opt.foldenable = false
+opt.list = true
+opt.listchars = 'tab:•\\ ,trail:█,extends:»,precedes:«'
+opt.termguicolors = true
+opt.colorcolumn = '80'
+opt.guifont = 'MesloLGS-NF-Regular:h18'
+opt.autochdir = true
+opt.hidden = true
+opt.backup = false
+opt.writebackup = false
+opt.updatetime = 300
+opt.shortmess = 'c'
 --[[
    [ " set Vim-specific sequences for RGB colors
    [ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -44,36 +56,34 @@ vim.api.nvim_command('set shortmess+=c')
    [ let &t_EI = "\<Esc>[2 q"
    ]]
 
--- "===================================="
--- "|          Colorscheme             |"
--- "===================================="
-vim.api.nvim_command('set background=dark')
-vim.api.nvim_command('colorscheme gruvbox-material')
-vim.g.gruvbox_material_background = 'medium'
-vim.g.gruvbox_material_disable_italic_comment = 1
-vim.g.gruvbox_material_transparent_background = 0
+--------------------------------------------------------------------------------
+--                              Colorscheme                                   --
+--------------------------------------------------------------------------------
+g.gruvbox_material_background = 'medium'
+g.gruvbox_material_disable_italic_comment = 1
+g.gruvbox_material_transparent_background = 0
 
-vim.g.airline_theme = 'gruvbox_material'
-vim.g.airline_left_sep = ''
-vim.g.airline_left_alt_sep = ''
-vim.g.airline_right_sep = ''
-vim.g.airline_right_alt_sep = ''
+g.airline_theme = 'gruvbox_material'
+g.airline_left_sep = ''
+g.airline_left_alt_sep = ''
+g.airline_right_sep = ''
+g.airline_right_alt_sep = ''
 if vim.api.nvim_eval('!exists("g:airline_symbols")') then
-    vim.cmd([[let g:airline_symbols = {}]])
+    cmd([[let g:airline_symbols = {}]])
 end
-vim.cmd('let g:airline_symbols.maxlinenr = \'\'')
-vim.cmd('let g:airline_symbols.linenr = \' ㏑\'')
-vim.cmd('let g:airline_symbols.colnr = \' ¶:\'')
-vim.g['airline#extensions#tmuxline#enabled'] = 0
-vim.g['airline#extensions#tabline#left_sep'] = ''
-vim.g['airline#extensions#tabline#left_alt_sep'] = ''
-vim.g['airline#extensions#tabline#right_sep'] = ''
-vim.g['airline#extensions#tabline#right_alt_sep'] = ''
-vim.g['airline#extensions#tabline#enabled'] = 1
-vim.g['airline#extensions#tabline#show_buffers'] = 0
-vim.g['airline#extensions#tabline#show_splits'] = 0
-vim.g['airline#extensions#tabline#show_tabs'] = 1
-vim.g['airline#extensions#tabline#show_tab_nr'] = 0
-vim.g['airline#extensions#tabline#show_tab_type'] = 0
-vim.g['airline#extensions#tabline#close_symbol'] = ''
-vim.g['airline#extensions#tabline#show_close_button'] = 1
+cmd('let g:airline_symbols.maxlinenr = \'\'')
+cmd('let g:airline_symbols.linenr = \' ㏑\'')
+cmd('let g:airline_symbols.colnr = \' ¶:\'')
+g['airline#extensions#tmuxline#enabled'] = 0
+g['airline#extensions#tabline#left_sep'] = ''
+g['airline#extensions#tabline#left_alt_sep'] = ''
+g['airline#extensions#tabline#right_sep'] = ''
+g['airline#extensions#tabline#right_alt_sep'] = ''
+g['airline#extensions#tabline#enabled'] = 1
+g['airline#extensions#tabline#show_buffers'] = 0
+g['airline#extensions#tabline#show_splits'] = 0
+g['airline#extensions#tabline#show_tabs'] = 1
+g['airline#extensions#tabline#show_tab_nr'] = 0
+g['airline#extensions#tabline#show_tab_type'] = 0
+g['airline#extensions#tabline#close_symbol'] = ''
+g['airline#extensions#tabline#show_close_button'] = 1

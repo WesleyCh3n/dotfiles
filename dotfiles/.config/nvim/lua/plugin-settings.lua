@@ -1,124 +1,121 @@
+--------------------------------------------------------------------------------
+--                                  Helper                                    --
+--------------------------------------------------------------------------------
+local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
+local g = vim.g      -- a table to access global variables
+local opt = vim.opt  -- to set options
+
+-- indent-blankline
+require("indent_blankline").setup {
+  buftype_exclude = {"terminal", "help"}
+}
+
 -- Dashboard
-vim.g.dashboard_default_executive = 'telescope'
-vim.g.indentLine_fileTypeExclude  = 'dashboard'
+g.indent_blankline_filetype_exclude  = {'dashboard'}
+g.dashboard_default_executive = 'telescope'
+g.dashboard_custom_section={
+['01_bookmarks'] = {
+    ['description'] = {' Jump to bookmarks                     <space> d b'},
+    ['command'] = 'Telescope marks prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
+['02_fine_file'] = {
+    ['description'] = {' Find file                             <space> d f'},
+    ['command'] = 'Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
+['03_recent_file'] = {
+    ['description'] = {' Recently opened files                 <space> d h'},
+    ['command'] = 'Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
+['04_last_session'] = {
+    ['description'] = {' Open last session                     <space> s l'},
+    ['command'] = 'SessionLoad'},
+['05_new_file'] = {
+    ['description'] = {' New file                              <space> d n'},
+    ['command'] = 'DashboardNewFile'},
+}
+g.dashboard_custom_header ={
+  '⠀⠀⠀⠀⣠⣎⣀⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀',
+  '⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀',
+  '⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠏⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⡆⠀⠀',
+  '⠀⠀⣿⣿⣿⣿⣿⣿⡿⢿⠋⠉⠀⠀⠀⠀⠀⡀⠀⠀⠘⢿⣿⣿⣿⣿⣧⠀⠀',
+  '⠀⢰⣿⣿⣿⣿⠟⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⡈⠀⠻⣿⣿⣿⣿⠀⠀',
+  '⠀⣼⣿⣿⡿⠁⠀⢸⠀⠈⢳⣶⣤⣄⠀⠈⠀⠁⠀⠀⠀⢀⠀⠹⣿⣿⡟⠀⠀',
+  '⠀⣿⣿⣿⠀⠀⠈⣼⡇⠀⠘⠻⠟⠁⠀⠀⠀⠀⢤⣀⡀⠌⠀⠀⣿⣿⠃⠀⠀',
+  '⠀⣿⣿⣿⡀⠀⠀⡏⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⡿⠋⢰⢠⣿⡏⠀⠀⠀',
+  '⠀⣿⣿⣿⡇⠀⠀⢷⡃⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣯⣾⡟⠀⠀⠀⠀',
+  '⠀⣿⣿⣿⡿⠀⠀⣼⣿⡄⠀⠈⠀⢑⠶⠀⠀⠀⠀⢀⣾⣿⣿⣿⡇⠀⠀⠀⠀',
+  '⠀⣿⣿⣿⠁⠀⠀⣿⣿⠁⠀⠀⠀⢀⣀⣠⣤⣤⣴⠟⣿⣿⣿⣿⡇⠀⠀⠀⠀',
+  '⠀⠙⢿⠃⠀⠀⢸⣿⣟⠀⠀⢀⣤⣾⣿⣿⣿⠟⠁⢰⣿⣿⣿⣿⠃⠀⠀⠀⠀',
+  '⠀⠠⠴⠀⠀⠀⠿⠿⠿⠧⠾⠿⠿⠿⠿⠿⠃⠀⠀⠾⠿⠿⠟⠁⠀    ',
+}
+g.dashboard_custom_header1 = {
+  "    .,;'           :,.    ",
+  "  .,;;;,,.         ccc;.  ",
+  ".;c::::,,,'        ccccc: ",
+  ".::cc::,,,,,.      cccccc.",
+  ".cccccc;;;;;;'     llllll.",
+  ".cccccc.,;;;;;;.   llllll.",
+  ".cccccc  ';;;;;;'  oooooo.",
+  "'lllllc   .;;;;;;;.oooooo'",
+  "'lllllc     ,::::::looooo'",
+  "'llllll      .:::::lloddd'",
+  ".looool       .;::coooodo.",
+  "  .cool         'ccoooc.  ",
+  "    .co          .:o:.    ",
+}
+
+
+
 
 -- auto-pairs
-vim.g.AutoPairsShortcutJump = '<S-tab>'
+g.AutoPairsShortcutJump = '<S-tab>'
+
 -- Goyo
-vim.g.goyo_height = 95
+g.goyo_height = 95
 
 -- python-syntax
-vim.g.python_highlight_all = 1
+g.python_highlight_all = 1
 
 -- nerd-commentor
-vim.g.NERDSpaceDelims = 1
+g.NERDSpaceDelims = 1
 
 -- markdown-preview
-vim.g.mkdp_auto_close = 0
+g.mkdp_auto_close = 0
 
 -- vim-markdown
-vim.g.vim_markdown_conceal = 0
-vim.g.vim_markdown_conceal_code_blocks = 0
+g.vim_markdown_conceal = 0
+g.vim_markdown_conceal_code_blocks = 0
 
 -- SimpylFold
-vim.g.SimpylFold_fold_docstring = 0
+g.SimpylFold_fold_docstring = 0
 
 -- tagbar
-vim.g.tagbar_width = 30
+g.tagbar_width = 30
 
 -- coc-snippets
-vim.g.UltiSnipsExpandTrigger="<C-l>"
-vim.g.UltiSnipsEditSplit="vertical"
+g.UltiSnipsExpandTrigger="<C-l>"
+g.UltiSnipsEditSplit="vertical"
+
+-- nerd-commentor
+g.NERDCustomDelimiters = {
+    python = { left = '#', right = '' }
+}
+
+-- nvim-repl
+g.repl_filetype_commands = {
+    javascript = 'node',
+    python = 'python3',
+}
+g.repl_split = 'vertical'
+
+-- vim-floaterm
+g.floaterm_opener = 'tabe'
+g.floaterm_borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'}
+
+-- rainbow
+g.rainbow_active = 1
+g.rainbow_conf = { separately = { cmake = 0, } }
 
 vim.cmd([[
-
-" Dashboard "
-let g:dashboard_custom_shortcut={
-\ 'last_session'       : '<space> s l',
-\ 'find_history'       : '<space> d h',
-\ 'find_file'          : '<space> d f',
-\ 'new_file'           : '<space> d n',
-\ 'change_colorscheme' : '<space> d c',
-\ 'find_word'          : '<space> d w',
-\ 'book_marks'         : '<space> d b',
-\ }
-
-let g:dashboard_custom_header =[
-    \'',
-    \'⠀⠀⠀⠀⠀⠀⡀⠀⠀⣀⣀⣀⡀⠀⢀⡀⠀⢀⣀⣀⣀⠀⡀⠀⠀⠀⠀⠀⠀',
-    \'⠀⠀⠀⠀⣠⣎⣀⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀',
-    \'⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀',
-    \'⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠏⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⡆⠀⠀',
-    \'⠀⠀⣿⣿⣿⣿⣿⣿⡿⢿⠋⠉⠀⠀⠀⠀⠀⡀⠀⠀⠘⢿⣿⣿⣿⣿⣧⠀⠀',
-    \'⠀⢰⣿⣿⣿⣿⠟⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⡈⠀⠻⣿⣿⣿⣿⠀⠀',
-    \'⠀⣼⣿⣿⡿⠁⠀⢸⠀⠈⢳⣶⣤⣄⠀⠈⠀⠁⠀⠀⠀⢀⠀⠹⣿⣿⡟⠀⠀',
-    \'⠀⣿⣿⣿⠀⠀⠈⣼⡇⠀⠘⠻⠟⠁⠀⠀⠀⠀⢤⣀⡀⠌⠀⠀⣿⣿⠃⠀⠀',
-    \'⠀⣿⣿⣿⡀⠀⠀⡏⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⡿⠋⢰⢠⣿⡏⠀⠀⠀',
-    \'⠀⣿⣿⣿⡇⠀⠀⢷⡃⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣯⣾⡟⠀⠀⠀⠀',
-    \'⠀⣿⣿⣿⡿⠀⠀⣼⣿⡄⠀⠈⠀⢑⠶⠀⠀⠀⠀⢀⣾⣿⣿⣿⡇⠀⠀⠀⠀',
-    \'⠀⣿⣿⣿⠁⠀⠀⣿⣿⠁⠀⠀⠀⢀⣀⣠⣤⣤⣴⠟⣿⣿⣿⣿⡇⠀⠀⠀⠀',
-    \'⠀⠙⢿⠃⠀⠀⢸⣿⣟⠀⠀⢀⣤⣾⣿⣿⣿⠟⠁⢰⣿⣿⣿⣿⠃⠀⠀⠀⠀',
-    \'⠀⠠⠴⠀⠀⠀⠿⠿⠿⠧⠾⠿⠿⠿⠿⠿⠃⠀⠀⠾⠿⠿⠟⠁⠀    ',
-    \'',
-    \]
-
-let g:startify_ascii = [
-\ "      .            .      ",
-\ "    .,;'           :,.    ",
-\ "  .,;;;,,.         ccc;.  ",
-\ ".;c::::,,,'        ccccc: ",
-\ ".::cc::,,,,,.      cccccc.",
-\ ".cccccc;;;;;;'     llllll.",
-\ ".cccccc.,;;;;;;.   llllll.",
-\ ".cccccc  ';;;;;;'  oooooo.",
-\ "'lllllc   .;;;;;;;.oooooo'",
-\ "'lllllc     ,::::::looooo'",
-\ "'llllll      .:::::lloddd'",
-\ ".looool       .;::coooodo.",
-\ "  .cool         'ccoooc.  ",
-\ "    .co          .:o:.    ",
-\ "      .           .'      ",
-\]
-
-" nerd-commentor "
-let g:NERDCustomDelimiters = {
-\       'python': { 'left': '#', 'right': '' }
-\       }
-
-" nvim-repl "
-let g:repl_filetype_commands = {
-    \ 'javascript': 'node',
-    \ 'python': 'python3',
-    \ }
-let g:repl_split = 'vertical'
-
-" vim-floaterm "
-let g:floaterm_opener        = 'tabe'
-let g:floaterm_borderchars   = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
-
-" rainbow"
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-\   'separately': {
-\       'cmake': 0,
-\   }
-\}
-
 " coc.nvim "
-function! Check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~ '\s'
-endfunction
-" <Tab>: completion "
-inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-N>" :
-    \ Check_back_space() ? "\<Tab>" :
-    \ coc#refresh()
-" <S-Tab>: completion back "
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<C-H>"
-" <CR>: confirm completion, or insert <CR> "
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-
 call coc#config('suggest', {
 \  'completionItemKindLabels': {
 \     "keyword": "\uf1de",
@@ -144,7 +141,7 @@ call coc#config('suggest', {
 \     "event": "\ufacd",
 \     "file": "\uf723",
 \     "folder": "\uf114",
-\     "snippet": "\ue60b",
+\     "snippet": "",
 \     "typeParameter": "\uf728",
 \     "default": "\uf29c"
 \   }
@@ -170,3 +167,30 @@ let g:coc_explorer_global_presets = {
 \   },
 \ }
 ]])
+--[[
+   [ "method": "  ",
+   [ "function": "  ",
+   [ "variable": "[]",
+   [ "field": "  ",
+   [ "typeParameter": "<>",
+   [ "constant": "  ",
+   [ "class": " פּ ",
+   [ "interface": " 蘒",
+   [ "struct": "  ",
+   [ "event": "  ",
+   [ "operator": "  ",
+   [ "module": "  ",
+   [ "property": "  ",
+   [ "enum": " 練",
+   [ "reference": "  ",
+   [ "keyword": "  ",
+   [ "file": "  ",
+   [ "folder": " ﱮ ",
+   [ "color": "  ",
+   [ "unit": " 塞 ",
+   [ "snippet": "  ",
+   [ "text": "  ",
+   [ "constructor": "  ",
+   [ "value": "  ",
+   [ "enumMember": "  "
+   ]]

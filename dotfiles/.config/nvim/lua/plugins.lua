@@ -1,82 +1,78 @@
--- Install plugin at first initialization
-vim.cmd([[
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-]])
-
 --------------------------------------------------------------------------------
---                                Vim-plug                                    --
+--                                  Helper                                    --
 --------------------------------------------------------------------------------
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
--- Theme
-Plug 'sainnhe/gruvbox-material'
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
-Plug 'glepnir/dashboard-nvim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'luochen1990/rainbow'
-Plug 'camspiers/animate.vim'
-Plug 'dominikduda/vim_current_word'
+local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
+local g = vim.g      -- a table to access global variables
+local opt = vim.opt  -- to set options
 
--- Efficiency
-Plug 'junegunn/goyo.vim'
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-Plug 'preservim/nerdcommenter'
-Plug 'junegunn/vim-easy-align'
-Plug 'wellle/targets.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'mg979/vim-visual-multi'
-Plug 'phaazon/hop.nvim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+return require('packer').startup({function()
+  use {'wbthomason/packer.nvim'}
+  use {'sainnhe/gruvbox-material'}
+  use {'vim-airline/vim-airline'}
+  use {'glepnir/dashboard-nvim'}
+  use {'ryanoasis/vim-devicons'}
+  use {'kyazdani42/nvim-web-devicons'}
+  use {'lukas-reineke/indent-blankline.nvim'}
+  use {'luochen1990/rainbow'}
+  use {'dominikduda/vim_current_word'}
+  use {'junegunn/goyo.vim'}
+  use {'tpope/vim-surround'}
+  use {'jiangmiao/auto-pairs'}
+  use {'preservim/nerdcommenter'}
+  use {'junegunn/vim-easy-align'}
+  use {'wellle/targets.vim'}
+  use {'junegunn/vim-peekaboo'}
+  use {'christoomey/vim-tmux-navigator'}
+  use {'mg979/vim-visual-multi'}
+  use {'phaazon/hop.nvim'}
+  use {'SirVer/ultisnips'}
+  use {'honza/vim-snippets'}
+  use {'nvim-lua/plenary.nvim'}
+  use {'nvim-telescope/telescope.nvim'}
 
--- 3dParty: REQUIRED nnn lazygit
-Plug 'voldikss/vim-floaterm'
+  -- 3dParty: REQUIRED nnn lazygit
+  use {'voldikss/vim-floaterm'}
 
--- C++
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'preservim/tagbar'
+  -- C++
+  use {'octol/vim-cpp-enhanced-highlight'}
+  use {'preservim/tagbar'}
 
--- Python
-Plug 'vim-python/python-syntax'
-Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-repeat'
-Plug('pappasam/nvim-repl', {branch='main'})
-Plug 'Vimjas/vim-python-pep8-indent'
+  -- Python
+  use {'vim-python/python-syntax'}
+  use {'tmhedberg/SimpylFold'}
+  use {'tpope/vim-repeat'}
+  use {'pappasam/nvim-repl', branch = 'main'}
+  use {'Vimjas/vim-python-pep8-indent'}
 
--- Javascript
-Plug 'pangloss/vim-javascript'
+  -- Javascript
+  use {'pangloss/vim-javascript'}
 
--- Markdown
-Plug 'plasticboy/vim-markdown'
-vim.api.nvim_command('Plug \'iamcco/markdown-preview.nvim\', { \'do\': { -> mkdp#util#install() }, \'for\': [\'markdown\', \'vim-plug\']}')
--- Plug('iamcco/markdown-preview.nvim', {
-    -- ['do']=function()
-        -- vim.call('mkdp#util#install()')
-    -- end,
-    -- ['for']={'markdown','vim-plug'}
--- })
+  -- Markdown
+  use {'plasticboy/vim-markdown'}
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end,
+    ft = {'markdown'}
+  }
 
--- Color
-Plug('KabbAmine/vCoolor.vim', {on={}})
-Plug('lilydjwg/colorizer', {on={}})
+  -- Color
+  use {'KabbAmine/vCoolor.vim', opt = true}
+  use {'lilydjwg/colorizer', opt = true}
 
--- coc.nvim
-Plug('neoclide/coc.nvim', {branch='release'})
+  -- coc.nvim
+  use {'neoclide/coc.nvim', branch = 'release'}
 
--- self
-Plug 'wakatime/vim-wakatime'
+  -- self
+  use {'wakatime/vim-wakatime'}
 
-vim.call('plug#end')
+end,
+config = {
+  display = {
+    open_fn = require('packer.util').float,
+  }
+}
+})
 
 --------------------------------------------------------------------------------
 --                              coc plugins                                   --
