@@ -101,10 +101,18 @@ map('v', 'J', ':m\'>+<CR>gv=gv')
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
 -- Dashboard
-map('n', '<space>dh', ':Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>df', ':Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>dc', ':Telescope colorscheme prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>db', ':Telescope marks prompt_prefix=🔍 layout_config={"prompt_position":"top"}<CR>')
+if vim.fn.has('win32') == 1 then
+  t_hidden = ''
+  t_prefix = ''
+  print('outt')
+else
+  t_hidden = 'hidden=true'
+  t_prefix = 'prompt_prefix=🔍'
+end
+map('n', '<space>dh', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>df', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>dc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>db', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
 map('n', '<space>dw', ':DashboardFindWord<CR>')
 map('n', '<space>dn', ':DashboardNewFile<CR>')
 map('n', '<space>ss', ':<C-u>SessionSave<CR>')
@@ -119,8 +127,8 @@ map('n', '<space>E', ':CocCommand explorer --preset floating<cr>')
 map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
 
 -- vim-easy-align
-map('x', 'ga', '<Plug>(EasyAlign)')
-map('n', 'ga', '<Plug>(EasyAlign)')
+map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
+map('n', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 
 -- nvim-repl
 map('n', '<leader>r', ':ReplToggle<cr>')
