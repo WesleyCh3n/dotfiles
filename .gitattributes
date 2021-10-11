@@ -1,2 +1,2 @@
 setup/* linguist-vendored
-.p10k linguist-vendored
+*.zsh linguist-vendored
