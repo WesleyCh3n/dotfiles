@@ -29,7 +29,7 @@ make
 
 ## Screenshot
 
-I lov Guvbox <3
+I lov Gruvbox <3
 |||
 |:-:|:-:|
 |![img1](./asset/Screen_Shot_1.png)|![img2](./asset/Screen_Shot_2.png)|
