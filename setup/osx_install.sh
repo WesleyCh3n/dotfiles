@@ -3,7 +3,12 @@
 # Purpose:
 
 # Import utils function
-. ./utils.sh
+FILE=utils.sh
+if [ -f "$FILE" ]; then
+  . ./utils.sh
+else
+  . ./setup/utils.sh
+fi
 setup_color
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -3,7 +3,12 @@
 # Purpose:
 
 # Import utils function
-. ./utils.sh
+FILE=utils.sh
+if [ -f "$FILE" ]; then
+  . ./utils.sh
+else
+  . ./setup/utils.sh
+fi
 setup_color
 
 set -e
