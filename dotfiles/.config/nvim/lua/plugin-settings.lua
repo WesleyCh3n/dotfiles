@@ -74,9 +74,6 @@ g.goyo_height = 95
 -- python-syntax
 g.python_highlight_all = 1
 
--- nerd-commentor
-g.NERDSpaceDelims = 1
-
 -- markdown-preview
 g.mkdp_auto_close = 0
 
@@ -95,8 +92,10 @@ g.UltiSnipsExpandTrigger="<C-l>"
 g.UltiSnipsEditSplit="vertical"
 
 -- nerd-commentor
+g.NERDSpaceDelims = 1
 g.NERDCustomDelimiters = {
-    python = { left = '#', right = '' }
+    python = { left = '#', right = '' },
+    dosbatch = { left = '::' }
 }
 
 -- nvim-repl

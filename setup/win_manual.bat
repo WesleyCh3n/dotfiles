@@ -1,18 +1,18 @@
-REM  Install scoop
+:: Install scoop
 iwr -useb get.scoop.sh | iex
 
-REM  install git
+:: install git
 scoop install git
 
-REM  install nodejs
+:: install nodejs
 scoop install nodejs
 
-REM  install python
+:: install python
 scoop install python
 
-REM  install neovom
+:: install neovom
 scoop install neovim
 
-REM  neovide
+:: neovide
 scoop bucket add extras
 scoop install neovide
