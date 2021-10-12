@@ -114,8 +114,8 @@ map('n', '<space>dc', ':Telescope colorscheme '..t_prefix..' layout_config={"pro
 map('n', '<space>db', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
 map('n', '<space>dw', ':DashboardFindWord<CR>')
 map('n', '<space>dn', ':DashboardNewFile<CR>')
-map('n', '<space>ss', ':SaveSession<CR>')
-map('n', '<space>sl', ':LoadSession<CR>')
+map('n', '<space>ss', ':SessionSave<CR>')
+map('n', '<space>sl', ':SessionLoad<CR>')
 
 -- Goyo
 map('n', '<space>g', ':Goyo<cr>')

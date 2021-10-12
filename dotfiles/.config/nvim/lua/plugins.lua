@@ -38,7 +38,6 @@ return require('packer').startup({function()
   use {'honza/vim-snippets'}
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim'}
-  use {'Shatur/neovim-session-manager'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'voldikss/vim-floaterm'}
