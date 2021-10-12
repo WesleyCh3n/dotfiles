@@ -12,6 +12,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup({function()
+  -- for better look
   use {'wbthomason/packer.nvim'}
   use {'sainnhe/gruvbox-material'}
   use {'vim-airline/vim-airline'}
@@ -22,6 +23,8 @@ return require('packer').startup({function()
   use {'luochen1990/rainbow'}
   use {'dominikduda/vim_current_word'}
   use {'junegunn/goyo.vim'}
+
+  -- control on fly
   use {'tpope/vim-surround'}
   use {'jiangmiao/auto-pairs'}
   use {'preservim/nerdcommenter'}
@@ -35,6 +38,7 @@ return require('packer').startup({function()
   use {'honza/vim-snippets'}
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim'}
+  use {'Shatur/neovim-session-manager'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'voldikss/vim-floaterm'}
@@ -73,7 +77,8 @@ return require('packer').startup({function()
    'coc-floaterm',
    'coc-explorer',
    'coc-tsserver',
-   'coc-pyright'
+   'coc-pyright',
+   'coc-spell-checker'
   }
 
   -- self

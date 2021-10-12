@@ -26,7 +26,7 @@ g.dashboard_custom_section={
     ['command'] = 'Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['04_last_session'] = {
     ['description'] = {' Open last session                     <space> s l'},
-    ['command'] = 'SessionLoad'},
+    ['command'] = 'LoadSession'},
 ['05_new_file'] = {
     ['description'] = {' New file                              <space> d n'},
     ['command'] = 'DashboardNewFile'},

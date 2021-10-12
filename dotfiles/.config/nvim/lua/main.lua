@@ -38,7 +38,7 @@ opt.list = true
 opt.listchars = 'tab:•\\ ,trail:█,extends:»,precedes:«'
 opt.termguicolors = true
 opt.colorcolumn = '80'
-opt.guifont = 'MesloLGS-NF-Regular:h18'
+opt.guifont = 'MesloLGS NF:h16'
 opt.autochdir = true
 opt.hidden = true
 opt.backup = false
@@ -69,7 +69,7 @@ g.airline_left_alt_sep = ''
 g.airline_right_sep = ''
 g.airline_right_alt_sep = ''
 if vim.api.nvim_eval('!exists("g:airline_symbols")') then
-    cmd([[let g:airline_symbols = {}]])
+  cmd([[let g:airline_symbols = {}]])
 end
 cmd('let g:airline_symbols.maxlinenr = \'\'')
 cmd('let g:airline_symbols.linenr = \' ㏑\'')

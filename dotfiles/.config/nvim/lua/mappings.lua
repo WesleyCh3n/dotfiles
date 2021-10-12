@@ -88,7 +88,7 @@ map('n', '<space>p', ':set paste!<cr>')
 map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
 
 -- escape terminal
-map('t', '<Esc>', '<C-\\><C-n>', {silent = false})
+map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})
 
 -- remove trailing white space
 map('n', '<space>fw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
@@ -114,8 +114,8 @@ map('n', '<space>dc', ':Telescope colorscheme '..t_prefix..' layout_config={"pro
 map('n', '<space>db', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
 map('n', '<space>dw', ':DashboardFindWord<CR>')
 map('n', '<space>dn', ':DashboardNewFile<CR>')
-map('n', '<space>ss', ':<C-u>SessionSave<CR>')
-map('n', '<space>sl', ':<C-u>SessionLoad<CR>')
+map('n', '<space>ss', ':SaveSession<CR>')
+map('n', '<space>sl', ':LoadSession<CR>')
 
 -- Goyo
 map('n', '<space>g', ':Goyo<cr>')
