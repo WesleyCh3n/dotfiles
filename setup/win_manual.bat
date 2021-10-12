@@ -1,8 +1,11 @@
 :: Install scoop
 iwr -useb get.scoop.sh | iex
 
+:: add extras bucket
+scoop bucket add extras
+
 :: install git
-scoop install git
+scoop install git lazygit
 
 :: install nodejs
 scoop install nodejs
@@ -17,5 +20,4 @@ scoop install neovim
 pip install pynvim
 
 :: neovide
-scoop bucket add extras
 scoop install neovide
