@@ -13,6 +13,9 @@ scoop install python
 :: install neovom
 scoop install neovim
 
+:: install pynvim for nvim
+pip install pynvim
+
 :: neovide
 scoop bucket add extras
 scoop install neovide

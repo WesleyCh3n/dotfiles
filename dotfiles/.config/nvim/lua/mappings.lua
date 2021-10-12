@@ -104,7 +104,6 @@ map('v', 'J', ':m\'>+<CR>gv=gv')
 if vim.fn.has('win32') == 1 then
   t_hidden = ''
   t_prefix = ''
-  print('outt')
 else
   t_hidden = 'hidden=true'
   t_prefix = 'prompt_prefix=🔍'
@@ -125,6 +124,7 @@ map('n', '<space>g', ':Goyo<cr>')
 map('n', '<space>e', ':CocCommand explorer<cr>')
 map('n', '<space>E', ':CocCommand explorer --preset floating<cr>')
 map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
+map('n', '<space>fg', ':CocCommand explorer --preset github<cr>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})

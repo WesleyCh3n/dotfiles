@@ -124,6 +124,12 @@ g.coc_explorer_global_presets = {
     ['floating-width']= 120,
     ['open-action-strategy']= 'sourceWindow',
   },
+  github = {
+    ['position']= 'floating',
+    ['floating-width']= 120,
+    ['root-uri']= '~/GitHub',
+  },
+
 }
 
 vim.fn['coc#config']('suggest', {
