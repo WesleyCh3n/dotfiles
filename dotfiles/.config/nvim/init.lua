@@ -5,6 +5,8 @@ if vim.fn.has('win32') == 1 then
 else
   HOME_DIR = '~/.config/nvim/'
 end
+vim.g.neovide_remember_window_size = true
+vim.g.neovide_cursor_vfx_mode = "railgun"
 
 require('plugins')
 require('main')

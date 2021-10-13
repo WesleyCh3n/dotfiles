@@ -11,6 +11,9 @@ require("indent_blankline").setup {
   buftype_exclude = {"terminal", "help"}
 }
 
+-- Telescope
+require('telescope').load_extension('coc')
+
 -- Dashboard
 g.indent_blankline_filetype_exclude  = {'dashboard'}
 g.dashboard_default_executive = 'telescope'

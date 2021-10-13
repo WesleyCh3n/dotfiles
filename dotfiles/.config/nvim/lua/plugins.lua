@@ -38,6 +38,7 @@ return require('packer').startup({function()
   use {'honza/vim-snippets'}
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim'}
+  use {'fannheyward/telescope-coc.nvim'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'voldikss/vim-floaterm'}
@@ -77,7 +78,6 @@ return require('packer').startup({function()
    'coc-explorer',
    'coc-tsserver',
    'coc-pyright',
-   'coc-spell-checker'
   }
 
   -- self
