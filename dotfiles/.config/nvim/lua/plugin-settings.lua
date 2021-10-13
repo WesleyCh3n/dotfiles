@@ -116,17 +116,14 @@ g.rainbow_conf = { separately = { cmake = 0, } }
 g.coc_explorer_global_presets = {
   config = {
     ['position']= 'floating',
-    ['floating-width']= 120,
     ['root-uri']= HOME_DIR..'lua',
   },
   floating= {
     ['position']= 'floating',
-    ['floating-width']= 120,
     ['open-action-strategy']= 'sourceWindow',
   },
   github = {
     ['position']= 'floating',
-    ['floating-width']= 120,
     ['root-uri']= '~/GitHub',
   },
 
