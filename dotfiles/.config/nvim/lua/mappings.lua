@@ -29,7 +29,6 @@ map('i', '<C-j>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
 map('i', '<C-k>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
 map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
-map('n', '<C-q>', ':Telescope coc diagnostics<cr>')
 
 -- no EX mode
 map('n', 'Q', '<NOP>')
@@ -123,6 +122,10 @@ map('n', '<space>sl', ':SessionLoad<CR>')
 
 -- Goyo
 map('n', '<space>g', ':Goyo<cr>')
+
+-- coc.nvim
+map('n', '<C-q>', ':Telescope coc diagnostics<cr>')
+map('n', '<C-p>', ':Telescope coc declarations<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')
