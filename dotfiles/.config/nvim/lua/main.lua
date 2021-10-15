@@ -45,6 +45,7 @@ opt.backup = false
 opt.writebackup = false
 opt.updatetime = 300
 opt.shortmess = 'c'
+opt.signcolumn = 'yes'
 --[[
    [ " set Vim-specific sequences for RGB colors
    [ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

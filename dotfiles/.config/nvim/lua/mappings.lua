@@ -94,8 +94,8 @@ map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})
 map('n', '<space>fw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
 
 -- move line up/down in visual
-map('v', 'K', ':m-2<CR>gv=gv')
-map('v', 'J', ':m\'>+<CR>gv=gv')
+map('v', 'K', ':m \'<-2<CR>gv=gv')
+map('v', 'J', ':m \'>+1<CR>gv=gv')
 
 -- apply q register in visual mode
 map('v', '.', ':norm! @q<cr>')
@@ -111,10 +111,6 @@ else
   t_hidden = 'hidden=true'
   t_prefix = 'prompt_prefix=🔍'
 end
-map('n', '<space>dh', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>df', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>dc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>db', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
 map('n', '<space>dw', ':DashboardFindWord<CR>')
 map('n', '<space>dn', ':DashboardNewFile<CR>')
 map('n', '<space>ss', ':SessionSave<CR>')
@@ -123,9 +119,13 @@ map('n', '<space>sl', ':SessionLoad<CR>')
 -- Goyo
 map('n', '<space>g', ':Goyo<cr>')
 
--- coc.nvim
-map('n', '<C-q>', ':Telescope coc diagnostics<cr>')
-map('n', '<C-p>', ':Telescope coc declarations<cr>')
+-- Telescope
+map('n', '<space>th', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>tf', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>tc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>tb', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>td', ':Telescope coc diagnostics<cr>')
+map('n', '<space>tp', ':Telescope coc declarations<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')
@@ -155,6 +155,7 @@ map('n', '<space>ag', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --
 map('n', '<space>ad', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazydocker <cr>")
 map('n', '<space>an', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 nnn <cr>")
 map('n', '<space>ab', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop <cr>")
+map('n', '<space>aq', ":FloatermKill<cr>")
 
 -- vim-markdown
 map('n', '<leader>p', ":MarkdownPreviewToggle<cr>")
@@ -181,8 +182,9 @@ augroup myaucmd
     au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
     au filetype md setlocal wrap spell
 augroup END
-augroup source_vimrc
+augroup WESLEYCH3N
     au!
     au bufwritepost *.lua source $MYVIMRC | AirlineRefresh | call rainbow_main#load() | call rainbow_main#load()
+    au BufWritePre * %s/\s\+$//e
 augroup END
 ]])

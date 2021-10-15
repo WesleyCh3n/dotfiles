@@ -56,6 +56,7 @@ return require('packer').startup({function()
 
   -- Javascript
   use {'pangloss/vim-javascript'}
+  use {'MaxMEllon/vim-jsx-pretty'}
 
   -- Markdown
   use {'plasticboy/vim-markdown'}

@@ -19,13 +19,13 @@ g.indent_blankline_filetype_exclude  = {'dashboard'}
 g.dashboard_default_executive = 'telescope'
 g.dashboard_custom_section={
 ['01_bookmarks'] = {
-    ['description'] = {' Jump to bookmarks                     <space> d b'},
+    ['description'] = {' Jump to bookmarks                     <space> t b'},
     ['command'] = 'Telescope marks prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['02_fine_file'] = {
-    ['description'] = {' Find file                             <space> d f'},
+    ['description'] = {' Find file                             <space> t f'},
     ['command'] = 'Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['03_recent_file'] = {
-    ['description'] = {' Recently opened files                 <space> d h'},
+    ['description'] = {' Recently opened files                 <space> t h'},
     ['command'] = 'Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['04_last_session'] = {
     ['description'] = {' Open last session                     <space> s l'},
