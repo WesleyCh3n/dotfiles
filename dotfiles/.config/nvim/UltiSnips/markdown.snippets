@@ -1,0 +1,26 @@
+global !p
+def options(t, opts):
+	if t:
+		opts = [m[len(t):] for m in opts if m.startswith(t)]
+	if len(opts) == 1:
+		return opts[0]
+	return "("+"|".join(opts)+")"
+endglobal
+
+snippet gg "header for blog" b
+---
+title: "$1"
+date: $2
+categories:
+  - $3`!p snip.rv=options(t[3], ['note','log'])`
+tags:
+  - $4`!p snip.rv=options(t[4], ['bash', 'javascript', 'powershell'])`
+toc: true
+toc_label: "Outline"
+toc_sticky: true
+toc_icon: "box-open"
+header:
+  teaser: ${5:./assets/teasers/code-bg.png}
+
+---
+endsnippet
