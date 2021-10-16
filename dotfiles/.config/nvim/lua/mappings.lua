@@ -100,6 +100,17 @@ map('v', 'J', ':m \'>+1<CR>gv=gv')
 -- apply q register in visual mode
 map('v', '.', ':norm! @q<cr>')
 
+-- Keep cursor center
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+map('n', 'J', 'mzJ`z')
+
+-- Undo break point
+map('i', ',', ',<c-g>u')
+map('i', '.', '.<c-g>u')
+map('i', '!', '!<c-g>u')
+map('i', '?', '?<c-g>u')
+
 --------------------------------------------------------------------------------
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
@@ -143,8 +154,10 @@ map('n', '<leader>w', ':ReplSend<cr>')
 map('v', '<leader>w', ':ReplSend<cr>')
 
 -- hop.nvim
-map('n', '<leader>f', ":lua require'hop'.hint_words()<cr>")
-map('n', '<leader>l', ":lua require'hop'.hint_lines()<cr>")
+map('n', '<leader>f', ":HopWord<cr>")
+map('n', '<leader>l', ":HopLineStart<cr>")
+map('v', '<leader>f', "<cmd>HopWord<cr>")
+map('v', '<leader>l', "<cmd>HopLineStart<cr>")
 
 -- vim-floaterm
 vim.g.floaterm_keymap_toggle = '<space>at'
