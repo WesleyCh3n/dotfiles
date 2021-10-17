@@ -14,6 +14,7 @@ end
 --                                  Default                                   --
 --------------------------------------------------------------------------------
 g.mapleader = ','
+
 -- no ESC
 map('i', 'jk', '<Esc>')
 map('i', 'kj', '<Esc>')
@@ -46,7 +47,7 @@ map('n', '>', '>>')
 map('n', '<', '<<')
 
 -- nohlsearch
-map('n', '<leader>n', ':set hlsearch!<cr>')
+map('n', '<leader>n', ':let @/=""<cr>')
 
 -- yank to system clipboard
 map('v', '<leader>y', '"+y')
@@ -122,8 +123,6 @@ else
   t_hidden = 'hidden=true'
   t_prefix = 'prompt_prefix=🔍'
 end
-map('n', '<space>dw', ':DashboardFindWord<CR>')
-map('n', '<space>dn', ':DashboardNewFile<CR>')
 map('n', '<space>ss', ':SessionSave<CR>')
 map('n', '<space>sl', ':SessionLoad<CR>')
 
@@ -131,18 +130,18 @@ map('n', '<space>sl', ':SessionLoad<CR>')
 map('n', '<space>g', ':Goyo<cr>')
 
 -- Telescope
-map('n', '<space>th', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>tf', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>tc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>tb', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>td', ':Telescope coc diagnostics<cr>')
-map('n', '<space>tp', ':Telescope coc declarations<cr>')
+map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>fm', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
+map('n', '<space>fd', ':Telescope coc declarations<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')
 map('n', '<space>E', ':CocCommand explorer --preset floating<cr>')
 map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
-map('n', '<space>fg', ':CocCommand explorer --preset github<cr>')
+map('n', '<space>aG', ':CocCommand explorer --preset github<cr>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
@@ -171,13 +170,20 @@ map('n', '<space>ab', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --
 map('n', '<space>aq', ":FloatermKill<cr>")
 
 -- vim-markdown
-map('n', '<leader>p', ":MarkdownPreviewToggle<cr>")
+map('n', '<space>p', ":MarkdownPreviewToggle<cr>")
 
 -- GNU boxes intergration
 map('v', '<space>bv', "!boxes -s 80 -a c -d vim-box<CR>")
 map('v', '<space>bc', "!boxes -s 80 -a c -d cc<CR>")
 map('v', '<space>bp', "!boxes -s 80 -a c -d shell<CR>")
 map('v', '<space>bb', "!boxes -s 80 -a c -d ")
+
+-- emmet-vim
+g.user_emmet_leader_key = '<C-s>'
+
+-- vim-which-key
+map('n', '<Space>', ':WhichKey \'<Space>\'<CR>')
+map('n', '<leader>', ':WhichKey \',\'<CR>')
 
 --------------------------------------------------------------------------------
 --                                 Augroup                                    --

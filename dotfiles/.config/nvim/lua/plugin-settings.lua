@@ -14,26 +14,89 @@ require("indent_blankline").setup {
 -- Telescope
 require('telescope').load_extension('coc')
 
+-- vim-which-key
+g.which_key_hspace = 1
+fn['which_key#register'](',', 'g:which_key_leader')
+g.which_key_leader = {
+  ['c'] = {
+    name = "+comment"
+  },
+  ['1'] = 'Tab 1',
+  ['2'] = 'Tab 2',
+  ['3'] = 'Tab 3',
+  ['4'] = 'Tab 4',
+  ['5'] = 'which_key_ignore',
+  ['6'] = 'which_key_ignore',
+  ['7'] = 'which_key_ignore',
+  ['8'] = 'which_key_ignore',
+  ['9'] = 'which_key_ignore',
+  ['<'] = 'Move tab left',
+  ['>'] = 'Move tab right',
+  ['n'] = 'Clear search',
+  ['s'] = 'Repace text',
+}
+
+fn['which_key#register']('<Space>', 'g:which_key_space')
+g.which_key_space = {
+  ['a'] = {
+    name = '+float',
+    ['s'] = 'Shell',
+    ['c'] = 'MYVIMRC directory',
+    ['g'] = 'lazygit',
+    ['d'] = 'lazydocker',
+    ['b'] = 'bpytop',
+    ['n'] = 'nnn file explorer',
+  },
+  ['d'] = { name = 'which_key_ignore' },
+  ['f'] = {
+    name = '+Telescope',
+    ['f'] = 'find files',
+    ['o'] = 'find histories',
+    ['m'] = 'find marks',
+    ['a'] = 'show diagnostics',
+    ['d'] = 'show definitions',
+    ['c'] = 'set colorscheme',
+    ['m'] = 'which_key_ignore',
+    ['p'] = 'which_key_ignore',
+    ['w'] = 'which_key_ignore',
+  },
+  ['r'] = {
+    name = '+re-',
+    ['i'] = 'Re-Indent',
+    ['t'] = 'Re-Tab'
+  },
+  ['s'] = {
+    name = '+session',
+    ['s'] = 'Session Save',
+    ['l'] = 'Session Load'
+  },
+  ['w'] = 'Write file',
+  ['q'] = 'Quit file',
+  ['e'] = 'File explorer',
+  ['E'] = 'File explorer floating',
+}
+
 -- Dashboard
 g.indent_blankline_filetype_exclude  = {'dashboard'}
 g.dashboard_default_executive = 'telescope'
 g.dashboard_custom_section={
 ['01_bookmarks'] = {
-    ['description'] = {' Jump to bookmarks                     <space> t b'},
+    ['description'] = {' Jump to bookmarks                     <space> f m'},
     ['command'] = 'Telescope marks prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['02_fine_file'] = {
-    ['description'] = {' Find file                             <space> t f'},
+    ['description'] = {' Find file                             <space> f f'},
     ['command'] = 'Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['03_recent_file'] = {
-    ['description'] = {' Recently opened files                 <space> t h'},
+    ['description'] = {' Recently opened files                 <space> f o'},
     ['command'] = 'Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
 ['04_last_session'] = {
     ['description'] = {' Open last session                     <space> s l'},
     ['command'] = 'SessionLoad'},
 ['05_new_file'] = {
     ['description'] = {' New file                              <space> d n'},
-    ['command'] = 'DashboardNewFile'},
+    ['command'] = 'enew'},
 }
+
 g.dashboard_custom_header ={
   '⠀⠀⠀⠀⣠⣎⣀⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀',
   '⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀',

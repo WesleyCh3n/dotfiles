@@ -39,6 +39,7 @@ return require('packer').startup({function()
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim'}
   use {'fannheyward/telescope-coc.nvim'}
+  use {'liuchengxu/vim-which-key'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'voldikss/vim-floaterm'}
@@ -55,6 +56,7 @@ return require('packer').startup({function()
   use {'Vimjas/vim-python-pep8-indent'}
 
   -- Javascript
+  use {'mattn/emmet-vim'}
   use {'pangloss/vim-javascript'}
   use {'MaxMEllon/vim-jsx-pretty'}
 
@@ -62,7 +64,7 @@ return require('packer').startup({function()
   use {'plasticboy/vim-markdown'}
   use {
     'iamcco/markdown-preview.nvim',
-    run = function() vim.fn['mkdp#util#install']() end,
+    run = vim.fn['mkdp#util#install'],
     ft = {'markdown'}
   }
 
@@ -73,19 +75,20 @@ return require('packer').startup({function()
   -- coc.nvim
   use {'neoclide/coc.nvim', branch = 'release'}
   g.coc_global_extensions = {
-   'coc-json',
-   'coc-snippets',
-   'coc-floaterm',
-   'coc-explorer',
-   'coc-tsserver',
-   'coc-pyright',
+    'coc-json',
+    'coc-snippets',
+    'coc-floaterm',
+    'coc-explorer',
+    'coc-tsserver',
+    'coc-pyright',
+    'coc-go'
   }
 
   -- self
   use {'wakatime/vim-wakatime'}
 
-  end,
-  config = {
-    display = {open_fn = require('packer.util').float, }}
-  })
+end,
+config = {
+  display = {open_fn = require('packer.util').float, }}
+})
 
