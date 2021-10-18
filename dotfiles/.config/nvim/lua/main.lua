@@ -75,6 +75,7 @@ end
 cmd('let g:airline_symbols.maxlinenr = \'\'')
 cmd('let g:airline_symbols.linenr = \' ㏑\'')
 cmd('let g:airline_symbols.colnr = \' ¶:\'')
+g['airline#extensions#tabline#fnamemod'] = ':t'
 g['airline#extensions#tmuxline#enabled'] = 0
 g['airline#extensions#tabline#left_sep'] = ''
 g['airline#extensions#tabline#left_alt_sep'] = ''
