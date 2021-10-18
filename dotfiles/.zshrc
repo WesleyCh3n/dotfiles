@@ -14,6 +14,7 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "plugins/virtualenv",                from:oh-my-zsh
   zplug "plugins/docker",                    from:oh-my-zsh
   zplug "plugins/vi-mode",                   from:oh-my-zsh
+  zplug "plugins/common-aliases",            from:oh-my-zsh
   zplug "romkatv/powerlevel10k",             as:theme, depth:1
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
@@ -62,9 +63,6 @@ export LC_ALL=en_US.UTF-8
 ################################################################################
 export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
-alias l='ls'
-alias ll='ls -lh'
-alias la='ls -lah'
 alias vi='nvim'
 alias vv='neovide'
 alias python='python3 -B'
