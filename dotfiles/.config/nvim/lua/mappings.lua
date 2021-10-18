@@ -139,7 +139,7 @@ map('n', '<space>fd', ':Telescope coc declarations<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')
-map('n', '<space>E', ':CocCommand explorer --preset floating<cr>')
+map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
 map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
 map('n', '<space>aG', ':CocCommand explorer --preset github<cr>')
 
@@ -190,16 +190,17 @@ map('n', '<leader>', ':WhichKey \',\'<CR>')
 --------------------------------------------------------------------------------
 vim.cmd([[
 augroup myaucmd
-    " au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr> "
-    au filetype python nnoremap <buffer> ,m :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-    au filetype go nnoremap ,m :w<bar>:GoRun<space>%<cr>
-    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-    au filetype tex setl updatetime=1000
-    au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
-    au filetype python nnoremap gf [<C-D>
-    au filetype html let b:AutoPairs = {"<": ">"}
-    au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    au filetype md setlocal wrap spell
+  " au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr> "
+  au filetype python nnoremap <buffer> ,m :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+  au filetype go nnoremap ,m :w<bar>:GoRun<space>%<cr>
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  au filetype tex setl updatetime=1000
+  au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
+  au filetype python nnoremap gf [<C-D>
+  au filetype html let b:AutoPairs = {"<": ">"}
+  au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au filetype md setlocal wrap spell
+  au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif
 augroup END
 augroup WESLEYCH3N
     au!

@@ -18,9 +18,7 @@ require('telescope').load_extension('coc')
 g.which_key_hspace = 1
 fn['which_key#register'](',', 'g:which_key_leader')
 g.which_key_leader = {
-  ['c'] = {
-    name = "+comment"
-  },
+  ['c'] = { name = "+comment" },
   ['1'] = 'Tab 1',
   ['2'] = 'Tab 2',
   ['3'] = 'Tab 3',
@@ -45,7 +43,9 @@ g.which_key_space = {
     ['g'] = 'lazygit',
     ['d'] = 'lazydocker',
     ['b'] = 'bpytop',
+    ['e'] = 'coc file explorer',
     ['n'] = 'nnn file explorer',
+    ['G'] = 'Open GitHub',
   },
   ['d'] = { name = 'which_key_ignore' },
   ['f'] = {
@@ -73,7 +73,6 @@ g.which_key_space = {
   ['w'] = 'Write file',
   ['q'] = 'Quit file',
   ['e'] = 'File explorer',
-  ['E'] = 'File explorer floating',
 }
 
 -- Dashboard

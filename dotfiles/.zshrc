@@ -32,8 +32,8 @@ else
   echo "zplug not installed, so no plugins available"
 fi
 
-# SAVEHIST=1000  # Save most-recent 1000 lines
-# HISTFILE=$HOME/.zsh_history
+SAVEHIST=1000  # Save most-recent 1000 lines
+HISTFILE=$HOME/.zsh_history
 
 ################################################################################
 #                                plugin setting                                #
@@ -79,7 +79,8 @@ export EDITOR="$VISUAL"
 export NNN_BMS="\
 g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
-d:$HOME/dotfiles"
+d:$HOME/dotfiles;\
+c:$HOME/.config;"
 
 n () {
     if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
