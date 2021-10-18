@@ -158,16 +158,13 @@ map('n', '<leader>l', ":HopLineStart<cr>")
 map('v', '<leader>f', "<cmd>HopWord<cr>")
 map('v', '<leader>l', "<cmd>HopLineStart<cr>")
 
--- vim-floaterm
-vim.g.floaterm_keymap_toggle = '<space>at'
-vim.g.floaterm_keymap_prev   = '<space>fp'
-vim.g.floaterm_keymap_next   = '<space>fn'
-map('n', '<space>as', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1<cr>")
-map('n', '<space>ag', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazygit <cr>")
-map('n', '<space>ad', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 lazydocker <cr>")
-map('n', '<space>an', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 nnn <cr>")
-map('n', '<space>ab', ":FloatermNew --height=0.8 --width=0.8 --name=floaterm1 --autoclose=1 bpytop <cr>")
-map('n', '<space>aq', ":FloatermKill<cr>")
+-- toggleterm.nvim
+map('n', '<space>as', ":ToggleTerm<cr>")
+map('n', '<space>ag', "<cmd>lua _lazygit_toggle()<CR>")
+map('n', '<space>an', "<cmd>lua _nnn_toggle()<CR>")
+map('n', '<space>ab', "<cmd>lua _bpytop_toggle()<CR>")
+map('n', '<space>aj', "<cmd>lua _node_toggle()<CR>")
+map('n', '<space>ap', "<cmd>lua _python_toggle()<CR>")
 
 -- vim-markdown
 map('n', '<space>p', ":MarkdownPreviewToggle<cr>")

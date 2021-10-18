@@ -186,6 +186,25 @@ g.repl_split = 'vertical'
 g.floaterm_opener = 'tabe'
 g.floaterm_borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'}
 
+-- toggleterm.nvim
+require("toggleterm").setup{
+  size=15,
+  float_opts = {
+    border='curved'
+  }
+}
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", direction = 'float', hidden = true, })
+local nnn = Terminal:new({ cmd = "nnn", direction = 'float', hidden = true, })
+local bpytop = Terminal:new({ cmd = "bpytop", direction = 'float', hidden = true, })
+local node = Terminal:new({ cmd = "node", direction = 'float', hidden = true, })
+local python = Terminal:new({ cmd = "python3", direction = 'float', hidden = true, })
+function _lazygit_toggle() lazygit:toggle() end
+function _nnn_toggle() nnn:toggle() end
+function _bpytop_toggle() bpytop:toggle() end
+function _node_toggle() node:toggle() end
+function _python_toggle() python:toggle() end
+
 -- rainbow
 g.rainbow_active = 1
 g.rainbow_conf = { separately = { cmake = 0, } }

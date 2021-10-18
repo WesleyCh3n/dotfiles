@@ -42,7 +42,7 @@ return require('packer').startup({function()
   use {'liuchengxu/vim-which-key'}
 
   -- 3dParty: REQUIRED nnn lazygit
-  use {'voldikss/vim-floaterm'}
+  use {"akinsho/toggleterm.nvim"}
 
   -- C++
   use {'octol/vim-cpp-enhanced-highlight'}
