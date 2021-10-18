@@ -184,6 +184,8 @@ g.user_emmet_leader_key = '<C-s>'
 -- vim-which-key
 map('n', '<Space>', ':WhichKey \'<Space>\'<CR>')
 map('n', '<leader>', ':WhichKey \',\'<CR>')
+map('v', '<Space>', ':WhichKeyVisual \'<Space>\'<CR>')
+map('v', '<leader>', ':WhichKeyVisual \',\'<CR>')
 
 --------------------------------------------------------------------------------
 --                                 Augroup                                    --
