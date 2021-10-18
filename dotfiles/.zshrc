@@ -34,6 +34,9 @@ else
   echo "zplug not installed, so no plugins available"
 fi
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
 SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=$HOME/.zsh_history
 
