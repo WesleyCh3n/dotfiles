@@ -80,7 +80,7 @@ export NNN_BMS="\
 g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
-c:$HOME/.config;"
+c:$HOME/.config"
 if [ -f $HOME/.config/wsl/nnn_bms.sh ]; then
   source $HOME/.config/wsl/nnn_bms.sh
 fi
