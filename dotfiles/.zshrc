@@ -16,7 +16,6 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "plugins/vi-mode",                   from:oh-my-zsh
   zplug "plugins/common-aliases",            from:oh-my-zsh
   zplug "plugins/fzf",                       from:oh-my-zsh
-  zplug "plugins/zsh-interactive-cd",        from:oh-my-zsh
   zplug "romkatv/powerlevel10k",             as:theme, depth:1
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
