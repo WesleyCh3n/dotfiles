@@ -50,6 +50,9 @@ if [[ $(command -v go) ]]; then
   export PATH=$PATH:$(go env GOPATH)/bin
   export GOPATH=$GOPATH:$HOME/gocode
 fi
+if [ -d $HOME/.npm-global ]; then
+  export PATH=$HOME/.npm-global/bin:$PATH
+fi
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

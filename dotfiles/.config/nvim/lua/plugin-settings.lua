@@ -13,6 +13,17 @@ require("indent_blankline").setup {
 
 -- Telescope
 require('telescope').load_extension('coc')
+--[[
+   [ require('telescope').setup{
+   [   defaults = {
+   [     layout_config = {
+   [       horizontal = {
+   [         prompt_position = "top",
+   [       }
+   [     }
+   [   }
+   [ }
+   ]]
 
 -- vim-which-key
 g.which_key_hspace = 1
@@ -73,6 +84,7 @@ g.which_key_space = {
   ['w'] = 'Write file',
   ['q'] = 'Quit file',
   ['e'] = 'File explorer',
+  ['P'] = 'Toggle paste',
 }
 
 -- Dashboard

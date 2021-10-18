@@ -64,7 +64,7 @@ return require('packer').startup({function()
   use {'plasticboy/vim-markdown'}
   use {
     'iamcco/markdown-preview.nvim',
-    run = vim.fn['mkdp#util#install'],
+    run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'}
   }
 

@@ -83,7 +83,7 @@ map('n', '<right>', '10zl')
 map('n', '<left>', '10zh')
 
 -- toggle paste mode
-map('n', '<space>p', ':set paste!<cr>')
+map('n', '<space>P', ':set paste!<cr>')
 
 -- replace text
 map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
@@ -115,7 +115,7 @@ map('i', '?', '?<c-g>u')
 --------------------------------------------------------------------------------
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
--- Dashboard
+-- Telescope-config
 if vim.fn.has('win32') == 1 then
   t_hidden = ''
   t_prefix = ''
@@ -130,10 +130,10 @@ map('n', '<space>sl', ':SessionLoad<CR>')
 map('n', '<space>g', ':Goyo<cr>')
 
 -- Telescope
-map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
-map('n', '<space>fm', ':Telescope marks '..t_prefix..' layout_config={"prompt_position":"top"}<CR>')
+map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')
+map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..'<CR>')
+map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..'<CR>')
+map('n', '<space>fm', ':Telescope marks '..t_prefix..'<CR>')
 map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
 map('n', '<space>fd', ':Telescope coc declarations<cr>')
 
@@ -201,7 +201,7 @@ augroup myaucmd
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
   au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  au filetype md setlocal wrap spell
+  au filetype markdown setlocal wrap spell
   " TODO: when vi dir, open coc-explorer
   " au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif "
 augroup END
