@@ -83,7 +83,7 @@ map('n', '<right>', '10zl')
 map('n', '<left>', '10zh')
 
 -- toggle paste mode
-map('n', '<space>p', ':set paste!<cr>')
+map('n', '<space>P', ':set paste!<cr>')
 
 -- replace text
 map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})

@@ -84,6 +84,7 @@ g.which_key_space = {
   ['w'] = 'Write file',
   ['q'] = 'Quit file',
   ['e'] = 'File explorer',
+  ['P'] = 'Toggle paste',
 }
 
 -- Dashboard
