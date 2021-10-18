@@ -200,7 +200,8 @@ augroup myaucmd
   au filetype html let b:AutoPairs = {"<": ">"}
   au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype md setlocal wrap spell
-  au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif
+  " TODO: when vi dir, open coc-explorer
+  " au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif "
 augroup END
 augroup WESLEYCH3N
     au!

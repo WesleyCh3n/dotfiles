@@ -81,6 +81,9 @@ g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
 c:$HOME/.config;"
+if [ -f $HOME/.config/wsl/nnn_bms.sh ]; then
+  source $HOME/.config/wsl/nnn_bms.sh
+fi
 
 n () {
     if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
