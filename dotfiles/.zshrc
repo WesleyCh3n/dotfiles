@@ -15,7 +15,6 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "plugins/docker",                    from:oh-my-zsh
   zplug "plugins/vi-mode",                   from:oh-my-zsh
   zplug "plugins/common-aliases",            from:oh-my-zsh
-  zplug "plugins/fzf",                       from:oh-my-zsh
   zplug "romkatv/powerlevel10k",             as:theme, depth:1
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
@@ -86,9 +85,7 @@ g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
 c:$HOME/.config"
-if [ -f $HOME/.config/wsl/nnn_bms.sh ]; then
-  source $HOME/.config/wsl/nnn_bms.sh
-fi
+[ -f $HOME/.config/wsl/nnn_bms.sh ] && source $HOME/.config/wsl/nnn_bms.sh
 
 n () {
     if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
@@ -115,3 +112,5 @@ pfetch
 ################################################################################
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g powerlevel9k_instant_prompt=quiet
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
