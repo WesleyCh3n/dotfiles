@@ -87,5 +87,5 @@ g['airline#extensions#tabline#show_splits'] = 0
 g['airline#extensions#tabline#show_tabs'] = 1
 g['airline#extensions#tabline#show_tab_nr'] = 0
 g['airline#extensions#tabline#show_tab_type'] = 0
-g['airline#extensions#tabline#close_symbol'] = ''
+g['airline#extensions#tabline#close_symbol'] = ''
 g['airline#extensions#tabline#show_close_button'] = 1
