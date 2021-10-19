@@ -139,9 +139,6 @@ g.dashboard_custom_header1 = {
   "    .co          .:o:.    ",
 }
 
-
-
-
 -- auto-pairs
 g.AutoPairsShortcutJump = '<S-tab>'
 
