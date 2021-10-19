@@ -72,10 +72,10 @@ g.airline_right_alt_sep = ''
 if vim.api.nvim_eval('!exists("g:airline_symbols")') then
   cmd([[let g:airline_symbols = {}]])
 end
-cmd('let g:airline_symbols.maxlinenr = \'\'')
-cmd('let g:airline_symbols.linenr = \' ㏑\'')
-cmd('let g:airline_symbols.colnr = \' ¶:\'')
-g['airline#extensions#tabline#fnamemod'] = ':t'
+cmd('let g:airline_section_z = airline#section#create([\'%l:%v\'])')
+g['airline#extensions#coc#error_symbol'] = ' '
+g['airline#extensions#coc#warning_symbol'] = ' '
+g['airline#extensions#whitespace#trailing_format'] = '%s'
 g['airline#extensions#tmuxline#enabled'] = 0
 g['airline#extensions#tabline#left_sep'] = ''
 g['airline#extensions#tabline#left_alt_sep'] = ''
