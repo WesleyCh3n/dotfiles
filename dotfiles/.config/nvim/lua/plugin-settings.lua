@@ -182,10 +182,6 @@ g.repl_filetype_commands = {
 }
 g.repl_split = 'vertical'
 
--- vim-floaterm
-g.floaterm_opener = 'tabe'
-g.floaterm_borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'}
-
 -- toggleterm.nvim
 require("toggleterm").setup{
   size=15,
