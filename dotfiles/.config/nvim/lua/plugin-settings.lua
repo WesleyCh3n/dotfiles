@@ -30,15 +30,6 @@ g.which_key_hspace = 1
 fn['which_key#register'](',', 'g:which_key_leader')
 g.which_key_leader = {
   ['c'] = { name = "+comment" },
-  ['1'] = 'Tab 1',
-  ['2'] = 'Tab 2',
-  ['3'] = 'Tab 3',
-  ['4'] = 'Tab 4',
-  ['5'] = 'which_key_ignore',
-  ['6'] = 'which_key_ignore',
-  ['7'] = 'which_key_ignore',
-  ['8'] = 'which_key_ignore',
-  ['9'] = 'which_key_ignore',
   ['<'] = 'Move tab left',
   ['>'] = 'Move tab right',
   ['n'] = 'Clear search',
@@ -47,6 +38,15 @@ g.which_key_leader = {
 
 fn['which_key#register']('<Space>', 'g:which_key_space')
 g.which_key_space = {
+  ['1'] = 'Tab 1',
+  ['2'] = 'Tab 2',
+  ['3'] = 'Tab 3',
+  ['4'] = 'which_key_ignore',
+  ['5'] = 'which_key_ignore',
+  ['6'] = 'which_key_ignore',
+  ['7'] = 'which_key_ignore',
+  ['8'] = 'which_key_ignore',
+  ['9'] = 'which_key_ignore',
   ['a'] = {
     name = '+float',
     ['s'] = 'Shell',
