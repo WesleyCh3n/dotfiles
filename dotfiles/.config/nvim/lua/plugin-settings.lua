@@ -190,7 +190,7 @@ require("toggleterm").setup{
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", direction = 'float', hidden = true, })
 local nnn = Terminal:new({ cmd = "nnn", direction = 'float', hidden = true, })
-local bpytop = Terminal:new({ cmd = "bpytop", direction = 'float', hidden = true, })
+local bpytop = Terminal:new({ cmd = "btop", direction = 'float', hidden = true, })
 local node = Terminal:new({ cmd = "node", direction = 'float', hidden = true, })
 local python = Terminal:new({ cmd = "python3", direction = 'float', hidden = true, })
 function _lazygit_toggle() lazygit:toggle() end
