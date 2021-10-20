@@ -36,7 +36,8 @@ map('n', 'Q', '<NOP>')
 
 -- write/close file
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':q<cr>')
+map('n', '<space>q', ':bd<cr>')
+map('n', '<C-q>', ':q<cr>')
 
 -- start/end word
 map('n', '0', '^')
@@ -204,7 +205,7 @@ augroup myaucmd
 augroup END
 augroup WESLEYCH3N
     au!
-    au bufwritepost *.lua source $MYVIMRC | AirlineRefresh | call rainbow_main#load() | call rainbow_main#load()
+    au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
     au BufWritePre * %s/\s\+$//e
 augroup END
 ]])

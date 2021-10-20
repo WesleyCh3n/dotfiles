@@ -15,13 +15,20 @@ return require('packer').startup({function()
   -- for better look
   use {'wbthomason/packer.nvim'}
   use {'sainnhe/gruvbox-material'}
-  use {'vim-airline/vim-airline'}
+  use {
+    'kdheepak/tabline.nvim',
+    config = function()
+      require('tabline').setup {enable = false}
+    end,
+    requires = {'hoob3rt/lualine.nvim', 'kyazdani42/nvim-web-devicons'}
+  }
   use {'glepnir/dashboard-nvim'}
   use {'ryanoasis/vim-devicons'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'lukas-reineke/indent-blankline.nvim'}
   use {'luochen1990/rainbow'}
-  use {'dominikduda/vim_current_word'}
+  -- use {'dominikduda/vim_current_word'}
+  use {'yamatsum/nvim-cursorline'}
   use {'junegunn/goyo.vim'}
 
   -- control on fly
