@@ -36,7 +36,6 @@ opt.path = '.,**'
 opt.foldenable = false
 opt.list = true
 opt.listchars = 'tab:<->,trail:█,extends:»,precedes:«'
--- •
 opt.termguicolors = true
 opt.colorcolumn = '80'
 opt.guifont = 'MesloLGS NF:h20'
@@ -74,6 +73,7 @@ if vim.api.nvim_eval('!exists("g:airline_symbols")') then
   cmd([[let g:airline_symbols = {}]])
 end
 cmd('let g:airline_section_z = airline#section#create([\'%l:%v\'])')
+g['airline#extensions#tabline#fnamemod'] = ':t'
 g['airline#extensions#coc#error_symbol'] = ' '
 g['airline#extensions#coc#warning_symbol'] = ' '
 g['airline#extensions#whitespace#trailing_format'] = '%s'
