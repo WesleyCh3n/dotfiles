@@ -4,27 +4,13 @@
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "*",
     "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-                "clang": {
-                    "extraArgs": [
-                        "-isystem/usr/local/include",
-                        "-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
-                        "-isystem/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include",
-                        "-isystem/Library/Developer/CommandLineTools/usr/include",
-                        "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-                    ]
-                }
-            }
+        "clangd": {
+            "command": "clangd-12",
+            "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+            "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
         }
     },
-    "python.pythonPath": "/usr/local/bin/python3",
+    "python.pythonPath": "/usr/bin/python3",
     "python.analysis.typeCheckingMode": "off",
     "python.linting.pylintArgs":[
         "--extension-pkg-whitelist=PyQt5,cv2",
