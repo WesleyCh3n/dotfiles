@@ -36,7 +36,7 @@ map('n', 'Q', '<NOP>')
 
 -- write/close file
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':bd<cr>')
+map('n', '<space>q', ':BufferClose<cr>')
 map('n', '<C-q>', ':q<cr>')
 
 -- start/end word
@@ -57,15 +57,15 @@ map('v', '<leader>y', '"+y')
 map('n', 'Y', 'y$')
 
 -- Tab
-map('n', '<space>1', '1gt')
-map('n', '<space>2', '2gt')
-map('n', '<space>3', '3gt')
-map('n', '<space>4', '4gt')
-map('n', '<space>5', '5gt')
-map('n', '<space>6', '6gt')
-map('n', '<space>7', '7gt')
-map('n', '<space>8', '8gt')
-map('n', '<space>9', '9gt')
+map('n', '<space>1', ':BufferGoto 1<cr>')
+map('n', '<space>2', ':BufferGoto 2<cr>')
+map('n', '<space>3', ':BufferGoto 3<cr>')
+map('n', '<space>4', ':BufferGoto 4<cr>')
+map('n', '<space>5', ':BufferGoto 5<cr>')
+map('n', '<space>6', ':BufferGoto 6<cr>')
+map('n', '<space>7', ':BufferGoto 7<cr>')
+map('n', '<space>8', ':BufferGoto 8<cr>')
+map('n', '<space>9', ':BufferGoto 9<cr>')
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>')
 map('n', '<C-x>', ':tabclose<cr>')

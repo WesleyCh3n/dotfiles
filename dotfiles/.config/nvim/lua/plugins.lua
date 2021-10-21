@@ -30,6 +30,7 @@ return require('packer').startup({function()
   -- use {'dominikduda/vim_current_word'}
   use {'yamatsum/nvim-cursorline'}
   use {'junegunn/goyo.vim'}
+  use {'romgrk/barbar.nvim'}
 
   -- control on fly
   use {'tpope/vim-surround'}
