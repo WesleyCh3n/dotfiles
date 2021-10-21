@@ -40,7 +40,6 @@ function CloseBuf()
     'echo len(filter(range(1, bufnr(\'$\')), \'buflisted(v:val)\'))', true)
   vim.api.nvim_command(tonumber(buf_count)<=1 and 'q' or 'bd')
 end
-
 map('n', '<space>w', ':w<cr>')
 map('n', '<space>q', ':lua CloseBuf()<cr>')
 
