@@ -66,10 +66,12 @@ g.gruvbox_material_transparent_background = 1
 
 g.tabline_show_bufnr = false
 g.tabline_show_filename_only = true
+local custom_gruvbox = require('lualine.themes.gruvbox_material')
+custom_gruvbox.terminal.a.bg = '#689d6a'
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_material',
+    theme = custom_gruvbox,
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -115,6 +117,7 @@ require("bufferline").setup{
     left_trunc_marker = '',
     right_trunc_marker = '',
     diagnostics = "coc",
+    diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local s = " "
       for e, n in pairs(diagnostics_dict) do
