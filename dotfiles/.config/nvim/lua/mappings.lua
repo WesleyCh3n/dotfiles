@@ -202,14 +202,16 @@ augroup myaucmd
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
-  au filetype lua,html,javascript,sh,zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au filetype lua,html,javascript,sh,zsh,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype markdown setlocal wrap spell
   " TODO: when vi dir, open coc-explorer
   " au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif "
 augroup END
 augroup WESLEYCH3N
-    au!
-    au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
-    au BufWritePre * %s/\s\+$//e
+  au!
+  au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
+  au BufWritePre * %s/\s\+$//e
+  au FileType coc-explorer set winblend=10
+  au FileType coc-explorer-border set winblend=10
 augroup END
 ]])

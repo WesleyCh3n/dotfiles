@@ -183,6 +183,7 @@ g.repl_split = 'vertical'
 -- toggleterm.nvim
 require("toggleterm").setup{
   size=15,
+  direction = 'float',
   float_opts = {
     border='curved'
   }
