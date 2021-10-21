@@ -109,7 +109,7 @@ g.dashboard_custom_section={
     ['command'] = 'enew'},
 }
 
-g.dashboard_custom_header ={
+g.dashboard_custom_header1 ={
   '⠀⠀⠀⠀⣠⣎⣀⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀',
   '⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀',
   '⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠏⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⡆⠀⠀',
@@ -124,7 +124,7 @@ g.dashboard_custom_header ={
   '⠀⠙⢿⠃⠀⠀⢸⣿⣟⠀⠀⢀⣤⣾⣿⣿⣿⠟⠁⢰⣿⣿⣿⣿⠃⠀⠀⠀⠀',
   '⠀⠠⠴⠀⠀⠀⠿⠿⠿⠧⠾⠿⠿⠿⠿⠿⠃⠀⠀⠾⠿⠿⠟⠁⠀    ',
 }
-g.dashboard_custom_header1 = {
+g.dashboard_custom_header = {
   "    .,;'           :,.    ",
   "  .,;;;,,.         ccc;.  ",
   ".;c::::,,,'        ccccc: ",

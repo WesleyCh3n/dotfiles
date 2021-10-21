@@ -35,9 +35,14 @@ map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
 map('n', 'Q', '<NOP>')
 
 -- write/close file
+function CloseBuf()
+  local buf_count = vim.api.nvim_exec(
+    'echo len(filter(range(1, bufnr(\'$\')), \'buflisted(v:val)\'))', true)
+  vim.api.nvim_command(tonumber(buf_count)<=1 and 'q' or 'bd')
+end
+
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':bdelete<cr>')
-map('n', '<C-q>', ':q<cr>')
+map('n', '<space>q', ':lua CloseBuf()<cr>')
 
 -- start/end word
 map('n', '0', '^')
