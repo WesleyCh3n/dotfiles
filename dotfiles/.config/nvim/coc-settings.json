@@ -2,7 +2,7 @@
     "diagnostic.errorSign": "",
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
-    "diagnostic.hintSign": "*",
+    "diagnostic.hintSign": "",
     "languageserver": {
         "ccls": {
             "command": "ccls",

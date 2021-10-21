@@ -109,3 +109,22 @@ require'lualine'.setup {
   },
   extensions = {}
 }
+require("bufferline").setup{
+  options = {
+    right_mouse_command = 'vert sbuffer %d',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    diagnostics = "coc",
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      local s = " "
+      for e, n in pairs(diagnostics_dict) do
+        local sym = e == "error" and " "
+          or (e == "warning" and " " or "" )
+        s = s .. n .. sym
+      end
+      return s
+    end,
+    enforce_regular_tabs = true,
+    always_show_bufferline = true,
+  }
+}
