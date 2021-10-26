@@ -66,18 +66,18 @@ g.gruvbox_material_transparent_background = 1
 
 g.tabline_show_bufnr = false
 g.tabline_show_filename_only = true
-local custom_gruvbox = require('lualine.themes.gruvbox_material')
+local custom_gruvbox = require('lualine.themes.gruvbox-material')
 custom_gruvbox.terminal.a.bg = '#689d6a'
 require'lualine'.setup {
   options = {
     icons_enabled = true,
     theme = custom_gruvbox,
-    component_separators = {'', ''},
-    section_separators = {'', ''},
+    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = ''},
     disabled_filetypes = {}
   },
   sections = {
-    lualine_a = {{'mode', separator = { left = '' }, right_padding = 2}},
+    lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {
       'filename',
@@ -101,19 +101,9 @@ require'lualine'.setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {
-    lualine_a = {},
-    lualine_b = {},
-    -- lualine_c = { require'tabline'.tabline_buffers },
-    -- lualine_x = { require'tabline'.tabline_tabs },
-    lualine_y = {},
-    lualine_z = {},
-  },
-  extensions = {}
 }
 require("bufferline").setup{
   options = {
-    right_mouse_command = 'vert sbuffer %d',
     left_trunc_marker = '',
     right_trunc_marker = '',
     diagnostics = "coc",

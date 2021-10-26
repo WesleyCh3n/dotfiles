@@ -57,6 +57,7 @@ fi
 if [ -d $HOME/.npm-global ]; then
   export PATH=$HOME/.npm-global/bin:$PATH
 fi
+[ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
