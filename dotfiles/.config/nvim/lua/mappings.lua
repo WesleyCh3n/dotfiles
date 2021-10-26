@@ -196,21 +196,20 @@ vim.cmd([[
 augroup myaucmd
   " au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr> "
   au filetype python nnoremap <buffer> ,m :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-  au filetype go nnoremap ,m :w<bar>:GoRun<space>%<cr>
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  au filetype tex setl updatetime=1000
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
   au filetype lua,html,javascript,sh,zsh,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype markdown setlocal wrap spell
-  " TODO: when vi dir, open coc-explorer
-  " au VimEnter * if isdirectory('./') | bd | exe "CocCommand explorer --position floating" | endif "
 augroup END
 augroup WESLEYCH3N
   au!
   au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
+  au FileType lua :cd ~/dotfiles
+
+  au BufReadPost * if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au BufWritePre * %s/\s\+$//e
+
   au FileType coc-explorer set winblend=10
   au FileType coc-explorer-border set winblend=10
 augroup END

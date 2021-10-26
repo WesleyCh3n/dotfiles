@@ -24,6 +24,24 @@
             }
         }
     },
+    "explorer.git.icon.status.modified": "",
+    "explorer.git.icon.status.added": "",
+    "explorer.git.icon.status.ignored": "﯏",
+    "explorer.icon.customIcons":{
+        "icons": {
+            "pdf": {
+                "code": "",
+                "color": "#9B0000"
+            }
+        },
+        "extensions": {
+            "pdf": "pdf"
+        },
+        "filenames": {},
+        "dirnames": {},
+        "patternMatches": {},
+        "dirPatternMatches": {}
+    },
     "python.pythonPath": "/usr/local/bin/python3",
     "python.analysis.typeCheckingMode": "off",
     "python.linting.pylintArgs":[

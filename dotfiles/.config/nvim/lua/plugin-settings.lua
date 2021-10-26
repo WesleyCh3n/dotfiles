@@ -13,17 +13,19 @@ require("indent_blankline").setup {
 
 -- Telescope
 require('telescope').load_extension('coc')
---[[
-   [ require('telescope').setup{
-   [   defaults = {
-   [     layout_config = {
-   [       horizontal = {
-   [         prompt_position = "top",
-   [       }
-   [     }
-   [   }
-   [ }
-   ]]
+require('telescope').setup{
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules/*",
+      ".git/*"
+    }
+    -- layout_config = {
+      -- horizontal = {
+        -- prompt_position = "top",
+      -- }
+    -- }
+  }
+}
 
 -- vim-which-key
 g.which_key_hspace = 1
@@ -89,7 +91,7 @@ g.which_key_space = {
 }
 
 -- Dashboard
-g.indent_blankline_filetype_exclude  = {'dashboard'}
+g.indent_blankline_filetype_exclude  = {'dashboard', 'coc-explorer'}
 g.dashboard_default_executive = 'telescope'
 g.dashboard_custom_section={
 ['01_bookmarks'] = {
@@ -109,21 +111,6 @@ g.dashboard_custom_section={
     ['command'] = 'enew'},
 }
 
-g.dashboard_custom_header1 ={
-  '⠀⠀⠀⠀⣠⣎⣀⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄⠀⠀⠀⠀',
-  '⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀',
-  '⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠏⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⡆⠀⠀',
-  '⠀⠀⣿⣿⣿⣿⣿⣿⡿⢿⠋⠉⠀⠀⠀⠀⠀⡀⠀⠀⠘⢿⣿⣿⣿⣿⣧⠀⠀',
-  '⠀⢰⣿⣿⣿⣿⠟⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⡈⠀⠻⣿⣿⣿⣿⠀⠀',
-  '⠀⣼⣿⣿⡿⠁⠀⢸⠀⠈⢳⣶⣤⣄⠀⠈⠀⠁⠀⠀⠀⢀⠀⠹⣿⣿⡟⠀⠀',
-  '⠀⣿⣿⣿⠀⠀⠈⣼⡇⠀⠘⠻⠟⠁⠀⠀⠀⠀⢤⣀⡀⠌⠀⠀⣿⣿⠃⠀⠀',
-  '⠀⣿⣿⣿⡀⠀⠀⡏⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⡿⠋⢰⢠⣿⡏⠀⠀⠀',
-  '⠀⣿⣿⣿⡇⠀⠀⢷⡃⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣯⣾⡟⠀⠀⠀⠀',
-  '⠀⣿⣿⣿⡿⠀⠀⣼⣿⡄⠀⠈⠀⢑⠶⠀⠀⠀⠀⢀⣾⣿⣿⣿⡇⠀⠀⠀⠀',
-  '⠀⣿⣿⣿⠁⠀⠀⣿⣿⠁⠀⠀⠀⢀⣀⣠⣤⣤⣴⠟⣿⣿⣿⣿⡇⠀⠀⠀⠀',
-  '⠀⠙⢿⠃⠀⠀⢸⣿⣟⠀⠀⢀⣤⣾⣿⣿⣿⠟⠁⢰⣿⣿⣿⣿⠃⠀⠀⠀⠀',
-  '⠀⠠⠴⠀⠀⠀⠿⠿⠿⠧⠾⠿⠿⠿⠿⠿⠃⠀⠀⠾⠿⠿⠟⠁⠀    ',
-}
 g.dashboard_custom_header = {
   "    .,;'           :,.    ",
   "  .,;;;,,.         ccc;.  ",
@@ -207,7 +194,7 @@ g.rainbow_conf = { separately = { cmake = 0, } }
 g.coc_explorer_global_presets = {
   config = {
     ['position']= 'floating',
-    ['root-uri']= HOME_DIR..'lua',
+    ['root-uri']= DOTFILE_DIR..'lua',
   },
   floating= {
     ['position']= 'floating',
@@ -222,59 +209,30 @@ g.coc_explorer_global_presets = {
 
 vim.fn['coc#config']('suggest', {
   ['completionItemKindLabels']= {
-    ["method"]        = "  ",
-    ["function"]      = "  ",
-    ["variable"]      = "[]",
-    ["field"]         = "  ",
-    ["typeParameter"] = "<>",
-    ["constant"]      = "  ",
-    ["class"]         = " פּ ",
-    ["interface"]     = " 蘒",
-    ["struct"]        = "  ",
+    ["method"]        = "  ",
+    ["function"]      = "  ",
+    ["variable"]      = "  ",
+    ["field"]         = " ﰠ ",
+    ["typeParameter"] = "  ",
+    ["constant"]      = "  ",
+    ["class"]         = " ﴯ ",
+    ["interface"]     = "  ",
+    ["struct"]        = " פּ ",
     ["event"]         = "  ",
     ["operator"]      = "  ",
-    ["module"]        = "  ",
-    ["property"]      = "  ",
-    ["enum"]          = " 練",
-    ["reference"]     = "  ",
-    ["keyword"]       = "  ",
-    ["file"]          = "  ",
+    ["module"]        = "  ",
+    ["property"]      = " ﰠ ",
+    ["enum"]          = "  ",
+    ["reference"]     = "  ",
+    ["keyword"]       = "  ",
+    ["file"]          = "  ",
     ["folder"]        = " ﱮ ",
     ["color"]         = "  ",
     ["unit"]          = " 塞",
     ["snippet"]       = "  ",
-    ["text"]          = "  ",
-    ["constructor"]   = "  ",
+    ["text"]          = "  ",
+    ["constructor"]   = "  ",
     ["value"]         = "  ",
     ["enumMember"]    = "  "
   }
 })
-
---[[
-   [ ["keyword"]       = "\\uf1de",
-   [ ["variable"]      = "\\ue79b",
-   [ ["value"]         = "\\uf89f",
-   [ ["operator"]      = "\\u03a8",
-   [ ["constructor"]   = "\\uf0ad",
-   [ ["function"]      = "\\u0192",
-   [ ["reference"]     = "\\ufa46",
-   [ ["constant"]      = "\\uf8fe",
-   [ ["method"]        = "\\uf09a",
-   [ ["struct"]        = "\\ufb44",
-   [ ["class"]         = "\\uf0e8",
-   [ ["interface"]     = "\\uf417",
-   [ ["text"]          = "\\ue612",
-   [ ["enum"]          = "\\uf435",
-   [ ["enumMember"]    = "\\uf02b",
-   [ ["module"]        = "\\uf40d",
-   [ ["color"]         = "\\ue22b",
-   [ ["property"]      = "\\ue624",
-   [ ["field"]         = "\\uf9be",
-   [ ["unit"]          = "\\uf475",
-   [ ["event"]         = "\\ufacd",
-   [ ["file"]          = "\\uf723",
-   [ ["folder"]        = "\\uf114",
-   [ ["snippet"]       = "",
-   [ ["typeParameter"] = "\\uf728",
-   [ ["default"]       = "\\uf29c"
-   ]]
