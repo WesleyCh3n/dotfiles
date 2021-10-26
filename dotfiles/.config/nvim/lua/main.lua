@@ -74,7 +74,7 @@ require'lualine'.setup {
     theme = custom_gruvbox,
     section_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''},
-    disabled_filetypes = {}
+    disabled_filetypes = {},
   },
   sections = {
     lualine_a = {'mode'},
@@ -84,9 +84,12 @@ require'lualine'.setup {
       {
         'diagnostics',
         sources = { 'coc', 'ale' },
-        color_error = '#E06C75',
-        color_warn = '#E5C07B',
-        color_info = '#ABB2BF'
+        diagnostics_color = {
+          error = { fg='#e06c75' },
+          warn  = { fg='#e5c07b' },
+          info  = { fg='#83a598' },
+          hint  = { fg='#83a598' },
+        },
       }
     },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
