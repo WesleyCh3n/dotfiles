@@ -199,7 +199,7 @@ augroup myaucmd
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
-  au filetype lua,html,javascript,sh,zsh,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au filetype go,lua,html,javascript,sh,zsh,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype markdown setlocal wrap spell
 augroup END
 augroup WESLEYCH3N
@@ -213,6 +213,7 @@ augroup WESLEYCH3N
   au FileType coc-explorer set winblend=10
   au FileType coc-explorer-border set winblend=10
 
-  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | exe "norm! mzgg=G`z"
+
 augroup END
 ]])
