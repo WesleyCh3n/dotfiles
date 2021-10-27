@@ -48,8 +48,8 @@ bindkey '^[[Z' autosuggest-accept
 #                             environment variable                             #
 ################################################################################
 export PATH=$PATH:$HOME/.local/bin/
+export PATH=$PATH:/usr/local/go/bin
 if [[ $(command -v go) ]]; then
-  export PATH=$PATH:/usr/local/go/bin
   export GOPATH=$HOME/golib
   export PATH=$PATH:$(go env GOPATH)/bin
   export GOPATH=$GOPATH:$HOME/gocode
