@@ -131,8 +131,8 @@ end
 map('n', '<space>ss', ':SessionSave<CR>')
 map('n', '<space>sl', ':SessionLoad<CR>')
 
--- Goyo
-map('n', '<space>g', ':Goyo<cr>')
+-- ZenMode
+map('n', '<space>z', ':ZenMode<cr>')
 
 -- Telescope
 map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')

@@ -130,9 +130,6 @@ g.dashboard_custom_header = {
 -- auto-pairs
 g.AutoPairsShortcutJump = '<S-tab>'
 
--- Goyo
-g.goyo_height = 95
-
 -- python-syntax
 g.python_highlight_all = 1
 

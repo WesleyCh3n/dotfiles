@@ -24,7 +24,12 @@ return require('packer').startup({function()
   use {'kyazdani42/nvim-web-devicons'}
   use {'lukas-reineke/indent-blankline.nvim'}
   use {'luochen1990/rainbow'}
-  use {'junegunn/goyo.vim'}
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup { }
+    end
+  }
 
   -- control on fly
   use {'tpope/vim-surround'}
