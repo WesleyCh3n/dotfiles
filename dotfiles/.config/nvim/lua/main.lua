@@ -120,8 +120,22 @@ require("bufferline").setup{
       end
       return s
     end,
-    -- separator_style = "slant",
+    separator_style = "slant",
     enforce_regular_tabs = true,
     always_show_bufferline = true,
-  }
+  },
+  highlights = {
+  fill = {
+      guibg = "#282828"
+  },
+  separator_selected = {
+      guifg = "#282828"
+  },
+  separator_visible = {
+      guifg = "#282828"
+  },
+  separator = {
+      guifg = "#282828"
+  },
+},
 }
