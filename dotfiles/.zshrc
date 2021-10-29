@@ -45,6 +45,15 @@ HISTFILE=$HOME/.zsh_history
 #                                plugin setting                                #
 ################################################################################
 bindkey '^[[Z' autosuggest-accept
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+ZVM_CURSOR_STYLE_ENABLED=false
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+  forward-char
+  end-of-line
+  vi-forward-char
+  vi-add-eol
+)
 
 ################################################################################
 #                             environment variable                             #
