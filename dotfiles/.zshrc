@@ -13,9 +13,9 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "plugins/git",                       from:oh-my-zsh
   zplug "plugins/virtualenv",                from:oh-my-zsh
   zplug "plugins/docker",                    from:oh-my-zsh
-  zplug "plugins/vi-mode",                   from:oh-my-zsh
   zplug "plugins/common-aliases",            from:oh-my-zsh
   zplug "romkatv/powerlevel10k",             as:theme, depth:1
+  zplug "jeffreytse/zsh-vi-mode",            as:plugin
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
   zplug "zsh-users/zsh-completions",         as:plugin
@@ -35,6 +35,7 @@ fi
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
+KEYTIMEOUT=1
 
 SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=$HOME/.zsh_history
