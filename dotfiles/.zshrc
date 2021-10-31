@@ -14,9 +14,9 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "plugins/virtualenv",                from:oh-my-zsh
   zplug "plugins/docker",                    from:oh-my-zsh
   zplug "plugins/common-aliases",            from:oh-my-zsh
+  zplug "plugins/vi-mode",                   from:oh-my-zsh
   zplug "romkatv/powerlevel10k",             as:theme, depth:1
   zplug "zpm-zsh/ls",                        as:plugin
-  zplug "jeffreytse/zsh-vi-mode",            as:plugin
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
   zplug "zsh-users/zsh-completions",         as:plugin
@@ -45,15 +45,6 @@ HISTFILE=$HOME/.zsh_history
 #                                plugin setting                                #
 ################################################################################
 bindkey '^[[Z' autosuggest-accept
-ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
-ZVM_CURSOR_STYLE_ENABLED=false
-zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
-  forward-char
-  end-of-line
-  vi-forward-char
-  vi-add-eol
-)
 
 ################################################################################
 #                             environment variable                             #
@@ -98,16 +89,16 @@ c:$HOME/.config"
 [ -f $HOME/.config/wsl/nnn_bms.sh ] && source $HOME/.config/wsl/nnn_bms.sh
 
 n () {
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"
-        return
-    fi
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    nnn "$@"
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
+  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+    echo "nnn is already running"
+    return
+  fi
+  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  nnn "$@"
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" > /dev/null
+  fi
 }
 
 ################################################################################
