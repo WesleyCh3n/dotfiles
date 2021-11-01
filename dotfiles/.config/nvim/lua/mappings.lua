@@ -213,7 +213,7 @@ augroup WESLEYCH3N
   au FileType coc-explorer set winblend=10
   au FileType coc-explorer-border set winblend=10
 
-  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | exe "norm! mzgg=G`z"
+  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | silent exe "norm! mzgg=G`z"
 
 augroup END
 ]])
