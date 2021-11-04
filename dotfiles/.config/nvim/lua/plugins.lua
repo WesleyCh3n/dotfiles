@@ -47,6 +47,7 @@ return require('packer').startup({function()
   use {'nvim-telescope/telescope.nvim'}
   use {'fannheyward/telescope-coc.nvim'}
   use {'liuchengxu/vim-which-key'}
+  use {'max397574/better-escape.nvim'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {"akinsho/toggleterm.nvim"}

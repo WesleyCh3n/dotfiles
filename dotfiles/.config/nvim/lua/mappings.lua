@@ -15,11 +15,6 @@ end
 --------------------------------------------------------------------------------
 g.mapleader = ','
 
--- no ESC
-map('i', 'jk', '<Esc>')
-map('i', 'kj', '<Esc>')
-map('i', 'jj', '<Esc>')
-
 -- tab completion (Tab/S-Tab/CR)
 function _G.check_back_space()
     local col = vim.api.nvim_win_get_cursor(0)[2]

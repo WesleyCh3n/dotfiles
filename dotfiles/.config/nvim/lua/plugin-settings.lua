@@ -6,6 +6,9 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
+require("better_escape").setup {
+    mapping = {"jk", "jj", "kj"},
+}
 -- indent-blankline
 require("indent_blankline").setup {
   buftype_exclude = {"terminal", "help"}
