@@ -6,6 +6,10 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
+-- hop.nvim
+require'hop'.setup()
+
+-- better_escape
 require("better_escape").setup {
     mapping = {"jk", "jj", "kj"},
 }
