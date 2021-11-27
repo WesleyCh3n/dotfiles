@@ -37,7 +37,7 @@ return require('packer').startup({function()
   use {'preservim/nerdcommenter'}
   use {'junegunn/vim-easy-align'}
   use {'wellle/targets.vim'}
-  use {'junegunn/vim-peekaboo'}
+  use {"tversteeg/registers.nvim"}
   use {'christoomey/vim-tmux-navigator'}
   use {'mg979/vim-visual-multi'}
   use {'phaazon/hop.nvim'}
