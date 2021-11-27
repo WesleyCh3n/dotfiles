@@ -17,7 +17,7 @@ return require('packer').startup({function()
   use {'sainnhe/gruvbox-material'}
   use {'hoob3rt/lualine.nvim'}
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-  -- use {'dominikduda/vim_current_word'}
+  use {'dominikduda/vim_current_word'}
   -- use {'yamatsum/nvim-cursorline'}
   use {'glepnir/dashboard-nvim'}
   use {'ryanoasis/vim-devicons'}

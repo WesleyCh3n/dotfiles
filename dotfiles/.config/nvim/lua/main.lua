@@ -63,7 +63,7 @@ opt.shortmess = 'a'
 --------------------------------------------------------------------------------
 g.gruvbox_material_background = 'medium'
 g.gruvbox_material_disable_italic_comment = 1
-g.gruvbox_material_transparent_background = 1
+g.gruvbox_material_transparent_background = 0
 
 g.tabline_show_bufnr = false
 g.tabline_show_filename_only = true
@@ -126,17 +126,17 @@ require("bufferline").setup{
     always_show_bufferline = true,
   },
   highlights = {
-  fill = {
-      guibg = "#282828"
-  },
-  separator_selected = {
+    fill = {
+      guibg = "#3c3836"
+    },
+    separator_selected = {
+      guifg = "#3c3836"
+    },
+    separator_visible = {
       guifg = "#282828"
+    },
+    separator = {
+      guifg = "#3c3836"
+    },
   },
-  separator_visible = {
-      guifg = "#282828"
-  },
-  separator = {
-      guifg = "#282828"
-  },
-},
 }
