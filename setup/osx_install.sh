@@ -21,6 +21,7 @@ brew install \
   stow \
   tmux \
   wget \
-  zsh
+  zsh \
+  coreutils
 
 brew cleanup
