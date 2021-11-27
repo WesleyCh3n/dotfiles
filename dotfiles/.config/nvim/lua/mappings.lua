@@ -15,6 +15,7 @@ end
 --------------------------------------------------------------------------------
 g.mapleader = ','
 
+-- coc-config
 -- tab completion (Tab/S-Tab/CR)
 function _G.check_back_space()
     local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -25,6 +26,11 @@ map('i', '<C-j>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
 map('i', '<C-k>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
 map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
+-- show_document
+map('n', 'K', ":call CocActionAsync(\'doHover\')<CR>")
+-- show defenition
+map('n', 'gd', '<Plug>(coc-definition)', {noremap = false, silent = true})
+map('n', '<space>rn', '<Plug>(coc-rename)', {noremap = false, silent = true})
 
 -- no EX mode
 map('n', 'Q', '<NOP>')

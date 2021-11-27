@@ -7,7 +7,7 @@ local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
 -- hop.nvim
-require'hop'.setup()
+require('hop').setup()
 
 -- better_escape
 require("better_escape").setup {
@@ -84,7 +84,8 @@ g.which_key_space = {
   ['r'] = {
     name = '+re-',
     ['i'] = 'Re-Indent',
-    ['t'] = 'Re-Tab'
+    ['t'] = 'Re-Tab',
+    ['n'] = 'Rename variable'
   },
   ['s'] = {
     name = '+session',
