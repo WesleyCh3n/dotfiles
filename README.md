@@ -14,8 +14,8 @@ dotfiles include:
 ### Install prerequisites
 
 In `setup` directory
-- `xx_install.sh`: install basic required package by your distro. (After this
- script, you can already link dotfiles)
+- `xx_install.sh`: install basic required package by your distro. (*After this
+ script, you can already link dotfiles*)
 - `xx_manual.sh`: install 3rd-party package.
 - `xx_install_nvim.sh`: install `neovim`.
 
