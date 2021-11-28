@@ -14,9 +14,12 @@ dotfiles include:
 ### Install prerequisites
 
 In `setup` directory
-- `xx_install.sh`: install basic required package by your distro.
+- `xx_install.sh`: install basic required package by your distro. (After this
+ script, you can already link dotfiles)
 - `xx_manual.sh`: install 3rd-party package.
 - `xx_install_nvim.sh`: install `neovim`.
+
+> ⚠️⚠️⚠️ Strongly Recommend look through all scripts and install what you need.
 
 ### Link dotfiles
 
@@ -30,7 +33,11 @@ make
 ## Screenshot
 
 I lov Gruvbox <3
-|||
+<details>
+  <summary>Image preview</summary>
+
+|![img1](./asset/img1.png)|![img2](./asset/img2.png)|
 |:-:|:-:|
-|![img1](./asset/Screen_Shot_1.png)|![img2](./asset/Screen_Shot_2.png)|
-|![img3](./asset/Screen_Shot_3.png)|![img1](./asset/Screen_Shot_4.png)|
+|![img3](./asset/img3.png)|![img1](./asset/img4.png)|
+
+</details>
