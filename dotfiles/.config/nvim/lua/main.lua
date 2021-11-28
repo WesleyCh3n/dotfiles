@@ -53,23 +53,24 @@ opt.shortmess = 'a'
 --------------------------------------------------------------------------------
 g.gruvbox_material_background = 'medium'
 g.gruvbox_material_disable_italic_comment = 1
-g.gruvbox_material_transparent_background = 0
+g.gruvbox_material_transparent_background = 1
+g.gruvbox_material_current_word = 'grey background'
 
 g.tabline_show_bufnr = false
 g.tabline_show_filename_only = true
-local custom_gruvbox = require('lualine.themes.gruvbox-material')
-custom_gruvbox.terminal.a.bg = '#689d6a'
+local my_theme = require('lualine.themes.gruvbox-material')
+-- my_theme.terminal.a.fg = '#282828'
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = custom_gruvbox,
+    theme = my_theme,
     section_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''},
     disabled_filetypes = {"coc-explorer"},
   },
   sections = {
     lualine_a = {
-      {'mode', separator = { left = '', right = '' }, right_padding = 2},
+      {'mode', separator = { left = '', right = '' }, padding={left=1}},
     },
     lualine_b = {'branch'},
     lualine_c = {
@@ -88,7 +89,7 @@ require'lualine'.setup {
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {
-      {'location', separator = { left = '', right = '' }, left_padding = 2},
+      {'location', separator = { left = '', right = '' }, padding={right=1}},
     }
   },
   inactive_sections = {
