@@ -78,7 +78,9 @@ require'lualine'.setup {
     disabled_filetypes = {"coc-explorer"},
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      {'mode', separator = { left = '', right = '' }, right_padding = 2},
+    },
     lualine_b = {'branch'},
     lualine_c = {
       'filename',
@@ -95,7 +97,9 @@ require'lualine'.setup {
     },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {
+      {'location', separator = { left = '', right = '' }, left_padding = 2},
+    }
   },
   inactive_sections = {
     lualine_a = {},
@@ -133,7 +137,7 @@ require("bufferline").setup{
       guifg = "#3c3836"
     },
     separator_visible = {
-      guifg = "#282828"
+      guifg = "#3c3836"
     },
     separator = {
       guifg = "#3c3836"
