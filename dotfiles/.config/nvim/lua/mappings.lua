@@ -134,6 +134,7 @@ map('n', '<space>sl', ':SessionLoad<CR>')
 
 -- ZenMode
 map('n', '<space>z', ':ZenMode<cr>')
+map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
 -- Telescope
 map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')
