@@ -24,4 +24,5 @@ sudo pacman -S \
   stow \
   tmux \
   wget \
+  btop \
   zsh

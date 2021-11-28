@@ -58,6 +58,14 @@ mv lazygit $HOME/.local/bin/
 rm -rf lazygit.tar.gz
 
 ################################################################################
+#                                 install btop                                 #
+################################################################################
+BTOP_VERSION=1.1.2
+curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$BTOP_VERSION/btop-$BTOP_VERSION-x86_64-linux-musl.tbz
+tar xf btop.tbz
+make install PREFIX=$HOME/.local
+
+################################################################################
 #                         install tmux plugin manager                          #
 ################################################################################
 print_info "install tpm"

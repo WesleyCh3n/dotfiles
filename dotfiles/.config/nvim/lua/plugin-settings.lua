@@ -68,6 +68,7 @@ g.which_key_space = {
     ['n'] = 'nnn file explorer',
     ['G'] = 'Open GitHub',
   },
+  ['b'] = { name = 'boxes' },
   ['d'] = { name = 'which_key_ignore' },
   ['f'] = {
     name = '+Telescope',
