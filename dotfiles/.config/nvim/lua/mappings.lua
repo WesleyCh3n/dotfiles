@@ -30,6 +30,8 @@ map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
 map('n', 'K', ":call CocActionAsync(\'doHover\')<CR>")
 -- show defenition
 map('n', 'gd', '<Plug>(coc-definition)', {noremap = false, silent = true})
+map('n', 'gi', '<Plug>(coc-implementation)', {noremap = false, silent = true})
+map('n', 'gr', '<Plug>(coc-references)', {noremap = false, silent = true})
 map('n', '<space>rn', '<Plug>(coc-rename)', {noremap = false, silent = true})
 
 -- no EX mode
@@ -142,7 +144,9 @@ map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..'<CR>')
 map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..'<CR>')
 map('n', '<space>fm', ':Telescope marks '..t_prefix..'<CR>')
 map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
-map('n', '<space>fd', ':Telescope coc declarations<cr>')
+map('n', '<space>fd', ':Telescope coc definitions<cr>')
+map('n', '<space>fi', ':Telescope coc implementations<cr>')
+map('n', '<space>fr', ':Telescope coc references<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')
@@ -201,7 +205,7 @@ augroup myaucmd
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
-  au filetype go,lua,html,javascript,sh,zsh,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au filetype go,lua,html,javascript,sh,zsh,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype markdown setlocal wrap spell
 augroup END
 augroup WESLEYCH3N

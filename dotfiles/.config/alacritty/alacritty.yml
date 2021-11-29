@@ -16,7 +16,7 @@ font:
   bold_italic:
     family: monospace
     style: Bold Italic
-  size: 12
+  size: 14
 
 # Colors (Gruvbox dark)
 colors:
