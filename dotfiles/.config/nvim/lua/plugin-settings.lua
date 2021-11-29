@@ -57,6 +57,7 @@ g.which_key_space = {
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
   ['p'] = 'md preview',
+  ['z'] = 'ZenMode',
   ['a'] = {
     name = '+float',
     ['s'] = 'Shell',
