@@ -46,6 +46,8 @@ end
 map('n', '<space>w', ':w<cr>')
 map('n', '<space>q', ':lua CloseBuf()<cr>')
 
+-- cd buf
+map('n', '<space>c', ':cd %:p:h<cr>')
 -- start/end word
 map('n', '0', '^')
 map('n', '9', '$')
@@ -139,10 +141,11 @@ map('n', '<space>z', ':ZenMode<cr>')
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
 -- Telescope
-map('n', '<space>fo', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')
+map('n', '<space>fh', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')
 map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..'<CR>')
 map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..'<CR>')
 map('n', '<space>fm', ':Telescope marks '..t_prefix..'<CR>')
+map('n', '<space>fb', ':Telescope buffers<CR>')
 map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
 map('n', '<space>fd', ':Telescope coc definitions<cr>')
 map('n', '<space>fi', ':Telescope coc implementations<cr>')
@@ -219,7 +222,7 @@ augroup WESLEYCH3N
   au FileType coc-explorer set winblend=10
   au FileType coc-explorer-border set winblend=10
 
-  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | silent exe "norm! mzgg=G`z"
+  au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | silent exe "norm! mzgg=G`zzz"
 
 augroup END
 ]])
