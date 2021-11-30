@@ -1,7 +1,10 @@
 env:
   TERM: xterm-256color
 window:
-  decorations: full
+  padding:
+    x: 6
+    y: 12
+  decorations: None
 background_opacity: 0.8
 font:
   normal:
@@ -17,6 +20,10 @@ font:
     family: monospace
     style: Bold Italic
   size: 14
+  # offset:
+    # y: 2
+  # glyph_offset:
+    # y: 100
 
 # Colors (Gruvbox dark)
 colors:
