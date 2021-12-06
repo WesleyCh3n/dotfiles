@@ -50,7 +50,15 @@ return require('packer').startup({function()
   use {'max397574/better-escape.nvim'}
 
   -- 3dParty: REQUIRED nnn lazygit
-  use {"akinsho/toggleterm.nvim"}
+  use {'akinsho/toggleterm.nvim'}
+  use {'mfussenegger/nvim-dap'}
+
+  -- Go
+  use {'leoluz/nvim-dap-go',
+    config = function()
+      require("dap-go").setup { }
+    end
+  }
 
   -- C++
   use {'octol/vim-cpp-enhanced-highlight'}
