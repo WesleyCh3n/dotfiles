@@ -48,6 +48,15 @@ mv nnn $HOME/.local/bin/
 cd .. && rm -rf nnn
 
 ################################################################################
+#                             install logo-ls                                  #
+################################################################################
+print_info "install logo-ls"
+curl -fLo logo-ls_Darwin_x86_64.tar.gz https://github.com/Yash-Handa/logo-ls/releases/download/v1.3.7/logo-ls_Darwin_x86_64.tar.gz
+tar xf logo-ls_Darwin_x86_64.tar.gz
+cd logo-ls_Darwin_x86_64 && cp logo-ls ~/.local/bin/
+rm -rf logo-ls_Darwin_x86_64
+
+################################################################################
 #                                 install btop                                 #
 ################################################################################
 BTOP_VERSION=1.1.2
