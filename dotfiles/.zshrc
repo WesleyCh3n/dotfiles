@@ -87,6 +87,7 @@ g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
 c:$HOME/.config"
+export NNN_PLUG='x:!chmod +x $nnn'
 [ -f $HOME/.config/wsl/nnn_bms.sh ] && source $HOME/.config/wsl/nnn_bms.sh
 
 n () {
