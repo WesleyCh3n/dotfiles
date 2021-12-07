@@ -6,6 +6,18 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
+-- nvim-transparent
+require("transparent").setup({
+  enable = true,
+  extra_groups = {
+    "BufferLineTabClose",
+    -- "BufferlineBufferSelected",
+    "BufferLineSeparator",
+    -- "BufferLineIndicatorSelected",
+  },
+  exclude = {}, -- table: groups you don't want to clear
+})
+
 -- hop.nvim
 require('hop').setup()
 

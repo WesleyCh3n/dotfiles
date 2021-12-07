@@ -53,7 +53,7 @@ opt.shortmess = 'a'
 --------------------------------------------------------------------------------
 g.gruvbox_material_background = 'medium'
 g.gruvbox_material_disable_italic_comment = 1
-g.gruvbox_material_transparent_background = 1
+-- g.gruvbox_material_transparent_background = 0
 g.gruvbox_material_current_word = 'grey background'
 
 g.tabline_show_bufnr = false

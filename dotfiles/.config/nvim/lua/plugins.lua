@@ -30,6 +30,7 @@ return require('packer').startup({function()
       require("zen-mode").setup { }
     end
   }
+  use {'xiyaowong/nvim-transparent'}
 
   -- control on fly
   use {'tpope/vim-surround'}
