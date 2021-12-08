@@ -77,7 +77,7 @@ map('n', '<space>8', ':BufferLineGoToBuffer 8<cr>')
 map('n', '<space>9', ':BufferLineGoToBuffer 9<cr>')
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>')
-map('n', '<C-x>', ':tabclose<cr>')
+-- map('n', '<C-x>', ':tabclose<cr>')
 -- Move tab
 map('n', '<leader>>', ':tabmove +<cr>')
 map('n', '<leader><', ':tabmove -<cr>')

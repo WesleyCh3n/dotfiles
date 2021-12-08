@@ -17,10 +17,6 @@ end
 require("transparent").setup({
   enable = true,
   extra_groups = {
-    "BufferLineTabClose",
-    -- "BufferlineBufferSelected",
-    "BufferLineSeparator",
-    -- "BufferLineIndicatorSelected",
   },
   exclude = {}, -- table: groups you don't want to clear
 })
