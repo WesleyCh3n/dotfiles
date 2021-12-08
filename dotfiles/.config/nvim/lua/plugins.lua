@@ -49,6 +49,10 @@ return require('packer').startup({function()
   use {'fannheyward/telescope-coc.nvim'}
   use {'liuchengxu/vim-which-key'}
   use {'max397574/better-escape.nvim'}
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'akinsho/toggleterm.nvim'}

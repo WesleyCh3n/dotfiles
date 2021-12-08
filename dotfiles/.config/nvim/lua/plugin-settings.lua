@@ -6,6 +6,13 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
+-- firenvim
+if vim.api.nvim_eval('exists("g:started_by_firenvim")') then
+  opt.guifont = 'MesloLGS NF:h10'
+  opt.laststatus = 0
+  opt.shortmess = 'at'
+end
+
 -- nvim-transparent
 require("transparent").setup({
   enable = true,

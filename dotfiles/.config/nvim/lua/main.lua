@@ -44,9 +44,8 @@ opt.hidden = true
 opt.backup = false
 opt.writebackup = false
 opt.updatetime = 300
-opt.shortmess = 'c'
+opt.shortmess = 'ac'
 opt.signcolumn = 'yes'
-opt.shortmess = 'a'
 
 --------------------------------------------------------------------------------
 --                              Colorscheme                                   --
