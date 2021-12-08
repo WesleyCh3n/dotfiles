@@ -227,5 +227,9 @@ augroup WESLEYCH3N
 
   au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') | silent exe "norm! mzgg=G`zzz"
 
+  au! FileType which_key
+  au FileType which_key set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 augroup END
 ]])
