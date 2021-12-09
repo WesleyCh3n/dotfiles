@@ -153,6 +153,7 @@ map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
 map('n', '<space>fd', ':Telescope coc definitions<cr>')
 map('n', '<space>fi', ':Telescope coc implementations<cr>')
 map('n', '<space>fr', ':Telescope coc references<cr>')
+map('n', '<space>fg', ':Telescope repo list<cr>')
 
 -- coc-explorer
 map('n', '<space>e', ':CocCommand explorer<cr>')

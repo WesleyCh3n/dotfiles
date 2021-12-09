@@ -16,9 +16,11 @@ return require('packer').startup({function()
   use {'wbthomason/packer.nvim'}
   use {'sainnhe/gruvbox-material'}
   use {'hoob3rt/lualine.nvim'}
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
   use {'dominikduda/vim_current_word'}
-  -- use {'yamatsum/nvim-cursorline'}
   use {'glepnir/dashboard-nvim'}
   use {'ryanoasis/vim-devicons'}
   use {'kyazdani42/nvim-web-devicons'}
@@ -44,15 +46,20 @@ return require('packer').startup({function()
   use {'phaazon/hop.nvim'}
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}
-  use {'nvim-lua/plenary.nvim'}
-  use {'nvim-telescope/telescope.nvim'}
-  use {'fannheyward/telescope-coc.nvim'}
   use {'liuchengxu/vim-which-key'}
   use {'max397574/better-escape.nvim'}
   use {
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end
   }
+
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {'nvim-lua/plenary.nvim'}
+  }
+  use {'fannheyward/telescope-coc.nvim'}
+  use {'cljoly/telescope-repo.nvim'}
 
   -- 3dParty: REQUIRED nnn lazygit
   use {'akinsho/toggleterm.nvim'}

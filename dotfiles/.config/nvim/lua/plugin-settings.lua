@@ -34,6 +34,7 @@ require("indent_blankline").setup {
 }
 
 -- Telescope
+require('telescope').load_extension('repo')
 require('telescope').load_extension('coc')
 require('telescope').setup{
   defaults = {
