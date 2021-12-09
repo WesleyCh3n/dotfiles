@@ -115,8 +115,9 @@ pfetch
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g powerlevel9k_instant_prompt=quiet
 
-export FZF_DEFAULT_COMMAND="fd --type f"
-export FZF_CTRL_T_COMMAND="fd --type f"
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
