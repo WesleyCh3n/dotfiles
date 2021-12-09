@@ -51,11 +51,6 @@ require('telescope').setup{
       "node_modules/*",
       ".git/*"
     }
-    -- layout_config = {
-      -- horizontal = {
-        -- prompt_position = "top",
-      -- }
-    -- }
   }
 }
 
@@ -86,13 +81,10 @@ g.which_key_space = {
   ['a'] = {
     name = '+float',
     ['s'] = 'Shell',
-    ['c'] = 'MYVIMRC directory',
     ['g'] = 'lazygit',
     ['d'] = 'lazydocker',
     ['b'] = 'bpytop',
-    ['e'] = 'coc file explorer',
     ['n'] = 'nnn file explorer',
-    ['G'] = 'Open GitHub',
   },
   ['b'] = { name = 'boxes' },
   ['d'] = { name = 'which_key_ignore' },
@@ -124,8 +116,12 @@ g.which_key_space = {
   },
   ['w'] = 'Write file',
   ['q'] = 'Quit file',
-  ['e'] = 'File explorer',
   ['P'] = 'Toggle paste',
+  ['e'] = {
+    name = '+file',
+    ['c'] = 'MYVIMRC directory',
+    ['g'] = 'Open GitHub',
+  },
 }
 
 -- Dashboard

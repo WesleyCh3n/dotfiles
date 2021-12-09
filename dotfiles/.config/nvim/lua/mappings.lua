@@ -155,11 +155,14 @@ map('n', '<space>fi', ':Telescope coc implementations<cr>')
 map('n', '<space>fr', ':Telescope coc references<cr>')
 map('n', '<space>fg', ':Telescope repo list<cr>')
 
+map('n', '<space>ec', ':Telescope find_files cwd=~/dotfiles/ '..t_hidden..' '..t_prefix..'<cr>')
+map('n', '<space>eg', ':Telescope find_files cwd=~/GitHub/ '..t_hidden..' '..t_prefix..'<cr>')
+
 -- coc-explorer
-map('n', '<space>e', ':CocCommand explorer<cr>')
 map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
-map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
-map('n', '<space>aG', ':CocCommand explorer --preset github<cr>')
+-- map('n', '<space>e', ':CocCommand explorer<cr>')
+-- map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
+-- map('n', '<space>aG', ':CocCommand explorer --preset github<cr>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
