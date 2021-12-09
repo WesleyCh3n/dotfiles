@@ -144,9 +144,9 @@ map('n', '<space>z', ':ZenMode<cr>')
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
 -- Telescope
-map('n', '<space>fh', ':Telescope oldfiles '..t_hidden..' '..t_prefix..'<CR>')
+map('n', '<space>fe', ':Telescope file_browser '..t_hidden..' '..t_prefix..'<CR>')
 map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..'<CR>')
-map('n', '<space>fc', ':Telescope colorscheme '..t_prefix..'<CR>')
+map('n', '<space>fc', ':CocFix<cr>')
 map('n', '<space>fm', ':Telescope marks '..t_prefix..'<CR>')
 map('n', '<space>fb', ':Telescope buffers<CR>')
 map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
@@ -155,8 +155,12 @@ map('n', '<space>fi', ':Telescope coc implementations<cr>')
 map('n', '<space>fr', ':Telescope coc references<cr>')
 map('n', '<space>fg', ':Telescope repo list<cr>')
 
-map('n', '<space>ec', ':Telescope find_files cwd=~/dotfiles/ '..t_hidden..' '..t_prefix..'<cr>')
+map('n', '<space>ec', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua/ '..t_hidden..' '..t_prefix..'<cr>')
 map('n', '<space>eg', ':Telescope find_files cwd=~/GitHub/ '..t_hidden..' '..t_prefix..'<cr>')
+map('n', '<space>eC', ':Telescope file_browser cwd=~/dotfiles/ '..t_hidden..' '..t_prefix..'<cr>')
+-- map('n', '<space>ff',
+  -- ':lua require"telescope.builtin".find_files(require"telescope.themes".get_ivy({layout_config={preview_width=0.6}}))<cr>'
+-- )
 
 -- coc-explorer
 map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')

@@ -45,13 +45,29 @@ require("indent_blankline").setup {
 -- Telescope
 require('telescope').load_extension('repo')
 require('telescope').load_extension('coc')
+local actions = require("telescope.actions")
 require('telescope').setup{
   defaults = {
+    layout_config = {
+      horizontal = {
+       preview_width = 0.6,
+      },
+    },
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close
+      },
+    },
     file_ignore_patterns = {
       "node_modules/*",
       ".git/*"
     }
-  }
+  },
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    }
+  },
 }
 
 -- vim-which-key
