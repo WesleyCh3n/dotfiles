@@ -66,6 +66,7 @@ return require('packer').startup({function()
   use {'mfussenegger/nvim-dap'}
 
   -- Go
+  use {'fatih/vim-go'}
   use {'leoluz/nvim-dap-go',
     config = function()
       require("dap-go").setup { }

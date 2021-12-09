@@ -24,6 +24,9 @@
             }
         }
     },
+    "coc.preferences.formatOnSaveFiletypes": [
+        "go"
+    ],
     "explorer.git.icon.status.modified": "",
     "explorer.git.icon.status.added": "",
     "explorer.git.icon.status.ignored": "﯏",
