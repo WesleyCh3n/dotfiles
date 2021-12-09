@@ -115,9 +115,8 @@ pfetch
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g powerlevel9k_instant_prompt=quiet
 
-# Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_CTRL_T_COMMAND="fd --type f"
+export FZF_ALT_C_COMMAND="fd --type d"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
