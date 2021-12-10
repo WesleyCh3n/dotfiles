@@ -19,6 +19,7 @@ if [ -f $HOME/.zplug/init.zsh ]; then
   zplug "zsh-users/zsh-autosuggestions",     as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
   zplug "zsh-users/zsh-completions",         as:plugin
+  zplug "Aloxaf/fzf-tab",                    as:plugin
 
   # Install plugins if there are plugins that have not been installed
   if ! zplug check --verbose; then
