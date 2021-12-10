@@ -147,7 +147,7 @@ function _G.tlscp_opts(cwd)
   return {theme = "ivy",
           hidden = true,
           cwd = cwd,
-          prompt_prefix = "🔍",
+          prompt_prefix = " ",
           layout_config = { preview_width=0.6 }}
 end
 
