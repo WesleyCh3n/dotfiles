@@ -43,10 +43,11 @@ chmod +x $HOME/.local/bin/pfetch
 #                                 install nnn                                  #
 ################################################################################
 print_info "install nnn"
-curl -fLo nnn-nerd-static-4.3.x86_64.tar.gz https://github.com/jarun/nnn/releases/download/v4.3/nnn-nerd-static-4.3.x86_64.tar.gz
-tar xf nnn-nerd-static-4.3.x86_64.tar.gz
+VERSION="4.4"
+curl -fLo nnn-nerd-static-${VERSION}.x86_64.tar.gz https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn-nerd-static-${VERSION}.x86_64.tar.gz
+tar xf nnn-nerd-static-${VERSION}.x86_64.tar.gz
 mv nnn-nerd-static $HOME/.local/bin/nnn
-rm -rf nnn-nerd-static-4.3.x86_64.tar.gz
+rm -rf nnn-nerd-static-${VERSION}.x86_64.tar.gz
 
 ################################################################################
 #                               install lazygit                                #
