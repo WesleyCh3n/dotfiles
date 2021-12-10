@@ -121,35 +121,34 @@ wk.register({
   ['9'] = 'which_key_ignore',
   a = {
     name = ' float',
-    s = 'shell',
-    g = 'lazygit',
-    d = 'lazydocker',
-    b = 'bpytop',
-    n = 'nnn file explorer',
-    j = 'node',
-    p = 'python',
+    s = ' shell',
+    g = ' lazygit',
+    d = ' lazydocker',
+    b = ' btop',
+    n = ' nnn',
+    j = ' node',
+    p = ' python',
   },
-  b = { name = ' boxes' },
   c = 'which_key_ignore',
   d = { name = 'which_key_ignore' },
   e = ' nnn',
   f = {
     name = ' telescope',
-    b = 'list buffers',
-    c = 'nvimrc',
-    d = 'dotfile',
-    f = 'find files',
-    g = 'GitHub',
-    w = 'rm trailing white',
+    b = ' list buffers',
+    c = ' nvimrc',
+    d = ' dotfile',
+    f = ' find files',
+    g = ' GitHub',
+    w = ' rm trailing white',
   },
   p = ' md preview',
   P = ' toggle paste',
   q = ' quit',
   r = {
     name = '漏re-',
-    i = 're-Indent',
-    t = 're-Tab',
-    n = 'rename variable'
+    i = '漏re-Indent',
+    t = '漏re-Tab',
+    n = '漏rename variable'
   },
   s = { name = 'which_key_ignore' },
   t = ' toggle bg',
@@ -159,9 +158,9 @@ wk.register({
 
 wk.register({
   g = {
-    a = 'show diagnostics',
-    d = 'show definitions',
-    r = 'show reference',
+    a = ' show diagnostics',
+    d = ' show definitions',
+    r = ' show reference',
   }
 })
 
