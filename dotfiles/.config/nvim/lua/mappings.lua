@@ -127,17 +127,6 @@ map('i', '?', '?<c-g>u')
 -- nvim-transparent
 map('n', '<space>t', ':TransparentToggle<CR>')
 
--- Telescope-config
-if vim.fn.has('win32') == 1 then
-  t_hidden = ''
-  t_prefix = ''
-else
-  t_hidden = 'hidden=true'
-  t_prefix = 'prompt_prefix=🔍'
-end
-map('n', '<space>ss', ':SessionSave<CR>')
-map('n', '<space>sl', ':SessionLoad<CR>')
-
 -- ZenMode
 map('n', '<space>z', ':ZenMode<cr>')
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
@@ -172,9 +161,6 @@ map('n', 'gd', ':Telescope coc definitions<cr>')
 map('n', 'gi', ':Telescope coc implementations<cr>')
 map('n', 'gr', ':Telescope coc references<cr>')
 
--- coc-explorer
--- map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
-
 --- nnn.nvim
 map('n', '<space>e', ':NnnPicker<CR>')
 
@@ -195,11 +181,11 @@ map('v', '<leader>l', "<cmd>HopLineStart<cr>")
 
 -- toggleterm.nvim
 map('n', '<space>as', ":ToggleTerm<cr>")
-map('n', '<space>ag', "<cmd>lua _lazygit_toggle()<CR>")
-map('n', '<space>an', "<cmd>lua _nnn_toggle()<CR>")
-map('n', '<space>ab', "<cmd>lua _bpytop_toggle()<CR>")
-map('n', '<space>aj', "<cmd>lua _node_toggle()<CR>")
-map('n', '<space>ap', "<cmd>lua _python_toggle()<CR>")
+map('n', '<space>ag', ":lua _lazygit_toggle()<CR>")
+map('n', '<space>an', ":lua _nnn_toggle()<CR>")
+map('n', '<space>ab', ":lua _bpytop_toggle()<CR>")
+map('n', '<space>aj', ":lua _node_toggle()<CR>")
+map('n', '<space>ap', ":lua _python_toggle()<CR>")
 
 -- vim-markdown
 map('n', '<space>p', ":MarkdownPreviewToggle<cr>")
@@ -212,12 +198,6 @@ map('v', '<space>bb', "!boxes -s 80 -a c -d ")
 
 -- emmet-vim
 g.user_emmet_leader_key = '<C-s>'
-
--- vim-which-key
-map('n', '<Space>', ':WhichKey \'<Space>\'<CR>')
-map('n', '<leader>', ':WhichKey \',\'<CR>')
-map('v', '<Space>', ':WhichKeyVisual \'<Space>\'<CR>')
-map('v', '<leader>', ':WhichKeyVisual \',\'<CR>')
 
 --------------------------------------------------------------------------------
 --                                 Augroup                                    --
