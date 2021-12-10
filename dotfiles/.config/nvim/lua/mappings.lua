@@ -62,15 +62,18 @@ map('v', '<leader>y', '"+y')
 map('n', 'Y', 'y$')
 
 -- Tab
-map('n', '<space>1', ':BufferLineGoToBuffer 1<cr>')
-map('n', '<space>2', ':BufferLineGoToBuffer 2<cr>')
-map('n', '<space>3', ':BufferLineGoToBuffer 3<cr>')
-map('n', '<space>4', ':BufferLineGoToBuffer 4<cr>')
-map('n', '<space>5', ':BufferLineGoToBuffer 5<cr>')
-map('n', '<space>6', ':BufferLineGoToBuffer 6<cr>')
-map('n', '<space>7', ':BufferLineGoToBuffer 7<cr>')
-map('n', '<space>8', ':BufferLineGoToBuffer 8<cr>')
-map('n', '<space>9', ':BufferLineGoToBuffer 9<cr>')
+function _G.goto_tab(num)
+  return num..'gt'
+end
+map('n', '<space>1', "1gt")
+map('n', '<space>2', "2gt")
+map('n', '<space>3', "3gt")
+map('n', '<space>4', "4gt")
+map('n', '<space>5', "5gt")
+map('n', '<space>6', "6gt")
+map('n', '<space>7', "7gt")
+map('n', '<space>8', "8gt")
+map('n', '<space>9', "9gt")
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>')
 -- map('n', '<C-x>', ':tabclose<cr>')

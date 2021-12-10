@@ -20,6 +20,10 @@ return require('packer').startup({function()
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'
   }
+  use {
+    'alvarosevilla95/luatab.nvim',
+    requires='kyazdani42/nvim-web-devicons'
+  }
   use {'dominikduda/vim_current_word'}
   use {'glepnir/dashboard-nvim'}
   use {'ryanoasis/vim-devicons'}

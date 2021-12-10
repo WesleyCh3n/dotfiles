@@ -46,6 +46,7 @@ opt.writebackup = false
 opt.updatetime = 300
 opt.shortmess = 'ac'
 opt.signcolumn = 'yes'
+opt.showtabline = 2
 
 --------------------------------------------------------------------------------
 --                              Colorscheme                                   --
@@ -100,37 +101,54 @@ require'lualine'.setup {
     lualine_z = {}
   },
 }
-require("bufferline").setup{
-  options = {
-    left_trunc_marker = '',
-    right_trunc_marker = '',
-    diagnostics = "coc",
-    diagnostics_update_in_insert = false,
-    diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      local s = " "
-      for e, n in pairs(diagnostics_dict) do
-        local sym = e == "error" and " "
-          or (e == "warning" and " " or "" )
-        s = s .. n .. sym
-      end
-      return s
-    end,
-    separator_style = "slant",
-    enforce_regular_tabs = true,
-    always_show_bufferline = true,
-  },
-  highlights = {
-    fill = {
-      guibg = "#3c3836"
-    },
-    separator_selected = {
-      guifg = "#3c3836"
-    },
-    separator_visible = {
-      guifg = "#3c3836"
-    },
-    separator = {
-      guifg = "#3c3836"
-    },
-  },
+
+cmd([[hi! TabLineFill ctermbg=NONE guibg=NONE]])
+require('luatab').setup{
+  separator = function() return '' end,
+  modified = function(bufnr)
+    return vim.fn.getbufvar(bufnr, '&modified') == 1 and ' ' or ''
+  end,
+  windowCount = function(index)
+    local nwins = 0
+    local success, wins = pcall(vim.api.nvim_tabpage_list_wins, index)
+    if success then
+      for _ in pairs(wins) do nwins = nwins + 1 end
+    end
+    return nwins > 1 and ' ' or ''
+  end
 }
+
+-- require("bufferline").setup{
+  -- options = {
+    -- left_trunc_marker = '',
+    -- right_trunc_marker = '',
+    -- diagnostics = "coc",
+    -- diagnostics_update_in_insert = false,
+    -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      -- local s = " "
+      -- for e, n in pairs(diagnostics_dict) do
+        -- local sym = e == "error" and " "
+          -- or (e == "warning" and " " or "" )
+        -- s = s .. n .. sym
+      -- end
+      -- return s
+    -- end,
+    -- separator_style = "slant",
+    -- enforce_regular_tabs = true,
+    -- always_show_bufferline = true,
+  -- },
+  -- highlights = {
+    -- fill = {
+      -- guibg = "#3c3836"
+    -- },
+    -- separator_selected = {
+      -- guifg = "#3c3836"
+    -- },
+    -- separator_visible = {
+      -- guifg = "#3c3836"
+    -- },
+    -- separator = {
+      -- guifg = "#3c3836"
+    -- },
+  -- },
+-- }
