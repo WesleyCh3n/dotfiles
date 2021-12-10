@@ -28,10 +28,6 @@ map('i', '<C-k>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
 map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
 -- show_document
 map('n', 'K', ":call CocActionAsync(\'doHover\')<CR>")
--- show defenition
-map('n', 'gd', '<Plug>(coc-definition)', {noremap = false, silent = true})
-map('n', 'gi', '<Plug>(coc-implementation)', {noremap = false, silent = true})
-map('n', 'gr', '<Plug>(coc-references)', {noremap = false, silent = true})
 map('n', '<space>rn', '<Plug>(coc-rename)', {noremap = false, silent = true})
 
 -- no EX mode
@@ -144,29 +140,34 @@ map('n', '<space>z', ':ZenMode<cr>')
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
 -- Telescope
-map('n', '<space>fe', ':Telescope file_browser '..t_hidden..' '..t_prefix..'<CR>')
-map('n', '<space>ff', ':Telescope find_files '..t_hidden..' '..t_prefix..'<CR>')
-map('n', '<space>fc', ':CocFix<cr>')
-map('n', '<space>fm', ':Telescope marks '..t_prefix..'<CR>')
-map('n', '<space>fb', ':Telescope buffers<CR>')
-map('n', '<space>fa', ':Telescope coc diagnostics<cr>')
-map('n', '<space>fd', ':Telescope coc definitions<cr>')
-map('n', '<space>fi', ':Telescope coc implementations<cr>')
-map('n', '<space>fr', ':Telescope coc references<cr>')
-map('n', '<space>fg', ':Telescope repo list<cr>')
+function _G.tlscp_opts(cwd)
+  return {theme = "ivy",
+          hidden = true,
+          cwd = cwd,
+          prompt_prefix = "🔍",
+          layout_config = { preview_width=0.6 }}
+end
 
-map('n', '<space>ec', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua/ '..t_hidden..' '..t_prefix..'<cr>')
-map('n', '<space>eg', ':Telescope find_files cwd=~/GitHub/ '..t_hidden..' '..t_prefix..'<cr>')
-map('n', '<space>eC', ':Telescope file_browser cwd=~/dotfiles/ '..t_hidden..' '..t_prefix..'<cr>')
--- map('n', '<space>ff',
-  -- ':lua require"telescope.builtin".find_files(require"telescope.themes".get_ivy({layout_config={preview_width=0.6}}))<cr>'
--- )
+map('n', '<space>ff',
+  ':lua require("telescope.builtin").find_files(tlscp_opts(""))<cr>'
+)
+map('n', '<space>fg',
+  ':lua require("telescope.builtin").find_files(tlscp_opts("~/GitHub"))<cr>'
+)
+map('n', '<space>fc',
+  ':lua require("telescope.builtin").find_files(tlscp_opts("~/dotfiles/dotfiles/.config/nvim/lua"))<cr>'
+)
+map('n', '<space>fd',
+  ':lua require("telescope.builtin").find_files(tlscp_opts("~/dotfiles/"))<cr>'
+)
+
+map('n', 'gf', ':Telescope coc diagnostics<cr>')
+map('n', 'gd', ':Telescope coc definitions<cr>')
+map('n', 'gi', ':Telescope coc implementations<cr>')
+map('n', 'gr', ':Telescope coc references<cr>')
 
 -- coc-explorer
 map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
--- map('n', '<space>e', ':CocCommand explorer<cr>')
--- map('n', '<space>ac', ':CocCommand explorer --preset config<cr>')
--- map('n', '<space>aG', ':CocCommand explorer --preset github<cr>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
