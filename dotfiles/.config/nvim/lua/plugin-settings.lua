@@ -71,6 +71,28 @@ require('telescope').setup{
   },
 }
 
+-- nnn.nvim
+local builtin = require("nnn").builtin
+require("nnn").setup({
+  explorer = {
+    width = 35,
+  },
+  picker = {
+    style = { border = "rounded" },
+  },
+  auto_close = true,
+  replace_netrw = "picker",
+  tabs = false,
+  mappings = {
+		{ "<C-t>", builtin.open_in_tab },       -- open file(s) in tab
+		{ "<C-s>", builtin.open_in_split },     -- open file(s) in split
+		{ "<C-v>", builtin.open_in_vsplit },    -- open file(s) in vertical split
+		{ "<C-y>", builtin.copy_to_clipboard }, -- copy file(s) to clipboard
+		{ "<C-w>", builtin.cd_to_path },        -- cd to file directory
+		{ "<C-e>", builtin.populate_cmdline },  -- populate cmdline (:) with file(s)
+	}
+})
+
 -- vim-which-key
 g.which_key_hspace = 1
 fn['which_key#register'](',', 'g:which_key_leader')
@@ -104,6 +126,7 @@ g.which_key_space = {
     ['n'] = 'nnn file explorer',
   },
   ['b'] = { name = 'boxes' },
+  ['c'] = 'which_key_ignore',
   ['d'] = { name = 'which_key_ignore' },
   ['f'] = {
     name = '+Telescope',
@@ -134,11 +157,7 @@ g.which_key_space = {
   ['w'] = 'Write file',
   ['q'] = 'Quit file',
   ['P'] = 'Toggle paste',
-  ['e'] = {
-    name = '+file',
-    ['c'] = 'MYVIMRC directory',
-    ['g'] = 'Open GitHub',
-  },
+  ['e'] = 'nnn',
 }
 
 -- Dashboard

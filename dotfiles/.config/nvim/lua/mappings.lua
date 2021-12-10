@@ -167,7 +167,10 @@ map('n', 'gi', ':Telescope coc implementations<cr>')
 map('n', 'gr', ':Telescope coc references<cr>')
 
 -- coc-explorer
-map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
+-- map('n', '<space>ae', ':CocCommand explorer --preset floating<cr>')
+
+--- nnn.nvim
+map('n', '<space>e', ':NnnPicker<CR>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
@@ -226,7 +229,6 @@ augroup END
 augroup WESLEYCH3N
   au!
   au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
-  au FileType lua :cd ~/dotfiles
 
   au BufReadPost * if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au BufWritePre * %s/\s\+$//e

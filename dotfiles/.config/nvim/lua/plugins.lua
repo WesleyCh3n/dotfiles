@@ -52,6 +52,10 @@ return require('packer').startup({function()
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end
   }
+  use {
+    'luukvbaal/nnn.nvim',
+    config = function() require('nnn').setup() end
+  }
 
   -- Telescope
   use {
