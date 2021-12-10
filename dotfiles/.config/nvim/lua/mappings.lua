@@ -163,6 +163,9 @@ map('n', '<space>fc',
 map('n', '<space>fd',
   ':lua require("telescope.builtin").find_files(tlscp_opts("~/dotfiles/"))<cr>'
 )
+map('n', '<space>fb',
+  ':lua require("telescope.builtin").buffers()<cr>'
+)
 
 map('n', 'gf', ':Telescope coc diagnostics<cr>')
 map('n', 'gd', ':Telescope coc definitions<cr>')

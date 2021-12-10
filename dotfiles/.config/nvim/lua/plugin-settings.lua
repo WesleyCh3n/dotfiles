@@ -67,6 +67,16 @@ require('telescope').setup{
   pickers = {
     find_files = {
       theme = "ivy",
+    },
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "ivy",
+      mappings = {
+        n = {
+          ["dd"] = "delete_buffer",
+        }
+      }
     }
   },
 }
