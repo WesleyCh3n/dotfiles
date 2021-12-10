@@ -25,7 +25,7 @@ return require('packer').startup({function()
     requires='kyazdani42/nvim-web-devicons'
   }
   use {'dominikduda/vim_current_word'}
-  use {'glepnir/dashboard-nvim'}
+  use {'goolord/alpha-nvim'}
   use {'ryanoasis/vim-devicons'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'lukas-reineke/indent-blankline.nvim'}
@@ -44,13 +44,36 @@ return require('packer').startup({function()
   use {'preservim/nerdcommenter'}
   use {'junegunn/vim-easy-align'}
   use {'wellle/targets.vim'}
-  use {"tversteeg/registers.nvim"}
+  -- use {"tversteeg/registers.nvim"}
   use {'christoomey/vim-tmux-navigator'}
   use {'mg979/vim-visual-multi'}
   use {'phaazon/hop.nvim'}
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}
-  use {'liuchengxu/vim-which-key'}
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        key_labels = {
+          ["<space>"] = "SPC",
+        },
+        icons = {
+          breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+          separator = "", -- symbol used between a key and it's label
+          group = " ", -- symbol prepended to a group
+        },
+        window = {
+          border = "single", -- none, single, double, shadow
+        },
+        layout = {
+          height = { min = 4, max = 20 }, -- min and max height of the columns
+          width = { min = 20, max = 50 }, -- min and max width of the columns
+          spacing = 3, -- spacing between columns
+          align = "center", -- align columns left, center or right
+        },
+      }
+    end
+  }
   use {'max397574/better-escape.nvim'}
   use {
     'glacambre/firenvim',
@@ -114,8 +137,6 @@ return require('packer').startup({function()
   g.coc_global_extensions = {
     'coc-json',
     'coc-snippets',
-    'coc-floaterm',
-    'coc-explorer',
     'coc-tsserver',
     'coc-pyright',
     'coc-go'

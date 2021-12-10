@@ -55,8 +55,12 @@ require('telescope').setup{
       },
     },
     mappings = {
+      n = {
+        ["<CR>"] = actions.select_tab,
+      },
       i = {
-        ["<esc>"] = actions.close
+        ["<esc>"] = actions.close,
+        ["<CR>"] = actions.select_tab,
       },
     },
     file_ignore_patterns = {
@@ -103,109 +107,83 @@ require("nnn").setup({
 	}
 })
 
--- vim-which-key
-g.which_key_hspace = 1
-fn['which_key#register'](',', 'g:which_key_leader')
-g.which_key_leader = {
-  ['c'] = { name = "+comment" },
-  ['<'] = 'Move tab left',
-  ['>'] = 'Move tab right',
-  ['n'] = 'Clear search',
-  ['s'] = 'Repace text',
-}
-
-fn['which_key#register']('<Space>', 'g:which_key_space')
-g.which_key_space = {
-  ['1'] = 'Tab 1',
-  ['2'] = 'Tab 2',
-  ['3'] = 'Tab 3',
+local wk = require("which-key")
+wk.register({
+  ['#'] = 'ﴵ tab #[123]',
+  ['1'] = 'which_key_ignore',
+  ['2'] = 'which_key_ignore',
+  ['3'] = 'which_key_ignore',
   ['4'] = 'which_key_ignore',
   ['5'] = 'which_key_ignore',
   ['6'] = 'which_key_ignore',
   ['7'] = 'which_key_ignore',
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
-  ['p'] = 'md preview',
-  ['z'] = 'ZenMode',
-  ['a'] = {
-    name = '+float',
-    ['s'] = 'Shell',
-    ['g'] = 'lazygit',
-    ['d'] = 'lazydocker',
-    ['b'] = 'bpytop',
-    ['n'] = 'nnn file explorer',
+  a = {
+    name = ' float',
+    s = 'shell',
+    g = 'lazygit',
+    d = 'lazydocker',
+    b = 'bpytop',
+    n = 'nnn file explorer',
+    j = 'node',
+    p = 'python',
   },
-  ['b'] = { name = 'boxes' },
-  ['c'] = 'which_key_ignore',
-  ['d'] = { name = 'which_key_ignore' },
-  ['f'] = {
-    name = '+Telescope',
-    ['f'] = 'find files',
-    ['o'] = 'find histories',
-    ['m'] = 'find marks',
-    ['a'] = 'show diagnostics',
-    ['d'] = 'show definitions',
-    ['i'] = 'show implementation',
-    ['r'] = 'show reference',
-    ['c'] = 'set colorscheme',
-    ['b'] = 'list buffers',
-    ['m'] = 'which_key_ignore',
-    ['p'] = 'which_key_ignore',
-    ['w'] = 'which_key_ignore',
+  b = { name = ' boxes' },
+  c = 'which_key_ignore',
+  d = { name = 'which_key_ignore' },
+  e = ' nnn',
+  f = {
+    name = ' telescope',
+    b = 'list buffers',
+    c = 'nvimrc',
+    d = 'dotfile',
+    f = 'find files',
+    g = 'GitHub',
+    w = 'rm trailing white',
   },
-  ['r'] = {
-    name = '+re-',
-    ['i'] = 'Re-Indent',
-    ['t'] = 'Re-Tab',
-    ['n'] = 'Rename variable'
+  p = ' md preview',
+  P = ' toggle paste',
+  q = ' quit',
+  r = {
+    name = '漏re-',
+    i = 're-Indent',
+    t = 're-Tab',
+    n = 'rename variable'
   },
-  ['s'] = {
-    name = '+session',
-    ['s'] = 'Session Save',
-    ['l'] = 'Session Load'
-  },
-  ['w'] = 'Write file',
-  ['q'] = 'Quit file',
-  ['P'] = 'Toggle paste',
-  ['e'] = 'nnn',
-}
+  s = { name = 'which_key_ignore' },
+  t = ' toggle bg',
+  w = ' write',
+  z = ' zen',
+}, { prefix = "<space>" })
 
--- Dashboard
-g.indent_blankline_filetype_exclude  = {'dashboard', 'coc-explorer'}
-g.dashboard_default_executive = 'telescope'
-g.dashboard_custom_section={
-['01_bookmarks'] = {
-    ['description'] = {' Jump to bookmarks                     <space> f m'},
-    ['command'] = 'Telescope marks prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
-['02_fine_file'] = {
-    ['description'] = {' Find file                             <space> f f'},
-    ['command'] = 'Telescope find_files hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
-['03_recent_file'] = {
-    ['description'] = {' Recently opened files                 <space> f o'},
-    ['command'] = 'Telescope oldfiles hidden=true prompt_prefix=🔍 layout_config={"prompt_position"="top"}'},
-['04_last_session'] = {
-    ['description'] = {' Open last session                     <space> s l'},
-    ['command'] = 'SessionLoad'},
-['05_new_file'] = {
-    ['description'] = {' New file                              <space> d n'},
-    ['command'] = 'enew'},
-}
+wk.register({
+  g = {
+    a = 'show diagnostics',
+    d = 'show definitions',
+    r = 'show reference',
+  }
+})
 
-g.dashboard_custom_header = {
-  "    .,;'           :,.    ",
-  "  .,;;;,,.         ccc;.  ",
-  ".;c::::,,,'        ccccc: ",
-  ".::cc::,,,,,.      cccccc.",
-  ".cccccc;;;;;;'     llllll.",
-  ".cccccc.,;;;;;;.   llllll.",
-  ".cccccc  ';;;;;;'  oooooo.",
-  "'lllllc   .;;;;;;;.oooooo'",
-  "'lllllc     ,::::::looooo'",
-  "'llllll      .:::::lloddd'",
-  ".looool       .;::coooodo.",
-  "  .cool         'ccoooc.  ",
-  "    .co          .:o:.    ",
+local alpha = require('alpha')
+local dashboard = require('alpha.themes.dashboard')
+dashboard.section.header.val = {
+[[                               __                ]],
+[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+[[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
+dashboard.section.buttons.val = {
+dashboard.button( "e", "  New file" , ':ene <BAR> startinsert <CR>'),
+dashboard.button( "f", "  Telescope" , ':lua require("telescope.builtin").find_files(tlscp_opts(""))<cr>'),
+dashboard.button( "q", "  Quit NVIM" , ':qa<CR>'),
+}
+dashboard.section.footer.val = require('alpha.fortune')()
+alpha.setup(dashboard.opts)
+
+g.indent_blankline_filetype_exclude  = {'alpha', }
 
 -- auto-pairs
 g.AutoPairsShortcutJump = '<S-tab>'
