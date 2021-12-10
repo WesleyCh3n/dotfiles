@@ -104,6 +104,26 @@ require'lualine'.setup {
 
 cmd([[hi! TabLineFill ctermbg=NONE guibg=NONE]])
 require('luatab').setup{
+  title = function(bufnr)
+    local file = vim.fn.bufname(bufnr)
+    local buftype = vim.fn.getbufvar(bufnr, '&buftype')
+    local filetype = vim.fn.getbufvar(bufnr, '&filetype')
+
+    if buftype == 'help' then
+      return 'help:' .. vim.fn.fnamemodify(file, ':t:r')
+    elseif filetype == 'TelescopePrompt' then
+      return 'Telescope'
+    elseif filetype == 'dashboard' then
+      return 'Dashboard '
+    elseif buftype == 'terminal' then
+      local _, mtch = string.match(file, "term:(.*):(%a+)")
+      return mtch ~= nil and mtch or vim.fn.fnamemodify(vim.env.SHELL, ':t')
+    elseif file == '' then
+      return '[No Name]'
+    else
+      return vim.fn.pathshorten(vim.fn.fnamemodify(file, ':p:~:t'))
+    end
+  end,
   separator = function() return '' end,
   modified = function(bufnr)
     return vim.fn.getbufvar(bufnr, '&modified') == 1 and ' ' or ''
@@ -114,7 +134,7 @@ require('luatab').setup{
     if success then
       for _ in pairs(wins) do nwins = nwins + 1 end
     end
-    return nwins > 1 and ' ' or ''
+    return nwins > 1 and ' ' or ' '
   end
 }
 
