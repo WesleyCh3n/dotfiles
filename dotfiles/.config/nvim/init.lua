@@ -12,4 +12,3 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 require('plugins')
 require('main')
 require('mappings')
-require('plugin-settings')

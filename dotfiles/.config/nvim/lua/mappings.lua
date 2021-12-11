@@ -58,9 +58,6 @@ map('n', '<leader>n', ':let @/=""<cr>')
 -- yank to system clipboard
 map('v', '<leader>y', '"+y')
 
--- yank to end line
-map('n', 'Y', 'y$')
-
 -- Tab
 function _G.goto_tab(num)
   return num..'gt'
@@ -75,8 +72,7 @@ map('n', '<space>7', "7gt")
 map('n', '<space>8', "8gt")
 map('n', '<space>9', "9gt")
 -- New/Close tab
-map('n', '<C-t>', ':tabnew<cr>:Dashboard<cr>')
--- map('n', '<C-x>', ':tabclose<cr>')
+map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
 -- Move tab
 map('n', '<leader>>', ':tabmove +<cr>')
 map('n', '<leader><', ':tabmove -<cr>')
@@ -88,8 +84,8 @@ map('n', '<space>rt', ':retab<cr>')
 map('n', '<space>ri', 'gg=G<cr><C-o><C-o>')
 
 -- move left/right
-map('n', '<right>', '10zl')
-map('n', '<left>', '10zh')
+map('n', '<right>', 'zL')
+map('n', '<left>', 'zH')
 
 -- toggle paste mode
 map('n', '<space>P', ':set paste!<cr>')
@@ -128,7 +124,6 @@ map('i', '?', '?<c-g>u')
 map('n', '<space>t', ':TransparentToggle<CR>')
 
 -- ZenMode
-map('n', '<space>z', ':ZenMode<cr>')
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
 -- Telescope
