@@ -1,11 +1,4 @@
-vim.g.coc_global_extensions = {
-  'coc-json',
-  'coc-snippets',
-  'coc-tsserver',
-  'coc-pyright',
-  'coc-go'
-}
-
+--[[
 vim.fn['coc#config']('suggest', {
   ['completionItemKindLabels']= {
     ["method"]        = "  ",
@@ -35,3 +28,4 @@ vim.fn['coc#config']('suggest', {
     ["enumMember"]    = "  "
   }
 })
+--]]

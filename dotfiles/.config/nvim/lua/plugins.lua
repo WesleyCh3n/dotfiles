@@ -38,16 +38,15 @@ return require('packer').startup({function()
     end
   }
   use {
-    'luochen1990/rainbow',
-    config = function()
-      vim.g.rainbow_active = 1
-      vim.g.rainbow_conf = { separately = { cmake = 0, } }
-    end
-  }
-  use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup { }
+    end
+  }
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup { }
     end
   }
   use {
@@ -81,12 +80,12 @@ return require('packer').startup({function()
   }
   use {
     'SirVer/ultisnips',
+    requires = {{'honza/vim-snippets', rtp = '.'}},
     config = function()
       vim.g.UltiSnipsExpandTrigger="<C-l>"
       vim.g.UltiSnipsEditSplit="vertical"
     end
   }
-  use {'honza/vim-snippets'}
   use {
     "folke/which-key.nvim",
     config = function() require('configs/which-key') end
@@ -124,7 +123,6 @@ return require('packer').startup({function()
     end,
     requires = {
       'nvim-lua/plenary.nvim',
-      'fannheyward/telescope-coc.nvim',
       'cljoly/telescope-repo.nvim',
     },
   }
@@ -144,26 +142,9 @@ return require('packer').startup({function()
     config = function() require("configs/vim-go") end
   }
   use {'leoluz/nvim-dap-go',
-  config = function() require("dap-go").setup { } end
+    config = function() require("dap-go").setup { } end
   }
 
-  -- C++
-  use {'octol/vim-cpp-enhanced-highlight'}
-
-  -- Python
-  use {
-    'vim-python/python-syntax',
-    config = function()
-      vim.g.python_highlight_all = 1
-    end
-  }
-  use {
-    'tmhedberg/SimpylFold',
-    config = function()
-      vim.g.SimpylFold_fold_docstring = 0
-    end
-  }
-  use {'tpope/vim-repeat'}
   use {
     'pappasam/nvim-repl',
     branch = 'main',
@@ -171,7 +152,6 @@ return require('packer').startup({function()
       require('configs.nvim-repl')
     end
   }
-  use {'Vimjas/vim-python-pep8-indent'}
 
   -- Javascript
   use {'mattn/emmet-vim'}
@@ -180,13 +160,6 @@ return require('packer').startup({function()
 
   -- Markdown
   use {
-    'plasticboy/vim-markdown',
-    config = function()
-      vim.g.vim_markdown_conceal = 0
-      vim.g.vim_markdown_conceal_code_blocks = 0
-    end
-  }
-  use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'},
@@ -194,32 +167,67 @@ return require('packer').startup({function()
   }
 
   -- Color
-  use {'KabbAmine/vCoolor.vim', opt = true}
-  use {'lilydjwg/colorizer', opt = true}
+  use {'norcalli/nvim-colorizer.lua', opt = true}
 
   -- coc.nvim
+  -- use {
+  -- 'neoclide/coc.nvim',
+  -- branch = 'release',
+  -- config = function()
+  -- require('configs.coc')
+  -- end
+  -- }
+
+  -- lsp
   use {
-    'neoclide/coc.nvim',
-    branch = 'release',
+    "neovim/nvim-lspconfig",
+    event = "BufRead",
     config = function()
-      require('configs.coc')
+      require'configs.lspconfig'
     end
   }
+  use { 'williamboman/nvim-lsp-installer', }
+  use { 'ray-x/lsp_signature.nvim', event = 'BufRead' }
+  use {
+    'filipdutescu/renamer.nvim',
+    branch = 'master',
+    config = function () require('renamer').setup() end
+  }
 
+  -- cmp
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      "quangnguyen30192/cmp-nvim-ultisnips",
+      config = function()
+        require("cmp-nvim-ultisnips").setup{}
+      end
+    },
+    config = function()
+      require'configs.cmp'
+    end,
+  }
 
-  -- use {
-    -- "nvim-treesitter/nvim-treesitter",
-    -- run = ":TSUpdate",
-    -- -- event = "BufRead",
-    -- config = function()
-      -- require'configs.treesitter'
-    -- end
-  -- }
+  -- treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require'configs.treesitter'
+    end
+  }
+  use {
+    'p00f/nvim-ts-rainbow',
+    event = "BufRead",
+  }
 
   -- self
   use {'wakatime/vim-wakatime'}
 
 end,
-config = {
-  display = {open_fn = require('packer.util').float, }}
+  config = {
+    display = {open_fn = require('packer.util').float, }}
 })

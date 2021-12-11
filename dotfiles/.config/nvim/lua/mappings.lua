@@ -15,21 +15,6 @@ end
 --------------------------------------------------------------------------------
 g.mapleader = ','
 
--- coc-config
--- tab completion (Tab/S-Tab/CR)
-function _G.check_back_space()
-    local col = vim.api.nvim_win_get_cursor(0)[2]
-    return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match('%s')) and true
-end
-map('i', '<Tab>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab>" : coc#refresh()', {expr = true})
-map('i', '<C-j>', 'pumvisible() ? "\\<C-N>" : v:lua.check_back_space() ? "\\<Tab>" : coc#refresh()', {expr = true})
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
-map('i', '<C-k>', 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', {expr = true})
-map('i', '<cr>', 'pumvisible() ? "\\<C-Y>" : "\\<CR>"', {expr = true})
--- show_document
-map('n', 'K', ":call CocActionAsync(\'doHover\')<CR>")
-map('n', '<space>rn', '<Plug>(coc-rename)', {noremap = false, silent = true})
-
 -- no EX mode
 map('n', 'Q', '<NOP>')
 
@@ -47,10 +32,6 @@ map('n', '<space>c', ':cd %:p:h<cr>')
 -- start/end word
 map('n', '0', '^')
 map('n', '9', '$')
-
--- easy indent
-map('n', '>', '>>')
-map('n', '<', '<<')
 
 -- nohlsearch
 map('n', '<leader>n', ':let @/=""<cr>')
@@ -151,11 +132,6 @@ map('n', '<space>fb',
   ':lua require("telescope.builtin").buffers()<cr>'
 )
 
-map('n', 'gf', ':Telescope coc diagnostics<cr>')
-map('n', 'gd', ':Telescope coc definitions<cr>')
-map('n', 'gi', ':Telescope coc implementations<cr>')
-map('n', 'gr', ':Telescope coc references<cr>')
-
 --- nnn.nvim
 map('n', '<space>e', ':NnnPicker<CR>')
 
@@ -199,8 +175,6 @@ g.user_emmet_leader_key = '<C-s>'
 --------------------------------------------------------------------------------
 vim.cmd([[
 augroup myaucmd
-  " au filetype cpp,python nnoremap <silent> ,m :call RunCode()<cr> "
-  au filetype python nnoremap <buffer> ,m :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
@@ -209,17 +183,12 @@ augroup myaucmd
 augroup END
 augroup WESLEYCH3N
   au!
-  au bufwritepost *.lua source $MYVIMRC | call rainbow_main#load() | call rainbow_main#load()
-
   au BufReadPost * if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   au BufWritePre * %s/\s\+$//e
-
-  au FileType coc-explorer set winblend=10
-  au FileType coc-explorer-border set winblend=10
 
   au! FileType which_key
   au FileType which_key set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
+  au BufReadPost * silent! TSEnableAll rainbow
 augroup END
 ]])
