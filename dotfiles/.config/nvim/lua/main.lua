@@ -46,7 +46,7 @@ opt.writebackup = false
 opt.updatetime = 300
 opt.shortmess = 'ac'
 opt.signcolumn = 'yes'
-opt.showtabline = 2
+opt.showtabline = 1
 
 --------------------------------------------------------------------------------
 --                              Colorscheme                                   --
