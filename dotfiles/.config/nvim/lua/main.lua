@@ -72,18 +72,24 @@ require'lualine'.setup {
     lualine_a = {
       {'mode', separator = { left = '', right = '' }, padding={left=1}},
     },
-    lualine_b = {'branch'},
+    lualine_b = { 'branch', },
     lualine_c = {
       'filename',
       {
         'diagnostics',
-        sources = { 'coc', 'ale' },
+        sources = { 'nvim_diagnostic' },
         diagnostics_color = {
           error = { fg='#e06c75' },
           warn  = { fg='#e5c07b' },
           info  = { fg='#83a598' },
           hint  = { fg='#83a598' },
         },
+      },
+      {
+        'diff',
+        colored = true,
+        symbols = {added = '+', modified = '~', removed = '-'}, -- changes diff symbols
+        source = nil,
       }
     },
     lualine_x = {'encoding', 'fileformat', 'filetype'},

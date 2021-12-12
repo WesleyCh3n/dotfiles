@@ -82,6 +82,7 @@ wk.register({
   f = ' hopWord',
   l = ' hopLineStart',
   n = ' no Highlight',
+  o = ' outline',
   r = ' toggle repl',
   s = '﯒ find replace',
   w = ' send repl',

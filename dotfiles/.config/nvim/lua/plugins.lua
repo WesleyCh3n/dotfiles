@@ -226,6 +226,17 @@ return require('packer').startup({function()
   use {
     'nvim-treesitter/nvim-treesitter-textobjects'
   }
+  use {
+    'simrat39/symbols-outline.nvim',
+    cmd = {
+      "SymbolsOutline",
+      "SymbolsOutlineOpen",
+      "SymbolsOutlineClose",
+    },
+    setup = function ()
+      require'configs.outline'
+    end
+  }
 
   -- self
   use {'wakatime/vim-wakatime'}

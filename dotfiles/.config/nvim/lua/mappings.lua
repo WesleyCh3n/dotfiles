@@ -101,6 +101,8 @@ map('i', '?', '?<c-g>u')
 --------------------------------------------------------------------------------
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
+-- symbols-outline.nvim
+map('n', '<leader>o', ':SymbolsOutline<CR>')
 -- nvim-transparent
 map('n', '<space>t', ':TransparentToggle<CR>')
 
