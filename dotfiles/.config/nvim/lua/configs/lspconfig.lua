@@ -43,7 +43,8 @@ local servers = {
   "pyright",
   "gopls",
   "tsserver",
-  "bashls"
+  "bashls",
+  "clangd"
 }
 
 for _, name in pairs(servers) do
