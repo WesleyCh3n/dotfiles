@@ -104,6 +104,9 @@ map('n', '<space>t', ':TransparentToggle<CR>')
 -- ZenMode
 map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
 
+-- Twilight
+map('n', '<space>Z', ':Twilight<cr>')
+
 -- Telescope
 function _G.tlscp_opts(cwd)
   return {theme = "ivy",
