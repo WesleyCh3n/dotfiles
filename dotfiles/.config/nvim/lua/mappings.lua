@@ -43,15 +43,10 @@ map('v', '<leader>y', '"+y')
 function _G.goto_tab(num)
   return num..'gt'
 end
-map('n', '<space>1', "1gt")
-map('n', '<space>2', "2gt")
-map('n', '<space>3', "3gt")
-map('n', '<space>4', "4gt")
-map('n', '<space>5', "5gt")
-map('n', '<space>6', "6gt")
-map('n', '<space>7', "7gt")
-map('n', '<space>8', "8gt")
-map('n', '<space>9', "9gt")
+for _,num in ipairs({1,2,3,4,5,6,7,8,9}) do
+  map('n', '<space>'..num, '<cmd>BufferLineGoToBuffer '..num..'<cr>')
+end
+
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
 -- Move tab

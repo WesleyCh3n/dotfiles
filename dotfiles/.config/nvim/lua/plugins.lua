@@ -20,10 +20,6 @@ return require('packer').startup({function()
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'
   }
-  use {
-    'alvarosevilla95/luatab.nvim',
-    requires='kyazdani42/nvim-web-devicons'
-  }
   use {'dominikduda/vim_current_word'}
   use {
     'goolord/alpha-nvim',
@@ -52,7 +48,17 @@ return require('packer').startup({function()
   use {
     'xiyaowong/nvim-transparent',
     config = function()
-      require("transparent").setup({ enable = true, })
+      require("transparent").setup({
+        enable = true,
+        extra_groups = {
+          -- "BufferLineTabClose",
+          -- "BufferlineBufferSelected",
+          -- "BufferLineFill",
+          -- "BufferLineBackground",
+          -- "BufferLineSeparator",
+          -- "BufferLineIndicatorSelected",
+        }
+      })
     end
   }
 
@@ -61,7 +67,7 @@ return require('packer').startup({function()
   use {
     'jiangmiao/auto-pairs',
     config = function()
-      vim.g.AutoPairsShortcutJump = '<S-tab>'
+      vim.g.AutoPairsShortcutJump = '<M-tab>'
     end
   }
   use {
@@ -168,15 +174,6 @@ return require('packer').startup({function()
 
   -- Color
   use {'norcalli/nvim-colorizer.lua', opt = true}
-
-  -- coc.nvim
-  -- use {
-  -- 'neoclide/coc.nvim',
-  -- branch = 'release',
-  -- config = function()
-  -- require('configs.coc')
-  -- end
-  -- }
 
   -- lsp
   use {
