@@ -53,6 +53,7 @@ wk.register({
     g = ' GitHub',
     w = ' rm trailing white',
   },
+  l = ' diagnostics list',
   p = ' md preview',
   P = ' toggle paste',
   q = ' quit',
@@ -70,7 +71,6 @@ wk.register({
 
 wk.register({
   g = {
-    a = ' show diagnostics',
     d = ' show definitions',
     r = ' show reference',
   }
@@ -86,4 +86,11 @@ wk.register({
   s = '﯒ find replace',
   w = ' send repl',
   c = { name = '# comment' },
+  d = {
+    name = ' peek def',
+    f = ' def whole',
+    F = ' def single',
+  },
 }, { prefix = "<leader>" })
+
+vim.cmd[[ hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK ]]

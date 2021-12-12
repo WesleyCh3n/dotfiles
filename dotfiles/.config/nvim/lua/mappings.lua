@@ -55,8 +55,8 @@ map('n', '<space>9', "9gt")
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
 -- Move tab
-map('n', '<leader>>', ':tabmove +<cr>')
-map('n', '<leader><', ':tabmove -<cr>')
+-- map('n', '<leader>>', ':tabmove +<cr>')
+-- map('n', '<leader><', ':tabmove -<cr>')
 
 -- retab
 map('n', '<space>rt', ':retab<cr>')
@@ -184,6 +184,7 @@ augroup END
 augroup WESLEYCH3N
   au!
   au BufReadPost * if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  " remove trailing white space
   au BufWritePre * %s/\s\+$//e
 
   au! FileType which_key

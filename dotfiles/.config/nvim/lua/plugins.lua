@@ -223,6 +223,9 @@ return require('packer').startup({function()
     'p00f/nvim-ts-rainbow',
     event = "BufRead",
   }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects'
+  }
 
   -- self
   use {'wakatime/vim-wakatime'}
