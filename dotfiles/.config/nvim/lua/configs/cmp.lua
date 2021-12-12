@@ -8,14 +8,14 @@ local kind_icons = {
   Function = "",
   Constructor = "",
   Field = "",
-  Variable = "",
+  Variable = "",
   Class = "ﴯ",
-  Interface = "",
+  Interface = "ﰮ",
   Module = "",
-  Property = "ﰠ",
+  Property = "",
   Unit = "",
   Value = "",
-  Enum = "了",
+  Enum = "ℰ",
   Keyword = "",
   Snippet = "",
   Color = "",
@@ -27,7 +27,7 @@ local kind_icons = {
   Struct = "",
   Event = "",
   Operator = "",
-  TypeParameter = ""
+  TypeParameter = "𝙏"
 }
 
 local has_any_words_before = function()
