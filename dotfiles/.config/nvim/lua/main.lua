@@ -112,7 +112,7 @@ require("bufferline").setup{
   options = {
     left_trunc_marker = '',
     right_trunc_marker = '',
-    left_mouse_command = "vertical sbuffer %d",
+    middle_mouse_command = "vertical sbuffer %d",
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = true,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
