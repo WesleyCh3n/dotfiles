@@ -60,8 +60,8 @@ map('n', '<space>rt', ':retab<cr>')
 map('n', '<space>ri', 'gg=G<cr><C-o><C-o>')
 
 -- move left/right
-map('n', '<right>', 'zL')
-map('n', '<left>', 'zH')
+-- map('n', '<right>', 'zL')
+-- map('n', '<left>', 'zH')
 
 -- toggle paste mode
 map('n', '<space>P', ':set paste!<cr>')
