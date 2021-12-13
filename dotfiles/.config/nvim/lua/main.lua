@@ -66,7 +66,7 @@ require'lualine'.setup {
     theme = my_theme,
     section_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''},
-    disabled_filetypes = {"coc-explorer"},
+    disabled_filetypes = {"NvimTree", "Outline"},
   },
   sections = {
     lualine_a = {
