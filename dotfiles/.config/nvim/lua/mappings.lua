@@ -131,9 +131,12 @@ map('n', '<space>fd',
 map('n', '<space>fb',
   ':lua require("telescope.builtin").buffers()<cr>'
 )
+map('n', '<space>fa',
+  ':lua require("telescope.builtin").lsp_code_actions()<cr>'
+)
 
 --- nnn.nvim
-map('n', '<space>e', ':NnnPicker<CR>')
+map('n', '<space>e', ':NvimTreeToggle<CR>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})

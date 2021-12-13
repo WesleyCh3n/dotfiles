@@ -11,7 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup({function()
+return require('packer').startup({function(use)
   -- for better look
   use {'wbthomason/packer.nvim'}
   use {'sainnhe/gruvbox-material'}
@@ -25,7 +25,6 @@ return require('packer').startup({function()
     'goolord/alpha-nvim',
     config = function() require('configs.alpha') end
   }
-  use {'ryanoasis/vim-devicons'}
   use {'kyazdani42/nvim-web-devicons'}
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -46,6 +45,7 @@ return require('packer').startup({function()
     end
   }
   use {
+    -- disable = true,
     'xiyaowong/nvim-transparent',
     config = function()
       require("transparent").setup({
@@ -67,7 +67,7 @@ return require('packer').startup({function()
   use {
     'jiangmiao/auto-pairs',
     config = function()
-      vim.g.AutoPairsShortcutJump = '<M-tab>'
+      vim.g.AutoPairsShortcutJump = '<S-tab>'
     end
   }
   use {
@@ -109,9 +109,16 @@ return require('packer').startup({function()
     run = function() vim.fn['firenvim#install'](0) end,
     config = function() require('configs/firenvim') end
   }
+  --[[ use {
+     [   'luukvbaal/nnn.nvim',
+     [   config = function() require('nnn').setup() end
+     [ } ]]
   use {
-    'luukvbaal/nnn.nvim',
-    config = function() require('nnn').setup() end
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'configs.nvim-tree' end
   }
   use {
     'gelguy/wilder.nvim',
@@ -140,15 +147,22 @@ return require('packer').startup({function()
       require('configs.toggleterm')
     end
   }
-  use {'mfussenegger/nvim-dap'}
 
-  -- Go
+  -- dap
+  --[[ use {
+    {'mfussenegger/nvim-dap'},
+    {
+      'leoluz/nvim-dap-go',
+      config = function()
+        require("dap-go").setup { }
+      end
+    }
+  } ]]
+
+  --[[ Go ]]
   use {
     'fatih/vim-go',
     config = function() require("configs/vim-go") end
-  }
-  use {'leoluz/nvim-dap-go',
-    config = function() require("dap-go").setup { } end
   }
 
   use {
@@ -161,8 +175,12 @@ return require('packer').startup({function()
 
   -- Javascript
   use {'mattn/emmet-vim'}
-  use {'pangloss/vim-javascript'}
-  use {'MaxMEllon/vim-jsx-pretty'}
+  use {
+    'MaxMEllon/vim-jsx-pretty',
+    config = function ()
+      vim.g.vim_jsx_pretty_colorful_config = 1
+    end
+  }
 
   -- Markdown
   use {
@@ -218,10 +236,12 @@ return require('packer').startup({function()
   }
   use {
     'p00f/nvim-ts-rainbow',
+    requires = "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
   }
   use {
-    'nvim-treesitter/nvim-treesitter-textobjects'
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    requires = "nvim-treesitter/nvim-treesitter",
   }
   use {
     'simrat39/symbols-outline.nvim',
@@ -238,7 +258,13 @@ return require('packer').startup({function()
   -- self
   use {'wakatime/vim-wakatime'}
 
-end,
-  config = {
-    display = {open_fn = require('packer.util').float, }}
-})
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end, config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
