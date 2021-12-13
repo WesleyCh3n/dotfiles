@@ -46,6 +46,7 @@ wk.register({
   e = ' nnn',
   f = {
     name = ' telescope',
+    a = 'ﱔ code action',
     b = ' list buffers',
     c = ' nvimrc',
     d = ' dotfile',
