@@ -135,8 +135,11 @@ map('n', '<space>fa',
   ':lua require("telescope.builtin").lsp_code_actions()<cr>'
 )
 
---- nnn.nvim
+--- File Explorer
 map('n', '<space>e', ':NvimTreeToggle<CR>')
+
+-- gitsigns.nvim
+map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})

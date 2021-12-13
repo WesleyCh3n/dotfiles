@@ -12,40 +12,73 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup({function(use)
-  -- for better look
   use {'wbthomason/packer.nvim'}
-  use {'sainnhe/gruvbox-material'}
-  use {'hoob3rt/lualine.nvim'}
+  -- | ------------------------------------------------------------------- | --
+  -- |                           for better look                           | --
+  -- | ------------------------------------------------------------------- | --
+
+  --[[ gruvbox-material colorscheme ]]
+  use {
+    'sainnhe/gruvbox-material',
+    config = function ()
+      vim.cmd('silent! colorscheme gruvbox-material')
+      vim.g.gruvbox_material_background             = 'medium'
+      vim.g.gruvbox_material_current_word           = 'grey background'
+      vim.g.gruvbox_material_disable_italic_comment = 1
+      vim.g.gruvbox_material_transparent_background = 1
+    end
+  }
+  --[[ statusline ]]
+  use {
+    'hoob3rt/lualine.nvim',
+    config = function ()
+      require('configs.lualine')
+    end
+  }
+  --[[ tabline ]]
   use {
     'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function ()
+      require('configs.bufferline')
+    end
+
   }
-  use {'dominikduda/vim_current_word'}
+  --[[ current word hightlight ]]
+  use {
+    'RRethy/vim-illuminate',
+    config = function ()
+       vim.g.Illuminate_ftblacklist = {'NvimTree'}
+    end
+  }
+  --[[ startup page ]]
   use {
     'goolord/alpha-nvim',
     config = function() require('configs.alpha') end
   }
-  use {'kyazdani42/nvim-web-devicons'}
+  --[[ better indent line ]]
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('configs.indent-blankline')
     end
   }
+  --[[ zen mode ]]
   use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup { }
     end
   }
+  --[[ even more focus ]]
   use {
     "folke/twilight.nvim",
     config = function()
       require("twilight").setup { }
     end
   }
+  --[[ toggle transparent ]]
   use {
-    -- disable = true,
     'xiyaowong/nvim-transparent',
     config = function()
       require("transparent").setup({
@@ -61,41 +94,57 @@ return require('packer').startup({function(use)
       })
     end
   }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('configs.gitsigns')
+    end
+  }
+  --[[ preview color ]]
+  use {'norcalli/nvim-colorizer.lua', opt = true}
 
-  -- control on fly
+  -- | ------------------------------------------------------------------- | --
+  -- |                           control on fly                            | --
+  -- | ------------------------------------------------------------------- | --
+
+  --[[ jump anywhere you want ]]
+  use {
+    'phaazon/hop.nvim',
+    config = function() require('hop').setup() end
+  }
+  --[[ change surrounding in motion ]]
   use {'tpope/vim-surround'}
+  --[[ pair surrounding ]]
   use {
     'jiangmiao/auto-pairs',
     config = function()
-      vim.g.AutoPairsShortcutJump = '<S-tab>'
+      vim.g.AutoPairsShortcutJump = '<M-e>'
     end
   }
+  --[[ easy commnet ]]
   use {
     'preservim/nerdcommenter',
     config = function()
       require('configs.commenter')
     end
   }
+  --[[ easy align text ]]
   use {'junegunn/vim-easy-align'}
+  --[[ jump surrounding in motion ]]
   use {'wellle/targets.vim'}
+  --[[ moving through tmux ]]
   use {'christoomey/vim-tmux-navigator'}
+  --[[ multi cursor ]]
   use {'mg979/vim-visual-multi'}
-  use {
-    'phaazon/hop.nvim',
-    config = function() require('hop').setup() end
-  }
-  use {
-    'SirVer/ultisnips',
-    requires = {{'honza/vim-snippets', rtp = '.'}},
-    config = function()
-      vim.g.UltiSnipsExpandTrigger="<C-l>"
-      vim.g.UltiSnipsEditSplit="vertical"
-    end
-  }
+  --[[ key mapping previewer ]]
   use {
     "folke/which-key.nvim",
     config = function() require('configs/which-key') end
   }
+  --[[ easy escape ]]
   use {
     'max397574/better-escape.nvim',
     config = function()
@@ -104,22 +153,13 @@ return require('packer').startup({function(use)
       }
     end
   }
-  use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end,
-    config = function() require('configs/firenvim') end
-  }
-  --[[ use {
-     [   'luukvbaal/nnn.nvim',
-     [   config = function() require('nnn').setup() end
-     [ } ]]
+  --[[ file explorer ]]
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
+    requires = { 'kyazdani42/nvim-web-devicons', },
     config = function() require'configs.nvim-tree' end
   }
+  --[[ let your vim commands prompt wilder ]]
   use {
     'gelguy/wilder.nvim',
     event = "CmdlineEnter",
@@ -128,7 +168,9 @@ return require('packer').startup({function(use)
     end
   }
 
-  -- Telescope
+  -- | ------------------------------------------------------------------- | --
+  -- |                      Telescope is your friend                       | --
+  -- | ------------------------------------------------------------------- | --
   use {
     'nvim-telescope/telescope.nvim',
     config = function()
@@ -140,31 +182,32 @@ return require('packer').startup({function(use)
     },
   }
 
-  -- 3dParty: REQUIRED nnn lazygit
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end,
+    config = function() require('configs/firenvim') end
+  }
+
+  -- | ------------------------------------------------------------------- | --
+  -- |                            better coding                            | --
+  -- | ------------------------------------------------------------------- | --
+  --[[ snippets ]]
+  use {
+    'SirVer/ultisnips',
+    requires = {{'honza/vim-snippets', rtp = '.'}},
+    config = function()
+      vim.g.UltiSnipsExpandTrigger="<C-l>"
+      vim.g.UltiSnipsEditSplit="vertical"
+    end
+  }
+  --[[ better terminal in nvim ]]
   use {
     'akinsho/toggleterm.nvim',
     config = function()
       require('configs.toggleterm')
     end
   }
-
-  -- dap
-  --[[ use {
-    {'mfussenegger/nvim-dap'},
-    {
-      'leoluz/nvim-dap-go',
-      config = function()
-        require("dap-go").setup { }
-      end
-    }
-  } ]]
-
-  --[[ Go ]]
-  use {
-    'fatih/vim-go',
-    config = function() require("configs/vim-go") end
-  }
-
+  --[[ send code to terminal ]]
   use {
     'pappasam/nvim-repl',
     branch = 'main',
@@ -172,8 +215,22 @@ return require('packer').startup({function(use)
       require('configs.nvim-repl')
     end
   }
-
-  -- Javascript
+  --[[ dap ]] -- not much occasion to use
+  --[[ use {
+     [   {'mfussenegger/nvim-dap'},
+     [   {
+     [     'leoluz/nvim-dap-go',
+     [     config = function()
+     [       require("dap-go").setup { }
+     [     end
+     [   }
+     [ } ]]
+  --[[ Lang: Go ]]
+  use {
+    'fatih/vim-go',
+    config = function() require("configs/vim-go") end
+  }
+  --[[ Lang: Javascript ]]
   use {'mattn/emmet-vim'}
   use {
     'MaxMEllon/vim-jsx-pretty',
@@ -181,19 +238,14 @@ return require('packer').startup({function(use)
       vim.g.vim_jsx_pretty_colorful_config = 1
     end
   }
-
-  -- Markdown
+  --[[ Lang: Markdown ]]
   use {
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'},
     config = function() vim.g.mkdp_auto_close = 0 end
   }
-
-  -- Color
-  use {'norcalli/nvim-colorizer.lua', opt = true}
-
-  -- lsp
+  --[[ language sever protocol ]]
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
@@ -201,15 +253,17 @@ return require('packer').startup({function(use)
       require'configs.lspconfig'
     end
   }
+  --[[ lsp installer ]]
   use { 'williamboman/nvim-lsp-installer', }
+  --[[ lsp signature peeker ]]
   use { 'ray-x/lsp_signature.nvim', event = 'BufRead' }
+  --[[ better UI for rename variables ]]
   use {
     'filipdutescu/renamer.nvim',
     branch = 'master',
     config = function () require('renamer').setup() end
   }
-
-  -- cmp
+  --[[ lsp cmp ]]
   use {
     "hrsh7th/nvim-cmp",
     requires = {
@@ -225,24 +279,7 @@ return require('packer').startup({function(use)
       require'configs.cmp'
     end,
   }
-
-  -- treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = function()
-      require'configs.treesitter'
-    end
-  }
-  use {
-    'p00f/nvim-ts-rainbow',
-    requires = "nvim-treesitter/nvim-treesitter",
-    event = "BufRead",
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    requires = "nvim-treesitter/nvim-treesitter",
-  }
+  --[[ lsp outline ]]
   use {
     'simrat39/symbols-outline.nvim',
     cmd = {
@@ -254,17 +291,39 @@ return require('packer').startup({function(use)
       require'configs.outline'
     end
   }
+  --[[ treesitter ]]
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require'configs.treesitter'
+    end
+  }
+  --[[ better hightlight for parenthesis base on treesitter ]]
+  use {
+    'p00f/nvim-ts-rainbow',
+    requires = "nvim-treesitter/nvim-treesitter",
+    event = "BufRead",
+  }
+  --[[ treesitter as an object ]]
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
 
-  -- self
+  -- | ------------------------------------------------------------------- | --
+  -- |                              personal                               | --
+  -- | ------------------------------------------------------------------- | --
   use {'wakatime/vim-wakatime'}
 
+  --[[ auto packer sync ]]
   if packer_bootstrap then
     require('packer').sync()
   end
 end, config = {
   display = {
     open_fn = function()
-      return require('packer.util').float({ border = 'single' })
+      return require('packer.util').float({ border = 'single' }) -- packer floating
     end
   }
 }})
