@@ -298,8 +298,8 @@ return require('packer').startup({function(use)
   --[[ better hightlight for parenthesis base on treesitter ]]
   use {
     'p00f/nvim-ts-rainbow',
-    requires = "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
+    requires = "nvim-treesitter/nvim-treesitter",
   }
   --[[ treesitter as an object ]]
   use {
