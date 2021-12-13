@@ -1,30 +1,29 @@
 local g = vim.g
 
-g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_quit_on_open = 1
 
 g.nvim_tree_icons = {
-  ['git']= {
-    ['unstaged']= "",
-    ['staged']= "",
-    ['unmerged']= "",
-    ['renamed']= "➜",
-    ['untracked']= "",
-    ['deleted']= "",
-    ['ignored']= "﯏"
+  ['git']            = {
+    ['unstaged']     = "",
+    ['staged']       = "",
+    ['unmerged']     = "",
+    ['renamed']      = "➜",
+    ['untracked']    = "",
+    ['deleted']      = "",
+    ['ignored']      = "﯏"
   },
-  ['folder']= {
-    ['arrow_open']= "",
-    ['arrow_closed']= "",
-    ['default']= "",
-    ['open']= "",
-    ['empty']= "",
-    ['empty_open']= "",
-    ['symlink']= "",
-    ['symlink_open']= "",
-  }
+  ['folder']         = {
+    ['arrow_open']   = "",
+    ['arrow_closed'] = "",
+    ['default']      = "",
+    ['open']         = "",
+    ['empty']        = "",
+    ['empty_open']   = "",
+    ['symlink']      = "",
+    ['symlink_open'] = "",
+  },
 }
 
 require('nvim-tree').setup {
