@@ -13,7 +13,7 @@ local header = {
   },
   opts = {
     position = "center",
-    hl = "Comment"
+    hl = "Type"
   }
 }
 
