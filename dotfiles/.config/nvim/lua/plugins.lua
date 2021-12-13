@@ -1,10 +1,7 @@
 --------------------------------------------------------------------------------
 --                                  Helper                                    --
 --------------------------------------------------------------------------------
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -249,12 +246,11 @@ return require('packer').startup({function(use)
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
+    requires = 'williamboman/nvim-lsp-installer',
     config = function()
       require'configs.lspconfig'
     end
   }
-  --[[ lsp installer ]]
-  use { 'williamboman/nvim-lsp-installer', }
   --[[ lsp signature peeker ]]
   use { 'ray-x/lsp_signature.nvim', event = 'BufRead' }
   --[[ better UI for rename variables ]]

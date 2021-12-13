@@ -1,4 +1,5 @@
-local present, lsp = pcall(require, "lspconfig")
+-- nvim-lsp-installer
+local present, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not present then
   return
 end
@@ -37,15 +38,13 @@ local on_attach = function(client,bufnr)
   })
 end
 
--- nvim-lsp-installer
-local lsp_installer = require("nvim-lsp-installer")
-
 local servers = {
   "pyright",
   "gopls",
   "tsserver",
   "bashls",
-  "clangd"
+  "clangd",
+  -- "sumneko_lua"
 }
 
 for _, name in pairs(servers) do
