@@ -1,41 +1,3 @@
-################################################################################
-#                              Zsh Basic setting                               #
-################################################################################
-if [ -f $HOME/.zplug/init.zsh ]; then
-  source $HOME/.zplug/init.zsh
-  zplug "plugins/git",                       from:oh-my-zsh
-  zplug "plugins/virtualenv",                from:oh-my-zsh
-  zplug "plugins/docker",                    from:oh-my-zsh
-  zplug "plugins/vi-mode",                   from:oh-my-zsh
-  zplug "romkatv/powerlevel10k",             as:theme, depth:1
-  zplug "zpm-zsh/ls",                        as:plugin
-  zplug "zsh-users/zsh-autosuggestions",     as:plugin
-  zplug "zsh-users/zsh-syntax-highlighting", as:plugin
-  zplug "zsh-users/zsh-completions",         as:plugin
-  zplug "Aloxaf/fzf-tab",                    as:plugin
-
-  # Install plugins if there are plugins that have not been installed
-  if ! zplug check --verbose; then
-      printf "Install? [y/N]: "
-      if read -q; then
-          echo; zplug install
-      fi
-  fi
-  # Then, source plugins and add commands to $PATH
-  zplug load #--verbose
-else
-  echo "zplug not installed, so no plugins available"
-fi
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
-KEYTIMEOUT=1
-
-SAVEHIST=1000  # Save most-recent 1000 lines
-HISTFILE=$HOME/.zsh_history
-
-macchina
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -43,6 +5,34 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+################################################################################
+#                              Zsh Basic setting                               #
+################################################################################
+if [ -f $HOME/.zplug/init.zsh ]; then
+  source $HOME/.zplug/init.zsh
+  zplug "plugins/vi-mode",                   from:oh-my-zsh
+  zplug "romkatv/powerlevel10k",             as:theme, depth:1
+  zplug "zsh-users/zsh-autosuggestions",     as:plugin
+  zplug "zsh-users/zsh-syntax-highlighting", as:plugin
+  zplug "zsh-users/zsh-completions",         as:plugin
+  zplug "Aloxaf/fzf-tab",                    as:plugin
+
+  if ! zplug check; then
+    zplug install
+  fi
+  zplug load #--verbose
+else
+  echo "zplug not installed, so no plugins available"
+fi
+
+KEYTIMEOUT=1
+
+SAVEHIST=1000  # Save most-recent 1000 lines
+HISTFILE=$HOME/.zsh_history
+
+macchina
+
 ################################################################################
 #                                plugin setting                                #
 ################################################################################
@@ -58,11 +48,8 @@ if [[ $(command -v go) ]]; then
   export PATH=$PATH:$(go env GOPATH)/bin
   export GOPATH=$GOPATH:$HOME/gocode
 fi
-if [ -d $HOME/.npm-global ]; then
-  export PATH=$HOME/.npm-global/bin:$PATH
-fi
+[ -d $HOME/.npm-global ] && export PATH=$HOME/.npm-global/bin:$PATH
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
-# macos coreutils
 [ -d /usr/local/opt/coreutils/libexec/gnubin/ ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 export LANG=en_US.UTF-8
