@@ -15,19 +15,9 @@ local on_attach = function(client,bufnr)
   buf_set_keymap('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua require("renamer").rename()<CR>', opts)
-  buf_set_keymap('n', '<space>l', '<cmd>Telescope diagnostics<CR>', opts)
+  buf_set_keymap('n', '<space>l', '<cmd>lua require("telescope.builtin").diagnostics(require("telescope.themes").get_dropdown({}))<CR>', opts)
 
-  -- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  -- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- buf_set_keymap('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  -- buf_set_keymap('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  -- buf_set_keymap('n', '<space>l', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,scope="line",header="",source="if_many"})]]
+  -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{border = {{"╭",},{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,source="if_many"})]]
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({
     bind = true,
@@ -47,6 +37,7 @@ local servers = {
   -- "sumneko_lua"
 }
 
+--[[ auto install required lsp server ]]
 for _, name in pairs(servers) do
   local server_available, server = lsp_installer.get_server(name)
   if server_available then
@@ -62,23 +53,29 @@ for _, name in pairs(servers) do
   end
 end
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = {
+      spacing = 4,
+      prefix = ''
+    }
+  }
+)
 
--- lspconfig
+vim.api.nvim_command("hi DiagnosticError guifg=#db4b4b")
+vim.api.nvim_command("hi DiagnosticWarn  guifg=#e0af68")
+vim.api.nvim_command("hi DiagnosticInfo  guifg=#0db9d7")
+vim.api.nvim_command("hi DiagnosticHint  guifg=#10B981")
 
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  float = {
-    show_header = false,
-    source = "if_many",
-  },
-  update_in_insert = false,
-  severity_sort = true,
-})
+vim.api.nvim_command("hi DiagnosticVirtualTextError guifg=#db4b4b")
+vim.api.nvim_command("hi DiagnosticVirtualTextWarn  guifg=#e0af68")
+vim.api.nvim_command("hi DiagnosticVirtualTextInfo  guifg=#0db9d7")
+vim.api.nvim_command("hi DiagnosticVirtualTextHint  guifg=#10B981")
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  local hl = "Diagnostic" .. type
+  local sign = "DiagnosticSign" .. type
+  vim.fn.sign_define(sign, { text = icon, texthl = hl, numhl = hl })
 end
