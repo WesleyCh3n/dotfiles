@@ -32,3 +32,5 @@ symbols = {
   Operator      = {icon = "", hl    = "TSOperator"},
   TypeParameter = {icon = "𝙏", hl    = "TSParameter"}
 }
+
+vim.cmd("hi FocusedSymbol ctermbg=172 ctermfg=231 guibg=orange guifg=grey")
