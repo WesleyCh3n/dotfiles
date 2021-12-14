@@ -6,7 +6,7 @@ require'lualine'.setup {
     icons_enabled = true,
     theme = my_theme,
     section_separators = { left = '', right = ''},
-    component_separators = { left = '', right = ''},
+    component_separators = { left = '|', right = '|'},
     disabled_filetypes = {"NvimTree", "Outline", "toggleterm"},
   },
   sections = {

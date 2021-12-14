@@ -24,7 +24,7 @@ local kind_icons = {
   Folder        = "",
   EnumMember    = "",
   Constant      = "",
-  Struct        = "",
+  Struct        = "פּ",
   Event         = "",
   Operator      = "",
   TypeParameter = "𝙏"
@@ -143,7 +143,7 @@ cmp.setup({
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         buffer = "[﬘]",
-        nvim_lsp = "[]",
+        nvim_lsp = "[]",
         ultisnips = "[]",
       })[entry.source.name]
       return vim_item
