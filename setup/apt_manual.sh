@@ -27,27 +27,22 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 # git clone https://github.com/zplug/zplug $HOME/.zplug
 
 ################################################################################
-#                         install nodejs for coc.nvim                          #
+#                              install macchina                                #
 ################################################################################
-print_info "install nodejs"
-curl -sL install-node.now.sh/lts | sudo bash
-
-################################################################################
-#                                install pfetch                                #
-################################################################################
-print_info "install pfetch"
-curl -fLo $HOME/.local/bin/pfetch --create-dir https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch
-chmod +x $HOME/.local/bin/pfetch
+print_info "install macchina"
+macchina_version=5.0.5
+curl -fLo $HOME/.local/bin/macchina --create-dir https://github.com/Macchina-CLI/macchina/releases/download/v$macchina_version/macchina-linux-x86_64
+chmod +x $HOME/.local/bin/macchina
 
 ################################################################################
 #                                 install nnn                                  #
 ################################################################################
 print_info "install nnn"
-VERSION="4.4"
-curl -fLo nnn-nerd-static-${VERSION}.x86_64.tar.gz https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn-nerd-static-${VERSION}.x86_64.tar.gz
-tar xf nnn-nerd-static-${VERSION}.x86_64.tar.gz
+nnn_version="4.4"
+curl -fLo nnn-nerd-static.x86_64.tar.gz https://github.com/jarun/nnn/releases/download/v${VERSION}/nnn-nerd-static-${nnn_version}.x86_64.tar.gz
+tar xf nnn-nerd-static.x86_64.tar.gz
 mv nnn-nerd-static $HOME/.local/bin/nnn
-rm -rf nnn-nerd-static-${VERSION}.x86_64.tar.gz
+rm -rf nnn-nerd-static.x86_64.tar.gz
 
 ################################################################################
 #                               install lazygit                                #
@@ -61,8 +56,8 @@ rm -rf lazygit.tar.gz
 ################################################################################
 #                                 install btop                                 #
 ################################################################################
-BTOP_VERSION=1.1.2
-curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$BTOP_VERSION/btop-$BTOP_VERSION-x86_64-linux-musl.tbz
+btop_version=1.1.2
+curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$BTOP_VERSION/btop-$btop_version-x86_64-linux-musl.tbz
 tar xf btop.tbz
 make install PREFIX=$HOME/.local
 

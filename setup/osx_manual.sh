@@ -26,17 +26,12 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 # git clone https://github.com/zplug/zplug $HOME/.zplug
 
 ################################################################################
-#                         install nodejs for coc.nvim                          #
+#                              install macchina                                #
 ################################################################################
-print_info "install nodejs"
-curl -sL install-node.now.sh/lts | sudo bash
-
-################################################################################
-#                                install pfetch                                #
-################################################################################
-print_info "install pfetch"
-curl -fLo $HOME/.local/bin/pfetch --create-dir https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch
-chmod +x $HOME/.local/bin/pfetch
+print_info "install macchina"
+macchina_version=5.0.5
+curl -fLo $HOME/.local/bin/macchina --create-dir https://github.com/Macchina-CLI/macchina/releases/download/v$macchina_version/macchina-macos-x86_64
+chmod +x $HOME/.local/bin/macchina
 
 ################################################################################
 #                                 install nnn                                  #
@@ -51,7 +46,8 @@ cd .. && rm -rf nnn
 #                             install logo-ls                                  #
 ################################################################################
 print_info "install logo-ls"
-curl -fLo logo-ls_Darwin_x86_64.tar.gz https://github.com/Yash-Handa/logo-ls/releases/download/v1.3.7/logo-ls_Darwin_x86_64.tar.gz
+logo_ls_version=1.3.7
+curl -fLo logo-ls_Darwin_x86_64.tar.gz https://github.com/Yash-Handa/logo-ls/releases/download/v$logo_ls_version/logo-ls_Darwin_x86_64.tar.gz
 tar xf logo-ls_Darwin_x86_64.tar.gz
 cd logo-ls_Darwin_x86_64 && cp logo-ls ~/.local/bin/
 rm -rf logo-ls_Darwin_x86_64
@@ -59,8 +55,8 @@ rm -rf logo-ls_Darwin_x86_64
 ################################################################################
 #                                 install btop                                 #
 ################################################################################
-BTOP_VERSION=1.1.2
-curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$BTOP_VERSION/btop-$BTOP_VERSION-x86_64-macos-monterey.tbz
+btop_version=1.1.2
+curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$btop_version/btop-$btop_version-x86_64-macos-monterey.tbz
 tar xf btop.tbz
 make install PREFIX=$HOME/.local
 

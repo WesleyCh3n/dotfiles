@@ -1,0 +1,7 @@
+long_uptime = true
+long_shell = true
+long_kernel = true
+current_shell = true
+theme = "mytheme"
+
+show = ["OperatingSystem", "Kernel", "Uptime", "Packages", "Memory"]
