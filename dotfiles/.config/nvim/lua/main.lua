@@ -42,6 +42,7 @@ opt.updatetime = 300
 opt.shortmess = 'ac'
 opt.signcolumn = 'yes'
 opt.showtabline = 1
+opt.undofile = true
 
 vim.cmd('silent! colorscheme gruvbox-material')
 vim.g.gruvbox_material_background             = 'medium'
