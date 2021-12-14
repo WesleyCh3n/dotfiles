@@ -73,7 +73,7 @@ map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
 map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})
 
 -- remove trailing white space
-map('n', '<space>fw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
+map('n', '<space>rw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
 
 -- move line up/down in visual
 map('v', 'K', ':m \'<-2<CR>gv=gv')
@@ -124,6 +124,9 @@ function _G.tlscp_opts(cwd)
     }}
 end
 
+map('n', '<space>F',
+  ':lua require("telescope.builtin").builtin({prompt_prefix = " "})<cr>'
+)
 map('n', '<space>ff',
   ':lua require("telescope.builtin").find_files(tlscp_opts(""))<cr>'
 )
