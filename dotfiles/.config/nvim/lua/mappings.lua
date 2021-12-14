@@ -200,6 +200,6 @@ augroup WESLEYCH3N
   au! FileType which_key
   au FileType which_key set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-  au BufWinEnter * silent! TSEnableAll rainbow
+  au BufWinEnter * silent! TSBufEnable rainbow
 augroup END
 ]])
