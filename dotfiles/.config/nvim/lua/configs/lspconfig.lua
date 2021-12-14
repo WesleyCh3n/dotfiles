@@ -74,7 +74,8 @@ vim.api.nvim_command("hi DiagnosticVirtualTextWarn  guifg=#e0af68")
 vim.api.nvim_command("hi DiagnosticVirtualTextInfo  guifg=#0db9d7")
 vim.api.nvim_command("hi DiagnosticVirtualTextHint  guifg=#10B981")
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+-- local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "Diagnostic" .. type
   local sign = "DiagnosticSign" .. type
