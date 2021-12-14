@@ -97,7 +97,11 @@ map('i', '?', '?<c-g>u')
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
 -- symbols-outline.nvim
-map('n', '<leader>o', ':SymbolsOutline<CR>')
+map('n', '<space>o', ':SymbolsOutline<CR>')
+
+-- undotree
+map('n', '<space>u', ':UndotreeToggle<CR>')
+
 -- nvim-transparent
 map('n', '<space>t', ':TransparentToggle<CR>')
 
@@ -139,7 +143,7 @@ map('n', '<space>fa',
 map('n', '<space>e', ':NvimTreeToggle<CR>')
 
 -- gitsigns.nvim
-map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+map('n', '<leader>gp', '<cmd>Gitsigns preview_hunk<CR>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})

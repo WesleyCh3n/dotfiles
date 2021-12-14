@@ -1,5 +1,4 @@
 
-require('telescope').load_extension('repo')
 local actions = require("telescope.actions")
 require('telescope').setup{
   defaults = {

@@ -64,7 +64,11 @@ return require('packer').startup({function(use)
   use {
     "folke/zen-mode.nvim",
     config = function()
-      require("zen-mode").setup { }
+      require("zen-mode").setup {
+        plugins = {
+          twilight = { enabled = false },
+        },
+      }
     end
   }
   --[[ even more focus ]]
@@ -164,6 +168,37 @@ return require('packer').startup({function(use)
       vim.cmd [[ source $HOME/.config/nvim/lua/configs/wilder.vim ]]
     end
   }
+  --[[ undotree ]]
+  use {
+    'mbbill/undotree',
+    cmd = "UndotreeToggle",
+    config = function ()
+      vim.g.undotree_ShortIndicators = 1
+      vim.g.undotree_TreeNodeShape = "●"
+      vim.g.undotree_WindowLayout = 1
+      vim.g.undotree_HelpLine = 0
+    end
+  }
+  use {
+    'tversteeg/registers.nvim',
+    event = 'BufEnter',
+    config = function()
+      vim.g.registers_show_empty_registers = 0
+      vim.g.registers_hide_only_whitespace = 1
+      vim.g.registers_window_border = "rounded"
+      vim.g.registers_window_max_width = 50
+      vim.g.registers_window_min_height = 3
+    end,
+  }
+  use {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- easing_function = nil,        -- Default easing function
+      })
+    end,
+  }
 
   -- | ------------------------------------------------------------------- | --
   -- |                      Telescope is your friend                       | --
@@ -175,7 +210,6 @@ return require('packer').startup({function(use)
     end,
     requires = {
       'nvim-lua/plenary.nvim',
-      'cljoly/telescope-repo.nvim',
     },
   }
 
@@ -319,7 +353,7 @@ return require('packer').startup({function(use)
 end, config = {
   display = {
     open_fn = function()
-      return require('packer.util').float({ border = 'single' }) -- packer floating
+      return require('packer.util').float({ border = 'rounded' }) -- packer floating
     end
   }
 }})

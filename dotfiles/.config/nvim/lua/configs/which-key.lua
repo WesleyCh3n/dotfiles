@@ -55,6 +55,7 @@ wk.register({
     w = ' rm trailing white',
   },
   l = ' diagnostics list',
+  o = ' outline',
   p = ' md preview',
   P = ' toggle paste',
   q = ' quit',
@@ -66,8 +67,10 @@ wk.register({
   },
   s = { name = 'which_key_ignore' },
   t = ' toggle bg',
+  u = ' undo tree',
   w = ' write',
   z = ' zen',
+  Z = ' twilight',
 }, { prefix = "<space>" })
 
 wk.register({
@@ -83,7 +86,6 @@ wk.register({
   f = ' hopWord',
   l = ' hopLineStart',
   n = ' no Highlight',
-  o = ' outline',
   r = ' toggle repl',
   s = '﯒ find replace',
   w = ' send repl',
@@ -92,6 +94,10 @@ wk.register({
     name = ' peek def',
     f = ' def whole',
     F = ' def single',
+  },
+  g = {
+    name = ' gitsgns',
+    p = ' preview hunk'
   },
 }, { prefix = "<leader>" })
 
