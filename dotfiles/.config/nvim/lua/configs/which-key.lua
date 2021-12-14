@@ -91,7 +91,8 @@ wk.register({
   w = ' send repl',
   c = { name = '# comment' },
   d = {
-    name = ' peek def',
+    name = ' peek',
+    d = ' diagnostics',
     f = ' def whole',
     F = ' def single',
   },

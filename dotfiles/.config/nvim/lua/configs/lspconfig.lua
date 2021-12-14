@@ -15,9 +15,11 @@ local on_attach = function(client,bufnr)
   buf_set_keymap('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua require("renamer").rename()<CR>', opts)
-  buf_set_keymap('n', '<space>l', '<cmd>lua require("telescope.builtin").diagnostics(require("telescope.themes").get_dropdown({}))<CR>', opts)
+  buf_set_keymap('n', '<space>fa', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', opts)
+  buf_set_keymap('n', '<space>l', '<cmd>lua require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy({prompt_prefix = " ", path_display = { tail=1 }, layout_config = { height = 0.3, preview_width=0.4 }}))<CR>', opts)
+  buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float(nil,{border = {{"╭",},{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,source="if_many"})<cr>', opts)
 
-  -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{border = {{"╭",},{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,source="if_many"})]]
+  -- vim.cmd [[autocmd CursorHold,CursorHoldI * ]]
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({
     bind = true,

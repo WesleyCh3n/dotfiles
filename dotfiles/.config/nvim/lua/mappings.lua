@@ -113,11 +113,15 @@ map('n', '<space>Z', ':Twilight<cr>')
 
 -- Telescope
 function _G.tlscp_opts(cwd)
-  return {theme = "ivy",
-          hidden = true,
-          cwd = cwd,
-          prompt_prefix = " ",
-          layout_config = { preview_width=0.6 }}
+  return {
+    theme = "ivy",
+    hidden = true,
+    cwd = cwd,
+    prompt_prefix = " ",
+    layout_config = {
+      height = 0.4,
+      preview_width=0.6
+    }}
 end
 
 map('n', '<space>ff',
@@ -134,9 +138,6 @@ map('n', '<space>fd',
 )
 map('n', '<space>fb',
   ':lua require("telescope.builtin").buffers()<cr>'
-)
-map('n', '<space>fa',
-  ':lua require("telescope.builtin").lsp_code_actions()<cr>'
 )
 
 --- File Explorer
