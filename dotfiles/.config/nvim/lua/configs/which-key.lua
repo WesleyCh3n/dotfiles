@@ -101,6 +101,8 @@ wk.register({
     name = ' gitsgns',
     p = ' preview hunk'
   },
+  H = ' tab move left',
+  L = ' tab move right',
 }, { prefix = "<leader>" })
 
 vim.cmd[[ hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK ]]

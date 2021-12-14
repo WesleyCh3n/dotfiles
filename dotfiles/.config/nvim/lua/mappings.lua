@@ -46,18 +46,18 @@ end
 for _,num in ipairs({1,2,3,4,5,6,7,8,9}) do
   map('n', '<space>'..num, '<cmd>BufferLineGoToBuffer '..num..'<cr>')
 end
+-- Move tab
+map('n', '<leader>L', ':BufferLineMoveNext<cr>')
+map('n', '<leader>H', ':BufferLineMovePrev<cr>')
 
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
--- Move tab
--- map('n', '<leader>>', ':tabmove +<cr>')
--- map('n', '<leader><', ':tabmove -<cr>')
 
 -- retab
 map('n', '<space>rt', ':retab<cr>')
 
 -- reindent
-map('n', '<space>ri', 'gg=G<cr><C-o><C-o>')
+map('n', '<space>ri', 'gg=G<C-o>')
 
 -- move left/right
 -- map('n', '<right>', 'zL')
@@ -192,7 +192,7 @@ augroup myaucmd
   au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype python nnoremap gf [<C-D>
   au filetype html let b:AutoPairs = {"<": ">"}
-  au filetype go,lua,html,javascript,sh,zsh,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  " au filetype go,lua,html,javascript,sh,zsh,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au filetype markdown setlocal wrap spell
 augroup END
 augroup WESLEYCH3N
