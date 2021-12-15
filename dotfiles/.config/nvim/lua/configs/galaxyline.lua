@@ -14,27 +14,6 @@ local function insert_right(element)
   table.insert(gls.right, element)
 end
 
-gl.short_line_list = {
-  'qf',
-  'dbui',
-  '',
-  'DiffviewFileHistoryPanel',
-  'DiffviewFiles',
-  'alpha',
-  'man',
-  'term',
-  'Packer',
-  'NvimTree',
-  'Help',
-  'diff',
-  'undotree',
-  'netrw',
-  'plug',
-  'Outline',
-  'quickfix',
-  'toggleterm'
-}
-
 local colors = {
   sec_a_bg   = '#a89984',
   sec_b_bg   = '#504945',
@@ -107,9 +86,9 @@ insert_left {
         s      = colors.orange,
         S      = colors.orange,
         [''] = colors.orange,
-        ic     = colors.yellow,
         R      = colors.purple,
         Rv     = colors.purple,
+        ic     = colors.yellow,
         cv     = colors.red,
         ce     = colors.red,
         r      = colors.cyan,
@@ -162,7 +141,7 @@ insert_left {
   DiffAdd = {
     provider = "DiffAdd",
     icon = " +",
-    highlight = {'#8FBCBB', colors.sec_b_bg},
+    highlight = {colors.green, colors.sec_b_bg},
   },
 }
 
@@ -170,7 +149,7 @@ insert_left {
   DiffModified = {
     provider = "DiffModified",
     icon = " ~",
-    highlight = {'#8FBCBB', colors.sec_b_bg},
+    highlight = {colors.blue, colors.sec_b_bg},
   },
 }
 
@@ -178,7 +157,7 @@ insert_left {
   DiffRemove = {
     provider = "DiffRemove",
     icon = " -",
-    highlight = {'#8FBCBB', colors.sec_b_bg},
+    highlight = {colors.red, colors.sec_b_bg},
     separator = ' ',
     separator_highlight = {colors.sec_b_bg, colors.sec_c_bg, colors.sec_c_bg},
   },
@@ -207,7 +186,7 @@ insert_left{
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
-    highlight = {'#e06c75', colors.sec_c_bg},
+    highlight = {'#db4b4b', colors.sec_c_bg},
   },
 }
 
@@ -215,7 +194,7 @@ insert_left{
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
-    highlight = {'#e5c07b', colors.sec_c_bg},
+    highlight = {'#e0af68', colors.sec_c_bg},
   },
 }
 
@@ -223,7 +202,7 @@ insert_left{
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
-    highlight = {'#83a598', colors.sec_c_bg},
+    highlight = {'#10B981', colors.sec_c_bg},
   },
 }
 
@@ -231,7 +210,7 @@ insert_left{
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
-    highlight = {'#83a598', colors.sec_c_bg},
+    highlight = {'#0db9d7', colors.sec_c_bg},
   },
 }
 
@@ -275,7 +254,7 @@ insert_right{
 insert_right{
   LineInfo = {
     provider = 'LineColumn',
-    icon = "﬿",
+    icon = "﬿ ",
     highlight = {colors.bg, colors.sec_a_bg, 'bold'},
     separator = "",
     separator_highlight = {colors.sec_a_bg, colors.sec_b_bg},
@@ -286,6 +265,27 @@ insert_right{
     provider = function() return '' end,
     highlight = {colors.sec_a_bg, 'NONE', 'NONE'},
   }
+}
+
+gl.short_line_list = {
+  'qf',
+  'dbui',
+  '',
+  'DiffviewFileHistoryPanel',
+  'DiffviewFiles',
+  'alpha',
+  'man',
+  'term',
+  'Packer',
+  'NvimTree',
+  'Help',
+  'diff',
+  'undotree',
+  'netrw',
+  'plug',
+  'Outline',
+  'quickfix',
+  'toggleterm'
 }
 
 require ('galaxyline').section.short_line_left = {
