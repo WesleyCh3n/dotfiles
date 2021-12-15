@@ -1,6 +1,4 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]];
 then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -9,21 +7,17 @@ fi
 ################################################################################
 #                              Zsh Basic setting                               #
 ################################################################################
-if [ -f $HOME/.zplug/init.zsh ]; then
-  source $HOME/.zplug/init.zsh
-  zplug "plugins/vi-mode",                   from:oh-my-zsh
-  zplug "romkatv/powerlevel10k",             as:theme, depth:1
-  zplug "zsh-users/zsh-autosuggestions",     as:plugin
-  zplug "zsh-users/zsh-syntax-highlighting", as:plugin
-  zplug "zsh-users/zsh-completions",         as:plugin
-  zplug "Aloxaf/fzf-tab",                    as:plugin
 
-  if ! zplug check; then
-    zplug install
-  fi
-  zplug load #--verbose
-else
-  echo "zplug not installed, so no plugins available"
+ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
+autoload -Uz compinit
+compinit
+source "${HOME}/.zgen/zgen.zsh"
+if ! zgen saved; then
+  zgen load romkatv/powerlevel10k powerlevel10k
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load Aloxaf/fzf-tab
+  zgen save
 fi
 
 KEYTIMEOUT=1
@@ -31,11 +25,20 @@ KEYTIMEOUT=1
 SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=$HOME/.zsh_history
 
-macchina
-
 ################################################################################
 #                                plugin setting                                #
 ################################################################################
+# fzf
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d"
+# fzf-tab
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# zsh-autosuggestions
 bindkey '^[[Z' autosuggest-accept
 
 ################################################################################
@@ -52,8 +55,16 @@ fi
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
 [ -d /usr/local/opt/coreutils/libexec/gnubin/ ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g powerlevel9k_instant_prompt=quiet
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 ################################################################################
 #                                    alias                                     #
@@ -71,17 +82,13 @@ alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 ################################################################################
 #                                 nnn setting                                  #
 ################################################################################
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 export NNN_BMS="\
 g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
 c:$HOME/.config"
-export NNN_PLUG='x:!chmod +x $nnn'
-
-BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
+export NNN_PLUG='\
+x:!chmod +x $nnn'
 
 [ -f $HOME/.config/wsl/nnn_bms.sh ] && source $HOME/.config/wsl/nnn_bms.sh
 
@@ -101,12 +108,4 @@ n () {
 ################################################################################
 #                                     p10k                                     #
 ################################################################################
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-typeset -g powerlevel9k_instant_prompt=quiet
-
-export FZF_DEFAULT_OPTS='--height 40% --border'
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+macchina

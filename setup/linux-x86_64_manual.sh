@@ -20,11 +20,10 @@ print_info "change default shell to zsh"
 chsh -s "$(which zsh)"
 
 ################################################################################
-#                            install zplug for zsh                             #
+#                           install zgen for zsh                               #
 ################################################################################
-print_info "install zplug"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-# git clone https://github.com/zplug/zplug $HOME/.zplug
+print_info "install zgen"
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 
 ################################################################################
 #                              install macchina                                #
