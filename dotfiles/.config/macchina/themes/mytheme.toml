@@ -1,10 +1,10 @@
 # Lithium
 
-spacing         = 1
+spacing         = 2
 padding         = 1
-hide_ascii      = false
+hide_ascii      = true
 prefer_small_ascii = true
-separator       = "->"
+separator       = ""
 key_color       = "Cyan"
 separator_color = "Yellow"
 
@@ -21,12 +21,12 @@ visible         = true
 hide_delimiters = true
 
 [box]
-title           = " "
-border          = "thick"
+title           = " WesleyCh3n's Shell "
+border          = "round"
 visible         = false
 
 [box.inner_margin]
-x               = 2
+x               = 0
 y               = 0
 
 [custom_ascii]
