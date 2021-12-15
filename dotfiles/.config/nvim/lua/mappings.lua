@@ -143,6 +143,9 @@ map('n', '<space>fd',
 map('n', '<space>fb',
   ':lua require("telescope.builtin").buffers()<cr>'
 )
+map('n', '<space>ft',
+  ':TodoTelescope<cr>'
+)
 
 --- File Explorer
 map('n', '<space>e', ':NvimTreeToggle<CR>')

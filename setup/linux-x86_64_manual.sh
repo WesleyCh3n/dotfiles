@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Purpose:
+# TODO: refactoring download script
 
 # Import utils function
 FILE=utils.sh

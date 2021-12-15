@@ -53,6 +53,7 @@ wk.register({
     d = ' dotfile',
     f = ' find files',
     g = ' GitHub',
+    t = ' Todo'
   },
   l = ' diagnostics list',
   o = ' outline',
