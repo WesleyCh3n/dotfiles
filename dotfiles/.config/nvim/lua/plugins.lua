@@ -27,11 +27,14 @@ return require('packer').startup({function(use)
   }
   --[[ statusline ]]
   use {
-    'hoob3rt/lualine.nvim',
-    config = function ()
-      require('configs.lualine')
-    end
+  'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    config = function() require'configs.galaxyline' end,
+    -- some optional icons
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+
   --[[ tabline ]]
   use {
     'akinsho/bufferline.nvim',
