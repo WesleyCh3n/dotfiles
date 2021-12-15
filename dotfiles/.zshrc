@@ -33,6 +33,7 @@ export FZF_DEFAULT_OPTS='--height 40% --border'
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # fzf-tab
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
@@ -54,11 +55,6 @@ fi
 [ -d $HOME/.npm-global ] && export PATH=$HOME/.npm-global/bin:$PATH
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
 [ -d /usr/local/opt/coreutils/libexec/gnubin/ ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-typeset -g powerlevel9k_instant_prompt=quiet
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -107,4 +103,7 @@ n () {
 ################################################################################
 #                                     p10k                                     #
 ################################################################################
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g powerlevel9k_instant_prompt=quiet
+
 macchina
