@@ -71,6 +71,7 @@ map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
 
 -- escape terminal
 map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})
+map('t', '<C-k>', [[<C-\><C-n><C-W>k]], {silent = false})
 
 -- remove trailing white space
 map('n', '<space>rw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })

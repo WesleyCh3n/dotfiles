@@ -268,9 +268,9 @@ insert_right{
 }
 
 gl.short_line_list = {
+  '',
   'qf',
   'dbui',
-  '',
   'DiffviewFileHistoryPanel',
   'DiffviewFiles',
   'alpha',

@@ -21,7 +21,7 @@ ts.setup {
     enable = true,
     use_languagetree = true,
     additional_vim_regex_highlighting = false,
-    disable = { "latex" },
+    disable = { "latex", "bash" },
   },
   autopairs = {
     enable = true

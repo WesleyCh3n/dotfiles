@@ -223,6 +223,7 @@ return require('packer').startup({function(use)
 
   use {
     'glacambre/firenvim',
+    disable = true,
     run = function() vim.fn['firenvim#install'](0) end,
     config = function() require('configs/firenvim') end
   }

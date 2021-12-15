@@ -47,7 +47,8 @@ rm -rf nnn-nerd-static.x86_64.tar.gz
 #                               install lazygit                                #
 ################################################################################
 print_info "install lazygit"
-curl -fLo lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
+lazygit_version=0.29
+curl -fLo lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_version}/lazygit_${lazygit_version}_Linux_x86_64.tar.gz
 tar xf lazygit.tar.gz
 mv lazygit $HOME/.local/bin/
 rm -rf lazygit.tar.gz
@@ -56,7 +57,7 @@ rm -rf lazygit.tar.gz
 #                                 install btop                                 #
 ################################################################################
 btop_version=1.1.2
-curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$BTOP_VERSION/btop-$btop_version-x86_64-linux-musl.tbz
+curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v${btop_version}/btop-${btop_version}-x86_64-linux-musl.tbz
 tar xf btop.tbz
 make install PREFIX=$HOME/.local
 
