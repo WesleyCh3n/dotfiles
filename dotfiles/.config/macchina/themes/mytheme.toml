@@ -1,6 +1,6 @@
 spacing         = 2
-padding         = 0
-hide_ascii      = true
+padding         = 2
+hide_ascii      = false
 separator       = ""
 key_color       = "Cyan"
 separator_color = "Blue"
