@@ -140,7 +140,7 @@ insert_left {
 insert_left {
   DiffAdd = {
     provider = "DiffAdd",
-    icon = " +",
+    icon = "  ",
     highlight = {colors.green, colors.sec_b_bg},
   },
 }
@@ -148,7 +148,7 @@ insert_left {
 insert_left {
   DiffModified = {
     provider = "DiffModified",
-    icon = " ~",
+    icon = "  ",
     highlight = {colors.blue, colors.sec_b_bg},
   },
 }
@@ -156,7 +156,7 @@ insert_left {
 insert_left {
   DiffRemove = {
     provider = "DiffRemove",
-    icon = " -",
+    icon = "  ",
     highlight = {colors.red, colors.sec_b_bg},
     separator = ' ',
     separator_highlight = {colors.sec_b_bg, colors.sec_c_bg, colors.sec_c_bg},
