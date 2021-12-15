@@ -1,15 +1,16 @@
-# dotfiles
+# WesleyCh3n's dotfiles
 
 WesleyCh3n's personal (minimal) dotfiles for MacOS/Ubuntu/Manjaro. If you see something
 useful feel free to use.
 
-dotfiles include:
-- zsh
-- tmux
-- neovim
-- ...(May grow up in future)
+## Contents:
+- neovim config
+- tmux config
+- zsh config
+- terminal config: alacritty, iTerm2
+- ...(some setup script)
 
-## Setup
+## Setup Scripts
 
 ### Install prerequisites
 
