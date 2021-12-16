@@ -8,6 +8,11 @@ typeset -A BINS=(
 ["fd"]=https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-gnu.tar.gz
 ["rg"]=https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
 ["logo-ls"]=https://github.com/Yash-Handa/logo-ls/releases/download/v1.3.7/logo-ls_Linux_x86_64.tar.gz
-# ["btop"]=https://github.com/aristocratos/btop/releases/download/v1.1.3/btop-x86_64-linux-musl.tbz
+
+)
+
+typeset -A NVIM=(
+
+["nvim"]=https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-linux64.tar.gz
 
 )

@@ -5,8 +5,8 @@
 #   ./install_package.sh /path/to/url_file.sh
 #   url_file.sh contain dict for binary and url
 
-# INSTALL_PATH=$HOME/.local/bin
-INSTALL_PATH=~/dotfiles/setup
+INSTALL_PATH=$HOME/.local/bin
+# INSTALL_PATH=~/dotfiles/setup # for debug
 TMP_DIR=/tmp/tmp_bin_dir
 
 create_and_cd_tmp_dir () {
