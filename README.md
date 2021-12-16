@@ -1,7 +1,7 @@
 # WesleyCh3n's dotfiles
 
 WesleyCh3n's personal (minimal) dotfiles for MacOS/Ubuntu/Manjaro. If you see something
-useful feel free to use.
+useful feel free to use. Use as your own risk!
 
 ## Contents:
 - neovim config
@@ -66,13 +66,27 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 
 ### Install prerequisites
 
-In `setup` directory
-- `xx_install.sh`: install basic required package by your distro. (*After this
- script, you can already link dotfiles*)
-- `xx_manual.sh`: install 3rd-party package.
-- `xx_install_nvim.sh`: install `neovim`.
-
-> ⚠️⚠️⚠️ Strongly Recommend look through all scripts and install what you need.
+In `setup` folder, run script in following order
+- `install_essential.*.sh`: Install basic requirements by your fav package manager.
+- `install_package_manager`: install zsh/tmux package manager
+- `install_package`: install 3rd-party binary.
+  - Usage:
+  ```bash
+  # if you use linux
+  install_package.sh package.linux-x86_64.sh
+  # if you use macos
+  install_package.sh package.macos-x86_64.sh
+  ```
+  > ⚠️⚠️⚠️ you can read through `package.*-x86_64.sh` to see what will be installed. It's find to comment out what you don't needed.
+- `install_nvim`: install Neovim
+  - Usage:
+  ```bash
+  # if you use linux
+  install_nvim.sh package.linux-x86_64.sh
+  # if you use macos
+  install_nvim.sh package.macos-x86_64.sh
+  ```
+- `pacakge_manual.*-x86_64.sh`: install package requiring compile your own.
 
 ### Link dotfiles
 
@@ -83,14 +97,16 @@ Simply type:
 make
 ```
 
-## Screenshot
+and good to go~
 
-I lov Gruvbox <3
-<details>
-  <summary>Image preview</summary>
+<!-- ## Screenshot -->
 
-|![img1](./asset/img1.png)|![img2](./asset/img2.png)|
-|:-:|:-:|
-|![img3](./asset/img3.png)|![img1](./asset/img4.png)|
+<!-- I lov Gruvbox <3 -->
+<!-- <details> -->
+  <!-- <summary>Image preview</summary> -->
 
-</details>
+<!-- |![img1](./asset/img1.png)|![img2](./asset/img2.png)| -->
+<!-- |:-:|:-:| -->
+<!-- |![img3](./asset/img3.png)|![img1](./asset/img4.png)| -->
+
+<!-- </details> -->
