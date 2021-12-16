@@ -1,7 +1,8 @@
+![cover](./asset/cover.jpg)
+
 # WesleyCh3n's dotfiles
 
-WesleyCh3n's personal (minimal) dotfiles for MacOS/Ubuntu/Manjaro. If you see something
-useful feel free to use. Use as your own risk!
+WesleyCh3n's personal (minimal) dotfiles for MacOS/Ubuntu/Manjaro. If you see something useful feel free to use.
 
 ## 📖 Contents:
 - neovim config
