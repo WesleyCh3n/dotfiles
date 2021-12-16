@@ -90,6 +90,7 @@ wk.register({
   n = ' no Highlight',
   r = ' toggle repl',
   s = '﯒ find replace',
+  t = ' hopTab',
   w = ' send repl',
   c = { name = '# comment' },
   d = {

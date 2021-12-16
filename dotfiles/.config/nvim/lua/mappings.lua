@@ -50,6 +50,9 @@ end
 map('n', '<leader>L', ':BufferLineMoveNext<cr>')
 map('n', '<leader>H', ':BufferLineMovePrev<cr>')
 
+-- Jump tab
+map('n', '<leader>t', ':BufferLinePick<cr>')
+
 -- New/Close tab
 map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
 
