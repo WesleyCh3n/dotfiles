@@ -213,5 +213,6 @@ augroup WESLEYCH3N
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   au BufWinEnter * silent! TSBufEnable rainbow
   au FileType * hi EndOfBuffer guifg=#282828
+  au FileType * hi WhichKeyFloat ctermbg='NONE' guibg='NONE'
 augroup END
 ]])

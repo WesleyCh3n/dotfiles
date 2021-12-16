@@ -16,11 +16,11 @@ return require('packer').startup({function(use)
   use {
     'sainnhe/gruvbox-material',
     config = function ()
-      vim.cmd('silent! colorscheme gruvbox-material')
       vim.g.gruvbox_material_background             = 'medium'
       vim.g.gruvbox_material_current_word           = 'grey background'
-      vim.g.gruvbox_material_disable_italic_comment = 1
-      vim.g.gruvbox_material_transparent_background = 1
+      vim.g.gruvbox_material_disable_italic_comment = 0
+      vim.g.gruvbox_material_transparent_background = 0
+      vim.cmd('silent! colorscheme gruvbox-material')
     end
   }
   --[[ statusline ]]

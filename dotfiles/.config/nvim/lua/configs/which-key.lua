@@ -107,4 +107,4 @@ wk.register({
   L = ' tab move right',
 }, { prefix = "<leader>" })
 
-vim.cmd[[ hi WhichKeyFloat ctermbg=BLACK ctermfg=BLACK ]]
+-- vim.cmd[[ hi WhichKeyFloat ctermfg=black ctermbg=black guibg=black guifg=black ]]

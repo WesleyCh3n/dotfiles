@@ -43,9 +43,3 @@ opt.shortmess = 'aF'
 opt.signcolumn = 'yes'
 opt.showtabline = 1
 opt.undofile = true
-
-vim.cmd('silent! colorscheme gruvbox-material')
-vim.g.gruvbox_material_background             = 'medium'
-vim.g.gruvbox_material_current_word           = 'grey background'
-vim.g.gruvbox_material_disable_italic_comment = 1
-vim.g.gruvbox_material_transparent_background = 1
