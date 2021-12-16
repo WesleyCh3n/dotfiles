@@ -8,16 +8,16 @@ window:
 background_opacity: 0.8
 font:
   normal:
-    family: MesloLGS NF
+    family: MesloLGS_NF
     style: Regular
   bold:
-    family: MesloLGS NF
+    family: MesloLGS_NF
     style: Bold
   italic:
-    family: MesloLGS NF
+    family: MesloLGS_NF
     style: Italic
   bold_italic:
-    family: MesloLGS NF
+    family: MesloLGS_NF
     style: Bold Italic
   size: 14
   # offset:
