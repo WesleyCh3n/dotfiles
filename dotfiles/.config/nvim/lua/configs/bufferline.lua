@@ -11,14 +11,14 @@ require("bufferline").setup{
       local s = " "
       for e, n in pairs(diagnostics_dict) do
         local sym = e == "error" and " "
-          or (e == "warning" and " " or "" )
+          or (e == "warning" and " " or " " )
         s = s .. n .. sym
       end
       return s
     end,
     separator_style = "slant",
     enforce_regular_tabs = true,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     show_close_icon = false,
     show_tab_indicators = false,
   },

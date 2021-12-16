@@ -1,5 +1,3 @@
--- :.config/nvim/lua/statusline.lua
--- vim:set ft=lua:
 local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
@@ -20,12 +18,12 @@ local colors = {
   sec_c_bg   = 'NONE',
   fg         = '#ddc7a1',
   bg         = '#3c3836',
-  red        = "#9d0006",
+  red        = "#ea6962",
   orange     = "#e78a4e",
   yellow     = "#d8a657",
   green      = "#a9b665",
   aqua       = "#89b482",
-  blue       = "#458588",
+  blue       = "#7daea3",
   light_blue = "#8fbcbb",
   purple     = "#d3869b",
   cyan       = "#458588",
@@ -42,15 +40,15 @@ insert_left {
   ViMode = {
     icon = function()
       local icons = {
-        n      = ' ',
-        i      = ' ',
-        c      = 'ﲵ ',
-        V      = ' ',
-        [''] = ' ',
-        v      = ' ',
-        C      = 'ﲵ ',
-        R      = '﯒ ',
-        t      = ' ',
+        n      = '  ',
+        i      = '  ',
+        c      = ' ﲵ ',
+        V      = '  ',
+        [''] = '  ',
+        v      = '  ',
+        C      = ' ﲵ ',
+        R      = ' ﯒ ',
+        t      = '  ',
       }
       return icons[vim.fn.mode()]
     end,
