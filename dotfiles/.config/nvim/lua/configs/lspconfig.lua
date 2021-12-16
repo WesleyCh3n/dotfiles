@@ -35,7 +35,7 @@ local servers = {
   "tsserver",
   "bashls",
   "clangd",
-  -- "sumneko_lua"
+  "sumneko_lua"
 }
 
 --[[ auto install required lsp server ]]
