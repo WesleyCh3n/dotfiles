@@ -64,7 +64,7 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 
 ## 📦 Setup Scripts
 
-### Install prerequisites
+### 🍸 Install prerequisites
 
 In `setup` folder, run script in following order
 - `install_essential.*.sh`: Install basic requirements by your fav package manager.
@@ -88,7 +88,7 @@ In `setup` folder, run script in following order
   ```
 - `pacakge_manual.*-x86_64.sh`: install package requiring compile yourself.
 
-### Link dotfiles
+### 🖇️ Link dotfiles
 
 Use GNU `stow` to create soft-link.
 
