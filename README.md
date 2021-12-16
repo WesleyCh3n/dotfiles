@@ -101,14 +101,13 @@ make
 
 And good to go ~ 🎇🎇🎇
 
-<!-- ## Screenshot -->
+## Screenshot
 
-<!-- I lov Gruvbox <3 -->
-<!-- <details> -->
-  <!-- <summary>Image preview</summary> -->
+<details>
+  <summary>Image preview</summary>
 
-<!-- |![img1](./asset/img1.png)|![img2](./asset/img2.png)| -->
-<!-- |:-:|:-:| -->
-<!-- |![img3](./asset/img3.png)|![img1](./asset/img4.png)| -->
+|![img1]()|![img2]()|
+|:-:|:-:|
+|![img3]()|![img1]()|
 
-<!-- </details> -->
+</details>
