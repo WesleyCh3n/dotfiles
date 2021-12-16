@@ -86,7 +86,7 @@ In `setup` folder, run script in following order
   # if you use macos
   install_nvim.sh package.macos-x86_64.sh
   ```
-- `pacakge_manual.*-x86_64.sh`: install package requiring compile your own.
+- `pacakge_manual.*-x86_64.sh`: install package requiring compile yourself.
 
 ### Link dotfiles
 
