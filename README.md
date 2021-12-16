@@ -77,7 +77,7 @@ In `setup` folder, run script in following order
   # if you use macos
   install_package.sh package.macos-x86_64.sh
   ```
-  > ⚠️⚠️⚠️ you can read through `package.*-x86_64.sh` to see what will be installed. It's find to comment out what you don't needed.
+  > ⚠️⚠️⚠️ you can read through `package.*-x86_64.sh` to see what will be installed. It's find to comment out what you don't need.
 - `install_nvim`: install Neovim
   - Usage:
   ```bash
