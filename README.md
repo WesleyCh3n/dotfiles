@@ -3,14 +3,14 @@
 WesleyCh3n's personal (minimal) dotfiles for MacOS/Ubuntu/Manjaro. If you see something
 useful feel free to use. Use as your own risk!
 
-## Contents:
+## 📖 Contents:
 - neovim config
 - tmux config
 - zsh config
 - terminal config: alacritty, iTerm2
 - ...(some setup script)
 
-## Neovim setup
+## 🌟 Neovim setup
 
 Required Neovim >= 0.6
 
@@ -49,7 +49,7 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 -   [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 -   [zen-mode.nvim](https://github.com/folke/zen-mode.nvim)
 
-## Shell setup
+## 💻 Shell setup
 -   [zsh](https://github.com/zsh-users/zsh)
 -   [zgen](https://github.com/tarjoilija/zgen)
 -   [powerlevel10k](https://github.com/romkatv/powerlevel10k)
@@ -62,7 +62,7 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 -   [btop](https://github.com/aristocratos/btop)
 -   [macchina](https://github.com/Macchina-CLI/macchina)
 
-## Setup Scripts
+## 📦 Setup Scripts
 
 ### Install prerequisites
 
