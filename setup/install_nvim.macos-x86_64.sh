@@ -13,7 +13,7 @@ setup_color
 
 set -e
 
-VERSION=0.5.1
+VERSION=0.6.0
 
 print_info "Downloading nvim"
 curl -fLo nvim.tar.gz https://github.com/neovim/neovim/releases/download/v${VERSION}/nvim-macos.tar.gz

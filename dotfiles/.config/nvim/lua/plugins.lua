@@ -143,7 +143,7 @@ return require('packer').startup({function(use)
   use {
     'jiangmiao/auto-pairs',
     config = function()
-      vim.g.AutoPairsShortcutJump = '<M-e>'
+      vim.g.AutoPairsShortcutJump = '<S-Tab>'
     end
   }
   --[[ easy commnet ]]
