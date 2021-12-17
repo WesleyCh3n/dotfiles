@@ -50,7 +50,6 @@ export PATH=$PATH:/usr/local/go/bin
 if [[ $(command -v go) ]]; then
   export GOPATH=$HOME/golib
   export PATH=$PATH:$(go env GOPATH)/bin
-  export GOPATH=$GOPATH:$HOME/gocode
 fi
 [ -d $HOME/.npm-global ] && export PATH=$HOME/.npm-global/bin:$PATH
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
