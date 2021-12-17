@@ -99,15 +99,23 @@ Simply type:
 make
 ```
 
-And good to go ~ 🎇🎇🎇
+And good to go ~ 🎉🎉🎉
 
-## Screenshot
+## 📸 Screenshot
 
-<details>
-  <summary>Image preview</summary>
+<!-- <details> -->
+  <!-- <summary>Image preview</summary> -->
+🪄 Fully transparent background compatible
 
-|![img1]()|![img2]()|
+|||
 |:-:|:-:|
-|![img3]()|![img1]()|
+|Builtin LSP|NvimTree & Outline|
+|![img1](https://user-images.githubusercontent.com/30611421/146416175-22d7caf1-86e1-47d2-8d06-3ef3cb9bd8fd.jpg)|![img2](https://user-images.githubusercontent.com/30611421/146416181-b0ebf578-7e3c-4eea-8143-0930c693b774.jpg)|
+|Telescope|Builtin Terminal|
+|![img3](https://user-images.githubusercontent.com/30611421/146416183-29983468-cfdb-498f-af42-4220ac0c7dee.jpg)|![img1](https://user-images.githubusercontent.com/30611421/146416187-35d17023-22f8-4245-ad9e-8e40e25423e9.jpg)|
+|Todo Highlight & UndoTree|Which key|
+|![todo](https://user-images.githubusercontent.com/30611421/146416190-6f2eed92-0e66-47b4-a71b-977a00a28b29.jpg)| ![undotree](https://user-images.githubusercontent.com/30611421/146416192-7e10157a-7e46-4f87-984c-db0f77975b11.jpg)
+|Wilder menu |Statusline/Lsp/Gitsigns|
+|![Wilder](https://user-images.githubusercontent.com/30611421/146416195-b894c86a-2a77-4af0-91c1-81cf1f276def.jpg)|![statusline](https://user-images.githubusercontent.com/30611421/146418245-18225944-5701-4dbd-b2b4-05e9bbb6e335.jpg)|
 
-</details>
+<!-- </details> -->
