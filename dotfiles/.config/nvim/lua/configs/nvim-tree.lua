@@ -26,6 +26,8 @@ g.nvim_tree_icons = {
   },
 }
 
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
 require('nvim-tree').setup {
   open_on_setup       = true,
   ignore_ft_on_setup  = {'alpha'},
@@ -48,7 +50,10 @@ require('nvim-tree').setup {
     hide_root_folder = true,
     mappings = {
       custom_only = false,
-      list = {}
+      list = {
+        { key = "t", cb = tree_cb("tabnew") },
+        { key = "v", cb = tree_cb("vsplit") },
+      }
     }
   }
 }
