@@ -51,6 +51,7 @@ wk.register({
     b = ' list buffers',
     c = ' nvimrc',
     d = ' dotfile',
+    e = ' emoji',
     f = ' find files',
     g = ' GitHub',
     t = ' Todo'
