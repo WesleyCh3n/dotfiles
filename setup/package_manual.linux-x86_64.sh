@@ -15,4 +15,4 @@ curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v1.1.3
 tar xf btop.tbz
 make install PREFIX=$HOME/.local
 
-cd .. && rm /tmp/tmp_bin_dir
+cd .. && rm -rf /tmp/tmp_bin_dir

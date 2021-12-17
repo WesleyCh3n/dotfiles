@@ -15,7 +15,7 @@ git clone https://github.com/jarun/nnn.git && cd nnn
 make O_NERD=1
 mv nnn $HOME/.local/bin/
 
-cd .. && rm /tmp/tmp_bin_dir
+cd .. && rm -rf /tmp/tmp_bin_dir
 
 ################################################################################
 #                                 install btop                                 #
@@ -27,4 +27,4 @@ curl -fLo btop.tbz https://github.com/aristocratos/btop/releases/download/v$btop
 tar xf btop.tbz
 make install PREFIX=$HOME/.local
 
-cd .. && rm /tmp/tmp_bin_dir
+cd .. && rm -rf /tmp/tmp_bin_dir
