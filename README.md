@@ -120,7 +120,7 @@ And good to go ~ 🎉🎉🎉
 | ![NvimTree Outline](https://user-images.githubusercontent.com/30611421/146416181-b0ebf578-7e3c-4eea-8143-0930c693b774.jpg) |
 |                                                        🔭 Telescope                                                        |
 |    ![Telescope](https://user-images.githubusercontent.com/30611421/146416183-29983468-cfdb-498f-af42-4220ac0c7dee.jpg)     |
-|                                                    🖥️ Builtin Terminal                                                     |
+|                                                    💻 Builtin Terminal                                                     |
 |     ![Terminal](https://user-images.githubusercontent.com/30611421/146416187-35d17023-22f8-4245-ad9e-8e40e25423e9.jpg)     |
 |                                                ✅ Todo Highlight & UndoTree                                                |
 |       ![todo](https://user-images.githubusercontent.com/30611421/146416190-6f2eed92-0e66-47b4-a71b-977a00a28b29.jpg)       |
