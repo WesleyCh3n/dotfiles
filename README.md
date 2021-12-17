@@ -1,4 +1,4 @@
-![cover](./asset/cover.jpg)
+![cover](https://user-images.githubusercontent.com/30611421/146416165-179655b4-f198-411c-8dbf-99e9b7e561ad.jpg)
 
 # WesleyCh3n's dotfiles
 
