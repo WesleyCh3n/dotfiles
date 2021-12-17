@@ -1,3 +1,5 @@
 .cache_ggshield
 .env
 .pre-commit-config.yaml
+.luarc.json
+.DS_Store
