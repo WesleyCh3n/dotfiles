@@ -194,6 +194,7 @@ return require('packer').startup({function(use)
     config = function() require('configs.telescope') end,
     requires = { 'nvim-lua/plenary.nvim', },
   }
+  use {'nvim-telescope/telescope-symbols.nvim'}
 
   -- | ------------------------------------------------------------------- | --
   -- |                            better coding                            | --
