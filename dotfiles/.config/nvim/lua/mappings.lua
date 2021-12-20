@@ -29,9 +29,12 @@ map('n', '<space>q', ':lua CloseBuf()<cr>')
 
 -- cd buf
 map('n', '<space>c', ':cd %:p:h<cr>')
+
 -- start/end word
-map('n', '0', '^')
-map('n', '9', '$')
+-- map('n', '0', '^')
+-- map('n', '9', '$')
+map('i', '<C-A>', '<Home>')
+map('i', '<C-E>', '<End>')
 
 -- nohlsearch
 map('n', '<leader>n', ':let @/=""<cr>')
@@ -80,8 +83,8 @@ map('t', '<C-k>', [[<C-\><C-n><C-W>k]], {silent = false})
 map('n', '<space>rw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
 
 -- move line up/down in visual
-map('v', 'K', ':m \'<-2<CR>gv=gv')
-map('v', 'J', ':m \'>+1<CR>gv=gv')
+-- map('v', 'K', ':m \'<-2<CR>gv=gv')
+-- map('v', 'J', ':m \'>+1<CR>gv=gv')
 
 -- apply q register in visual mode
 map('v', '.', ':norm! @q<cr>')
