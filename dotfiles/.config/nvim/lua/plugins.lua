@@ -127,7 +127,16 @@ return require('packer').startup({function(use)
     end
   }
   --[[ preview color ]]
-  use {'norcalli/nvim-colorizer.lua', opt = true}
+  use {
+    'norcalli/nvim-colorizer.lua',
+    opt = true,
+    ft = {"html", "css", "scss", "sass", "vim", "lua", "javascript", "typescript" ,"dosini" , "ini", "conf", "json", "cfg"},
+    cmd = {"ColorizerToggle"},
+    config = function()
+      require("colorizer").setup()
+      vim.cmd("ColorizerAttachToBuffer")
+    end,
+  }
 
   -- | ------------------------------------------------------------------- | --
   -- |                           control on fly                            | --
