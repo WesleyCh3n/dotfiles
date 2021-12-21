@@ -173,7 +173,7 @@ return require('packer').startup({function(use)
     'max397574/better-escape.nvim',
     config = function()
       require("better_escape").setup {
-        mapping = {"jk", "jj", "kj"},
+        mapping = {"jk", "kj", "jj"},
       }
     end
   }
