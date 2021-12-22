@@ -53,6 +53,8 @@ require('nvim-tree').setup {
       list = {
         { key = "t", cb = tree_cb("tabnew") },
         { key = "v", cb = tree_cb("vsplit") },
+        { key = "h", cb = tree_cb("dir_up") },
+        { key = "l", cb = tree_cb("cd") },
       }
     }
   }
