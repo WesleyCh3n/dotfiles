@@ -33,6 +33,7 @@ local servers = {
   "pyright",
   "gopls",
   "tsserver",
+  "tailwindcss",
   "bashls",
   "clangd",
   "sumneko_lua"
