@@ -30,7 +30,7 @@ ts.setup {
     enable = true,
     loaded = true,
     extended_mode = true,
-    max_file_lines = 1400,
+    max_file_lines = nil,
   },
   indent = {
     enable = true
