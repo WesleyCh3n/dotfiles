@@ -293,6 +293,12 @@ return require('packer').startup({function(use)
   --[[ Lang: Javascript ]]
   use {'mattn/emmet-vim'}
   use {'MaxMEllon/vim-jsx-pretty'}
+  use {
+    'prettier/vim-prettier',
+    run = 'yarn install',
+    ft = {'javascript', 'typescript', 'typescriptreact', 'javascriptreact',
+          'css', 'less', 'scss', 'markdown', 'html'}
+  }
   --[[ Lang: Markdown ]]
   use {
     'iamcco/markdown-preview.nvim',

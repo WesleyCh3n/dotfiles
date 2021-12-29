@@ -1,7 +1,7 @@
 
 require("indent_blankline").setup {
   buftype_exclude = {'terminal', 'help', },
-  filetype_exclude = {"alpha", 'NvimTree'},
+  filetype_exclude = {"alpha", 'NvimTree', 'Outline'},
   show_current_context = true,
 }
 

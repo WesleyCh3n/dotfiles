@@ -85,6 +85,8 @@ map('n', '<space>rt', ':retab<cr>')
 
 -- reindent
 map('n', '<space>ri', 'gg=G<C-o>')
+map('n', '<space>rp', ':PrettierPartial<cr>')
+map('v', '<space>rp', ':PrettierPartial<cr>')
 
 -- move left/right
 -- map('n', '<right>', 'zL')

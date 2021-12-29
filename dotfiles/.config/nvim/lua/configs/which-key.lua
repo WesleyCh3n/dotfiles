@@ -89,6 +89,7 @@ wk.register({
   f = ' hopWord',
   l = ' hopLineStart',
   n = ' no Highlight',
+  p = 'which_key_ignore',
   r = ' toggle repl',
   s = '﯒ find replace',
   t = ' hopTab',
