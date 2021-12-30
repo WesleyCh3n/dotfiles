@@ -130,7 +130,9 @@ return require('packer').startup({function(use)
   use {
     'norcalli/nvim-colorizer.lua',
     opt = true,
-    ft = {"html", "css", "scss", "sass", "vim", "lua", "javascript", "typescript" ,"dosini" , "ini", "conf", "json", "cfg"},
+    ft = {"html", "css", "scss", "sass", "vim", "lua", "javascript",
+      "typescript", "javascriptreact", "typescriptreact", "dosini" ,
+      "ini", "conf", "json", "cfg"},
     cmd = {"ColorizerToggle"},
     config = function()
       require("colorizer").setup()

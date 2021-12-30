@@ -1,8 +1,6 @@
 local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
-local whitespace = require("galaxyline.provider_whitespace")
-local extension = require("galaxyline.provider_extensions")
 
 local function insert_left(element)
   table.insert(gls.left, element)
@@ -184,7 +182,7 @@ insert_left{
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
-    highlight = {'#db4b4b', colors.sec_c_bg},
+    highlight = {colors.red, colors.sec_c_bg},
   },
 }
 
@@ -192,7 +190,7 @@ insert_left{
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
-    highlight = {'#e0af68', colors.sec_c_bg},
+    highlight = {colors.yellow, colors.sec_c_bg},
   },
 }
 
@@ -200,7 +198,7 @@ insert_left{
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
-    highlight = {'#10B981', colors.sec_c_bg},
+    highlight = {colors.green, colors.sec_c_bg},
   },
 }
 
@@ -208,7 +206,7 @@ insert_left{
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
-    highlight = {'#0db9d7', colors.sec_c_bg},
+    highlight = {colors.blue, colors.sec_c_bg},
   },
 }
 
