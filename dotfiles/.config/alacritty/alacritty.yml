@@ -25,6 +25,11 @@ font:
   # glyph_offset:
     # y: 100
 
+cursor:
+  style:
+    blinking: Always
+    blink_interval: 500
+
 # Colors (Gruvbox dark)
 colors:
   primary:
