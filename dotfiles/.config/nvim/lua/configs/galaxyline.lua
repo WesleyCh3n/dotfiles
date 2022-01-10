@@ -240,9 +240,11 @@ insert_right{
 
 insert_right{
   LinePercent = {
-    provider = 'LinePercent',
+    provider = function ()
+      return string.format('%d', vim.fn.line(".")/vim.fn.line("$")*100)
+    end,
     condition = buffer_not_empty,
-    icon = "ﱒ",
+    icon = "ﱒ ",
     highlight = {colors.fg, colors.sec_b_bg},
     separator = " ",
     separator_highlight = {colors.sec_b_bg, colors.sec_c_bg},
@@ -254,7 +256,7 @@ insert_right{
     provider = 'LineColumn',
     icon = "﬿ ",
     highlight = {colors.bg, colors.sec_a_bg, 'bold'},
-    separator = "",
+    separator = " ",
     separator_highlight = {colors.sec_a_bg, colors.sec_b_bg},
   },
 }
