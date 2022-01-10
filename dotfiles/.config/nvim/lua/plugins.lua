@@ -213,7 +213,7 @@ return require('packer').startup({function(use)
   --[[ snippets ]]
   use {
     'SirVer/ultisnips',
-    requires = {{'honza/vim-snippets', rtp = '.'}},
+    requires = {{'honza/vim-snippets', rtp = '.'}, {'mlaursen/vim-react-snippets', rtp = '.'}},
     config = function()
       vim.g.UltiSnipsExpandTrigger="<C-l>"
       vim.g.UltiSnipsEditSplit="vertical"
@@ -292,7 +292,7 @@ return require('packer').startup({function(use)
     'fatih/vim-go',
     config = function() require("configs/vim-go") end
   }
-  --[[ Lang: Javascript ]]
+  --[[ Lang: Typescript, Javascript, ]]
   use {'mattn/emmet-vim'}
   use {'MaxMEllon/vim-jsx-pretty'}
   use {

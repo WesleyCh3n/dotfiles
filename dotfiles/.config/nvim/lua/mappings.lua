@@ -96,7 +96,7 @@ map('v', '<space>rp', ':PrettierPartial<cr>')
 map('n', '<space>P', ':set paste!<cr>')
 
 -- replace text
-map('n', '<leader>s', ':%s//gc<left><left><left>', {silent = false})
+map('n', '<leader>s', 'yiw:%s///gc<left><left><left><left><C-r>"', {silent = false})
 
 -- escape terminal
 map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})

@@ -43,6 +43,9 @@ require('nvim-tree').setup {
     update_cwd  = true,
     ignore_list = {}
   },
+  git = {
+    ignore = false,
+  },
   view = {
     width = 30,
     side = 'left',
