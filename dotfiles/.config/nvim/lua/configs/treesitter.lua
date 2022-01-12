@@ -16,6 +16,7 @@ ts.setup {
     "go",
     "javascript",
     "typescript",
+    "tsx",
   },
   highlight = {
     enable = true,
