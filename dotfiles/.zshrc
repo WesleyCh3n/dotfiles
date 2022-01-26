@@ -54,6 +54,8 @@ fi
 [ -d $HOME/.npm-global ] && export PATH=$HOME/.npm-global/bin:$PATH
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
 [ -d /usr/local/opt/coreutils/libexec/gnubin/ ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+[ -f $HOME/.config/wsl/wsl.sh ] && source $HOME/.config/wsl/wsl.sh
+
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -77,14 +79,12 @@ alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 ################################################################################
 #                                 nnn setting                                  #
 ################################################################################
-export NNN_BMS="\
+export NNN_BMS=$NNN_BMS"\
 g:$HOME/GitHub;\
 m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
-c:$HOME/.config"
+c:$HOME/.config;"
 export NNN_PLUG='x:!chmod +x $nnn'
-
-[ -f $HOME/.config/wsl/nnn_bms.sh ] && source $HOME/.config/wsl/nnn_bms.sh
 
 n () {
   if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
