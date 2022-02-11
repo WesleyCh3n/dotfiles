@@ -231,6 +231,7 @@ return require('packer').startup({function(use)
     config = function() require('configs.nvim-repl') end
   }
   --[[ language sever protocol ]]
+  use { 'ycm-core/YouCompleteMe' }
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
