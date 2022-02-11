@@ -17,16 +17,12 @@ local header = {
   }
 }
 
---[[ local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
-   [ local plugins = handle:read("*a")
-   [ handle:close()
-   [
-   [ local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
-   [ local date = thingy:read("*a")
-   [ thingy:close() ]]
+local date = os.date("%a %d %b")
 
-local date = '??? ?? ???'
-local plugins = '??'
+local handle = io.popen('dir /b C:\\Users\\Wesley\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start | find /v /c ""')
+local plugins = string.sub(handle:read("*a"), 0, 2)
+handle:close()
+
 
 local heading = {
   type = "text",
