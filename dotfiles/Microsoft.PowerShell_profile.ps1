@@ -2,10 +2,14 @@ Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineOption -EditMode vi
 
-Set-PSReadLineKeyHandler -Chord Shift+Tab -Function AcceptSuggestion
+Set-PsFzfOption -TabExpansion
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
 
 # Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+# Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Chord Shift+Tab -Function AcceptSuggestion
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
