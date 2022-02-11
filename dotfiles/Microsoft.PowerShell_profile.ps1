@@ -23,6 +23,7 @@ New-Alias which get-command
 Set-Alias vi nvim
 Set-Alias vv neovide
 Set-Alias lg lazygit
+Set-Alias n vifm
 
 # VcXser: allow X11 fowarding
 $env:DISPLAY='localhost:0.0'
