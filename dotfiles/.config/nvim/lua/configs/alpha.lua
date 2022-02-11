@@ -19,9 +19,10 @@ local header = {
 
 local date = os.date("%a %d %b")
 
-local handle = io.popen('dir /b C:\\Users\\Wesley\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start | find /v /c ""')
-local plugins = string.sub(handle:read("*a"), 0, 2)
-handle:close()
+-- local handle = io.popen('dir /b C:\\Users\\Wesley\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start | find /v /c ""')
+-- local plugins = string.sub(handle:read("*a"), 0, 2)
+-- handle:close()
+local plugins = '??'
 
 
 local heading = {
