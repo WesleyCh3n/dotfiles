@@ -231,7 +231,13 @@ return require('packer').startup({function(use)
     config = function() require('configs.nvim-repl') end
   }
   --[[ language sever protocol ]]
-  use { 'ycm-core/YouCompleteMe' }
+  use {
+    'ycm-core/YouCompleteMe',
+    config = function()
+      vim.g.ycm_error_symbol = ''
+      vim.g.ycm_warning_symbol = ''
+    end,
+  }
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
