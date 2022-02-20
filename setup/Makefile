@@ -35,6 +35,11 @@ logo-ls:
 	$(Q)$(call dl,$(LINK_LOGOLS))
 	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
 
+fzf:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_FZF))
+	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
+
 nnn:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_NNN))
