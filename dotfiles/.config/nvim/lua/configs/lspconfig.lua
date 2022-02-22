@@ -36,7 +36,8 @@ local servers = {
   "tailwindcss",
   "bashls",
   "clangd",
-  "sumneko_lua"
+  "sumneko_lua",
+  "rust_analyzer"
 }
 
 --[[ auto install required lsp server ]]

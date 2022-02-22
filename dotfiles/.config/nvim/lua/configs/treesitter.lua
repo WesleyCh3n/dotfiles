@@ -9,6 +9,7 @@ ts.setup {
     "html",
     "c",
     "cpp",
+    "rust",
     "css",
     "vim",
     "lua",
