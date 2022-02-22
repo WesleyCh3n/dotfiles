@@ -137,7 +137,7 @@ map('n', '<space>u', ':UndotreeToggle<CR>')
 map('n', '<space>t', ':TransparentToggle<CR>')
 
 -- ZenMode
-map('n', '<space>z', ':lua require("zen-mode").toggle({window={width=.6}})<cr>')
+map('n', '<space>z', ':TZAtaraxis<cr>')
 
 -- Twilight
 map('n', '<space>Z', ':Twilight<cr>')

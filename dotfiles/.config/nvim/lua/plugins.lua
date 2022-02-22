@@ -55,13 +55,26 @@ return require('packer').startup({function(use)
   }
   --[[ zen mode ]]
   use {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup {
-        plugins = {
-          twilight = { enabled = false },
+    "Pocco81/TrueZen.nvim",
+    config = function ()
+      require("true-zen").setup({
+        ui = {
+          top = {
+            showtabline = 1,
+          },
         },
-      }
+        modes = {
+          ataraxis = {
+            top_padding = 0,
+            bottom_padding = 0,
+          },
+          integrations = {
+            galaxyline = true,
+		        gitsigns = true,
+            nvim_bufferline = true,
+          }
+        }
+      })
     end
   }
   --[[ even more focus ]]
