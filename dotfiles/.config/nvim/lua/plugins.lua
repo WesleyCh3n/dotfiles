@@ -236,6 +236,9 @@ return require('packer').startup({function(use)
     config = function()
       vim.g.ycm_error_symbol = ''
       vim.g.ycm_warning_symbol = ''
+      vim.g.ycm_filetype_blacklist = {
+        ['TelescopePrompt'] = 1,
+      }
     end,
   }
   use {

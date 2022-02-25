@@ -2,7 +2,7 @@
 require("toggleterm").setup{
   size=10,
   direction = 'horizontal',
-  shell = 'pwsh',
+  shell = 'nu',
   float_opts = {
     border='curved'
   }
