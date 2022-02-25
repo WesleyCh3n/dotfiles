@@ -198,7 +198,9 @@ map('v', '<leader>f', "<cmd>HopWord<cr>")
 map('v', '<leader>l', "<cmd>HopLineStart<cr>")
 
 -- toggleterm.nvim
-map('n', '<space>as', ":ToggleTerm<cr>")
+map('n', '<space>as', ":ToggleTerm direction=float<cr>")
+map('n', '<space>aS', ":ToggleTerm<cr>")
+map('n', '<space>at', ":ToggleTermToggleAll<cr>")
 map('n', '<space>ag', ":lua _lazygit_toggle()<CR>")
 map('n', '<space>an', ":lua _nnn_toggle()<CR>")
 map('n', '<space>ab', ":lua _bpytop_toggle()<CR>")
