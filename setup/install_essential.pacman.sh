@@ -15,3 +15,7 @@ sudo pacman -S \
   tmux \
   wget \
   zsh
+
+# install pip
+python3 < <(curl -s https://bootstrap.pypa.io/get-pip.py)
+

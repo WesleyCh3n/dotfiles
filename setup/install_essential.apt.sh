@@ -17,5 +17,8 @@ sudo apt-get install -y \
   wget \
   zsh
 
+# install pip
+python3 < <(curl -s https://bootstrap.pypa.io/get-pip.py)
+
 sudo apt autoclean
 sudo apt autoremove

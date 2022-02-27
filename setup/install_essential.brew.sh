@@ -17,5 +17,8 @@ brew install \
   zsh \
   coreutils
 
+# install pip
+python3 < <(curl -s https://bootstrap.pypa.io/get-pip.py)
+
 brew cleanup
 brew autoremove
