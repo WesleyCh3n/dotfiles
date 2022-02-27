@@ -18,7 +18,8 @@ local on_attach = function(client,bufnr)
   buf_set_keymap('n', '<space>fa', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', opts)
   buf_set_keymap('n', '<space>l', '<cmd>lua require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy({prompt_prefix = " ", path_display = { tail=1 }, layout_config = { height = 0.3, preview_width=0.4 }}))<CR>', opts)
   buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float(nil,{border = {{"╭",},{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,source="if_many"})<cr>', opts)
-  -- vim.cmd [[autocmd CursorHold,CursorHoldI * ]]
+  buf_set_keymap('n', '<space>rr', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({
     bind = true,
@@ -26,6 +27,7 @@ local on_attach = function(client,bufnr)
     floating_window_above_cur_line = true,
     doc_lines = 0,
     hint_prefix = "🐱 ",
+    hi_parameter = 'Constant',
   })
 end
 
@@ -48,6 +50,20 @@ for _, name in pairs(servers) do
       local default_opts = {
         on_attach = on_attach,
       }
+      if name == "clangd" then
+        default_opts['cmd'] = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--clang-tidy-checks=-llvmlibc-*,readability*,google*,performance*,cppcoreguidelines*,bugprone*,misc*,fuchsia-overloaded-operator",
+          "--all-scopes-completion",
+          "--cross-file-rename",
+          "--completion-style=detailed",
+          "--header-insertion-decorators",
+          "--header-insertion=iwyu",
+          "--pch-storage=memory",
+        }
+      end
       server:setup(default_opts)
     end)
     if not server:is_installed() then
