@@ -11,10 +11,10 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg lazygit macchina logo-ls
+all: fd rg fzf lazygit macchina logo-ls nnn btop
 	$(Q)rm -rf $(TMP_DIR)
 
-.PHONY: fd rg lazygit macchina logo-ls nnn
+.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_FD))
@@ -40,10 +40,24 @@ fzf:
 	$(Q)$(call dl,$(LINK_FZF))
 	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
 
+btop:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_BTOP))
+	cd $(TMP_DIR); make PREFIX=${HOME}/.local
+
 nnn:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
-	$(Q)$(call dl,$(LINK_NNN))
-	$(Q)mv $(TMP_DIR)/nnn-nerd-static $(INSTALL_PATH)/$(@)
+	$(Q)if [ $(UNAME_S) = "Darwin" ]; then\
+		mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
+		git clone https://github.com/jarun/nnn.git && cd nnn; \
+		make O_NERD=1; \
+		mv $(@) $(INSTALL_PATH); \
+	else \
+		mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
+		curl '-#' -o tmp.tar -fL $(LINK_NNN); \
+		tar xf tmp.tar; \
+		mv nnn-nerd-static $(INSTALL_PATH); \
+  fi
 
 macchina:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
@@ -52,3 +66,5 @@ macchina:
 		chmod +x $(@); \
 		mv $(@) $(INSTALL_PATH)
 
+clean:
+	$(Q)rm -rf $(TMP_DIR)
