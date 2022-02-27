@@ -13,7 +13,7 @@ endef
 
 all: fd rg fzf lazygit macchina logo-ls nnn btop
 
-.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop
+.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop node
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_FD))
@@ -78,6 +78,14 @@ nvim:
 	$(Q)$(call dl,$(LINK_NVIM))
 	$(Q)cp -r $(TMP_DIR)/*/* ${HOME}/.local
 	$(Q)rm -rf $(TMP_DIR)
+	$(Q)pip install pynvim
+
+node:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)if [ $(UNAME_S) = "Linux" ]; then\
+		curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -; \
+		sudo apt-get install -y nodejs; \
+  fi
 
 clean:
 	$(Q)rm -rf $(TMP_DIR)
