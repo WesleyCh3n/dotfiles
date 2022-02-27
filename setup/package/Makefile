@@ -1,7 +1,9 @@
 include common.mk
 include package.mk
 
+SHELL := /usr/bin/zsh
 INSTALL_PATH := ${HOME}/.local/bin
+MKDIR := $(shell mkdir -p $(INSTALL_PATH))
 TMP_DIR := ./tmp
 
 define dl
@@ -11,9 +13,9 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit macchina logo-ls nnn btop
+all: fd rg fzf lazygit macchina logo-ls nnn btop node nvim
 
-.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop node
+.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop node nvim
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_FD))
@@ -61,7 +63,7 @@ nnn:
 		mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 		curl '-#' -o tmp.tar -fL $(LINK_NNN); \
 		tar xf tmp.tar; \
-		mv nnn-nerd-static $(INSTALL_PATH); \
+		mv nnn-nerd-static $(INSTALL_PATH)/nnn; \
   fi
 	$(Q)rm -rf $(TMP_DIR)
 
@@ -82,10 +84,8 @@ nvim:
 
 node:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
-	$(Q)if [ $(UNAME_S) = "Linux" ]; then\
-		curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -; \
-		sudo apt-get install -y nodejs; \
-  fi
+	$(Q)curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+	$(Q)source ${HOME}/.zshrc && nvm install --lts
 
 clean:
 	$(Q)rm -rf $(TMP_DIR)
