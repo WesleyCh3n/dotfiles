@@ -224,7 +224,7 @@ g.user_emmet_leader_key = '<C-s>'
 --------------------------------------------------------------------------------
 vim.cmd([[
 augroup myaucmd
-  au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
+  "au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
   au filetype html let b:AutoPairs = {"<": ">"}
   au filetype markdown setlocal wrap spell
 augroup END
