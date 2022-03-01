@@ -50,20 +50,6 @@ for _, name in pairs(servers) do
       local default_opts = {
         on_attach = on_attach,
       }
-      if name == "clangd" then
-        default_opts['cmd'] = {
-          "clangd",
-          "--background-index",
-          "--clang-tidy",
-          "--clang-tidy-checks=-llvmlibc-*,readability*,google*,performance*,cppcoreguidelines*,bugprone*,misc*,fuchsia-overloaded-operator",
-          "--all-scopes-completion",
-          "--cross-file-rename",
-          "--completion-style=detailed",
-          "--header-insertion-decorators",
-          "--header-insertion=iwyu",
-          "--pch-storage=memory",
-        }
-      end
       server:setup(default_opts)
     end)
     if not server:is_installed() then
