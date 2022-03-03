@@ -69,7 +69,7 @@ export EDITOR="$VISUAL"
 ################################################################################
 #                                    alias                                     #
 ################################################################################
-alias ls='logo-ls'
+alias ls='lsd'
 alias vi='nvim'
 alias vv='neovide'
 alias python='python3 -B'

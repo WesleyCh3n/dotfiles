@@ -13,9 +13,9 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit macchina logo-ls nnn btop node nvim
+all: fd rg fzf lazygit macchina lsd nnn btop node nvim
 
-.PHONY: clean fd rg fzf lazygit macchina logo-ls nnn btop node nvim
+.PHONY: clean fd rg fzf lazygit macchina lsd nnn btop node nvim
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_FD))
@@ -34,9 +34,9 @@ lazygit:
 	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
-logo-ls:
+lsd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
-	$(Q)$(call dl,$(LINK_LOGOLS))
+	$(Q)$(call dl,$(LINK_LSD))
 	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
