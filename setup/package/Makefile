@@ -1,7 +1,6 @@
 include common.mk
 include package.mk
 
-SHELL := /usr/bin/zsh
 INSTALL_PATH := ${HOME}/.local/bin
 MKDIR := $(shell mkdir -p $(INSTALL_PATH))
 TMP_DIR := ./tmp
