@@ -178,7 +178,12 @@ return require('packer').startup({function(use)
   --[[ easy align text ]]
   use {'junegunn/vim-easy-align'}
   --[[ jump surrounding in motion ]]
-  use {'wellle/targets.vim'}
+  use {
+    'wellle/targets.vim',
+    config = function ()
+      vim.g.targets_aiAI = 'aIAi'
+    end
+  }
   --[[ moving through tmux ]]
   use {'christoomey/vim-tmux-navigator'}
   --[[ multi cursor ]]
@@ -305,6 +310,7 @@ return require('packer').startup({function(use)
     'fatih/vim-go',
     config = function() require("configs/vim-go") end
   }
+  use { 'rust-lang/rust.vim' }
   --[[ Lang: Typescript, Javascript, ]]
   use {'mattn/emmet-vim'}
   use {'MaxMEllon/vim-jsx-pretty'}
