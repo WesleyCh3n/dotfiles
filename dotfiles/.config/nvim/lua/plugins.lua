@@ -305,6 +305,25 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   -- |                          Lang improvement                           | --
   -- | ------------------------------------------------------------------- | --
+  --[[ Wiki ]]
+  use {
+    'vimwiki/vimwiki',
+    config = function ()
+      local my_wiki = {
+        ['path'] = '~/GitHub/wiki/',
+        ['syntax'] = 'markdown',
+        ['ext'] = '.md'
+      }
+
+      vim.g.vimwiki_list = { my_wiki }
+      vim.g.vimwiki_ext2syntax = {
+        ['.md'] = 'markdown',
+        ['.markdown'] = 'markdown',
+        ['.mdown'] = 'markdown'
+      }
+      vim.g.vimwiki_global_ext = 0
+    end
+  }
   --[[ Lang: Python ]]
   use {
     'psf/black',
