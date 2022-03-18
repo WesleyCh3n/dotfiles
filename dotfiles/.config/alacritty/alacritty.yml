@@ -5,19 +5,19 @@ window:
     x: 6
     y: 12
   decorations: None
-  opacity: 0.8
+  opacity: 0.95
 font:
   normal:
-    family: MesloLGS_NF
-    style: Regular
+    family: Victor Mono Nerd Font
+    style: Medium
   bold:
-    family: MesloLGS_NF
+    family: Victor Mono Nerd Font
     style: Bold
   italic:
-    family: MesloLGS_NF
-    style: Italic
+    family: Victor Mono Nerd Font
+    style: Medium Italic
   bold_italic:
-    family: MesloLGS_NF
+    family: Victor Mono Nerd Font
     style: Bold Italic
   size: 14
   # offset:

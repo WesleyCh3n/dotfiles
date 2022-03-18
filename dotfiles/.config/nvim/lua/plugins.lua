@@ -305,6 +305,14 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   -- |                          Lang improvement                           | --
   -- | ------------------------------------------------------------------- | --
+  --[[ Lang: Python ]]
+  use {
+    'psf/black',
+    config = function ()
+      vim.g.black_fast = 1
+      vim.g.black_linelength = 80
+    end
+  }
   --[[ Lang: Go ]]
   use {
     'fatih/vim-go',

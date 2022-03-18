@@ -33,6 +33,7 @@ end
 
 local servers = {
   "pyright",
+  "pylsp",
   "gopls",
   "tsserver",
   "tailwindcss",

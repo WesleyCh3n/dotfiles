@@ -319,7 +319,7 @@ require ('galaxyline').section.short_line_left = {
   {
     ShortLineLeftWindowNumber = {
       provider = function()
-        return ' ' .. vim.api.nvim_win_get_number(vim.api.nvim_get_current_win())
+        return '缾' .. vim.api.nvim_win_get_number(vim.api.nvim_get_current_win())
       end,
       highlight = {colors.light_blue, colors.sec_b_bg},
       separator = '',
