@@ -16,7 +16,7 @@ require("bufferline").setup{
       end
       return s
     end,
-    separator_style = "slant",
+    separator_style = "thick",
     enforce_regular_tabs = true,
     always_show_bufferline = true,
     show_close_icon = false,
