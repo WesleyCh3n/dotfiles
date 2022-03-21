@@ -52,6 +52,7 @@ function closeBuffer()
 end
 map('n', '<space>w', ':w<cr>')
 map('n', '<space>q', ':lua closeBuffer()<cr>')
+map('n', '<space>Q', ':%bd|e#|bd#<cr>')
 
 -- cd buf
 map('n', '<space>c', ':cd %:p:h<cr>')
@@ -135,17 +136,11 @@ map('i', '?', '?<c-g>u')
 -- symbols-outline.nvim
 map('n', '<space>o', ':SymbolsOutline<CR>')
 
--- undotree
-map('n', '<space>u', ':UndotreeToggle<CR>')
-
 -- nvim-transparent
 map('n', '<space>t', ':TransparentToggle<CR>')
 
 -- ZenMode
 map('n', '<space>z', ':TZAtaraxis<cr>')
-
--- Twilight
-map('n', '<space>Z', ':Twilight<cr>')
 
 -- Telescope
 function _G.tlscp_opts(cwd)
@@ -155,7 +150,7 @@ function _G.tlscp_opts(cwd)
     cwd = cwd,
     prompt_prefix = " ",
     layout_config = {
-      height = 0.4,
+      -- height = 0.6,
       preview_width=0.6
     }}
 end

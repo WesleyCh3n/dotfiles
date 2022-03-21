@@ -61,6 +61,7 @@ wk.register({
   p = ' md preview',
   P = ' toggle paste',
   q = ' quit',
+  Q = ' close others',
   r = {
     name = '漏re-',
     i = '漏re-Indent',
@@ -70,10 +71,8 @@ wk.register({
   },
   s = { name = 'which_key_ignore' },
   t = ' toggle bg',
-  u = ' undo tree',
   w = ' write',
   z = ' zen',
-  Z = ' twilight',
 }, { prefix = "<space>" })
 
 wk.register({
