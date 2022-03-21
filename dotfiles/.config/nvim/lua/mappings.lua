@@ -18,6 +18,11 @@ g.mapleader = ','
 -- no EX mode
 map('n', 'Q', '<NOP>')
 
+-- better_escape
+map('i', 'jk', '<Esc>')
+map('i', 'kj', '<Esc>')
+map('i', 'jj', '<Esc>')
+
 -- write/close file
 function CloseBuf()
   local buf_count = vim.api.nvim_exec(

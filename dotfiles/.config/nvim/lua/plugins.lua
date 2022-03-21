@@ -19,7 +19,7 @@ return require('packer').startup({function(use)
       vim.g.gruvbox_material_background             = 'medium'
       vim.g.gruvbox_material_current_word           = 'grey background'
       vim.g.gruvbox_material_transparent_background = 0
-      vim.g.gruvbox_material_transparent_background = 1
+      -- vim.g.gruvbox_material_transparent_background = 1
       vim.cmd('silent! colorscheme gruvbox-material')
     end
   }
@@ -60,13 +60,14 @@ return require('packer').startup({function(use)
       require("true-zen").setup({
         ui = {
           top = {
-            showtabline = 1,
+            showtabline = 0,
           },
         },
         modes = {
           ataraxis = {
             top_padding = 0,
             bottom_padding = 0,
+			      ideal_writing_area_width = {81},
           },
           integrations = {
             galaxyline = true,
@@ -76,11 +77,6 @@ return require('packer').startup({function(use)
         }
       })
     end
-  }
-  --[[ even more focus ]]
-  use {
-    "folke/twilight.nvim",
-    config = function() require("twilight").setup { } end
   }
   --[[ toggle transparent ]]
   use {
@@ -189,31 +185,23 @@ return require('packer').startup({function(use)
   --[[ multi cursor ]]
   use {'mg979/vim-visual-multi'}
   --[[ easy escape ]]
-  use {
-    'max397574/better-escape.nvim',
-    config = function()
-      require("better_escape").setup {
-        mapping = {"jk", "kj", "jj"},
-      }
-    end
-  }
+  --[[ use {
+     [   'max397574/better-escape.nvim',
+     [   config = function()
+     [     require("better_escape").setup {
+     [       mapping = {"jk", "kj", "jj"},
+     [       timeout = 1000,
+     [     }
+     [   end
+     [ } ]]
   --[[ file explorer ]]
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons', },
     config = function() require('configs.nvim-tree') end
   }
-  --[[ undotree ]]
-  use {
-    'mbbill/undotree',
-    cmd = "UndotreeToggle",
-    config = function ()
-      vim.g.undotree_ShortIndicators = 1
-      vim.g.undotree_TreeNodeShape = "●"
-      vim.g.undotree_WindowLayout = 1
-      vim.g.undotree_HelpLine = 0
-    end
-  }
+  --[[ draw box ]]
+  use { 'gyim/vim-boxdraw' }
 
   -- | ------------------------------------------------------------------- | --
   -- |                      Telescope is your friend                       | --
@@ -231,7 +219,10 @@ return require('packer').startup({function(use)
   --[[ snippets ]]
   use {
     'SirVer/ultisnips',
-    requires = {{'honza/vim-snippets', rtp = '.'}, {'mlaursen/vim-react-snippets', rtp = '.'}},
+    requires = {
+      {'honza/vim-snippets', rtp = '.'},
+      {'mlaursen/vim-react-snippets', rtp = '.'}
+    },
     config = function()
       vim.g.UltiSnipsExpandTrigger="<C-l>"
       vim.g.UltiSnipsEditSplit="vertical"
@@ -241,12 +232,6 @@ return require('packer').startup({function(use)
   use {
     'akinsho/toggleterm.nvim',
     config = function() require('configs.toggleterm') end
-  }
-  --[[ send code to terminal ]]
-  use {
-    'pappasam/nvim-repl',
-    branch = 'main',
-    config = function() require('configs.nvim-repl') end
   }
   --[[ language sever protocol ]]
   use {
@@ -308,21 +293,8 @@ return require('packer').startup({function(use)
   --[[ Wiki ]]
   use {
     'vimwiki/vimwiki',
-    config = function ()
-      local my_wiki = {
-        ['path'] = '~/GitHub/wiki/',
-        ['syntax'] = 'markdown',
-        ['ext'] = '.md'
-      }
-
-      vim.g.vimwiki_list = { my_wiki }
-      vim.g.vimwiki_ext2syntax = {
-        ['.md'] = 'markdown',
-        ['.markdown'] = 'markdown',
-        ['.mdown'] = 'markdown'
-      }
-      vim.g.vimwiki_global_ext = 0
-    end
+    branch = 'dev',
+    config = function () require('configs.vimwiki') end
   }
   --[[ Lang: Python ]]
   use {
