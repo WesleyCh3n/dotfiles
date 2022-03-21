@@ -324,7 +324,13 @@ return require('packer').startup({function(use)
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown'},
-    config = function() vim.g.mkdp_auto_close = 0 end
+    config = function()
+      vim.g.mkdp_auto_close = 0
+      vim.g.mkdp_port = '8080'
+      vim.g.mkdp_echo_preview_url = 1
+      vim.g.mkdp_highlight_css =
+        os.getenv("HOME") .. "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
+    end
   }
   --[[ dap ]] -- not much occasions to use
   --[[ use {
