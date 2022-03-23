@@ -132,7 +132,11 @@ return require('packer').startup({function(use)
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("todo-comments").setup { }
+      require("todo-comments").setup {
+        keywords = {
+          HACK = { icon = " ", color = "warning", alt = { "QUES" } },
+        },
+      }
     end
   }
   --[[ preview color ]]
