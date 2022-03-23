@@ -35,7 +35,6 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator): Easily move between tmux and nvim
 - [vim-visual-multi](https://github.com/mg979/vim-visual-multi): A multi cursor plugin
 - [better-escape.nvim](https://github.com/max397574/better-escape.nvim): Lazy escape to normal mode
-- [undotree](https://github.com/mbbill/undotree): A builtin undo tree
 
 #### ✨ Better UI
 - [gruvbox-material](https://github.com/sainnhe/gruvbox-material): Best color scheme
@@ -48,7 +47,7 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): A git decorations
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim): Highlight todo comments
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate): Highlight other occurrence of current word under cursor
-- [zen-mode.nvim](https://github.com/folke/zen-mode.nvim): A better distraction free mode
+- [TrueZen.nvim](https://github.com/Pocco81/TrueZen.nvim): A better distraction free mode
 
 ## 💻 Shell setup
 - [zsh shell](https://github.com/zsh-users/zsh)
