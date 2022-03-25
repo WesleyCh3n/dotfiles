@@ -14,6 +14,7 @@ vim.g.indent_blankline_context_patterns = {
   '^catch',
   '^type',
   '^struct',
+  '^match',
   'method',
   'function',
   'class',
