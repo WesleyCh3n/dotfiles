@@ -18,7 +18,7 @@ return require('packer').startup({function(use)
     config = function ()
       vim.g.gruvbox_material_background             = 'medium'
       vim.g.gruvbox_material_current_word           = 'grey background'
-      vim.g.gruvbox_material_transparent_background = 0
+      vim.g.gruvbox_material_transparent_background = 1
       -- vim.g.gruvbox_material_transparent_background = 1
       vim.cmd('silent! colorscheme gruvbox-material')
     end
@@ -83,7 +83,7 @@ return require('packer').startup({function(use)
     'xiyaowong/nvim-transparent',
     config = function()
       require("transparent").setup({
-        enable = true,
+        enable = false,
         extra_groups = { }
       })
     end

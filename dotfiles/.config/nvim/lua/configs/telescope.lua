@@ -2,6 +2,7 @@
 local actions = require("telescope.actions")
 require('telescope').setup{
   defaults = {
+    prompt_prefix = "  ",
     layout_config = {
       horizontal = {
        preview_width = 0.6,
@@ -27,6 +28,20 @@ require('telescope').setup{
     find_files = {
       theme = "ivy",
     },
+    diagnostics = {
+      theme = "dropdown",
+      path_display = "tail",
+    },
+    lsp_definitions = require("telescope.themes").get_cursor({
+      jump_type="never",
+      layout_config = {
+        width = 0.8,
+        height = 0.5,
+        preview_width=0.8,
+      },
+    }),
+    lsp_code_actions = require("telescope.themes").get_cursor({
+    }),
     buffers = {
       show_all_buffers = true,
       sort_lastused = true,

@@ -1,6 +1,6 @@
 
 require("indent_blankline").setup {
-  buftype_exclude = {'terminal', 'help', },
+  buftype_exclude = {'terminal', 'help', 'nofile'},
   filetype_exclude = {"alpha", 'NvimTree', 'Outline', 'vimwiki', 'markdown'},
   show_current_context = true,
 }

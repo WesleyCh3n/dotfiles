@@ -15,19 +15,19 @@ local on_attach = function(client,bufnr)
   buf_set_keymap('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua require("renamer").rename()<CR>', opts)
-  buf_set_keymap('n', '<space>fa', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', opts)
-  buf_set_keymap('n', '<space>l', '<cmd>lua require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy({prompt_prefix = " ", path_display = { tail=1 }, layout_config = { height = 0.3, preview_width=0.4 }}))<CR>', opts)
-  buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float(nil,{border = {{"╭",},{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,source="if_many"})<cr>', opts)
+  buf_set_keymap('n', '<space>fa', '<cmd>Telescope lsp_code_actions<cr>', opts)
+  buf_set_keymap('n', '<space>l', '<cmd>Telescope diagnostics<CR>', opts)
+  buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
   buf_set_keymap('n', '<space>rr', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({
     bind = true,
-    handler_opts = { border = 'rounded' },
+    hint_prefix = "🐈 ",
     floating_window_above_cur_line = true,
-    doc_lines = 0,
-    hint_prefix = "🐱 ",
-    hi_parameter = 'Constant',
+    -- doc_lines = 1,
+    hi_parameter = 'WarningMsg',
+    handler_opts = { border = 'rounded' },
   })
 end
 
@@ -69,16 +69,41 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-vim.api.nvim_command("hi DiagnosticError guifg=#db4b4b")
-vim.api.nvim_command("hi DiagnosticWarn  guifg=#e0af68")
-vim.api.nvim_command("hi DiagnosticInfo  guifg=#0db9d7")
-vim.api.nvim_command("hi DiagnosticHint  guifg=#10B981")
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
 
-vim.api.nvim_command("hi DiagnosticVirtualTextError guifg=#db4b4b")
-vim.api.nvim_command("hi DiagnosticVirtualTextWarn  guifg=#e0af68")
-vim.api.nvim_command("hi DiagnosticVirtualTextInfo  guifg=#0db9d7")
-vim.api.nvim_command("hi DiagnosticVirtualTextHint  guifg=#10B981")
+-- local border = { {"╭"}, {"─"}, {"╮"}, {"│"}, {"╯"}, {"─"}, {"╰"}, {"│"} }
 
+vim.diagnostic.config({
+  float = {
+    source = 'if_many',
+    focusable = true,
+    border = 'rounded',
+    severity_sort = true
+  },
+})
+
+vim.api.nvim_command("hi DiagnosticError guifg=#ea6962")
+vim.api.nvim_command("hi DiagnosticWarn  guifg=#d8a657")
+vim.api.nvim_command("hi DiagnosticInfo  guifg=#7daea3")
+vim.api.nvim_command("hi DiagnosticHint  guifg=#a9b665")
+
+vim.api.nvim_command("hi DiagnosticVirtualTextError guifg=#ea6962")
+vim.api.nvim_command("hi DiagnosticVirtualTextWarn  guifg=#d8a657")
+vim.api.nvim_command("hi DiagnosticVirtualTextInfo  guifg=#7daea3")
+vim.api.nvim_command("hi DiagnosticVirtualTextHint  guifg=#a9b665")
+
+vim.api.nvim_command([[
+hi ErrorFloat   guifg=#ea6962 guibg=NONE
+hi WarningFloat guifg=#d8a657 guibg=NONE
+hi InfoFloat    guifg=#7daea3 guibg=NONE
+hi HintFloat    guifg=#a9b665 guibg=NONE
+
+hi NormalFloat  guifg=#ddc7a1 guibg=NONE
+]])
+
+--
 -- local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
