@@ -122,8 +122,8 @@ cmp.setup({
         end
       end
     }),
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
     ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
     ['<CR>'] = cmp.mapping({
@@ -142,9 +142,9 @@ cmp.setup({
       vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
-        buffer = "[﬘]",
-        nvim_lsp = "[]",
-        ultisnips = "[]",
+        buffer = "﬘",
+        nvim_lsp = "",
+        ultisnips = "",
       })[entry.source.name]
       return vim_item
     end
