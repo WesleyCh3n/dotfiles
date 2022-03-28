@@ -133,6 +133,17 @@ map('i', '?', '?<c-g>u')
 --------------------------------------------------------------------------------
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
+-- surround.vim
+vim.g.surround_no_mappings = 1
+vim.g.surround_no_insert_mappings = 1
+map('n', 'ds', '<Plug>Dsurround', {noremap = false, silent = true})
+map('n', 'cs', '<Plug>Csurround', {noremap = false, silent = true})
+map('n', 'cS', '<Plug>CSurround', {noremap = false, silent = true})
+map('n', 'ys', '<Plug>Ysurround', {noremap = false, silent = true})
+map('n', 'yS', '<Plug>YSurround', {noremap = false, silent = true})
+map('x', 'gs', '<Plug>VSurround', {noremap = false, silent = true})
+map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true})
+
 -- symbols-outline.nvim
 map('n', '<space>o', ':SymbolsOutline<CR>')
 

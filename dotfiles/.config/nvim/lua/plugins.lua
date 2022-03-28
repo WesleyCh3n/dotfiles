@@ -157,10 +157,10 @@ return require('packer').startup({function(use)
   -- |                           control on fly                            | --
   -- | ------------------------------------------------------------------- | --
   --[[ jump anywhere you want ]]
-  use {
-    'phaazon/hop.nvim',
-    config = function() require('hop').setup() end
-  }
+  --[[ use {
+     [   'phaazon/hop.nvim',
+     [   config = function() require('hop').setup() end
+     [ } ]]
   use {
     'ggandor/lightspeed.nvim',
     requires = {'tpope/vim-repeat'}
@@ -171,7 +171,7 @@ return require('packer').startup({function(use)
   use {
     'jiangmiao/auto-pairs',
     config = function()
-      vim.g.AutoPairsShortcutJump = '<S-Tab>'
+      -- vim.g.AutoPairsShortcutJump = '<M-Tab>'
     end
   }
   --[[ easy commnet ]]
@@ -317,7 +317,6 @@ return require('packer').startup({function(use)
     'fatih/vim-go',
     config = function() require("configs/vim-go") end
   }
-  use { 'rust-lang/rust.vim' }
   --[[ Lang: Typescript, Javascript, ]]
   use {'mattn/emmet-vim'}
   use {'MaxMEllon/vim-jsx-pretty'}
