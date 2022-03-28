@@ -161,6 +161,10 @@ return require('packer').startup({function(use)
     'phaazon/hop.nvim',
     config = function() require('hop').setup() end
   }
+  use {
+    'ggandor/lightspeed.nvim',
+    requires = {'tpope/vim-repeat'}
+  }
   --[[ change surrounding in motion ]]
   use {'tpope/vim-surround'}
   --[[ pair surrounding ]]

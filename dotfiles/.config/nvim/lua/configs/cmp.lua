@@ -155,4 +155,7 @@ cmp.setup({
     max_width = 120,
     max_height = math.floor(vim.o.lines * 0.3),
   };
+  experimental = {
+    ghost_text = true,
+  }
 })
