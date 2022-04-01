@@ -15,15 +15,7 @@ return require('packer').startup({function(use)
   --[[ gruvbox-material colorscheme ]]
   use {
     'sainnhe/gruvbox-material',
-    config = function ()
-      vim.g.gruvbox_material_background             = 'medium'
-      vim.g.gruvbox_material_current_word           = 'grey background'
-      vim.g.gruvbox_material_transparent_background = 1
-      vim.cmd('silent! colorscheme gruvbox-material')
-      vim.cmd[[
-      hi NormalFloat  guifg=#ddc7a1 guibg=NONE
-      ]]
-    end
+    config = function () require('configs.gruvbox') end
   }
   use {
     'luisiacc/gruvbox-baby',
@@ -51,7 +43,7 @@ return require('packer').startup({function(use)
   use {
     'RRethy/vim-illuminate',
     config = function ()
-       vim.g.Illuminate_ftblacklist = {'NvimTree'}
+       vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
     end
   }
   --[[ startup page ]]

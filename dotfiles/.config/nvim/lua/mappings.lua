@@ -190,22 +190,13 @@ g.user_emmet_leader_key = '<C-s>'
 --                                 Augroup                                    --
 --------------------------------------------------------------------------------
 vim.cmd([[
-augroup myaucmd
-  "au filetype python setlocal define=^\\s*\\<\\(def\\\|class\\)\\>
-  au filetype html let b:AutoPairs = {"<": ">"}
-  au filetype markdown setlocal wrap spell
-augroup END
 augroup WESLEYCH3N
   au!
+  au BufWinEnter * silent! TSBufEnable rainbow
+  au filetype html let b:AutoPairs = {"<": ">"}
+  au filetype markdown setlocal wrap spell
   au BufReadPost * if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   " remove trailing white space
   au BufWritePre * %s/\s\+$//e
-
-  au! FileType which_key
-  au FileType which_key set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-  au BufWinEnter * silent! TSBufEnable rainbow
-  au FileType * hi EndOfBuffer guifg=#282828
-  au FileType * hi WhichKeyFloat ctermbg='NONE' guibg='NONE'
 augroup END
 ]])
