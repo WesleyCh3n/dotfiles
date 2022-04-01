@@ -19,8 +19,16 @@ return require('packer').startup({function(use)
       vim.g.gruvbox_material_background             = 'medium'
       vim.g.gruvbox_material_current_word           = 'grey background'
       vim.g.gruvbox_material_transparent_background = 1
-      -- vim.g.gruvbox_material_transparent_background = 1
       vim.cmd('silent! colorscheme gruvbox-material')
+    end
+  }
+  use {
+    'luisiacc/gruvbox-baby',
+    branch = 'main',
+    config = function ()
+      vim.g.gruvbox_baby_telescope_theme = 1
+      vim.g.gruvbox_baby_transparent_mode = 1
+      -- vim.cmd('silent! colorscheme gruvbox-baby')
     end
   }
   --[[ statusline ]]
@@ -75,16 +83,6 @@ return require('packer').startup({function(use)
             nvim_bufferline = true,
           }
         }
-      })
-    end
-  }
-  --[[ toggle transparent ]]
-  use {
-    'xiyaowong/nvim-transparent',
-    config = function()
-      require("transparent").setup({
-        enable = false,
-        extra_groups = { }
       })
     end
   }
