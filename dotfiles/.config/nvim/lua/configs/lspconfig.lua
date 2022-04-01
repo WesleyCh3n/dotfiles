@@ -32,7 +32,7 @@ local on_attach = function(client,bufnr)
 end
 
 local servers = {
-  "pyright",
+  -- "pyright",
   "pylsp",
   "gopls",
   "tsserver",
@@ -84,23 +84,21 @@ vim.diagnostic.config({
   },
 })
 
-vim.api.nvim_command("hi DiagnosticError guifg=#ea6962")
-vim.api.nvim_command("hi DiagnosticWarn  guifg=#d8a657")
-vim.api.nvim_command("hi DiagnosticInfo  guifg=#7daea3")
-vim.api.nvim_command("hi DiagnosticHint  guifg=#a9b665")
-
-vim.api.nvim_command("hi DiagnosticVirtualTextError guifg=#ea6962")
-vim.api.nvim_command("hi DiagnosticVirtualTextWarn  guifg=#d8a657")
-vim.api.nvim_command("hi DiagnosticVirtualTextInfo  guifg=#7daea3")
-vim.api.nvim_command("hi DiagnosticVirtualTextHint  guifg=#a9b665")
-
 vim.api.nvim_command([[
 hi ErrorFloat   guifg=#ea6962 guibg=NONE
 hi WarningFloat guifg=#d8a657 guibg=NONE
 hi InfoFloat    guifg=#7daea3 guibg=NONE
 hi HintFloat    guifg=#a9b665 guibg=NONE
 
-hi NormalFloat  guifg=#ddc7a1 guibg=NONE
+hi DiagnosticError guifg=#ea6962
+hi DiagnosticWarn guifg=#d8a657
+hi DiagnosticInfo guifg=#7daea3
+hi DiagnosticHint guifg=#a9b665
+
+hi link DiagnosticVirtualTextError ErrorFloat
+hi link DiagnosticVirtualTextWarn WarningFloat
+hi link DiagnosticVirtualTextInfo InfoFloat
+hi link DiagnosticVirtualTextHint HintFloat
 ]])
 
 --

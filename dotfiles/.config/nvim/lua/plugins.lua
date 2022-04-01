@@ -20,6 +20,9 @@ return require('packer').startup({function(use)
       vim.g.gruvbox_material_current_word           = 'grey background'
       vim.g.gruvbox_material_transparent_background = 1
       vim.cmd('silent! colorscheme gruvbox-material')
+      vim.cmd[[
+      hi NormalFloat  guifg=#ddc7a1 guibg=NONE
+      ]]
     end
   }
   use {

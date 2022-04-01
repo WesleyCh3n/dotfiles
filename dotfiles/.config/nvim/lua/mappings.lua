@@ -146,7 +146,7 @@ map('n', '<space>ft', ':TodoTelescope<cr>')
 map('n', '<space>fe', ':Telescope symbols<cr>')
 map('n', '<space>ff', ':Telescope find_files<cr>')
 map('n', '<space>fg', ':Telescope find_files cwd=~/GitHub<cr>')
-map('n', '<space>fd', ':Telescope find_files cwd~/dotfiles/<cr>')
+map('n', '<space>fd', ':Telescope find_files cwd=~/dotfiles/<cr>')
 map('n', '<space>fb', ':Telescope buffers<cr>')
 map('n', '<space>fc', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>')
 
