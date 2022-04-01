@@ -8,9 +8,9 @@ local lspconfig_window = require("lspconfig.ui.windows")
 local old_defaults = lspconfig_window.default_opts
 
 function lspconfig_window.default_opts(opts)
-    local win_opts = old_defaults(opts)
-    win_opts.border = "rounded"
-    return win_opts
+  local win_opts = old_defaults(opts)
+  win_opts.border = "rounded"
+  return win_opts
 end
 
 local on_attach = function(client,bufnr)
@@ -60,6 +60,20 @@ for _, name in pairs(servers) do
       local default_opts = {
         on_attach = on_attach,
       }
+      if name == 'pylsp' then
+        default_opts = {
+          on_attach = on_attach,
+          settings = {
+            pylsp = {
+              plugins = {
+                jedi = {
+                  environment = vim.g.pylsp_jedi_environment or vim.fn.exepath('python3'),
+                },
+              },
+            },
+          },
+        }
+      end
       server:setup(default_opts)
     end)
     if not server:is_installed() then
