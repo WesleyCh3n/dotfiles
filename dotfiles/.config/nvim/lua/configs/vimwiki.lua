@@ -3,7 +3,12 @@ local my_wiki = {
   ['path'] = '~/Dropbox/wiki/',
   ['syntax'] = 'markdown',
   ['ext'] = '.md',
-  ['auto_toc'] = 1
+  ['auto_toc'] = 1,
+  ['nested_syntaxes'] = {
+    ['python'] = 'python',
+    ['c++'] = 'cpp',
+    ['rust'] = 'rust',
+  }
 }
 
 --[[ toc ]]
