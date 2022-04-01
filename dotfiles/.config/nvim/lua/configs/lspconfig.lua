@@ -4,6 +4,15 @@ if not present then
   return
 end
 
+local lspconfig_window = require("lspconfig.ui.windows")
+local old_defaults = lspconfig_window.default_opts
+
+function lspconfig_window.default_opts(opts)
+    local win_opts = old_defaults(opts)
+    win_opts.border = "rounded"
+    return win_opts
+end
+
 local on_attach = function(client,bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap=true, silent=true }
