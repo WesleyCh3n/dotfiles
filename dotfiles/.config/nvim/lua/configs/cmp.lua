@@ -56,6 +56,7 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
     { name = "nvim_lsp" },
+    { name = 'emoji', options = { insert = true } },
     { name = "buffer", options = {
       get_bufnrs = function()
         local bufs = {}
@@ -79,15 +80,15 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s", }),
-    --[[ ["<S-Tab>"] = cmp.mapping(function(fallback)
-       [   if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-       [     press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-       [   elseif cmp.visible() then
-       [     cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-       [   else
-       [     fallback()
-       [   end
-       [ end, { "i", "s", }), ]]
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+        press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+      elseif cmp.visible() then
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end, { "i", "s", }),
     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<C-n>'] = cmp.mapping({
