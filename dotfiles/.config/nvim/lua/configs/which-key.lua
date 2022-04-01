@@ -65,12 +65,10 @@ wk.register({
   r = {
     name = '漏re-',
     i = '漏re-Indent',
-    t = '漏re-Tab',
     n = '漏rename variable',
     w = ' rm trailing white',
   },
   s = { name = 'which_key_ignore' },
-  t = ' toggle bg',
   w = ' write',
   z = ' zen',
 }, { prefix = "<space>" })
@@ -85,14 +83,14 @@ wk.register({
 wk.register({
   ['>'] = 'which_key_ignore', -- ' tab move right',
   ['<'] = 'which_key_ignore', -- ' tab move left',
-  f = ' hopWord',
-  l = ' hopLineStart',
+  -- f = ' hopWord',
+  -- l = ' hopLineStart',
   n = ' no Highlight',
   p = 'which_key_ignore',
-  r = ' toggle repl',
+  -- r = ' toggle repl',
   s = '﯒ find replace',
   t = ' hopTab',
-  w = ' send repl',
+  -- w = ' send repl',
   c = { name = '# comment' },
   d = {
     name = ' peek',
@@ -102,7 +100,11 @@ wk.register({
   },
   g = {
     name = ' gitsgns',
-    p = ' preview hunk'
+    h = ' preview hunk',
+    n = ' next hunk',
+    p = ' prev hunk',
+    b = ' blame line',
+    q = '襁set quickfix list',
   },
   H = ' tab move left',
   L = ' tab move right',
