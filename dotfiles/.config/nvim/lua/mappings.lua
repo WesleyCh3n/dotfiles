@@ -24,12 +24,12 @@ map('i', 'kj', '<Esc>')
 map('i', 'jj', '<Esc>')
 
 -- write/close file
-function CloseBuf()
-  local buf_count = vim.api.nvim_exec(
-    'echo len(filter(range(1, bufnr(\'$\')), \'buflisted(v:val)\'))', true)
-  vim.api.nvim_command(tonumber(buf_count)<=1 and 'q' or 'bd')
-end
-function closeBuffer()
+--[[ function CloseBuf()
+   [   local buf_count = vim.api.nvim_exec(
+   [     'echo len(filter(range(1, bufnr(\'$\')), \'buflisted(v:val)\'))', true)
+   [   vim.api.nvim_command(tonumber(buf_count)<=1 and 'q' or 'bd')
+   [ end ]]
+function CloseBuffer()
   local treeView = require('nvim-tree.view')
   local bufferline = require('bufferline')
 
@@ -51,7 +51,7 @@ function closeBuffer()
   -- vim.cmd('bdelete! ' .. bufferToDelete)
 end
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':lua closeBuffer()<cr>')
+map('n', '<space>q', ':lua CloseBuffer()<cr>')
 map('n', '<space>Q', ':%bd|e#|bd#<cr>')
 
 -- cd buf
@@ -83,12 +83,6 @@ map('n', '<leader>H', ':BufferLineMovePrev<cr>')
 -- Jump tab
 map('n', '<leader>t', ':BufferLinePick<cr>')
 
--- New/Close tab
-map('n', '<C-t>', ':tabnew<cr>:Alpha<cr>')
-
--- retab
-map('n', '<space>rt', ':retab<cr>')
-
 -- reindent
 map('n', '<space>ri', 'gg=G<C-o>')
 map('n', '<space>rp', ':PrettierPartial<cr>')
@@ -111,10 +105,6 @@ map('t', '<C-h>', [[<C-\><C-n><C-W>h]], {silent = false})
 
 -- remove trailing white space
 map('n', '<space>rw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
-
--- move line up/down in visual
--- map('v', 'K', ':m \'<-2<CR>gv=gv')
--- map('v', 'J', ':m \'>+1<CR>gv=gv')
 
 -- apply q register in visual mode
 map('v', '.', ':norm! @q<cr>')
@@ -147,66 +137,32 @@ map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true})
 -- symbols-outline.nvim
 map('n', '<space>o', ':SymbolsOutline<CR>')
 
--- nvim-transparent
-map('n', '<space>t', ':TransparentToggle<CR>')
-
 -- ZenMode
 map('n', '<space>z', ':TZAtaraxis<cr>')
 
 -- Telescope
-function _G.tlscp_opts(cwd)
-  return {
-    theme = "ivy",
-    hidden = true,
-    cwd = cwd,
-    prompt_prefix = " ",
-    layout_config = {
-      -- height = 0.6,
-      preview_width=0.6
-    }}
-end
-
-map('n', '<space>F',
-  ':lua require("telescope.builtin").builtin({prompt_prefix = " "})<cr>'
-)
-map('n', '<space>ff',
-  ':lua require("telescope.builtin").find_files(tlscp_opts(""))<cr>'
-)
-map('n', '<space>fg',
-  ':lua require("telescope.builtin").find_files(tlscp_opts("~/GitHub"))<cr>'
-)
-map('n', '<space>fc',
-  ':lua require("telescope.builtin").find_files(tlscp_opts("~/dotfiles/dotfiles/.config/nvim/lua"))<cr>'
-)
-map('n', '<space>fd',
-  ':lua require("telescope.builtin").find_files(tlscp_opts("~/dotfiles/"))<cr>'
-)
-map('n', '<space>fb',
-  ':lua require("telescope.builtin").buffers()<cr>'
-)
+map('n', '<space>F',  ':Telescope<cr>')
 map('n', '<space>ft', ':TodoTelescope<cr>')
 map('n', '<space>fe', ':Telescope symbols<cr>')
+map('n', '<space>ff', ':Telescope find_files<cr>')
+map('n', '<space>fg', ':Telescope find_files cwd=~/GitHub<cr>')
+map('n', '<space>fd', ':Telescope find_files cwd~/dotfiles/<cr>')
+map('n', '<space>fb', ':Telescope buffers<cr>')
+map('n', '<space>fc', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>')
 
 --- File Explorer
 map('n', '<space>e', ':NvimTreeToggle<CR>')
 
 -- gitsigns.nvim
-map('n', '<leader>gp', '<cmd>Gitsigns preview_hunk<CR>')
+map('n', '<leader>gh', '<cmd>Gitsigns preview_hunk<CR>')
+map('n', '<leader>gn', '<cmd>Gitsigns next_hunk<CR>')
+map('n', '<leader>gp', '<cmd>Gitsigns prev_hunk<CR>')
+map('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>')
+map('n', '<leader>gq', '<cmd>Gitsigns setqflist<CR>')
 
 -- vim-easy-align
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 map('n', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
-
--- nvim-repl
-map('n', '<leader>r', ':ReplToggle<cr>')
-map('n', '<leader>w', ':ReplSend<cr>')
-map('v', '<leader>w', ':ReplSend<cr>')
-
--- hop.nvim
-map('n', '<leader>f', ":HopWord<cr>")
-map('n', '<leader>l', ":HopLineStart<cr>")
-map('v', '<leader>f', "<cmd>HopWord<cr>")
-map('v', '<leader>l', "<cmd>HopLineStart<cr>")
 
 -- toggleterm.nvim
 map('n', '<space>as', ":ToggleTerm direction=float<cr>")
