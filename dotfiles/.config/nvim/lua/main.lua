@@ -44,3 +44,6 @@ opt.shortmess = 'aF'
 opt.signcolumn = 'yes'
 opt.showtabline = 1
 opt.undofile = true
+vim.cmd[[
+let &fcs='eob: '
+]]
