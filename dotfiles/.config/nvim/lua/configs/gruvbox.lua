@@ -6,7 +6,6 @@ vim.cmd('silent! colorscheme gruvbox-material')
 vim.cmd[[
 
 hi NormalFloat  guifg=#ddc7a1 guibg=NONE
-hi EndOfBuffer guifg=#282828
 hi WhichKeyFloat ctermbg='NONE' guibg='NONE'
 
 hi ErrorFloat   guifg=#ea6962 guibg=NONE
