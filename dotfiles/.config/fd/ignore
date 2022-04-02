@@ -2,3 +2,5 @@
 .tmux
 .local
 .zplug
+.vscode
+.cache
