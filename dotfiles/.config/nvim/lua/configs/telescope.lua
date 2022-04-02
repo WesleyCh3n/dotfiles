@@ -2,7 +2,7 @@
 local actions = require("telescope.actions")
 require('telescope').setup{
   defaults = {
-    prompt_prefix = "  ",
+    prompt_prefix = " ",
     sorting_strategy = "ascending",
     layout_config = {
       horizontal = {
@@ -13,6 +13,7 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<esc>"] = actions.close,
+        ["<C-\\>"] = actions.close,
         ["<Tab>"] = actions.move_selection_next,
         ["<S-Tab>"] = actions.move_selection_previous,
         -- ["<CR>"] = actions.select_tab,
