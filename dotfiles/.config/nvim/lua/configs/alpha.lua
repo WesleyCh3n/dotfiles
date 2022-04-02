@@ -84,7 +84,7 @@ local buttons = {
   type = "group",
   val = {
     button( "e", "  New file" , ':ene <BAR> startinsert <CR>'),
-    button( "f", "  Telescope" , ':lua require("telescope.builtin").find_files(tlscp_opts(""))<cr>'),
+    button( "f", "  Telescope" , ':lua require("telescope.builtin").find_files({cwd=""})<cr>'),
     button( "q", "  Quit NVIM" , ':qa<CR>'),
   },
   opts = {
