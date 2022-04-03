@@ -4,7 +4,7 @@ if not present then
 end
 
 gs.setup {
-  numhl = true,
+  numhl = false,
   linehl = false,
   watch_gitdir = {
     interval = 1000,
