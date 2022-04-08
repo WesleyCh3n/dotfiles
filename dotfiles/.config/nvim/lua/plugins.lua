@@ -37,6 +37,7 @@ return require('packer').startup({function(use)
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
+    branch = 'main',
     config = function () require('configs.bufferline') end
   }
   --[[ current word hightlight ]]
@@ -232,6 +233,7 @@ return require('packer').startup({function(use)
   --[[ better terminal in nvim ]]
   use {
     'akinsho/toggleterm.nvim',
+    branch = 'main',
     config = function() require('configs.toggleterm') end
   }
   --[[ language sever protocol ]]
