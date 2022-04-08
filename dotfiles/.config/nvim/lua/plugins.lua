@@ -246,10 +246,21 @@ return require('packer').startup({function(use)
   --[[ lsp signature peeker ]]
   use {'ray-x/lsp_signature.nvim', event = 'BufRead'}
   --[[ better UI for rename variables ]]
+  --[[ use {
+     [   'filipdutescu/renamer.nvim',
+     [   branch = 'master',
+     [   config = function () require('renamer').setup() end
+     [ } ]]
   use {
-    'filipdutescu/renamer.nvim',
-    branch = 'master',
-    config = function () require('renamer').setup() end
+    'stevearc/dressing.nvim',
+    config = function ()
+      require('dressing').setup({
+        input = {
+          anchor = "NW",
+          winblend = 0,
+        }
+      })
+    end
   }
   --[[ lsp cmp ]]
   use {
