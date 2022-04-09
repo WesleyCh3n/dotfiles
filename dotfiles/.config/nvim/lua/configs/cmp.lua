@@ -70,9 +70,7 @@ cmp.setup({
   },
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-        press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-      elseif cmp.visible() then
+      if cmp.visible() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
       elseif has_any_words_before() then
         press("<Tab>")
@@ -81,43 +79,49 @@ cmp.setup({
       end
     end, { "i", "s", "c"}),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-        press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-      elseif cmp.visible() then
+      if cmp.visible() then
         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
       else
         fallback()
       end
     end, { "i", "s", "c"}),
-    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
+      behavior = cmp.SelectBehavior.Select
+    }), {'i'}),
+    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
+      behavior = cmp.SelectBehavior.Select
+    }), {'i'}),
     ['<C-n>'] = cmp.mapping({
-      c = function()
-        if cmp.visible() then
+      i = function(fallback)
+        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+        elseif cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         else
-          vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
+          fallback()
         end
       end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      s = function (fallback)
+        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpForwards()<CR>")
         else
           fallback()
         end
       end
     }),
     ['<C-p>'] = cmp.mapping({
-      c = function()
-        if cmp.visible() then
+      i = function(fallback)
+        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+        elseif cmp.visible() then
           cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         else
-          vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
+          fallback()
         end
       end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+      s = function (fallback)
+        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
         else
           fallback()
         end
