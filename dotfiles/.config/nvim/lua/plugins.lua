@@ -100,7 +100,8 @@ return require('packer').startup({function(use)
     'gelguy/wilder.nvim',
     event = "CmdlineEnter",
     config = function ()
-      vim.cmd [[ source $HOME/.config/nvim/lua/configs/wilder.vim ]]
+      -- vim.cmd [[ source $HOME/.config/nvim/lua/configs/wilder.vim ]]
+      require('configs.wilder')
     end
   }
   --[[ smooth jumping behaviors ]]

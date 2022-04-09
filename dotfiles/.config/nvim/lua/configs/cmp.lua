@@ -79,7 +79,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", }),
+    end, { "i", "s", "c"}),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
         press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
@@ -88,7 +88,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", }),
+    end, { "i", "s", "c"}),
     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     ['<C-n>'] = cmp.mapping({
@@ -123,9 +123,9 @@ cmp.setup({
         end
       end
     }),
-    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i'}),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i'}),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i'}),
     ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
     ['<CR>'] = cmp.mapping({
       i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
