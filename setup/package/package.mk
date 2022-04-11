@@ -10,6 +10,8 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v1.2.5/btop-x86_64-macos-monterey.tbz
 	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-macos.tar.gz
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-apple-darwin.tar.gz
+	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-apple-darwin.tar.gz
+	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-apple-darwin.tar.gz
 else
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
@@ -20,5 +22,7 @@ else
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v1.2.5/btop-x86_64-linux-musl.tbz
 	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-linux64.tar.gz
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-unknown-linux-gnu.tar.gz
+	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-unknown-linux-musl.tar.gz
+	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
 endif
 

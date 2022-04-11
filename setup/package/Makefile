@@ -86,5 +86,17 @@ node:
 	$(Q)curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 	$(Q)source ${HOME}/.zshrc && nvm install --lts
 
+delta:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_DELTA))
+	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
+	$(Q)rm -rf $(TMP_DIR)
+
+bat:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_BAT))
+	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
+	$(Q)rm -rf $(TMP_DIR)
+
 clean:
 	$(Q)rm -rf $(TMP_DIR)
