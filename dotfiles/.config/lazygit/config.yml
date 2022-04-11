@@ -1,4 +1,4 @@
 git:
   paging:
     colorArg: always
-    pager: delta --dark --show-syntax-themes --paging=never
+    pager: delta --syntax-theme gruvbox-dark --paging=never
