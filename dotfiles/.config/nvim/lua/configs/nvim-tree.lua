@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_git_hl = 0
 
 g.nvim_tree_icons = {
@@ -59,5 +58,10 @@ require('nvim-tree').setup {
         { key = "l", cb = tree_cb("cd") },
       }
     }
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
   }
 }
