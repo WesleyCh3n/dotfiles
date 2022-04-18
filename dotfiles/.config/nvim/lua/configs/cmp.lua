@@ -48,8 +48,16 @@ cmp.setup({
       vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
+  window = {
+    documentation = {
+      border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
+      winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+      max_width = 120,
+      max_height = math.floor(vim.o.lines * 0.3),
+    },
+  },
   completion = {
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone,noselect',
   },
   sources = cmp.config.sources{
     { name = "ultisnips" },
@@ -70,7 +78,6 @@ cmp.setup({
   },
   mapping = {
     ["<Tab>"] = cmp.mapping({
-      c = cmp.config.disable,
       i = function (fallback)
         if cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
@@ -83,8 +90,6 @@ cmp.setup({
       s = function (fallback)
         if cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif has_any_words_before() then
-          press("<Tab>")
         else
           fallback()
         end
@@ -105,7 +110,6 @@ cmp.setup({
           fallback()
         end
       end,
-      c = cmp.config.disable,
     }),
     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
       behavior = cmp.SelectBehavior.Select
@@ -185,12 +189,6 @@ cmp.setup({
       return vim_item
     end
   },
-  documentation = {
-    border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    max_height = math.floor(vim.o.lines * 0.3),
-  };
   experimental = {
     ghost_text = true,
   }
