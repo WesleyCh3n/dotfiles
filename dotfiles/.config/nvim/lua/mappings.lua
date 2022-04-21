@@ -35,14 +35,10 @@ function CloseBuffer()
 
   -- check if NvimTree window was open
   local explorerWindow = treeView.get_winnr()
-  local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
-
-  local bufferToDelete = vim.api.nvim_get_current_buf()
-
-  if (wasExplorerOpen) then
-    -- switch to previous buffer (tracked by bufferline)
+  if (explorerWindow) then
     bufferline.cycle(-1)
   end
+  local bufferToDelete = vim.api.nvim_get_current_buf()
 
   -- delete initially open buffer
   local buf_count = vim.api.nvim_exec(
