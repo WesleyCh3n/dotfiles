@@ -174,6 +174,13 @@ return require('packer').startup({function(use)
     'preservim/nerdcommenter',
     config = function() require('configs.commenter') end
   }
+  use {
+    'numToStr/Comment.nvim',
+    tag = 'v0.6',
+    config = function()
+        require('Comment').setup()
+    end
+}
   --[[ easy align text ]]
   use {'junegunn/vim-easy-align'}
   --[[ jump surrounding in motion ]]
@@ -322,7 +329,7 @@ return require('packer').startup({function(use)
     'psf/black',
     config = function ()
       vim.g.black_fast = 1
-      vim.g.black_linelength = 80
+      vim.g.black_linelength = 79
     end
   }
   --[[ Lang: Go ]]

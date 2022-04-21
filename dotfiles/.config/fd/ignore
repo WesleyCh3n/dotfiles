@@ -4,3 +4,4 @@
 .zplug
 .vscode
 .cache
+venv
