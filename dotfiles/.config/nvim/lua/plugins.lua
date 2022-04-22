@@ -176,13 +176,12 @@ return require('packer').startup({function(use)
     end
   }
   --[[ easy commnet ]]
-  use {
+  --[[ use {
     'preservim/nerdcommenter',
     config = function() require('configs.commenter') end
-  }
+  } ]]
   use {
     'numToStr/Comment.nvim',
-    tag = 'v0.6',
     config = function()
         require('Comment').setup()
     end
@@ -260,11 +259,6 @@ return require('packer').startup({function(use)
   --[[ lsp signature peeker ]]
   use {'ray-x/lsp_signature.nvim', event = 'BufRead'}
   --[[ better UI for rename variables ]]
-  --[[ use {
-     [   'filipdutescu/renamer.nvim',
-     [   branch = 'master',
-     [   config = function () require('renamer').setup() end
-     [ } ]]
   use {
     'stevearc/dressing.nvim',
     config = function ()
