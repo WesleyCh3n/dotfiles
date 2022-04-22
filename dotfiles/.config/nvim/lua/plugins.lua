@@ -155,9 +155,16 @@ return require('packer').startup({function(use)
      [   'phaazon/hop.nvim',
      [   config = function() require('hop').setup() end
      [ } ]]
-  use {
+  --[[ use {
     'ggandor/lightspeed.nvim',
     requires = {'tpope/vim-repeat'}
+  } ]]
+  use {
+    'ggandor/leap.nvim',
+    requires = {'tpope/vim-repeat'},
+    config = function ()
+      require('leap').set_default_keymaps()
+    end
   }
   --[[ change surrounding in motion ]]
   use {'tpope/vim-surround'}
