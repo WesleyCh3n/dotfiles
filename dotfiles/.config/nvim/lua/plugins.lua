@@ -17,15 +17,6 @@ return require('packer').startup({function(use)
     'sainnhe/gruvbox-material',
     config = function () require('configs.gruvbox') end
   }
-  use {
-    'luisiacc/gruvbox-baby',
-    branch = 'main',
-    config = function ()
-      vim.g.gruvbox_baby_telescope_theme = 1
-      vim.g.gruvbox_baby_transparent_mode = 1
-      -- vim.cmd('silent! colorscheme gruvbox-baby')
-    end
-  }
   --[[ statusline ]]
   use {
   'WesleyCh3n/galaxyline.nvim',
@@ -71,7 +62,7 @@ return require('packer').startup({function(use)
           ataraxis = {
             top_padding = 0,
             bottom_padding = 0,
-			      ideal_writing_area_width = {81},
+			      ideal_writing_area_width = {95},
           },
           integrations = {
             galaxyline = true,
@@ -107,7 +98,7 @@ return require('packer').startup({function(use)
   use {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
-    config = function() require('neoscroll').setup({ }) end,
+    config = function() require('neoscroll').setup({}) end,
   }
   --[[ better register UI ]]
   use {
@@ -151,14 +142,6 @@ return require('packer').startup({function(use)
   -- |                           control on fly                            | --
   -- | ------------------------------------------------------------------- | --
   --[[ jump anywhere you want ]]
-  --[[ use {
-     [   'phaazon/hop.nvim',
-     [   config = function() require('hop').setup() end
-     [ } ]]
-  --[[ use {
-    'ggandor/lightspeed.nvim',
-    requires = {'tpope/vim-repeat'}
-  } ]]
   use {
     'ggandor/leap.nvim',
     requires = {'tpope/vim-repeat'},
@@ -169,17 +152,8 @@ return require('packer').startup({function(use)
   --[[ change surrounding in motion ]]
   use {'tpope/vim-surround'}
   --[[ pair surrounding ]]
-  use {
-    'jiangmiao/auto-pairs',
-    config = function()
-      -- vim.g.AutoPairsShortcutJump = '<M-Tab>'
-    end
-  }
+  use {'jiangmiao/auto-pairs',}
   --[[ easy commnet ]]
-  --[[ use {
-    'preservim/nerdcommenter',
-    config = function() require('configs.commenter') end
-  } ]]
   use {
     'numToStr/Comment.nvim',
     config = function()
@@ -199,16 +173,6 @@ return require('packer').startup({function(use)
   use {'christoomey/vim-tmux-navigator'}
   --[[ multi cursor ]]
   use {'mg979/vim-visual-multi'}
-  --[[ easy escape ]]
-  --[[ use {
-     [   'max397574/better-escape.nvim',
-     [   config = function()
-     [     require("better_escape").setup {
-     [       mapping = {"jk", "kj", "jj"},
-     [       timeout = 1000,
-     [     }
-     [   end
-     [ } ]]
   --[[ file explorer ]]
   use {
     'kyazdani42/nvim-tree.lua',
@@ -216,7 +180,10 @@ return require('packer').startup({function(use)
     config = function() require('configs.nvim-tree') end
   }
   --[[ draw box ]]
-  use { 'gyim/vim-boxdraw' }
+  use {
+    'gyim/vim-boxdraw',
+    opt=true,
+  }
 
   -- | ------------------------------------------------------------------- | --
   -- |                      Telescope is your friend                       | --
