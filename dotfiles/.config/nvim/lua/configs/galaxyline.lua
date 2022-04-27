@@ -277,6 +277,7 @@ gl.short_line_list = {
   'man',
   'term',
   'Packer',
+  'neo-tree',
   'NvimTree',
   'Help',
   'diff',
@@ -299,6 +300,7 @@ require ('galaxyline').section.short_line_left = {
     ShortLineLeftBufferType = {
       provider = function ()
         local BufferTypeMap = {
+          ['neo-tree']   = ' Tree',
           ['NvimTree']   = ' Tree',
           ['help']       = ' Help',
           ['qf']         = ' Quick Fix',

@@ -30,14 +30,14 @@ map('i', 'jj', '<Esc>')
    [   vim.api.nvim_command(tonumber(buf_count)<=1 and 'q' or 'bd')
    [ end ]]
 function CloseBuffer()
-  local treeView = require('nvim-tree.view')
+  --[[ local treeView = require('nvim-tree.view')
   local bufferline = require('bufferline')
 
   -- check if NvimTree window was open
   local explorerWindow = treeView.get_winnr()
   if (explorerWindow) then
     bufferline.cycle(-1)
-  end
+  end ]]
   local bufferToDelete = vim.api.nvim_get_current_buf()
 
   -- delete initially open buffer
@@ -147,7 +147,7 @@ map('n', '<space>fb', ':Telescope buffers<cr>')
 map('n', '<space>fc', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>')
 
 --- File Explorer
-map('n', '<space>e', ':NvimTreeToggle<CR>')
+map('n', '<space>e', ':Neotree position=left toggle<CR>')
 
 -- gitsigns.nvim
 map('n', '<leader>gh', '<cmd>Gitsigns preview_hunk<CR>')
@@ -165,7 +165,7 @@ map('n', '<space>as', ":ToggleTerm direction=float<cr>")
 map('n', '<space>aS', ":ToggleTerm<cr>")
 map('n', '<space>at', ":ToggleTermToggleAll<cr>")
 map('n', '<space>ag', ":lua _lazygit_toggle()<CR>")
-map('n', '<space>an', ":lua _nnn_toggle()<CR>")
+map('n', '<space>an', ":Neotree position=float toggle<CR>")
 map('n', '<space>ab', ":lua _bpytop_toggle()<CR>")
 map('n', '<space>aj', ":lua _node_toggle()<CR>")
 map('n', '<space>ap', ":lua _python_toggle()<CR>")

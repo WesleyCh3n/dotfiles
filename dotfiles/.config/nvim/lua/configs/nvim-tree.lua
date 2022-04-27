@@ -27,15 +27,16 @@ g.nvim_tree_icons = {
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
 require('nvim-tree').setup {
-  open_on_setup       = true,
-  ignore_ft_on_setup  = {'alpha'},
-  auto_close          = false,
+  -- open_on_setup       = true,
+  -- ignore_ft_on_setup  = {'alpha'},
+  -- auto_close          = false,
+  hijack_netrw = false,
   open_on_tab         = true,
   update_cwd          = false,
-  update_to_buf_dir   = {
+  --[[ update_to_buf_dir   = {
     enable = true,
     auto_open = true,
-  },
+  }, ]]
   update_focused_file = {
     enable      = true,
     update_cwd  = true,
@@ -47,7 +48,7 @@ require('nvim-tree').setup {
   view = {
     width = 30,
     side = 'left',
-    auto_resize = false,
+    -- auto_resize = false,
     hide_root_folder = true,
     mappings = {
       custom_only = false,

@@ -55,8 +55,13 @@ return require('packer').startup({function(use)
       require("true-zen").setup({
         ui = {
           top = {
-            showtabline = 0,
+            showtabline = 1,
           },
+          left = {
+            number = true,
+            relativenumber = true,
+            signcolumn = "yes",
+          }
         },
         modes = {
           ataraxis = {
@@ -178,6 +183,43 @@ return require('packer').startup({function(use)
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons', },
     config = function() require('configs.nvim-tree') end
+  }
+  use {
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    config = function ()
+      vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+      require("neo-tree").setup({
+        default_component_configs = {
+          icon = {
+            folder_closed = "",
+            folder_open = "",
+            folder_empty = "",
+            highlight = "Label"
+          },
+        },
+        window = {
+          width = 35,
+        },
+        filesystem = {
+          filtered_items = {
+            hide_hidden = false,
+          },
+          follow_current_file = true,
+          window = {
+            mappings = {
+              ["h"] = "navigate_up",
+              ["l"] = "set_root",
+            }
+          }
+        },
+      })
+    end
   }
   --[[ draw box ]]
   use {
