@@ -47,7 +47,7 @@ function CloseBuffer()
   -- vim.cmd('bdelete! ' .. bufferToDelete)
 end
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':lua CloseBuffer()<cr>')
+map('n', '<space>q', ':bd %<cr>')
 map('n', '<space>Q', ':%bd|e#|bd#<cr>')
 
 -- cd buf
@@ -138,6 +138,7 @@ map('n', '<space>z', ':TZAtaraxis<cr>')
 
 -- Telescope
 map('n', '<space>F',  ':Telescope<cr>')
+map('n', '<space>G',  ':Telescope live_grep<cr>')
 map('n', '<space>ft', ':TodoTelescope<cr>')
 map('n', '<space>fe', ':Telescope symbols<cr>')
 map('n', '<space>ff', ':Telescope find_files<cr>')
