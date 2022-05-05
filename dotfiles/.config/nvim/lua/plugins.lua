@@ -35,7 +35,7 @@ return require('packer').startup({function(use)
   use {
     'RRethy/vim-illuminate',
     config = function ()
-       vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
+       vim.g.Illuminate_ftblacklist = {'neo-tree', 'alpha'}
     end
   }
   --[[ startup page ]]
@@ -180,11 +180,6 @@ return require('packer').startup({function(use)
   use {'mg979/vim-visual-multi'}
   --[[ file explorer ]]
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons', },
-    config = function() require('configs.nvim-tree') end
-  }
-  use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
@@ -204,7 +199,7 @@ return require('packer').startup({function(use)
           },
         },
         window = {
-          width = 35,
+          -- width = 35,
         },
         filesystem = {
           filtered_items = {
@@ -275,11 +270,6 @@ return require('packer').startup({function(use)
         input = {
           anchor = "NW",
           winblend = 0,
-          get_config = function()
-            if vim.api.nvim_buf_get_option(0, "filetype") == "NvimTree" then
-              return { enabled = false }
-            end
-          end,
         }
       })
     end
