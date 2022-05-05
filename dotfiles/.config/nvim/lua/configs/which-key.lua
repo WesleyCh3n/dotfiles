@@ -10,6 +10,7 @@ require("which-key").setup {
   },
   window = {
     border = "single", -- none, single, double, shadow
+    margin = {0, 0, 0, 0},
   },
   layout = {
     height = { min = 4, max = 20 }, -- min and max height of the columns
