@@ -11,9 +11,9 @@ My personal dotfiles for MacOS/Ubuntu/Manjaro. If you see something useful feel 
 - terminal config: alacritty, iTerm2
 - ...(some setup script)
 
-## 🌟 Neovim setup
+## 🌟 Neovim Setup
 
-Required Neovim >= 0.6
+Required Neovim >= 0.7
 
 Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 
@@ -25,23 +25,21 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 
 #### 🚀 Better Control
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): A extendable fuzzy finder
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua): A neovim file explorer
-- [hop.nvim](https://github.com/phaazon/hop.nvim): A easy motion plugin
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim): A neovim file explorer
+- [leap.nvim](https://github.com/ggandor/leap.nvim): A easy motion plugin
 - [surround.vim](https://github.com/tpope/vim-surround): Manipulate parentheses
 - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Easily pair parentheses
-- [nerdcommenter](https://github.com/preservim/nerdcommenter): Easily comment code file
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim): Easily comment code file
 - [vim-easy-align](https://github.com/junegunn/vim-easy-align): Easily align code
 - [targets.vim](https://github.com/wellle/targets.vim): More text object to operate on
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator): Easily move between tmux and nvim
 - [vim-visual-multi](https://github.com/mg979/vim-visual-multi): A multi cursor plugin
-- [better-escape.nvim](https://github.com/max397574/better-escape.nvim): Lazy escape to normal mode
 
 #### ✨ Better UI
 - [gruvbox-material](https://github.com/sainnhe/gruvbox-material): Best color scheme
 - [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim): A highly customizable status line
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim): Buffer on tab
 - [which-key.nvim](https://github.com/folke/which-key.nvim): A popup UI show possible key bindings
-- [wilder.nvim](https://github.com/gelguy/wilder.nvim): A better UI and fzf builtin command
 - [registers.nvim](https://github.com/tversteeg/registers.nvim): A popup UI show registers and its value
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): Better indent line
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): A git decorations
@@ -49,18 +47,21 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate): Highlight other occurrence of current word under cursor
 - [TrueZen.nvim](https://github.com/Pocco81/TrueZen.nvim): A better distraction free mode
 
-## 💻 Shell setup
+## 💻 Shell Setup
 - [zsh shell](https://github.com/zsh-users/zsh)
 - [zgen](https://github.com/tarjoilija/zgen): Plugin manager
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k): Shell theme
+- [fzf](https://github.com/junegunn/fzf): A fuzzy finder
+- [fzf-tab](https://github.com/Aloxaf/fzf-tab): Integrate fzf in shell tab and better UI
+- [macchina](https://github.com/Macchina-CLI/macchina): A fast customizable system fetch
+
+## 🧰 Useful Command Line Tools
+
 - [lazygit](https://github.com/jesseduffield/lazygit): A better git TUI for daily workflow
 - [fd](https://github.com/sharkdp/fd): Faster and better find alternative
 - [ripgrep](https://github.com/BurntSushi/ripgrep): Faster and better grep alternative
-- [fzf](https://github.com/junegunn/fzf): A fuzzy finder
-- [fzf-tab](https://github.com/Aloxaf/fzf-tab): Integrate fzf in shell tab and better UI
 - [nnn](https://github.com/jarun/nnn): A fast file explorer TUI
 - [btop](https://github.com/aristocratos/btop): A fast TUI system monitor
-- [macchina](https://github.com/Macchina-CLI/macchina): A fast customizable system fetch
 
 ## 📦 Installation
 
@@ -101,8 +102,6 @@ Finished ~ 🎉🎉🎉
 |       ![todo](https://user-images.githubusercontent.com/30611421/146416190-6f2eed92-0e66-47b4-a71b-977a00a28b29.jpg)       |
 |                                                        🔍 Which key                                                        |
 |     ![undotree](https://user-images.githubusercontent.com/30611421/146416192-7e10157a-7e46-4f87-984c-db0f77975b11.jpg)     |
-|                                                       🎫 Wilder menu                                                       |
-|      ![Wilder](https://user-images.githubusercontent.com/30611421/146416195-b894c86a-2a77-4af0-91c1-81cf1f276def.jpg)      |
 |                                                 ✨ Statusline/Lsp/Gitsigns                                                 |
 |    ![statusline](https://user-images.githubusercontent.com/30611421/146418245-18225944-5701-4dbd-b2b4-05e9bbb6e335.jpg)    |
 
