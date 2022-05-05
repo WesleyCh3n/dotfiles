@@ -5,6 +5,7 @@ vim.g.gruvbox_material_transparent_background = 1
 vim.cmd('silent! colorscheme gruvbox-material')
 vim.cmd[[
 
+hi FloatBorder  guifg=#928374 guibg=NONE
 hi NormalFloat  guifg=#ddc7a1 guibg=NONE
 hi WhichKeyFloat ctermbg='NONE' guibg='NONE'
 
