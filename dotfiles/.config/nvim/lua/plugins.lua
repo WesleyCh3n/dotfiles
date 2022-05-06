@@ -166,7 +166,13 @@ return require('packer').startup({function(use)
     end
 }
   --[[ easy align text ]]
-  use {'junegunn/vim-easy-align'}
+  use {
+    'junegunn/vim-easy-align',
+    config=function ()
+      vim.g.easy_align_interactive_modes = {'c', 'l', 'r'}
+      vim.g.easy_align_bang_interactive_modes = {'c', 'l', 'r'}
+    end
+  }
   --[[ jump surrounding in motion ]]
   use {
     'wellle/targets.vim',
