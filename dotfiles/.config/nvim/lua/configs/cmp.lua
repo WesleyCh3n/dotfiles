@@ -46,7 +46,6 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- vim.fn["UltiSnips#Anon"](args.body)
       require('luasnip').lsp_expand(args.body)
     end,
   },
@@ -62,7 +61,6 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert',
   },
   sources = cmp.config.sources{
-    -- { name = "ultisnips" },
     { name = 'luasnip' },
     { name = "buffer" },
     { name = "path" },
@@ -159,8 +157,6 @@ cmp.setup({
       vim_item.menu = ({
         buffer = "﬘",
         nvim_lsp = "",
-        -- ultisnips = "",
-        -- luasnip = "",
       })[entry.source.name]
       return vim_item
     end
