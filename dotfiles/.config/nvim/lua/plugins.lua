@@ -253,6 +253,13 @@ return require('packer').startup({function(use)
       vim.g.UltiSnipsEditSplit="vertical"
     end
   }
+  use {
+    'L3MON4D3/LuaSnip',
+    requires = {
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'WesleyCh3n/friendly-snippets' }
+    }
+  }
   --[[ better terminal in nvim ]]
   use {
     'akinsho/toggleterm.nvim',
