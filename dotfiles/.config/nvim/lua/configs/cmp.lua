@@ -101,42 +101,34 @@ cmp.setup({
     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
       behavior = cmp.SelectBehavior.Select
     }), {'i'}),
-    ['<C-n>'] = cmp.mapping({
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        elseif luasnip and luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-        else
-          fallback()
-        end
-      end,
-      s = function (fallback)
-        if luasnip and luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-        else
-          fallback()
-        end
+    ['<C-n>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
       end
-    }),
-    ['<C-p>'] = cmp.mapping({
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end,
-      s = function (fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
+    end, {'i', 's'}),
+    ['<C-p>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
       end
-    }),
+    end, {'i', 's'}),
+    ['<C-j>'] = cmp.mapping( function (fallback)
+      if luasnip and luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end , {'i', 's'}),
+    ['<C-k>'] = cmp.mapping( function (fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end , {'i', 's'}),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i'}),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i'}),
     -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i'}),
