@@ -227,6 +227,7 @@ return require('packer').startup({function(use)
     'gyim/vim-boxdraw',
     opt=true,
   }
+  use {'LudoPinelli/comment-box.nvim'}
 
   -- | ------------------------------------------------------------------- | --
   -- |                      Telescope is your friend                       | --
