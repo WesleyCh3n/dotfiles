@@ -62,6 +62,7 @@ cmp.setup({
   },
   sources = cmp.config.sources{
     { name = 'luasnip' },
+    { name = 'cmp_tabnine' },
     { name = "buffer" },
     { name = "path" },
     { name = "nvim_lsp" },
@@ -156,7 +157,9 @@ cmp.setup({
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         buffer = "﬘",
-        nvim_lsp = "",
+        nvim_lsp = "",
+        cmp_tabnine = "",
+        luasnip = ""
       })[entry.source.name]
       return vim_item
     end
