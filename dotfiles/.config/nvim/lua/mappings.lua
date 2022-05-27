@@ -88,10 +88,10 @@ map('n', '<leader>s', 'yiw:%s///gc<left><left><left><left><C-r>"<right>', {silen
 
 -- escape terminal
 map('t', '<C-\\>', '<C-\\><C-n>', {silent = false})
-map('t', '<C-k>', [[<C-\><C-n><C-W>k]], {silent = false})
-map('t', '<C-j>', [[<C-\><C-n><C-W>j]], {silent = false})
-map('t', '<C-l>', [[<C-\><C-n><C-W>l]], {silent = false})
-map('t', '<C-h>', [[<C-\><C-n><C-W>h]], {silent = false})
+-- map('t', '<C-k>', [[<C-\><C-n><C-W>k]], {silent = false})
+-- map('t', '<C-j>', [[<C-\><C-n><C-W>j]], {silent = false})
+-- map('t', '<C-l>', [[<C-\><C-n><C-W>l]], {silent = false})
+-- map('t', '<C-h>', [[<C-\><C-n><C-W>h]], {silent = false})
 
 -- remove trailing white space
 map('n', '<space>rw', ':let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', {silent = false })
