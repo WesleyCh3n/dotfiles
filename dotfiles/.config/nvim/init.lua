@@ -9,6 +9,13 @@ end
 -- vim.g.neovide_remember_window_size = true
 vim.g.neovide_cursor_vfx_mode = "railgun"
 
+local function prequire(...)
+  local status, lib = pcall(require, ...)
+  if (status) then return lib end
+  return nil
+end
+prequire('impatient')
+
 require('plugins')
 require('main')
 require('mappings')
