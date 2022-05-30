@@ -12,6 +12,7 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-apple-darwin.tar.gz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-apple-darwin.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-apple-darwin.tar.gz
+	LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_macOS_amd64.tar.gz
 else
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
@@ -24,5 +25,6 @@ else
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-unknown-linux-musl.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
+	LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_linux_amd64.tar.gz
 endif
 
