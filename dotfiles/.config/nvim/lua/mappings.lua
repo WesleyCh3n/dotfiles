@@ -55,7 +55,7 @@ map('i', '<C-E>', '<End>')
 map('n', '<leader>n', ':let @/=""<cr>')
 
 -- yank to system clipboard
-map('v', '<leader>y', '"+y')
+map('v', '<C-c>', '"+y')
 
 -- Tab
 function _G.goto_tab(num)
