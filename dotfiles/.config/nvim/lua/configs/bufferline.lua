@@ -4,7 +4,7 @@ require("bufferline").setup{
     left_trunc_marker = '',
     right_trunc_marker = '',
     middle_mouse_command = "vertical sbuffer %d",
-    offsets = {{filetype = "neo-tree", text = " File Explorer", text_align = "center"}},
+    offsets = {{filetype = "NvimTree", text = " File Explorer", text_align = "center"}},
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = true,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)

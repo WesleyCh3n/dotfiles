@@ -38,7 +38,7 @@ require('telescope').setup{
     },
     diagnostics = {
       theme = "dropdown",
-      path_display = "tail",
+      -- path_display = "tail",
     },
     lsp_definitions = require("telescope.themes").get_cursor({
       -- jump_type="never",

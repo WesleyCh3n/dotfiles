@@ -36,7 +36,7 @@ return require('packer').startup({function(use)
   use {
     'RRethy/vim-illuminate',
     config = function ()
-       vim.g.Illuminate_ftblacklist = {'neo-tree', 'alpha'}
+       vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
     end
   }
   --[[ startup page ]]
@@ -186,6 +186,16 @@ return require('packer').startup({function(use)
   --[[ multi cursor ]]
   use {'mg979/vim-visual-multi'}
   --[[ file explorer ]]
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+    config = function()
+        require('configs.nvim-tree')
+    end
+  }
   use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -382,6 +392,7 @@ return require('packer').startup({function(use)
         os.getenv("HOME") .. "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
     end
   }
+  use { 'lambdalisue/suda.vim' }
   --[[ dap ]] -- not much occasions to use
   --[[ use {
      [   {'mfussenegger/nvim-dap'},

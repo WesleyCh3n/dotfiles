@@ -25,21 +25,19 @@ map('i', 'jj', '<Esc>')
 
 -- write/close file
 function CloseBuffer()
-  --[[ local treeView = require('nvim-tree.view')
+  local treeView = require('nvim-tree.view')
   local bufferline = require('bufferline')
-
-  -- check if NvimTree window was open
   local explorerWindow = treeView.get_winnr()
-  if (explorerWindow) then
-    bufferline.cycle(-1)
-  end ]]
+  local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
   local bufferToDelete = vim.api.nvim_get_current_buf()
-
-  -- delete initially open buffer
+  if (wasExplorerOpen) then
+    bufferline.cycle(-1)
+  end
   vim.cmd('bdelete! ' .. bufferToDelete)
 end
+
 map('n', '<space>w', ':w<cr>')
-map('n', '<space>q', ':bd %<cr>')
+map('n', '<space>q', ':lua CloseBuffer()<cr>')
 map('n', '<space>Q', ':%bd|e#|bd#<cr>')
 
 -- cd buf
@@ -143,7 +141,7 @@ map('n', '<space>fc', ':Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvi
 
 --- File Explorer
 -- map('n', '<space>e', ':Neotree position=left toggle<CR>')
-map('n', '<space>e', ":Neotree position=float toggle<CR>")
+map('n', '<space>e', ":NvimTreeToggle<CR>")
 
 -- gitsigns.nvim
 map('n', '<leader>gh', '<cmd>Gitsigns preview_hunk<CR>')
