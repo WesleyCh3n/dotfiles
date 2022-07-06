@@ -28,6 +28,10 @@ function CloseBuffer()
   local treeView = require('nvim-tree.view')
   local bufferline = require('bufferline')
   local explorerWindow = treeView.get_winnr()
+  if explorerWindow == nil then
+    vim.cmd('bdelete! ')
+    return
+  end
   local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
   local bufferToDelete = vim.api.nvim_get_current_buf()
   if (wasExplorerOpen) then
