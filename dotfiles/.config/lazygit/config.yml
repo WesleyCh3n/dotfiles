@@ -4,3 +4,5 @@ git:
   paging:
     colorArg: always
     pager: delta --syntax-theme gruvbox-dark --paging=never
+os:
+  editCommand: 'nvim'
