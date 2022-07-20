@@ -23,9 +23,14 @@ local header = {
 
 local date = os.date("%a %d %b")
 
-local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
-local plugins = handle:read("*a")
-handle:close()
+local plugins = ""
+if (vim.loop.os_uname().sysname ~= "Windows_NT") then
+  local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
+  plugins = handle:read("*a")
+  handle:close()
+else
+  plugins = "??"
+end
 
 local heading = {
   type = "text",
