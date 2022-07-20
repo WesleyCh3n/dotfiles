@@ -116,7 +116,7 @@ map('i', '?', '?<c-g>u')
 --                                  Plugin                                    --
 --------------------------------------------------------------------------------
 -- surround.vim
-vim.g.surround_no_mappings = 1
+--[[ vim.g.surround_no_mappings = 1
 vim.g.surround_no_insert_mappings = 1
 map('n', 'ds', '<Plug>Dsurround', {noremap = false, silent = true})
 map('n', 'cs', '<Plug>Csurround', {noremap = false, silent = true})
@@ -124,7 +124,7 @@ map('n', 'cS', '<Plug>CSurround', {noremap = false, silent = true})
 map('n', 'ys', '<Plug>Ysurround', {noremap = false, silent = true})
 map('n', 'yS', '<Plug>YSurround', {noremap = false, silent = true})
 map('x', 'gs', '<Plug>VSurround', {noremap = false, silent = true})
-map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true})
+map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true}) ]]
 
 -- symbols-outline.nvim
 map('n', '<space>o', ':SymbolsOutline<CR>')
@@ -159,13 +159,16 @@ map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 map('n', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 
 -- toggleterm.nvim
-map('n', '<space>as', ":ToggleTerm direction=float<cr>")
-map('n', '<space>aS', ":ToggleTerm<cr>")
-map('n', '<space>at', ":ToggleTermToggleAll<cr>")
 map('n', '<space>ag', ":lua _lazygit_toggle()<CR>")
 map('n', '<space>ab', ":lua _bpytop_toggle()<CR>")
-map('n', '<space>aj', ":lua _node_toggle()<CR>")
 map('n', '<space>ap', ":lua _python_toggle()<CR>")
+-- map('n', '<space>aj', ":lua _node_toggle()<CR>")
+
+map('n', '<space>as', ":ToggleTermToggleAll<cr>")
+map('n', '<space>aS', ":ToggleTerm direction=float<cr>")
+map('n', '<space>aj', ":1ToggleTerm<cr>")
+map('n', '<space>ak', ":2ToggleTerm<cr>")
+map('n', '<space>al', ":3ToggleTerm<cr>")
 
 -- vim-markdown
 map('n', '<space>p', ":MarkdownPreviewToggle<cr>")

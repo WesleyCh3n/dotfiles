@@ -156,7 +156,18 @@ return require('packer').startup({function(use)
     end
   }
   --[[ change surrounding in motion ]]
-  use {'tpope/vim-surround'}
+  -- use {'tpope/vim-surround'}
+  use({
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup({
+        keymaps = {
+          visual = "gs",
+          visual_line = "gS",
+        },
+      })
+    end
+  })
   --[[ pair surrounding ]]
   use {'jiangmiao/auto-pairs',}
   --[[ easy commnet ]]
@@ -249,6 +260,12 @@ return require('packer').startup({function(use)
     requires = { 'nvim-lua/plenary.nvim', },
   }
   use {'nvim-telescope/telescope-symbols.nvim'}
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    config = function ()
+      require("telescope").load_extension "file_browser"
+    end
+  }
 
   -- | ------------------------------------------------------------------- | --
   -- |                            better coding                            | --
