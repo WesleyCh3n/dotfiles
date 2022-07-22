@@ -1,5 +1,5 @@
 REM wezterm
-mklink %userprofile%\.wezterm.lua   %CD%\.wezterm.lua
+mklink %userprofile%\.wezterm.lua   %CD%\dotfiles\.wezterm.lua
 REM fd
 mklink %APPDATA%\fd\ignore          %CD%\dotfiles\.config\fd\ignore
 REM lazygit

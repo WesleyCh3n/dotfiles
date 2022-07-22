@@ -1,16 +1,15 @@
 local wezterm = require 'wezterm';
 local act = wezterm.action
 
-local launch_menu = {}
-
+local win_launch_menu = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-  table.insert(launch_menu, {
+  table.insert(win_launch_menu, {
     label = "PowerShell",
     args = {"powershell.exe", "-NoLogo"},
   })
   for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files (x86)")) do
     local year = vsvers:gsub("Microsoft Visual Studio/", "")
-    table.insert(launch_menu, {
+    table.insert(win_launch_menu, {
       label = "x64 Native Tools VS " .. year,
       args = {"cmd.exe", "/k", "C:/Program Files (x86)/" .. vsvers .. "/BuildTools/VC/Auxiliary/Build/vcvars64.bat"},
     })
@@ -20,11 +19,11 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   for idx, line in ipairs(wezterm.split_by_newlines(wsl_list)) do
     if idx > 1 then
       local distro = line:gsub(" %(Default%)", "")
-      table.insert(launch_menu, {
+      table.insert(win_launch_menu, {
         label = distro .. " (WSL default shell)",
         args = {"wsl.exe", "--distribution", distro},
       })
-      table.insert(launch_menu, {
+      table.insert(win_launch_menu, {
         label = distro .. " (WSL zsh login shell)",
         args = {"wsl.exe", "--distribution", distro, "--exec", "/bin/zsh", "-l"},
       })
@@ -32,17 +31,29 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   end
 end
 
-return {
-  launch_menu = launch_menu,
-  default_prog = {"C:\\Users\\Wesley\\.local\\bin\\nu.exe"},
-  font = wezterm.font("VictorMono NF"),
+local config =  {
   harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
   font_size = 14.0,
   window_background_opacity = 0.85,
   color_scheme = "Gruvbox Dark",
+  hide_tab_bar_if_only_one_tab = true,
+  window_decorations = "RESIZE",
+}
 
-  leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  keys = {
+-- Mac Setup
+if wezterm.target_triple == "x86_64-apple-darwin" then
+  config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
+  config["font_size"] = 24.0
+  return config
+
+-- Win Setup
+elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  config["launch_menu"] = win_launch_menu
+  config["default_prog"] = {"C:\\Users\\Wesley\\.local\\bin\\nu.exe"}
+  config["font"] = wezterm.font("VictorMono NF")
+  config["leader"] = { key="a", mods="CTRL", timeout_milliseconds=1000 }
+  config["keys"] = {
+    -- my tmux like config
     -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
     {key="a", mods="LEADER|CTRL", action=act.SendString("\x01")},
 
@@ -73,4 +84,5 @@ return {
     {key="z", mods="LEADER", action=wezterm.action.TogglePaneZoomState},
     {key="l", mods="LEADER", action=wezterm.action.ShowLauncher},
   }
-}
+end
+
