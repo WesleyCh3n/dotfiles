@@ -84,14 +84,10 @@ wk.register({
 wk.register({
   ['>'] = 'which_key_ignore', -- ' tab move right',
   ['<'] = 'which_key_ignore', -- ' tab move left',
-  -- f = ' hopWord',
-  -- l = ' hopLineStart',
   n = ' no Highlight',
   p = 'which_key_ignore',
-  -- r = ' toggle repl',
   s = '﯒ find replace',
   t = ' hopTab',
-  -- w = ' send repl',
   c = { name = '# comment' },
   d = {
     name = ' peek',
