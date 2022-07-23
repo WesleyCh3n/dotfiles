@@ -174,10 +174,7 @@ map('n', '<space>al', ":3ToggleTerm<cr>")
 map('n', '<space>p', ":MarkdownPreviewToggle<cr>")
 
 -- GNU boxes intergration
-map('v', '<space>bv', "!boxes -s 80 -a c -d vim-box<CR>")
-map('v', '<space>bc', "!boxes -s 80 -a c -d cc<CR>")
-map('v', '<space>bp', "!boxes -s 80 -a c -d shell<CR>")
-map('v', '<space>bb', "!boxes -s 80 -a c -d ")
+map('n', '<leader>v', ":lua Toggle_venn()<CR>" )
 
 -- emmet-vim
 g.user_emmet_leader_key = '<C-s>'
