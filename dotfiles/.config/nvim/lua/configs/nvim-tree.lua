@@ -3,7 +3,6 @@ local tree_cb = require 'nvim-tree.config'.nvim_tree_callback
 require('nvim-tree').setup {
   diagnostics = {
     enable = true,
-    show_on_dis = true,
   },
   hijack_netrw        = true,
   open_on_tab         = true,
