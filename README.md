@@ -2,13 +2,13 @@
 
 # WesleyCh3n's dotfiles
 
-My personal dotfiles for MacOS/Ubuntu/Manjaro. If you see something useful feel free to use.
+My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
 
 ## 📖 Contents:
 - neovim config
 - tmux config
 - zsh config
-- terminal config: alacritty, iTerm2
+- terminal config: wezterm, alacritty, iTerm2
 - ...(some setup script)
 
 ## 🌟 Neovim Setup
@@ -25,9 +25,9 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 
 #### 🚀 Better Control
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): A extendable fuzzy finder
-- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim): A neovim file explorer
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua): A neovim file explorer
 - [leap.nvim](https://github.com/ggandor/leap.nvim): A easy motion plugin
-- [surround.vim](https://github.com/tpope/vim-surround): Manipulate parentheses
+- [nvim-surround](https://github.com/kylechui/nvim-surround): Manipulate parentheses
 - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Easily pair parentheses
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim): Easily comment code file
 - [vim-easy-align](https://github.com/junegunn/vim-easy-align): Easily align code
@@ -55,15 +55,18 @@ Nerd Font: [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media)
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab): Integrate fzf in shell tab and better UI
 - [macchina](https://github.com/Macchina-CLI/macchina): A fast customizable system fetch
 
-## 🧰 Useful Command Line Tools
+## 🧰 Modern Cli Tools
 
 - [lazygit](https://github.com/jesseduffield/lazygit): A better git TUI for daily workflow
 - [fd](https://github.com/sharkdp/fd): Faster and better find alternative
 - [ripgrep](https://github.com/BurntSushi/ripgrep): Faster and better grep alternative
 - [nnn](https://github.com/jarun/nnn): A fast file explorer TUI
 - [btop](https://github.com/aristocratos/btop): A fast TUI system monitor
+- [delta](https://github.com/dandavison/delta)
+- [bat](https://github.com/sharkdp/bat)
+- [gh](https://github.com/cli/cli)
 
-## 📦 Installation
+## 📦 Installation (Use GNU `stow`)
 
 1. `setup/install_essential.*.sh`: install basic requirements by your distro package manager.
 2. `make`: use GNU `stow` to create soft-link to dotfiles.
