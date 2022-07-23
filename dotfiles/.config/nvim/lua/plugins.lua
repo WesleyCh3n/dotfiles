@@ -92,19 +92,17 @@ return require('packer').startup({function(use)
     },
     config = function() require('configs.gitsigns') end
   }
-  --[[ let your vim commands prompt wilder ]]
-  --[[ use {
-    'gelguy/wilder.nvim',
-    event = "CmdlineEnter",
-    config = function ()
-      require('configs.wilder')
-    end
-  } ]]
   --[[ smooth jumping behaviors ]]
   use {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
     config = function() require('neoscroll').setup({}) end,
+  }
+  use {
+    'anuvyklack/hydra.nvim',
+    config = function()
+      require("configs.hydra")
+    end
   }
   --[[ better register UI ]]
   use {
