@@ -57,6 +57,7 @@ Hydra({
     { "j", "<C-w>2-" },
     -- equalize window sizes
     { "e", "<C-w>=" },
+    { "v", "<C-w>v<C-w>h" },
     -- exit this Hydra
     { "<Esc>", nil, { exit = true, nowait = true } },
   },
