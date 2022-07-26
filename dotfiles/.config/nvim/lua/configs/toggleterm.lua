@@ -2,6 +2,7 @@
 require("toggleterm").setup{
   size=10,
   direction = 'horizontal',
+  shell = (vim.loop.os_uname().sysname ~= "Windows_NT") and vim.o.shell or "nu.exe",
   float_opts = {
     border='curved'
   }
