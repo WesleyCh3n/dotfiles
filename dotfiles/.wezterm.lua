@@ -44,12 +44,11 @@ local config =  {
 if wezterm.target_triple == "x86_64-apple-darwin" then
   config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
   config["font_size"] = 24.0
-  return config
 
 -- Win Setup
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config["launch_menu"] = win_launch_menu
-  config["default_prog"] = {"C:\\Users\\Wesley\\.local\\bin\\nu.exe"}
+  config["default_prog"] = {"nu.exe"}
   config["font"] = wezterm.font("VictorMono NF")
   config["leader"] = { key="a", mods="CTRL", timeout_milliseconds=1000 }
   config["keys"] = {
@@ -82,7 +81,8 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
     {key="9", mods="CTRL", action=act.ActivateTab(8)},
 
     {key="z", mods="LEADER", action=wezterm.action.TogglePaneZoomState},
-    {key="l", mods="LEADER", action=wezterm.action.ShowLauncher},
+    {key="m", mods="LEADER", action=wezterm.action.ShowLauncher},
   }
 end
 
+return config
