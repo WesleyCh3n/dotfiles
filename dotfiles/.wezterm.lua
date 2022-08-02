@@ -38,6 +38,8 @@ local config =  {
   color_scheme = "Gruvbox Dark",
   hide_tab_bar_if_only_one_tab = true,
   window_decorations = "RESIZE",
+  default_cursor_style = "BlinkingBlock",
+  cursor_blink_rate = 800,
 }
 
 -- Mac Setup
