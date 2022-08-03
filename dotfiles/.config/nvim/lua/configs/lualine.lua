@@ -36,28 +36,15 @@ lualine.setup {
     theme = gruvbox_theme,
     section_separators = { left = '', right = ''},
     component_separators = { left = '|', right = '|'},
-    disabled_filetypes = {"NvimTree", "lspsagaoutline"},
+    disabled_filetypes = {"NvimTree", "lspsagaoutline", "alpha"},
     always_divide_middle = true,
   },
   sections = {
     lualine_a = {{'mode', separator = { left = '', right = ''}}},
     lualine_b = {
       'branch',
-      {
-        'diff',
-        symbols = {added = ' ', modified = ' ', removed = ' '}
-      },
-      {
-        'diagnostics',
-        sources={'nvim_lsp'},
-        colored = true,
-        -- diagnostics_color = {
-        --   error = '#ea6962',
-        --   warn  = '#d8a657',
-        --   info  = '#7daea3',
-        --   hint  = '#a9b665',
-        -- },
-      }
+      {'diff', symbols = {added = ' ', modified = ' ', removed = ' '}},
+      {'diagnostics', sources={'nvim_lsp'},}
     },
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
