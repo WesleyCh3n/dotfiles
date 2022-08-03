@@ -28,6 +28,7 @@ local on_attach = function(client,bufnr)
   -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', '<space>fa', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   -- buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+  -- buf_set_keymap('n', '<space>o', ':SymbolsOutline<CR>', opts)
 
   vim.keymap.set('n', 'gr', require("lspsaga.finder").lsp_finder, opts)
   vim.keymap.set('n', 'gs', require("lspsaga.signaturehelp").signature_help, opts)
@@ -37,6 +38,7 @@ local on_attach = function(client,bufnr)
   vim.keymap.set('n', '<leader>dd', require("lspsaga.diagnostic").show_line_diagnostics, opts)
   vim.keymap.set('n', 'gn', require("lspsaga.diagnostic").goto_next, opts)
   vim.keymap.set('n', 'gp', require("lspsaga.diagnostic").goto_prev, opts)
+  vim.keymap.set('n', '<space>o', ':LSoutlineToggle<CR>', opts)
 
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({

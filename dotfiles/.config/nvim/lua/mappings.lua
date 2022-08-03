@@ -126,9 +126,6 @@ map('n', 'yS', '<Plug>YSurround', {noremap = false, silent = true})
 map('x', 'gs', '<Plug>VSurround', {noremap = false, silent = true})
 map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true}) ]]
 
--- symbols-outline.nvim
-map('n', '<space>o', ':SymbolsOutline<CR>')
-
 -- ZenMode
 map('n', '<space>z', ':ZenMode<cr>')
 
