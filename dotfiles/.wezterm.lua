@@ -57,6 +57,7 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
     -- my tmux like config
     -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
     {key="a", mods="LEADER|CTRL", action=act.SendString("\x01")},
+    {key='x', mods='LEADER', action=act.CloseCurrentPane { confirm = true }},
 
     {key="v", mods="LEADER", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
     {key="s", mods="LEADER", action=act.SplitVertical{domain="CurrentPaneDomain"}},
