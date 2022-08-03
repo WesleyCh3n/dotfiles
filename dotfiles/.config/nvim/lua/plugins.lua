@@ -254,6 +254,21 @@ return require('packer').startup({function(use)
     requires = 'williamboman/nvim-lsp-installer',
     config = function() require('configs.lspconfig') end
   }
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local saga = require("lspsaga")
+      saga.init_lsp_saga({
+        -- your configuration
+        border_style = "rounded",
+        max_preview_lines = 40,
+        show_outline = {
+          win_width = 40,
+        },
+      })
+    end,
+  })
   --[[ lsp signature peeker ]]
   use {'ray-x/lsp_signature.nvim', event = 'BufRead'}
   --[[ better UI for rename variables ]]
