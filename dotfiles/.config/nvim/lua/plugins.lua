@@ -82,6 +82,12 @@ return require('packer').startup({function(use)
     config = function() require('neoscroll').setup({}) end,
   }
   use {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup{}
+    end
+  }
+  use {
     'anuvyklack/hydra.nvim',
     config = function()
       require("configs.hydra")
