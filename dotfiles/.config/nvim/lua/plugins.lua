@@ -237,8 +237,8 @@ return require('packer').startup({function(use)
   use {
     'L3MON4D3/LuaSnip',
     requires = {
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'WesleyCh3n/friendly-snippets' }
+      {'saadparwaiz1/cmp_luasnip'},
+      {'honza/vim-snippets'},
     }
   }
   --[[ better terminal in nvim ]]
