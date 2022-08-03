@@ -130,7 +130,7 @@ map('x', 'gS', '<Plug>VSurround', {noremap = false, silent = true}) ]]
 map('n', '<space>o', ':SymbolsOutline<CR>')
 
 -- ZenMode
-map('n', '<space>z', ':TZAtaraxis<cr>')
+map('n', '<space>z', ':ZenMode<cr>')
 
 -- Telescope
 map('n', '<space>F',  ':Telescope<cr>')

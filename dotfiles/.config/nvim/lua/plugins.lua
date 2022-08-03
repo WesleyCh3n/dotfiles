@@ -20,10 +20,10 @@ return require('packer').startup({function(use)
   }
   --[[ statusline ]]
   use {
-  'WesleyCh3n/galaxyline.nvim',
-    branch = 'main',
-    config = function() require('configs.galaxyline') end,
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    'nvim-lualine/lualine.nvim',
+    after = 'gruvbox-material',
+    config = function () require('configs.lualine') end,
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   --[[ tabline ]]
   use {
@@ -51,32 +51,15 @@ return require('packer').startup({function(use)
   }
   --[[ zen mode ]]
   use {
-    "Pocco81/TrueZen.nvim",
-    config = function ()
-      require("true-zen").setup({
-        ui = {
-          top = {
-            showtabline = 1,
-          },
-          left = {
-            number = true,
-            relativenumber = true,
-            signcolumn = "yes",
-          }
-        },
-        modes = {
-          ataraxis = {
-            top_padding = 0,
-            bottom_padding = 0,
-			      ideal_writing_area_width = {95},
-          },
-          integrations = {
-            galaxyline = true,
-		        gitsigns = true,
-            nvim_bufferline = true,
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        plugins = {
+          tmux = {
+            enabled = true
           }
         }
-      })
+      }
     end
   }
   --[[ key mapping previewer ]]
@@ -293,8 +276,6 @@ return require('packer').startup({function(use)
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-emoji',
-      "quangnguyen30192/cmp-nvim-ultisnips",
-      config = function() require("cmp-nvim-ultisnips").setup{} end
     },
     config = function() require('configs.cmp') end,
   }
@@ -390,6 +371,22 @@ return require('packer').startup({function(use)
     end
   }
   use { 'lambdalisue/suda.vim' }
+  --[[ use {
+    "nvim-neorg/neorg",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.presenter"] = {
+            config = {
+              zen_mode = "zen-mode",
+            }
+          },
+        },
+      }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  } ]]
   --[[ dap ]] -- not much occasions to use
   --[[ use {
      [   {'mfussenegger/nvim-dap'},
