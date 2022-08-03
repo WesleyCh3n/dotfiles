@@ -36,7 +36,7 @@ lualine.setup {
     theme = gruvbox_theme,
     section_separators = { left = '', right = ''},
     component_separators = { left = '|', right = '|'},
-    disabled_filetypes = {"NvimTree", "lspsagaoutline"},
+    disabled_filetypes = {"NvimTree", "lspsagaoutline", "alpha"},
     always_divide_middle = true,
   },
   sections = {
