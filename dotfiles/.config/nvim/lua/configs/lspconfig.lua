@@ -18,7 +18,6 @@ local on_attach = function(client,bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
-  buf_set_keymap('n', '<space>l', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
   buf_set_keymap('n', '<space>rr', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
@@ -38,21 +37,18 @@ local on_attach = function(client,bufnr)
   vim.keymap.set('n', '<leader>dd', require("lspsaga.diagnostic").show_line_diagnostics, opts)
   vim.keymap.set('n', 'gn', require("lspsaga.diagnostic").goto_next, opts)
   vim.keymap.set('n', 'gp', require("lspsaga.diagnostic").goto_prev, opts)
-  buf_set_keymap('n', '<space>o', '<cmd>LSoutlineToggle<CR>', opts)
 
   require('illuminate').on_attach(client)
   require("lsp_signature").on_attach({
     bind = true,
     hint_prefix = "🐈 ",
     floating_window_above_cur_line = true,
-    -- doc_lines = 1,
     hi_parameter = 'WarningMsg',
     handler_opts = { border = 'rounded' },
   })
 end
 
 local servers = {
-  -- "pyright",
   "pylsp",
   "gopls",
   "tsserver",

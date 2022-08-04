@@ -53,7 +53,7 @@ require('telescope').setup{
     buffers = {
       theme = "dropdown",
       show_all_buffers = true,
-      sort_lastused = true,
+      ignore_current_buffer = true,
       mappings = {
         n = {
           ["dd"] = "delete_buffer",
