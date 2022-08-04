@@ -1,6 +1,9 @@
 
 require("bufferline").setup{
   options = {
+    numbers = function(opts)
+      return string.format('%s', opts.raise(opts.ordinal))
+    end,
     left_trunc_marker = '',
     right_trunc_marker = '',
     middle_mouse_command = "vertical sbuffer %d",

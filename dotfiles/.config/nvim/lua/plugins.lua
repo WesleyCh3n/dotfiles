@@ -3,6 +3,7 @@
 --------------------------------------------------------------------------------
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
@@ -79,13 +80,24 @@ return require('packer').startup({function(use)
   use {
     "karb94/neoscroll.nvim",
     event = "WinScrolled",
-    config = function() require('neoscroll').setup({}) end,
+    -- config = function() require('neoscroll').setup({}) end,
   }
   use {
     "petertriho/nvim-scrollbar",
     config = function()
-      require("scrollbar").setup{}
+      require("scrollbar").setup{
+        handle = {
+          color = '#665c54',
+        },
+        excluded_filetypes = {
+          "NvimTree",
+        },
+      }
     end
+  }
+  use {
+    "luukvbaal/stabilize.nvim",
+    config = function() require("stabilize").setup() end
   }
   use {
     'anuvyklack/hydra.nvim',
@@ -408,14 +420,6 @@ return require('packer').startup({function(use)
     end,
     requires = "nvim-lua/plenary.nvim"
   } ]]
-  --[[ dap ]] -- not much occasions to use
-  --[[ use {
-     [   {'mfussenegger/nvim-dap'},
-     [   {
-     [     'leoluz/nvim-dap-go',
-     [     config = function() require("dap-go").setup { } end
-     [   }
-     [ } ]]
 
   -- | ------------------------------------------------------------------- | --
   -- |                              personal                               | --

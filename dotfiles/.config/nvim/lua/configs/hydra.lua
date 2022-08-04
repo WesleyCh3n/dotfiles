@@ -5,13 +5,14 @@ local function cmd(command)
 end
 
 local hint = [[
-            _f_:  files     _g_:  live grep
-  ████████╗ _o_: ﭯ old files _/_:  search in file
-  ╚══██╔══╝ _._: dotfiles    _b_: list buffer
-     ██║    _h_: vim help    _c_: execute command
-     ██║    _k_: keymaps     _;_: commands history
-     ██║    _O_: options     _?_: search history
-     ╚═╝    _<Enter>_: Telescope            _<Esc>_
+            ┌────────────────────────────────────────────┐
+  ████████╗ │  _f_ / _b_: files / bufs                       │
+  ╚══██╔══╝ │  _g_:  grep                                 │
+     ██║    │  _c_: nvim dots         _d_: dots              │
+     ██║    │  _/_: search            _?_: search history    │
+     ██║    │  _<Space>_: command     _;_: commands history  │
+     ╚═╝    │  _<Enter>_: Telescop    _<Esc>_: close         │
+            └────────────────────────────────────────────┘
 ]]
 
 Hydra({
@@ -29,17 +30,14 @@ Hydra({
   body = '<Leader>f',
   heads = {
     { 'f', cmd 'Telescope find_files' },
+    { 'b', cmd 'Telescope buffers' },
     { 'g', cmd 'Telescope live_grep' },
-    { 'o', cmd 'Telescope oldfiles' },
-    { 'h', cmd 'Telescope help_tags' },
-    { 'k', cmd 'Telescope keymaps' },
-    { 'O', cmd 'Telescope vim_options' },
     { '/', cmd 'Telescope current_buffer_fuzzy_find' },
+    { '<Space>', cmd 'Telescope commands' },
     { '?', cmd 'Telescope search_history' },
     { ';', cmd 'Telescope command_history' },
-    { 'c', cmd 'Telescope commands' },
-    { '.', cmd 'Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua' },
-    { 'b', cmd 'Telescope buffers' },
+    { 'c', cmd 'Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua' },
+    { 'd', cmd 'Telescope find_files cwd=~/dotfiles/' },
     { '<Enter>', cmd 'Telescope', { exit = true, desc = 'list all pickers' } },
     { '<Esc>', nil, { exit = true, nowait = true } },
   }

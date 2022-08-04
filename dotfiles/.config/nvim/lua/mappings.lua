@@ -1,10 +1,7 @@
 --------------------------------------------------------------------------------
 --                                  Helper                                    --
 --------------------------------------------------------------------------------
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true, silent = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
@@ -162,7 +159,7 @@ map('n', '<space>ap', ":lua _python_toggle()<CR>")
 -- map('n', '<space>aj', ":lua _node_toggle()<CR>")
 
 map('n', '<space>as', ":ToggleTermToggleAll<cr>")
-map('n', '<space>aS', ":ToggleTerm direction=float<cr>")
+map('n', '<space>aJ', ":ToggleTerm direction=float<cr>")
 map('n', '<space>aj', ":1ToggleTerm<cr>")
 map('n', '<space>ak', ":2ToggleTerm<cr>")
 map('n', '<space>al', ":3ToggleTerm<cr>")
