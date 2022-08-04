@@ -20,6 +20,23 @@ require("which-key").setup {
   },
 }
 
+-- write/close file
+function CloseBuffer()
+  local treeView = require('nvim-tree.view')
+  local bufferline = require('bufferline')
+  local explorerWindow = treeView.get_winnr()
+  if explorerWindow == nil then
+    vim.cmd('bdelete! ')
+    return
+  end
+  local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
+  local bufferToDelete = vim.api.nvim_get_current_buf()
+  if (wasExplorerOpen) then
+    bufferline.cycle(-1)
+  end
+  vim.cmd('bdelete! ' .. bufferToDelete)
+end
+
 local wk = require("which-key")
 wk.register({
   ['#'] = 'ﴵ tab #[123]',
@@ -33,78 +50,61 @@ wk.register({
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
   a = {
-    name = ' float',
-    s = ' shell',
-    g = ' lazygit',
-    d = ' lazydocker',
-    b = ' btop',
-    n = ' nnn',
-    j = ' node',
-    p = ' python',
+    name = ' term',
+    g = {'<cmd>lua _lazygit_toggle()<cr>',          '  lazygit'},
+    b = {'<cmd>lua _bpytop_toggle()<cr>',           '  btop'},
+    p = {'<cmd>lua _python_toggle()<cr>',           '  python'},
+    s = {'<cmd>ToggleTermToggleAll<cr>',            '  toggle all'},
+    j = {'<cmd>1ToggleTerm<cr>',                    '  #1'},
+    k = {'<cmd>2ToggleTerm<cr>',                    '  #2'},
+    l = {'<cmd>3ToggleTerm<cr>',                    '  #3'},
+    [";"] = {'<cmd>ToggleTerm direction=float<cr>', '  #float'},
   },
-  c = 'which_key_ignore',
-  d = { name = 'which_key_ignore' },
-  e = ' file explorer',
-  F = ' telescope',
+  c = {'<cmd>cd %:p:h<cr>',       'which_key_ignore'}, -- change to buf path
+  e = {'<cmd>NvimTreeToggle<cr>', ' file explorer'},
   f = {
     name = ' tele-',
-    a = 'ﱔ code action',
-    b = ' list buffers',
-    c = ' nvimrc',
-    d = ' dotfile',
-    e = ' emoji',
-    f = ' find files',
-    g = ' GitHub',
-    t = ' Todo'
+    f = {'<cmd>Telescope find_files<cr>',                                          ' files'},
+    b = {'<cmd>Telescope buffers previewer=false<cr>',                             ' bufs'},
+    c = {'<cmd>Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>', ' nvim dots'},
+    d = {'<cmd>Telescope find_files cwd=~/dotfiles/<cr>',                          ' dots'},
+    e = {'<cmd>Telescope symbols<cr>',                                             ' emoji'},
+    g = {'<cmd>Telescope live_grep<cr>',                                           ' grep'},
+    t = {'<cmd>TodoTelescope<cr>',                                                 ' Todo'},
+    ["<space>"] = {"<cmd>Telescope commands<cr>",                                  " cmd"},
+    ["<cr>"] = {"<cmd>Telescope<cr>",                                              "Telescope"}
   },
-  l = ' diagnostics list',
-  o = ' outline',
-  p = ' md preview',
-  P = ' toggle paste',
-  q = ' quit',
-  Q = ' close others',
+  n = {'<cmd>let @/=""<cr>',                     ' nohl'},
+	p = {'<cmd>MarkdownPreviewToggle<cr>',         ' md preview'},
+  P = {'<cmd>set paste!<cr>',                    ' toggle paste'},
+  l = {'<cmd>Telescope diagnostics bufnr=0<cr>', ' diag'},
+  q = {'<cmd>lua CloseBuffer()<cr>',             ' quit'},
   r = {
     name = '漏re-',
-    i = '漏re-Indent',
+    i = {'gg=G<C-o>', '漏re-Indent'},
     n = '漏rename variable',
-    w = ' rm trailing white',
+    w = {'<cmd>let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar>:nohl <Bar>:unlet _s <CR>', ' rm trailing white'},
   },
-  s = { name = 'which_key_ignore' },
-  w = ' write',
-  z = ' zen',
+  t = {"<cmd>BufferLinePick<cr>",  " pick buf"},
+  w = {'<cmd>w<cr>',               ' write'},
+  z = {'<cmd>ZenMode<cr>',         ' zen'},
+  o = {'<cmd>LSoutlineToggle<cr>', ' outline'},
 }, { prefix = "<space>" })
 
 wk.register({
-  g = {
-    d = ' show definitions',
-    r = ' show reference',
-  }
-})
-
-wk.register({
-  ['>'] = 'which_key_ignore', -- ' tab move right',
-  ['<'] = 'which_key_ignore', -- ' tab move left',
-  n = ' no Highlight',
-  p = 'which_key_ignore',
-  s = '﯒ find replace',
-  t = ' hopTab',
-  c = { name = '# comment' },
   d = {
     name = ' peek',
     d = ' diagnostics',
-    f = ' def whole',
-    F = ' def single',
   },
   g = {
     name = ' gitsgns',
-    h = ' preview hunk',
-    n = ' next hunk',
-    p = ' prev hunk',
-    b = ' blame line',
-    q = '襁set quickfix list',
+    h = {'<cmd>Gitsigns preview_hunk<cr>', ' preview hunk'},
+    n = {'<cmd>Gitsigns next_hunk<cr>',    ' next hunk'},
+    p = {'<cmd>Gitsigns prev_hunk<cr>',    ' prev hunk'},
+    b = {'<cmd>Gitsigns blame_line<cr>',   ' blame line'},
+    q = {'<cmd>Gitsigns setqflist<cr>',    '襁set quickfix list'},
   },
-  H = ' tab move left',
-  L = ' tab move right',
+  H = {'<cmd>BufferLineMoveNext<cr>', ' tab move left'},
+  L = {'<cmd>BufferLineMovePrev<cr>', ' tab move right'},
+  v = {'<cmd>lua Toggle_venn()<cr>', 'toggle venn draw'}
 }, { prefix = "<leader>" })
-
--- vim.cmd[[ hi WhichKeyFloat ctermfg=black ctermbg=black guibg=black guifg=black ]]
