@@ -15,11 +15,6 @@ g.mapleader = ','
 -- no EX mode
 map('n', 'Q', '<NOP>')
 
--- better_escape
-map('i', 'jk', '<Esc>')
-map('i', 'kj', '<Esc>')
-map('i', 'jj', '<Esc>')
-
 -- start/end word
 map('i', '<C-A>', '<Home>')
 map('i', '<C-E>', '<End>')

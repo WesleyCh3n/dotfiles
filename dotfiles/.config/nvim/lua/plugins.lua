@@ -205,6 +205,15 @@ return require('packer').startup({function(use)
         require('configs.nvim-tree')
     end
   }
+  -- lua with packer.nvim
+  use {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup{
+        mapping = {"jk", "kj", "jj", "kk"}
+      }
+    end,
+  }
   --[[ draw box ]]
   use {
     "jbyuki/venn.nvim",
