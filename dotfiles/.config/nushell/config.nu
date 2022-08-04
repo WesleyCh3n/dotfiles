@@ -499,3 +499,4 @@ alias lg = lazygit
 alias pwd = @echo %cd%
 
 source ~/.cache/starship/init.nu
+source ~/.zoxide.nu
