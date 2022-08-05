@@ -35,7 +35,7 @@ local cmp_groups = {
   CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", strikethrough=true, italic=true },
   CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", bold=true },
   CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", bold=true },
-  CmpItemMenu = { fg = "#C792EA", bg = "NONE", italic=true },
+  CmpItemMenu = { fg = "#C792EA", bg = "NONE" },
 
   CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
   CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },

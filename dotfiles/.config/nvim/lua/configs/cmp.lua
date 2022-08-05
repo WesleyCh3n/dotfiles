@@ -25,7 +25,7 @@ local kind_icons = {
   Snippet       = "",   -- Snippet       = "",
   Color         = "",   -- Color         = "",
   File          = "",   -- File          = "",
-  Reference     = "",   -- Reference     = "",
+  Reference     = "",   -- Reference     = "",
   Folder        = "",   -- Folder        = "",
   EnumMember    = "",   -- EnumMember    = "",
   Constant      = "",   -- Constant      = "",
@@ -63,9 +63,16 @@ cmp.setup({
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
       vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or vim_item.abbr
-      vim_item.menu = "  ("..vim_item.kind..")"
+      vim_item.menu =
+      "[".. ({
+        buffer = "﬘",
+        nvim_lsp = "",
+        cmp_tabnine = "",
+        luasnip = "",
+        emoji = ""
+      })[entry.source.name].."]"..vim_item.kind
       vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
       return vim_item
     end

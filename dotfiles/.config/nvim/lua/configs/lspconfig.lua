@@ -109,8 +109,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
 
--- local border = { {"╭"}, {"─"}, {"╮"}, {"│"}, {"╯"}, {"─"}, {"╰"}, {"│"} }
-
 vim.diagnostic.config({
   float = {
     source = 'if_many',
@@ -120,8 +118,6 @@ vim.diagnostic.config({
   },
 })
 
---
--- local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "Diagnostic" .. type
