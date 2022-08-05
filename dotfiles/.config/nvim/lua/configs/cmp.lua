@@ -8,31 +8,31 @@ local luasnip = prequire('luasnip')
 local cmp = prequire("cmp")
 
 local kind_icons = {
-  Text          = "",
-  Method        = "",
-  Function      = "",
-  Constructor   = "",
-  Field         = "",
-  Variable      = "",
-  Class         = "ﴯ",
-  Interface     = "ﰮ",
-  Module        = "",
-  Property      = "",
-  Unit          = "",
-  Value         = "",
-  Enum          = "ℰ",
-  Keyword       = "",
-  Snippet       = "",
-  Color         = "",
-  File          = "",
-  Reference     = "",
-  Folder        = "",
-  EnumMember    = "",
-  Constant      = "",
-  Struct        = "פּ",
-  Event         = "",
-  Operator      = "",
-  TypeParameter = "𝙏"
+  Text          = "",   -- Text          = "",
+  Method        = "",   -- Method        = "",
+  Function      = "",   -- Function      = "",
+  Constructor   = "",   -- Constructor   = "",
+  Field         = "ﰠ",   -- Field         = "",
+  Variable      = "",   -- Variable      = "",
+  Class         = "ﴯ",   -- Class         = "ﴯ",
+  Interface     = "",   -- Interface     = "ﰮ",
+  Module        = "",   -- Module        = "",
+  Property      = "ﰠ",   -- Property      = "",
+  Unit          = "塞",  -- Unit          = "",
+  Value         = "",   -- Value         = "",
+  Enum          = "",   -- Enum          = "ℰ",
+  Keyword       = "",   -- Keyword       = "",
+  Snippet       = "",   -- Snippet       = "",
+  Color         = "",   -- Color         = "",
+  File          = "",   -- File          = "",
+  Reference     = "",   -- Reference     = "",
+  Folder        = "",   -- Folder        = "",
+  EnumMember    = "",   -- EnumMember    = "",
+  Constant      = "",   -- Constant      = "",
+  Struct        = "פּ",   -- Struct        = "פּ",
+  Event         = "",   -- Event         = "",
+  Operator      = "",   -- Operator      = "",
+  TypeParameter = "",    -- TypeParameter = "𝙏"
 }
 
 local has_any_words_before = function()
@@ -43,6 +43,10 @@ local has_any_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local ELLIPSIS_CHAR = '…'
+local MAX_LABEL_WIDTH = 20
+local MIN_LABEL_WIDTH = 20
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -50,12 +54,25 @@ cmp.setup({
     end,
   },
   window = {
+    completion = {
+      col_offset = -3,
+      side_padding = 0,
+    },
     documentation = {
       border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
-      winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
       max_width = 120,
       max_height = math.floor(vim.o.lines * 0.3),
     },
+  },
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(_, vim_item)
+      vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, MAX_LABEL_WIDTH) .. "…" or vim_item.abbr
+      vim_item.menu = "  ("..vim_item.kind..")"
+      vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
+      return vim_item
+    end
   },
   completion = {
     completeopt = 'menu,menuone,noinsert',
@@ -81,7 +98,7 @@ cmp.setup({
   mapping = {
     ["<Tab>"] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        cmp.select_next_item()
       elseif has_any_words_before() then
         cmp.complete()
       else
@@ -90,7 +107,7 @@ cmp.setup({
     end, {"i", "s"}),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        cmp.select_prev_item()
       else
         fallback()
       end
@@ -142,19 +159,6 @@ cmp.setup({
         select = false
       }),
     }),
-  },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        buffer = "﬘",
-        nvim_lsp = "",
-        cmp_tabnine = "",
-        luasnip = ""
-      })[entry.source.name]
-      return vim_item
-    end
   },
   experimental = {
     ghost_text = true,

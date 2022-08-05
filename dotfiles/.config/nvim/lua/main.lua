@@ -44,6 +44,8 @@ opt.shortmess = 'at'
 opt.signcolumn = 'yes'
 opt.showtabline = 1
 opt.undofile = true
+opt.pumblend = 10
+opt.pumheight = 10
 vim.cmd[[
 let &fcs='eob: '
 ]]
