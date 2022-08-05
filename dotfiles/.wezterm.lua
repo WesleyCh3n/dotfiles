@@ -44,14 +44,14 @@ local config =  {
 
 -- Mac Setup
 if wezterm.target_triple == "x86_64-apple-darwin" then
-  config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
+  config["font"] = wezterm.font("VictorMono Nerd Font Mono", { weight = 'Medium' })
   config["font_size"] = 24.0
 
 -- Win Setup
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config["launch_menu"] = win_launch_menu
   config["default_prog"] = {"nu.exe"}
-  config["font"] = wezterm.font("VictorMono NF")
+  config["font"] = wezterm.font("VictorMono NF Mono")
   config["leader"] = { key="a", mods="CTRL", timeout_milliseconds=1000 }
   config["keys"] = {
     -- my tmux like config
