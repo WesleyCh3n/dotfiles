@@ -43,10 +43,6 @@ local has_any_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local ELLIPSIS_CHAR = '…'
-local MAX_LABEL_WIDTH = 20
-local MIN_LABEL_WIDTH = 20
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -68,7 +64,7 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(_, vim_item)
-      vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, MAX_LABEL_WIDTH) .. "…" or vim_item.abbr
+      vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or vim_item.abbr
       vim_item.menu = "  ("..vim_item.kind..")"
       vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
       return vim_item

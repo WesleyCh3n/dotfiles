@@ -29,7 +29,7 @@ local on_attach = function(client,bufnr)
   -- buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
   -- buf_set_keymap('n', '<space>o', ':SymbolsOutline<CR>', opts)
 
-  vim.keymap.set('n', 'gr', require("lspsaga.finder").lsp_finder, opts)
+  vim.keymap.set('n', 'gr', '<cmd>Lspsaga lsp_finder<cr>', opts)
   vim.keymap.set('n', 'gs', require("lspsaga.signaturehelp").signature_help, opts)
   vim.keymap.set('n', 'K', require("lspsaga.hover").render_hover_doc, opts)
   vim.keymap.set('n', '<space>fa', require("lspsaga.codeaction").code_action, opts)
