@@ -2,7 +2,7 @@
   WesleyCh3n's dotfiles
 </h1>
 
-![cover](https://user-images.githubusercontent.com/30611421/183112983-6dbf6617-ee70-4d97-9ca2-86f4e542b9f8.png)
+![cover](https://user-images.githubusercontent.com/30611421/183114248-ff46f804-e743-4e39-b6f1-f4258ed9ed57.png)
 
 My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
 
