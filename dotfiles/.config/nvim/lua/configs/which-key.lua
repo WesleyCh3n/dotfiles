@@ -99,7 +99,7 @@ wk.register({
   ["gb"] = {'<cmd>Gitsigns blame_line<cr>',   ' blame line'},
   ["gq"] = {'<cmd>Gitsigns setqflist<cr>',    '襁set quickfix list'},
 
-  H = {'<cmd>BufferLineMoveNext<cr>', ' tab move left'},
-  L = {'<cmd>BufferLineMovePrev<cr>', ' tab move right'},
+  H = {'<cmd>BufferLineMovePrev<cr>', ' tab move left'},
+  L = {'<cmd>BufferLineMoveNext<cr>', ' tab move right'},
   v = {'<cmd>lua Toggle_venn()<cr>', 'toggle venn draw'}
 }, { prefix = "<leader>" })

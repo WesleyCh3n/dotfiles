@@ -58,7 +58,7 @@ cmp.setup({
       border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
       winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
       max_width = 120,
-      max_height = math.floor(vim.o.lines * 0.3),
+      max_height = math.floor(vim.o.lines * 0.4),
     },
   },
   formatting = {
@@ -82,11 +82,11 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert',
   },
   sources = cmp.config.sources{
+    { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'cmp_tabnine' },
-    { name = "buffer" },
-    { name = "path" },
-    { name = "nvim_lsp" },
+    { name = 'cmp_tabnine', group_index = 10 },
+    { name = 'buffer' },
+    { name = 'path' },
     { name = 'emoji', options = { insert = true } },
     { name = "buffer", options = {
       get_bufnrs = function()
