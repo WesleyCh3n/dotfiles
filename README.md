@@ -1,6 +1,8 @@
-![cover](https://user-images.githubusercontent.com/30611421/146416165-179655b4-f198-411c-8dbf-99e9b7e561ad.jpg)
+<h1 align="center">
+  WesleyCh3n's dotfiles
+</h1>
 
-# WesleyCh3n's dotfiles
+![cover](https://user-images.githubusercontent.com/30611421/183112983-6dbf6617-ee70-4d97-9ca2-86f4e542b9f8.png)
 
 My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
 
