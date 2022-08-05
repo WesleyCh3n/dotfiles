@@ -1,56 +1,60 @@
 --------------------------------------------------------------------------------
 --                                  Helper                                    --
 --------------------------------------------------------------------------------
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local packer_bootstrap
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  packer_bootstrap = vim.fn.system({
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
 end
 
-return require('packer').startup({function(use)
+local packer = require('packer')
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
+})
+
+return packer.startup({function(use)
   use {'wbthomason/packer.nvim'}
   use {'lewis6991/impatient.nvim'}
   -- | ------------------------------------------------------------------- | --
   -- |                           for better look                           | --
   -- | ------------------------------------------------------------------- | --
-  --[[ gruvbox-material colorscheme ]]
   use {
     'sainnhe/gruvbox-material',
     config = function () require('configs.gruvbox') end
   }
-  --[[ statusline ]]
   use {
     'nvim-lualine/lualine.nvim',
     after = 'gruvbox-material',
     config = function () require('configs.lualine') end,
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  --[[ tabline ]]
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     branch = 'main',
     config = function () require('configs.bufferline') end
   }
-  --[[ current word hightlight ]]
   use {
     'RRethy/vim-illuminate',
     config = function ()
-       vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
+      vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
     end
   }
-  --[[ startup page ]]
   use {
     'goolord/alpha-nvim',
     config = function() require('configs.alpha') end
   }
-  --[[ better indent line ]]
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function() require('configs.indent-blankline') end
   }
-  --[[ zen mode ]]
   use {
     "folke/zen-mode.nvim",
     config = function()
@@ -63,24 +67,16 @@ return require('packer').startup({function(use)
       }
     end
   }
-  --[[ key mapping previewer ]]
   use {
     "folke/which-key.nvim",
     config = function() require('configs/which-key') end
   }
-  --[[ git status preview ]]
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
     },
     config = function() require('configs.gitsigns') end
-  }
-  --[[ smooth jumping behaviors ]]
-  use {
-    "karb94/neoscroll.nvim",
-    event = "WinScrolled",
-    -- config = function() require('neoscroll').setup({}) end,
   }
   use {
     "petertriho/nvim-scrollbar",
@@ -105,7 +101,6 @@ return require('packer').startup({function(use)
       require("configs.hydra")
     end
   }
-  --[[ better register UI ]]
   use {
     'tversteeg/registers.nvim',
     event = 'BufEnter',
@@ -117,7 +112,6 @@ return require('packer').startup({function(use)
       vim.g.registers_window_min_height = 3
     end,
   }
-  --[[ todo hightlight ]]
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -129,7 +123,6 @@ return require('packer').startup({function(use)
       }
     end
   }
-  --[[ preview color ]]
   use {
     'norcalli/nvim-colorizer.lua',
     opt = true,
@@ -146,7 +139,6 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   -- |                           control on fly                            | --
   -- | ------------------------------------------------------------------- | --
-  --[[ jump anywhere you want ]]
   use {
     'ggandor/leap.nvim',
     requires = {'tpope/vim-repeat'},
@@ -200,7 +192,7 @@ return require('packer').startup({function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end
   }
   use {
@@ -313,19 +305,16 @@ return require('packer').startup({function(use)
       })
     end
   }
-  --[[ treesitter ]]
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function() require('configs.treesitter') end
   }
-  --[[ better hightlight for parenthesis base on treesitter ]]
   use {
     'p00f/nvim-ts-rainbow',
     event = "BufRead",
     requires = "nvim-treesitter/nvim-treesitter",
   }
-  --[[ treesitter as an object ]]
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     requires = "nvim-treesitter/nvim-treesitter",
@@ -333,7 +322,6 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   -- |                          Lang improvement                           | --
   -- | ------------------------------------------------------------------- | --
-  --[[ Wiki ]]
   use {
     'vimwiki/vimwiki',
     branch = 'dev',
@@ -364,7 +352,7 @@ return require('packer').startup({function(use)
     'prettier/vim-prettier',
     run = 'yarn install',
     ft = {'javascript', 'typescript', 'typescriptreact', 'javascriptreact',
-          'css', 'less', 'scss', 'markdown', 'html'}
+      'css', 'less', 'scss', 'markdown', 'html'}
   }
   --[[ Lang: Markdown ]]
   use {
@@ -376,7 +364,7 @@ return require('packer').startup({function(use)
       vim.g.mkdp_port = '8080'
       vim.g.mkdp_echo_preview_url = 1
       vim.g.mkdp_highlight_css =
-        os.getenv("HOME") .. "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
+      os.getenv("HOME") .. "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
     end
   }
   use { 'lambdalisue/suda.vim' }
@@ -402,14 +390,9 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   use {'wakatime/vim-wakatime'}
 
-  --[[ auto packer sync ]]
   if packer_bootstrap then
     require('packer').sync()
   end
-end, config = {
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'rounded' }) -- packer floating
-    end
-  }
-}})
+
+end
+})
