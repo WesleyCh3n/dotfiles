@@ -18,7 +18,7 @@ local kind_icons = {
   Interface     = "",   -- Interface     = "ﰮ",
   Module        = "",   -- Module        = "",
   Property      = "ﰠ",   -- Property      = "",
-  Unit          = "塞",  -- Unit          = "",
+  Unit          = "",   -- Unit          = "",
   Value         = "",   -- Value         = "",
   Enum          = "",   -- Enum          = "ℰ",
   Keyword       = "",   -- Keyword       = "",
@@ -32,7 +32,7 @@ local kind_icons = {
   Struct        = "פּ",   -- Struct        = "פּ",
   Event         = "",   -- Event         = "",
   Operator      = "",   -- Operator      = "",
-  TypeParameter = "",    -- TypeParameter = "𝙏"
+  TypeParameter = "T",   -- TypeParameter = "𝙏"
 }
 
 local has_any_words_before = function()
@@ -71,8 +71,9 @@ cmp.setup({
         nvim_lsp = "",
         cmp_tabnine = "",
         luasnip = "",
-        emoji = ""
-      })[entry.source.name].."]"..vim_item.kind
+        emoji = "",
+        path = "",
+      })[entry.source.name].."] "..vim_item.kind
       vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
       return vim_item
     end
