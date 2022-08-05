@@ -23,8 +23,8 @@ local bpytop = Terminal:new(mycmd("btop"))
 local node = Terminal:new(mycmd("node"))
 local python = Terminal:new(mycmd("python3"))
 
-function _lazygit_toggle() lazygit:toggle() end
-function _nnn_toggle() nnn:toggle() end
-function _bpytop_toggle() bpytop:toggle() end
-function _node_toggle() node:toggle() end
-function _python_toggle() python:toggle() end
+function _G._lazygit_toggle() lazygit:toggle() end
+function _G._nnn_toggle() nnn:toggle() end
+function _G._bpytop_toggle() bpytop:toggle() end
+function _G._node_toggle() node:toggle() end
+function _G._python_toggle() python:toggle() end
