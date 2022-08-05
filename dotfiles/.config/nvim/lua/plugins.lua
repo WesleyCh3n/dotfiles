@@ -154,7 +154,18 @@ return require('packer').startup({function(use)
       require('leap').set_default_keymaps()
     end
   }
-  --[[ change surrounding in motion ]]
+  use {
+    'wellle/targets.vim',
+    config = function ()
+      vim.g.targets_aiAI = 'aIAi'
+    end
+  }
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("configs.autopairs")
+    end
+  }
   use({
     "kylechui/nvim-surround",
     config = function()
@@ -166,46 +177,18 @@ return require('packer').startup({function(use)
       })
     end
   })
-  --[[ pair surrounding ]]
-  use {'jiangmiao/auto-pairs',}
-  --[[ easy commnet ]]
   use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-}
-  --[[ easy align text ]]
-  use {
-    'junegunn/vim-easy-align',
-    config=function ()
-      vim.g.easy_align_interactive_modes = {'c', 'l', 'r'}
-      vim.g.easy_align_bang_interactive_modes = {'c', 'l', 'r'}
-    end
-  }
-  --[[ jump surrounding in motion ]]
-  use {
-    'wellle/targets.vim',
+    'abecodes/tabout.nvim',
     config = function ()
-      vim.g.targets_aiAI = 'aIAi'
+      require('tabout').setup {}
     end
   }
-  --[[ moving through tmux ]]
-  use {'christoomey/vim-tmux-navigator'}
-  --[[ multi cursor ]]
-  use {'mg979/vim-visual-multi'}
-  --[[ file explorer ]]
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    },
+    requires = { 'kyazdani42/nvim-web-devicons' },
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    config = function()
-        require('configs.nvim-tree')
-    end
+    config = function() require('configs.nvim-tree') end
   }
-  -- lua with packer.nvim
   use {
     "max397574/better-escape.nvim",
     config = function()
@@ -214,30 +197,25 @@ return require('packer').startup({function(use)
       }
     end,
   }
-  --[[ draw box ]]
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+  use {
+    'junegunn/vim-easy-align',
+    config=function ()
+      vim.g.easy_align_interactive_modes = {'c', 'l', 'r'}
+      vim.g.easy_align_bang_interactive_modes = {'c', 'l', 'r'}
+    end
+  }
+  use {'christoomey/vim-tmux-navigator'}
+  use {'mg979/vim-visual-multi'}
   use {
     "jbyuki/venn.nvim",
     config = function()
-      function _G.Toggle_venn()
-        local venn_enabled = vim.inspect(vim.b.venn_enabled)
-        if venn_enabled == "nil" then
-          print("Venn Enabled")
-          vim.b.venn_enabled = true
-          vim.cmd[[setlocal ve=all]]
-          -- draw a line on HJKL keystokes
-          vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
-          vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
-          vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
-          vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
-          -- draw a box by pressing "f" with visual selection
-          vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
-        else
-          print("Venn Disable")
-          vim.cmd[[setlocal ve=]]
-          vim.cmd[[mapclear <buffer>]]
-          vim.b.venn_enabled = nil
-        end
-      end
+      require('configs.venn')
     end
   }
 
@@ -260,7 +238,16 @@ return require('packer').startup({function(use)
   -- | ------------------------------------------------------------------- | --
   -- |                            better coding                            | --
   -- | ------------------------------------------------------------------- | --
-  --[[ snippets ]]
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-emoji',
+    },
+    config = function() require('configs.cmp') end,
+  }
   use {
     'L3MON4D3/LuaSnip',
     requires = {
@@ -268,13 +255,11 @@ return require('packer').startup({function(use)
       {'honza/vim-snippets'},
     }
   }
-  --[[ better terminal in nvim ]]
   use {
     'akinsho/toggleterm.nvim',
     branch = 'main',
     config = function() require('configs.toggleterm') end
   }
-  --[[ language sever protocol ]]
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
@@ -296,9 +281,7 @@ return require('packer').startup({function(use)
       })
     end,
   })
-  --[[ lsp signature peeker ]]
   use {'ray-x/lsp_signature.nvim', event = 'BufRead'}
-  --[[ better UI for rename variables ]]
   use {
     'stevearc/dressing.nvim',
     config = function ()
@@ -309,17 +292,6 @@ return require('packer').startup({function(use)
         }
       })
     end
-  }
-  --[[ lsp cmp ]]
-  use {
-    "hrsh7th/nvim-cmp",
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-emoji',
-    },
-    config = function() require('configs.cmp') end,
   }
   use {
     'tzachar/cmp-tabnine',
@@ -340,16 +312,6 @@ return require('packer').startup({function(use)
         show_prediction_strength = false;
       })
     end
-  }
-  --[[ lsp outline ]]
-  use {
-    'simrat39/symbols-outline.nvim',
-    cmd = {
-      "SymbolsOutline",
-      "SymbolsOutlineOpen",
-      "SymbolsOutlineClose",
-    },
-    setup = function () require('configs.outline') end
   }
   --[[ treesitter ]]
   use {
@@ -391,7 +353,12 @@ return require('packer').startup({function(use)
     config = function() require("configs/vim-go") end
   }
   --[[ Lang: Typescript, Javascript, ]]
-  use {'mattn/emmet-vim'}
+  use {
+    'mattn/emmet-vim',
+    config = function ()
+      vim.g.user_emmet_leader_key = '<C-s>'
+    end
+  }
   use {'MaxMEllon/vim-jsx-pretty'}
   use {
     'prettier/vim-prettier',

@@ -55,8 +55,9 @@ map('i', '?', '?<c-g>u')
 map('x', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 map('n', 'ga', '<Plug>(EasyAlign)', {noremap = false, silent = true})
 
--- emmet-vim
-g.user_emmet_leader_key = '<C-s>'
+-- A multiline tabout setup could look like this
+map('i', '<A-n>', "<Plug>(TaboutMulti)", {noremap = false, silent = true})
+map('i', '<A-p>', "<Plug>(TaboutBackMulti)", {noremap = false, silent = true})
 
 --------------------------------------------------------------------------------
 --                                 Augroup                                    --
