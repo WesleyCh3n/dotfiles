@@ -9,7 +9,7 @@ require("bufferline").setup{
     middle_mouse_command = "vertical sbuffer %d",
     offsets = {{filetype = "NvimTree", text = " File Explorer", text_align = "center"}},
     diagnostics = "nvim_lsp",
-    diagnostics_update_in_insert = true,
+    diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local s = " "
       for e, n in pairs(diagnostics_dict) do

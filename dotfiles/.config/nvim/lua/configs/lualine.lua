@@ -43,11 +43,17 @@ lualine.setup {
     lualine_a = {{'mode', separator = {left = '', right = ''}}},
     lualine_b = {
       'branch',
-      {'diff', symbols = {added = ' ', modified = ' ', removed = ' '}},
+      -- {'diff', symbols = {added = ' ', modified = ' ', removed = ' '}},
+    },
+    lualine_c = {
+      'filename',
       {'diagnostics', sources={'nvim_lsp'},}
     },
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {
+      'encoding',
+      'fileformat',
+      {'filetype', icon_only = true}
+    },
     lualine_y = {'progress'},
     lualine_z = {{'location', separator = {left = '', right = ''}}},
   },
