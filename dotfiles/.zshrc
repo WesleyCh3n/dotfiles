@@ -26,23 +26,6 @@ SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=$HOME/.zsh_history
 
 ################################################################################
-#                                plugin setting                                #
-################################################################################
-# fzf
-export FZF_DEFAULT_OPTS='--height 40% --border'
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# fzf-tab
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-zstyle ':fzf-tab:*' switch-group ',' '.'
-# zsh-autosuggestions
-bindkey '^[[Z' autosuggest-accept
-
-################################################################################
 #                             environment variable                             #
 ################################################################################
 export PATH=$PATH:$HOME/.local/bin/
@@ -65,6 +48,25 @@ export LC_ALL=en_US.UTF-8
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+################################################################################
+#                                plugin setting                                #
+################################################################################
+# fzf
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf-tab
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# zsh-autosuggestions
+bindkey '^[[Z' autosuggest-accept
+# zoxide
+eval "$(zoxide init zsh)"
 
 ################################################################################
 #                                    alias                                     #
