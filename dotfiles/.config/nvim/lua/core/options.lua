@@ -1,11 +1,5 @@
---------------------------------------------------------------------------------
---                                  Helper                                    --
---------------------------------------------------------------------------------
-local opt = vim.opt  -- to set options
+local opt = vim.opt
 
---------------------------------------------------------------------------------
---                                  Option                                    --
---------------------------------------------------------------------------------
 opt.syntax = 'enable'
 opt.smartindent = true
 opt.expandtab = true
@@ -46,6 +40,25 @@ opt.showtabline = 1
 opt.undofile = true
 opt.pumblend = 10
 opt.pumheight = 10
-vim.cmd[[
-let &fcs='eob: '
-]]
+vim.cmd [[ let &fcs='eob: ' ]]
+
+-- no EX mode
+vim.keymap.set('n', 'Q', '<NOP>')
+
+-- start/end word
+vim.keymap.set('i', '<C-A>', '<Home>')
+vim.keymap.set('i', '<C-E>', '<End>')
+
+-- yank to system clipboard
+vim.keymap.set('v', '<C-c>', '"+y')
+
+-- Keep cursor center
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Undo break point
+vim.keymap.set('i', ',', ',<c-g>u')
+vim.keymap.set('i', '.', '.<c-g>u')
+vim.keymap.set('i', '!', '!<c-g>u')
+vim.keymap.set('i', '?', '?<c-g>u')
