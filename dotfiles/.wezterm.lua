@@ -51,7 +51,7 @@ if wezterm.target_triple == "x86_64-apple-darwin" then
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config["launch_menu"] = win_launch_menu
   config["default_prog"] = {"nu.exe"}
-  config["font"] = wezterm.font("VictorMono NF Mono")
+  config["font"] = wezterm.font("VictorMono NF")
   config["leader"] = { key="a", mods="CTRL", timeout_milliseconds=1000 }
   config["keys"] = {
     -- my tmux like config
