@@ -15,7 +15,11 @@ function Packer:load_plugins()
     local list = {}
     local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
     for _, f in ipairs(tmp) do
-      list[#list + 1] = string.match(f, 'lua/(.+).lua$')
+      if vim.loop.os_uname().sysname == "Windows_NT" then
+        list[#list + 1] = string.match(f, 'lua\\(.+).lua$')
+      else
+        list[#list + 1] = string.match(f, 'lua/(.+).lua$')
+      end
     end
     return list
   end
