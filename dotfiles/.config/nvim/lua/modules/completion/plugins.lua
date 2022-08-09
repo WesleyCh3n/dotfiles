@@ -35,9 +35,3 @@ plugin ({
   'stevearc/dressing.nvim',
   config = conf.dressing
 })
-plugin ({
-  'tzachar/cmp-tabnine',
-  run='./install.sh',
-  requires = 'hrsh7th/nvim-cmp',
-  config = conf.cmp_tabnine
-})

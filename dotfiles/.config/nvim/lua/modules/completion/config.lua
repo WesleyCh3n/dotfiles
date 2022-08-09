@@ -72,7 +72,6 @@ function config.nvim_cmp()
         "[".. ({
           buffer = "﬘",
           nvim_lsp = "",
-          cmp_tabnine = "",
           luasnip = "",
           emoji = "",
           path = "",
@@ -87,7 +86,6 @@ function config.nvim_cmp()
     sources = cmp.config.sources{
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'cmp_tabnine', group_index = 10 },
       { name = 'buffer' },
       { name = 'path' },
       { name = 'emoji', options = { insert = true } },
