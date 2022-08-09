@@ -7,11 +7,12 @@ end
 require('core.options')
 
 -- packer
-require('core.pack')
+local pack = require('core.pack')
+pack.ensure_plugins()
+pack.load_compile()
 
 -- keymap
 require('keymap')
-
 
 -- autocmd
 vim.api.nvim_create_autocmd({"BufWritePre"}, {

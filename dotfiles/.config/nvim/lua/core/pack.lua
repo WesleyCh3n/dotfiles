@@ -1,32 +1,56 @@
---------------------------------------------------------------------------------
---                                  Helper                                    --
---------------------------------------------------------------------------------
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-local packer_bootstrap
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({
-    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path
-  })
-end
-
-local u = require("core.util")
-local editor_config = require("configs.editor")
-
-local packer = require("packer")
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
-
-------------------------
---[[ local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
+local fn, uv, api = vim.fn, vim.loop, vim.api
+local vim_path = vim.fn.stdpath('config')
+local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
+local modules_dir = vim_path .. '/lua/modules'
+local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
+local packer = nil
 
 local Packer = {}
 Packer.__index = Packer
+
+function Packer:load_plugins()
+  self.repos = {}
+
+  local get_plugins_list = function()
+    local list = {}
+    local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
+    for _, f in ipairs(tmp) do
+      list[#list + 1] = string.match(f, 'lua/(.+).lua$')
+    end
+    return list
+  end
+
+  local plugins_file = get_plugins_list()
+  for _, m in ipairs(plugins_file) do
+    require(m)
+  end
+end
+
+function Packer:load_packer()
+  if not packer then
+    api.nvim_command('packadd packer.nvim')
+    packer = require('packer')
+  end
+  packer.init({
+    compile_path = packer_compiled,
+    git = { clone_timeout = 120 },
+    disable_commands = true,
+    display = {
+      open_fn = function()
+        return require("packer.util").float({ border = "rounded" })
+      end,
+    }
+  })
+  packer.reset()
+  local use = packer.use
+  self:load_plugins()
+  use({ 'wbthomason/packer.nvim', opt = true })
+  use({'lewis6991/impatient.nvim'})
+  use({'nvim-lua/plenary.nvim'})
+  for _, repo in ipairs(self.repos) do
+    use(repo)
+  end
+end
 
 function Packer:init_ensure_plugins()
   local packer_dir = data_dir .. 'pack/packer/opt/packer.nvim'
@@ -49,301 +73,70 @@ local plugins = setmetatable({}, {
     end
     return packer[key]
   end,
-}) ]]
+})
 
-
------------------------------------
-local use = packer.use
-
--- packer.startup({function(use)
-use {'wbthomason/packer.nvim'}
-use {'lewis6991/impatient.nvim'}
-use {'nvim-lua/plenary.nvim'}
-
--- | ------------------------------------------------------------------- | --
--- |                           for better look                           | --
--- | ------------------------------------------------------------------- | --
-use { 'sainnhe/gruvbox-material', config = u.get.config 'gruvbox' }
-use { 'kyazdani42/nvim-web-devicons' }
-use { 'nvim-lualine/lualine.nvim', config = u.get.config 'lualine' }
-use {
-  'akinsho/bufferline.nvim',
-  tag = 'v2.*', config = u.get.config 'bufferline' }
-use {
-  'RRethy/vim-illuminate',
-  config = function ()
-    vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
-  end
-}
-use { 'goolord/alpha-nvim', config = u.get.config 'alpha' }
-use {
-  'lukas-reineke/indent-blankline.nvim',
-  config = u.get.config 'indentline'
-}
-use { "folke/which-key.nvim", config = u.get.config 'which-key' }
-use { 'lewis6991/gitsigns.nvim', config = u.get.config 'gitsigns' }
-use {
-  "petertriho/nvim-scrollbar",
-  config = function()
-    require("scrollbar").setup{
-      handle = {
-        color = '#665c54',
-      },
-      excluded_filetypes = {
-        "NvimTree",
-      },
-    }
-  end
-}
-use { "luukvbaal/stabilize.nvim", config = u.get.setup 'stabilize' }
-use {
-  'tversteeg/registers.nvim',
-  event = 'BufEnter',
-  config = function()
-    vim.g.registers_show_empty_registers = 0
-    vim.g.registers_hide_only_whitespace = 1
-    vim.g.registers_window_border = "rounded"
-    vim.g.registers_window_max_width = 50
-    vim.g.registers_window_min_height = 3
-  end,
-}
-use {
-  "folke/todo-comments.nvim",
-  config = function()
-    require("todo-comments").setup {
-      keywords = {
-        HACK = { icon = " ", color = "warning", alt = { "QUES" } },
-      },
-    }
-  end
-}
-use {
-  'norcalli/nvim-colorizer.lua',
-  opt = true,
-  ft = {"html", "css", "scss", "sass", "vim", "lua", "javascript",
-    "typescript", "javascriptreact", "typescriptreact", "dosini" ,
-    "ini", "conf", "json", "cfg"},
-  cmd = {"ColorizerToggle"},
-  config = function()
-    require("colorizer").setup()
-    vim.cmd("ColorizerAttachToBuffer")
-  end,
-}
-
--- | ------------------------------------------------------------------- | --
--- |                           control on fly                            | --
--- | ------------------------------------------------------------------- | --
-use {
-  'ggandor/leap.nvim',
-  config = editor_config.leap,
-  requires = {'tpope/vim-repeat'},
-}
-use {
-  'wellle/targets.vim',
-  config = editor_config.targets
-}
-use {
-  "windwp/nvim-autopairs",
-  config = u.get.setup 'nvim-autopairs'
-}
-use {
-  "kylechui/nvim-surround",
-  config = editor_config["nvim-surround"],
-}
-use {
-  'abecodes/tabout.nvim',
-  config = u.get.setup 'tabout'
-}
-use {
-  'kyazdani42/nvim-tree.lua',
-  tag = 'nightly',
-  config = u.get.config 'nvim-tree'
-}
-use {
-  "max397574/better-escape.nvim",
-  config = editor_config["better-escape"],
-}
-use {
-  'numToStr/Comment.nvim',
-  config = u.get.setup 'Comment',
-}
-use {
-  'anuvyklack/hydra.nvim',
-  config = u.get.config 'hydra'
-}
-use {
-  'junegunn/vim-easy-align',
-  config = editor_config["vim-easy-align"]
-}
-use { 'christoomey/vim-tmux-navigator' }
-use { 'mg979/vim-visual-multi' }
-use {
-  "jbyuki/venn.nvim",
-  config = u.get.config 'venn'
-}
-
--- | ------------------------------------------------------------------- | --
--- |                      Telescope is your friend                       | --
--- | ------------------------------------------------------------------- | --
-use { 'nvim-telescope/telescope.nvim', config = u.get.config 'telescope' }
-use { 'nvim-telescope/telescope-symbols.nvim' }
-
--- | ------------------------------------------------------------------- | --
--- |                            better coding                            | --
--- | ------------------------------------------------------------------- | --
-use {
-  "hrsh7th/nvim-cmp",
-  requires = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-emoji',
-  },
-  config = u.get.config 'cmp'
-}
-use {
-  'L3MON4D3/LuaSnip',
-  requires = {
-    {'saadparwaiz1/cmp_luasnip'},
-    {'honza/vim-snippets'},
-  }
-}
-use {
-  'akinsho/toggleterm.nvim',
-  branch = 'main',
-  config = u.get.config 'toggleterm'
-}
-use {
-  "neovim/nvim-lspconfig",
-  event = "BufRead",
-  requires = 'williamboman/nvim-lsp-installer',
-  config = u.get.config 'lspconfig'
-}
-use {
-  "glepnir/lspsaga.nvim",
-  branch = "main",
-  config = function()
-    local saga = require("lspsaga")
-    saga.init_lsp_saga({
-      border_style = "rounded",
-      max_preview_lines = 40,
-      show_outline = {
-        win_width = 40,
-      },
-    })
-  end,
-}
-use { 'ray-x/lsp_signature.nvim', event = 'BufRead' }
-use {
-  'stevearc/dressing.nvim',
-  config = function ()
-    require('dressing').setup({
-      input = {
-        anchor = "NW",
-        winblend = 0,
-      }
-    })
-  end
-}
-use {
-  'tzachar/cmp-tabnine',
-  run='./install.sh',
-  requires = 'hrsh7th/nvim-cmp',
-  config = function ()
-    local tabnine = require('cmp_tabnine.config')
-    tabnine:setup({
-      max_lines = 1000;
-      max_num_results = 20;
-      sort = true;
-      run_on_every_keystroke = true;
-      snippet_placeholder = '..';
-      ignored_file_types = {};
-      show_prediction_strength = false;
-    })
-  end
-}
-
-use { "nvim-treesitter/nvim-treesitter", config = u.get.config 'treesitter' }
-use { 'p00f/nvim-ts-rainbow',
-  event = "BufRead",
-  requires = "nvim-treesitter/nvim-treesitter",
-}
-use {
-  'nvim-treesitter/nvim-treesitter-textobjects',
-  requires = "nvim-treesitter/nvim-treesitter",
-}
-use {
-  "folke/zen-mode.nvim",
-  config = function()
-    require("zen-mode").setup {
-      plugins = {
-        tmux = {
-          enabled = true
-        }
-      }
-    }
-  end
-}
-
--- | ------------------------------------------------------------------- | --
--- |                          Lang improvement                           | --
--- | ------------------------------------------------------------------- | --
-use { 'vimwiki/vimwiki', branch = 'dev', config = u.get.config 'vimwiki' }
---[[ Lang: Python ]]
-use {
-  'psf/black',
-  config = function ()
-    vim.g.black_fast = 1
-    vim.g.black_linelength = 79
-  end
-}
-use {
-  'mattn/emmet-vim',
-  config = function ()
-    vim.g.user_emmet_leader_key = '<C-s>'
-  end
-}
-use {'MaxMEllon/vim-jsx-pretty'}
-use {
-  'prettier/vim-prettier',
-  run = 'yarn install',
-  ft = {'javascript', 'typescript', 'typescriptreact', 'javascriptreact',
-    'css', 'less', 'scss', 'markdown', 'html'}
-}
-use { -- markdown preview
-  'iamcco/markdown-preview.nvim',
-  run = function() vim.fn['mkdp#util#install']() end,
-  ft = {'markdown'},
-  config = function()
-    vim.g.mkdp_auto_close = 0
-    vim.g.mkdp_port = '8080'
-    vim.g.mkdp_echo_preview_url = 1
-    vim.g.mkdp_highlight_css =
-    os.getenv("HOME") .. "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
-  end
-}
-use {
-  "nvim-neorg/neorg",
-  config = function()
-    require('neorg').setup {
-      load = {
-        ["core.defaults"] = {},
-        ["core.presenter"] = {
-          config = {
-            zen_mode = "zen-mode",
-          }
-        },
-      },
-    }
-end,
-  requires = "nvim-lua/plenary.nvim"
-}
-
--- | ------------------------------------------------------------------- | --
--- |                              personal                               | --
--- | ------------------------------------------------------------------- | --
-use {'wakatime/vim-wakatime'}
-
-if packer_bootstrap then
-  require('packer').sync()
+function plugins.ensure_plugins()
+  Packer:init_ensure_plugins()
 end
+
+function plugins.register_plugin(repo)
+  table.insert(Packer.repos, repo)
+end
+
+-- function plugins.compile_notify()
+--   plugins.compile()
+--   vim.notify('Compile Done!','info',{ title = 'Packer' })
+-- end
+
+function plugins.auto_compile()
+  local file = vim.fn.expand('%:p')
+  if not file:match(vim_path) then
+    return
+  end
+
+  if file:match('plugins.lua') then
+    plugins.clean()
+  end
+  plugins.compile()
+  require('packer_compiled')
+end
+
+function plugins.load_compile()
+  if vim.fn.filereadable(packer_compiled) == 1 then
+    require('packer_compiled')
+  else
+    vim.notify('Run PackerSync or PackerCompile', 'info', { title = 'Packer' })
+  end
+
+  local cmds = {
+    'Compile',
+    'Install',
+    'Update',
+    'Sync',
+    'Clean',
+    'Status',
+  }
+  for _, cmd in ipairs(cmds) do
+    api.nvim_create_user_command('Packer' .. cmd, function()
+      require('core.pack')[fn.tolower(cmd)]()
+    end, {})
+  end
+
+  local PackerHooks = vim.api.nvim_create_augroup('PackerHooks', {})
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'PackerCompileDone',
+    callback = function()
+      vim.notify('Compile Done!', vim.log.levels.INFO, { title = 'Packer' })
+    end,
+    group = PackerHooks,
+  })
+
+  -- vim.cmd [[command! PackerCompile lua require('core.pack').compile()]]
+  -- vim.cmd [[command! PackerInstall lua require('core.pack').install()]]
+  -- vim.cmd [[command! PackerUpdate lua require('core.pack').update()]]
+  -- vim.cmd [[command! PackerSync lua require('core.pack').sync()]]
+  -- vim.cmd [[command! PackerClean lua require('core.pack').clean()]]
+  -- vim.cmd [[command! PackerStatus  lua require('packer').status()]]
+end
+
+return plugins

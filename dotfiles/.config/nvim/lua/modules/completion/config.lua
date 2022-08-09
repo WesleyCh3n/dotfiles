@@ -1,0 +1,217 @@
+local config = {}
+
+function config.nvim_cmp()
+  local function prequire(...)
+    local status, lib = pcall(require, ...)
+    if (status) then return lib end
+    return nil
+  end
+
+  local luasnip = prequire('luasnip')
+  local cmp = prequire("cmp")
+
+  local kind_icons = {
+    Text          = "",
+    Method        = "",
+    Function      = "",
+    Constructor   = "",
+    Field         = "ﰠ",
+    Variable      = "",
+    Class         = "ﴯ",
+    Interface     = "",
+    Module        = "",
+    Property      = "ﰠ",
+    Unit          = "",
+    Value         = "",
+    Enum          = "",
+    Keyword       = "",
+    Snippet       = "",
+    Color         = "",
+    File          = "",
+    Reference     = "",
+    Folder        = "",
+    EnumMember    = "",
+    Constant      = "",
+    Struct        = "פּ",
+    Event         = "",
+    Operator      = "",
+    TypeParameter = "T",
+  }
+
+  local has_any_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      return false
+    end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
+    window = {
+      completion = {
+        col_offset = -3,
+        side_padding = 0,
+      },
+      documentation = {
+        border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
+        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        max_width = 120,
+        max_height = math.floor(vim.o.lines * 0.4),
+      },
+    },
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or vim_item.abbr
+        vim_item.menu =
+        "[".. ({
+          buffer = "﬘",
+          nvim_lsp = "",
+          cmp_tabnine = "",
+          luasnip = "",
+          emoji = "",
+          path = "",
+        })[entry.source.name].."] "..vim_item.kind
+        vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
+        return vim_item
+      end
+    },
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
+    },
+    sources = cmp.config.sources{
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'cmp_tabnine', group_index = 10 },
+      { name = 'buffer' },
+      { name = 'path' },
+      { name = 'emoji', options = { insert = true } },
+      { name = "buffer", options = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end
+      }
+      },
+    },
+    mapping = {
+      ["<Tab>"] = cmp.mapping(function (fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif has_any_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, {"i", "s"}),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, {"i", "s"}),
+      ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
+        behavior = cmp.SelectBehavior.Select
+      }), {'i'}),
+      ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
+        behavior = cmp.SelectBehavior.Select
+      }), {'i'}),
+      ['<C-n>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, {'i', 's'}),
+      ['<C-p>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, {'i', 's'}),
+      ['<C-j>'] = cmp.mapping( function (fallback)
+        if luasnip and luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end , {'i', 's'}),
+      ['<C-k>'] = cmp.mapping( function (fallback)
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end , {'i', 's'}),
+      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i'}),
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i'}),
+      -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i'}),
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.close(),
+        c = cmp.mapping.close()
+      }),
+      ['<CR>'] = cmp.mapping({
+        i = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false
+        }),
+      }),
+    },
+    experimental = {
+      ghost_text = true,
+    }
+  })
+end
+
+function config.luasnip()
+  require("luasnip.loaders.from_snipmate").lazy_load()
+end
+
+function config.lspconfig()
+  require("modules.completion.lspconfig")
+end
+
+function config.lspsaga()
+  local saga = require("lspsaga")
+  saga.init_lsp_saga({
+    border_style = "rounded",
+    max_preview_lines = 40,
+    show_outline = {
+      win_width = 40,
+    },
+  })
+end
+
+function config.dressing()
+  require('dressing').setup({
+    input = {
+      anchor = "NW",
+      winblend = 0,
+    }
+  })
+end
+
+function config.cmp_tabnine()
+  local tabnine = require('cmp_tabnine.config')
+  tabnine:setup({
+    max_lines = 1000;
+    max_num_results = 20;
+    sort = true;
+    run_on_every_keystroke = true;
+    snippet_placeholder = '..';
+    ignored_file_types = {};
+    show_prediction_strength = false;
+  })
+end
+
+return config
