@@ -190,15 +190,6 @@ function config.lspsaga()
   })
 end
 
-function config.dressing()
-  require('dressing').setup({
-    input = {
-      anchor = "NW",
-      winblend = 0,
-    }
-  })
-end
-
 function config.cmp_tabnine()
   local tabnine = require('cmp_tabnine.config')
   tabnine:setup({

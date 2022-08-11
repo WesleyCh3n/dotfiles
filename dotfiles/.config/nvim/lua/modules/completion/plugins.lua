@@ -31,7 +31,3 @@ plugin ({
   config = conf.lspsaga,
 })
 plugin ({ 'ray-x/lsp_signature.nvim', event = 'BufRead' })
-plugin ({
-  'stevearc/dressing.nvim',
-  config = conf.dressing
-})
