@@ -12,9 +12,10 @@ function lspconfig_window.default_opts(opts)
   return win_opts
 end
 
-local on_attach = function(client,bufnr)
+local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local opts = { noremap=true, silent=true }
+
+  local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
   buf_set_keymap('n', '<space>rr', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -62,7 +63,7 @@ local servers = {
 for _, name in pairs(servers) do
   local server_available, server = lsp_installer.get_server(name)
   if server_available then
-    server:on_ready(function ()
+    server:on_ready(function()
       local default_opts = {
         on_attach = on_attach,
       }
@@ -83,7 +84,7 @@ for _, name in pairs(servers) do
       if name == 'sumneko_lua' then
         default_opts = {
           on_attach = on_attach,
-          settings = {Lua = {diagnostics = {globals = {'vim'}}}},
+          settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
         }
       end
       server:setup(default_opts)
@@ -96,12 +97,12 @@ end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
+  underline = true,
+  virtual_text = {
+    spacing = 4,
+    prefix = ''
   }
+}
 )
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
