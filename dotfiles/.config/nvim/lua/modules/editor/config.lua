@@ -184,7 +184,10 @@ function config.surround()
 end
 
 function config.tabout()
-  require('tabout').setup()
+  require('tabout').setup({
+    tabkey = '<A-n>',
+    backwards_tabkey = '<A-p>',
+  })
 end
 
 function config.nvim_tree()
