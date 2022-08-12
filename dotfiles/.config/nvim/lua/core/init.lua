@@ -15,6 +15,11 @@ pack.load_compile()
 require('keymap')
 
 -- autocmd
+-- remember cursor last place
+vim.api.nvim_create_autocmd({"BufReadPost"}, {
+  pattern = "*",
+  command = [[if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
+})
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = "*",
   command = "%s/\\s\\+$//e"
