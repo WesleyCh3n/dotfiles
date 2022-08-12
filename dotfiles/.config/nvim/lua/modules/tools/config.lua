@@ -31,15 +31,17 @@ function config.toggleterm()
     }
   end
   local lazygit = Terminal:new(mycmd("lazygit"))
-  local nnn = Terminal:new(mycmd("nnn"))
-  local bpytop = Terminal:new(mycmd("btop"))
+  local top = Terminal:new(
+    vim.loop.os_uname().sysname == 'Windows_NT'
+    and mycmd("btm")
+    or mycmd("btop")
+  )
   local node = Terminal:new(mycmd("node"))
   local python = Terminal:new(mycmd("python3"))
-  function _G._lazygit_toggle() lazygit:toggle() end
-  function _G._nnn_toggle() nnn:toggle() end
-  function _G._bpytop_toggle() bpytop:toggle() end
-  function _G._node_toggle() node:toggle() end
-  function _G._python_toggle() python:toggle() end
+  function _G.lazygit_toggle() lazygit:toggle() end
+  function _G.top_toggle() top:toggle() end
+  function _G.node_toggle() node:toggle() end
+  function _G.python_toggle() python:toggle() end
 end
 
 function config.markdown_preview()

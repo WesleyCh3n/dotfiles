@@ -25,9 +25,9 @@ keymap.space = {
   o = {'<cmd>LSoutlineToggle<cr>',               ' outline'},
 
   a = { name = ' term' },
-  ["ag"] = {'<cmd>lua _lazygit_toggle()<cr>',      '  lazygit'},
-  ["ab"] = {'<cmd>lua _bpytop_toggle()<cr>',       '  btop'},
-  ["ap"] = {'<cmd>lua _python_toggle()<cr>',       '  python'},
+  ["ag"] = {'<cmd>lua lazygit_toggle()<cr>',      '  lazygit'},
+  ["ab"] = {'<cmd>lua top_toggle()<cr>',       '  btop'},
+  ["ap"] = {'<cmd>lua python_toggle()<cr>',       '  python'},
   ["as"] = {'<cmd>ToggleTermToggleAll<cr>',        '  toggle all'},
   ["aj"] = {'<cmd>1ToggleTerm<cr>',                '  #1'},
   ["ak"] = {'<cmd>2ToggleTerm<cr>',                '  #2'},
