@@ -9,7 +9,7 @@ function config.lualine()
 end
 
 function config.bufferline()
-  require("bufferline").setup{
+  require("bufferline").setup {
     options = {
       numbers = function(opts)
         return string.format('%s', opts.raise(opts.ordinal))
@@ -17,14 +17,14 @@ function config.bufferline()
       left_trunc_marker = '',
       right_trunc_marker = '',
       middle_mouse_command = "vertical sbuffer %d",
-      offsets = {{filetype = "NvimTree", text = " File Explorer", text_align = "center"}},
+      offsets = { { filetype = "NvimTree", text = " File Explorer", text_align = "center" } },
       diagnostics = "nvim_lsp",
       diagnostics_update_in_insert = false,
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
         local s = " "
         for e, n in pairs(diagnostics_dict) do
           local sym = e == "error" and " "
-          or (e == "warning" and " " or " " )
+              or (e == "warning" and " " or " ")
           s = s .. n .. sym
         end
         return s
@@ -37,23 +37,23 @@ function config.bufferline()
     },
     highlights = {
       fill = {
-        guibg = "#3c3836"
+        bg = "#3c3836"
       },
       separator_selected = {
-        guifg = "#3c3836"
+        fg = "#3c3836"
       },
       separator_visible = {
-        guifg = "#3c3836"
+        fg = "#3c3836"
       },
       separator = {
-        guifg = "#3c3836"
+        fg = "#3c3836"
       },
     },
   }
 end
 
 function config.illuminate()
-  vim.g.Illuminate_ftblacklist = {'NvimTree', 'alpha'}
+  vim.g.Illuminate_ftblacklist = { 'NvimTree', 'alpha' }
 end
 
 function config.alpha()
@@ -126,7 +126,7 @@ function config.alpha()
       hl = "Function",
     }
     if keybind then
-      opts.keymap = {"n", sc_, keybind, {noremap = true, silent = true}}
+      opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
     end
     return {
       type = "button",
@@ -138,12 +138,13 @@ function config.alpha()
       opts = opts,
     }
   end
+
   local buttons = {
     type = "group",
     val = {
-      button( "e", "  New file" , ':ene <BAR> startinsert <CR>'),
-      button( "f", "  Telescope" , ':Telescope find_files<cr>'),
-      button( "q", "  Quit NVIM" , ':q<CR>'),
+      button("e", "  New file", ':ene <BAR> startinsert <CR>'),
+      button("f", "  Telescope", ':Telescope find_files<cr>'),
+      button("q", "  Quit NVIM", ':q<CR>'),
     },
     opts = {
       spacing = 1,
@@ -158,14 +159,14 @@ function config.alpha()
   }
   local opts = {
     layout = {
-      {type = "padding", val = 4},
+      { type = "padding", val = 4 },
       section.header,
-      {type = "padding", val = 2},
+      { type = "padding", val = 2 },
       section.heading,
       section.plugin_count,
-      {type = "padding", val = 2},
+      { type = "padding", val = 2 },
       section.buttons,
-      {type = "padding", val = 0},
+      { type = "padding", val = 0 },
       section.footer,
     },
     opts = {
@@ -177,11 +178,11 @@ end
 
 function config.indentline()
   require("indent_blankline").setup {
-    buftype_exclude = {'terminal', 'help', 'nofile'},
-    filetype_exclude = {"alpha", 'NvimTree', 'Outline', 'vimwiki', 'markdown'},
+    buftype_exclude = { 'terminal', 'help', 'nofile' },
+    filetype_exclude = { "alpha", 'NvimTree', 'Outline', 'vimwiki', 'markdown' },
     show_current_context = true,
   }
-  vim.cmd[[highlight IndentBlanklineContextChar guifg=#fabd2f gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineContextChar guifg=#fabd2f gui=nocombine]]
   vim.g.indent_blankline_context_patterns = {
     '^if',
     '^while',
@@ -210,7 +211,7 @@ function config.whichkey()
     },
     window = {
       border = "single",
-      margin = {0, 0, 0, 0},
+      margin = { 0, 0, 0, 0 },
     },
     layout = {
       height = { min = 4, max = 20 },
@@ -246,7 +247,7 @@ function config.gitsigns()
 end
 
 function config.scrollbar()
-  require("scrollbar").setup{
+  require("scrollbar").setup {
     handle = {
       color = '#665c54',
     },
