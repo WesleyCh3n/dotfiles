@@ -2,7 +2,7 @@
   WesleyCh3n's dotfiles
 </h1>
 
-  <img src="https://user-images.githubusercontent.com/30611421/184914452-c9b1b1d4-0269-4938-ab4a-ac30f4441696.png">
+  <img src="https://user-images.githubusercontent.com/30611421/184923785-f1a4bac7-59e4-42de-a7aa-902f1ad815c2.png">
 
 ## 📖 Contents
 - neovim config
