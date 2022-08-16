@@ -3,6 +3,7 @@ local keymap = require('core.keymap')
 local nmap = keymap.nmap
 local imap = keymap.imap
 local xmap = keymap.xmap
+local vmap = keymap.vmap
 
 nmap({
   { '<space>1', '<cmd>BufferLineGoToBuffer 1<cr>' },
@@ -29,3 +30,19 @@ imap({
   { '<A-n>', "<Plug>(TaboutMulti)", { noremap = false, silent = true } },
   { '<A-p>', "<Plug>(TaboutBackMulti)", { noremap = false, silent = true } }
 })
+
+-- leap
+nmap(
+  { 's',
+    function()
+      require('leap').leap { target_windows = { vim.fn.win_getid() } }
+    end
+  }
+)
+vmap(
+  { 's',
+    function()
+      require('leap').leap { target_windows = { vim.fn.win_getid() } }
+    end
+  }
+)
