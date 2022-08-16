@@ -2,16 +2,18 @@
   WesleyCh3n's dotfiles
 </h1>
 
-![cover](https://user-images.githubusercontent.com/30611421/183114248-ff46f804-e743-4e39-b6f1-f4258ed9ed57.png)
+  <img src="https://user-images.githubusercontent.com/30611421/184914452-c9b1b1d4-0269-4938-ab4a-ac30f4441696.png">
 
-My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
-
-## 📖 Contents:
+## 📖 Contents
 - neovim config
 - tmux config
 - zsh config
 - terminal config: wezterm, alacritty, iTerm2
 - ...(some setup script)
+
+## 💭 About
+
+My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
 
 ## 🌟 Neovim Setup
 
@@ -84,30 +86,11 @@ Finished ~ 🎉🎉🎉
 
 ## 📸 Screenshot
 
-<details>
-  <summary>🌟 Neovim</summary>
+🌟 Neovim ( 👻 Fully transparent background).
 
-🪄 Fully transparent background compatible
-  - ✅ bubble theme
-  - ✅ wild menu
-  - ✅ which-key
-  - ✅ floating window
-
-|                                                                                                                            |
-|                                                            :-:                                                             |
-|                                                       🤖 Builtin LSP                                                       |
-|       ![LSP](https://user-images.githubusercontent.com/30611421/146416175-22d7caf1-86e1-47d2-8d06-3ef3cb9bd8fd.jpg)        |
-|                                                   🌳 NvimTree & Outline                                                    |
-| ![NvimTree Outline](https://user-images.githubusercontent.com/30611421/146416181-b0ebf578-7e3c-4eea-8143-0930c693b774.jpg) |
-|                                                        🔭 Telescope                                                        |
-|    ![Telescope](https://user-images.githubusercontent.com/30611421/146416183-29983468-cfdb-498f-af42-4220ac0c7dee.jpg)     |
-|                                                    💻 Builtin Terminal                                                     |
-|     ![Terminal](https://user-images.githubusercontent.com/30611421/146416187-35d17023-22f8-4245-ad9e-8e40e25423e9.jpg)     |
-|                                                ✅ Todo Highlight & UndoTree                                                |
-|       ![todo](https://user-images.githubusercontent.com/30611421/146416190-6f2eed92-0e66-47b4-a71b-977a00a28b29.jpg)       |
-|                                                        🔍 Which key                                                        |
-|     ![undotree](https://user-images.githubusercontent.com/30611421/146416192-7e10157a-7e46-4f87-984c-db0f77975b11.jpg)     |
-|                                                 ✨ Statusline/Lsp/Gitsigns                                                 |
-|    ![statusline](https://user-images.githubusercontent.com/30611421/146418245-18225944-5701-4dbd-b2b4-05e9bbb6e335.jpg)    |
-
-</details>
+|                                                                                                                    |                                                                                                                     |
+|                                                        :-:                                                         |                                                         :-:                                                         |
+|                                                   🤖 Builtin LSP                                                   |                                                    🔭 Telescope                                                     |
+|   ![LSP](https://user-images.githubusercontent.com/30611421/184917310-e2d147b2-02bd-49f4-bef8-269ac358eadd.png)    | ![Telescope](https://user-images.githubusercontent.com/30611421/184917843-9d0d255d-52ff-4759-a620-0eefae1584ac.png) |
+|                                                💻 Builtin Terminal                                                 |                                                    🔍 Which key                                                     |
+| ![Terminal](https://user-images.githubusercontent.com/30611421/184918606-bdccd4ca-0bfb-47b1-8682-36a0da7176a5.png) | ![which-key](https://user-images.githubusercontent.com/30611421/184918843-162fd963-ed96-4de6-b595-2054ad9d57fe.png) |
