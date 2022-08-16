@@ -15,11 +15,8 @@ function Packer:load_plugins()
     local list = {}
     local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
     for _, f in ipairs(tmp) do
-      if vim.loop.os_uname().sysname == "Windows_NT" then
-        list[#list + 1] = string.match(f, 'lua\\(.+).lua$')
-      else
-        list[#list + 1] = string.match(f, 'lua/(.+).lua$')
-      end
+      local path_sep = vim.loop.os_uname().version:match('Windows') and '\\' or '/'
+      list[#list + 1] = string.match(f, 'lua' .. path_sep .. '(.+).lua$')
     end
     return list
   end
@@ -49,8 +46,8 @@ function Packer:load_packer()
   local use = packer.use
   self:load_plugins()
   use({ 'wbthomason/packer.nvim', opt = true })
-  use({'lewis6991/impatient.nvim'})
-  use({'nvim-lua/plenary.nvim'})
+  use({ 'lewis6991/impatient.nvim' })
+  use({ 'nvim-lua/plenary.nvim' })
   for _, repo in ipairs(self.repos) do
     use(repo)
   end
