@@ -16,7 +16,7 @@ function Packer:load_plugins()
     local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
     for _, f in ipairs(tmp) do
       local path_sep = vim.loop.os_uname().version:match('Windows') and '\\' or '/'
-      list[#list + 1] = string.match(f, 'lua' .. path_sep .. '(.+).lua$')
+      list[#list + 1] = f:match('lua' .. path_sep .. '(.+).lua$')
     end
     return list
   end
