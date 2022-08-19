@@ -5,10 +5,11 @@ plugin({
   'nvim-telescope/telescope.nvim',
   config = conf.telescope
 })
-plugin({'nvim-telescope/telescope-symbols.nvim',})
+plugin({ 'nvim-telescope/telescope-symbols.nvim', })
 plugin({
   "nvim-treesitter/nvim-treesitter",
-  config = conf.treesitter
+  config = conf.treesitter,
+  commit = "116c72f5c2e4e63bbf0b7d698f9d35e36848605a"
 })
 plugin({ 'p00f/nvim-ts-rainbow',
   event = "BufRead",
@@ -21,42 +22,42 @@ plugin({
 plugin({
   'ggandor/leap.nvim',
   config = conf.leap,
-  requires = {'tpope/vim-repeat'},
+  requires = { 'tpope/vim-repeat' },
 })
 plugin({
   'wellle/targets.vim',
   config = conf.targets
 })
-plugin ({
+plugin({
   "windwp/nvim-autopairs",
   config = conf.autopairs
 })
-plugin ({
+plugin({
   "kylechui/nvim-surround",
   config = conf.surround,
 })
-plugin ({
+plugin({
   'abecodes/tabout.nvim',
   config = conf.tabout
 })
-plugin ({
+plugin({
   'kyazdani42/nvim-tree.lua',
   tag = 'nightly',
   config = conf.nvim_tree
 })
-plugin ({
+plugin({
   "max397574/better-escape.nvim",
   config = conf.better_escape
 })
-plugin ({
+plugin({
   'numToStr/Comment.nvim',
   config = conf.comment
 })
-plugin ({
+plugin({
   'anuvyklack/hydra.nvim',
   config = conf.hydra
 })
-plugin ({
+plugin({
   'junegunn/vim-easy-align',
   config = conf.vim_easy_align
 })
@@ -65,7 +66,8 @@ plugin({
   config = conf.zen_mode
 })
 
-plugin ({ 'christoomey/vim-tmux-navigator' })
-plugin ({ 'mg979/vim-visual-multi' })
+plugin({ 'christoomey/vim-tmux-navigator' })
+plugin({ 'mg979/vim-visual-multi' })
 
-plugin({'tversteeg/registers.nvim', event='BufEnter', config = conf.registers})
+plugin({ 'tversteeg/registers.nvim', event = 'BufEnter', config = conf.registers })
+plugin({ 'mhartington/formatter.nvim', config = conf.formatter })

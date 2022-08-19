@@ -37,31 +37,31 @@ lualine.setup {
   options = {
     icons_enabled = true,
     theme = gruvbox_theme,
-    section_separators = {left = '', right = ''},
-    component_separators = {left = '|', right = '|'},
-    disabled_filetypes = {"NvimTree", "lspsagaoutline", "alpha"},
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '|', right = '|' },
+    disabled_filetypes = { "NvimTree", "lspsagaoutline", "alpha", "aerial" },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = {{'mode', separator = {left = '', right = ''}}},
+    lualine_a = { { 'mode', separator = { left = '', right = '' } } },
     lualine_b = {
       'branch',
       -- {'diff', symbols = {added = ' ', modified = ' ', removed = ' '}},
     },
     lualine_c = {
       'filename',
-      {'diagnostics', sources={'nvim_lsp'},}
+      { 'diagnostics', sources = { 'nvim_lsp' }, }
     },
     lualine_x = {
       'encoding',
       'fileformat',
-      {'filetype', icon_only = true}
+      { 'filetype', icon_only = true }
     },
-    lualine_y = {'progress'},
-    lualine_z = {{'location', separator = {left = '', right = ''}}},
+    lualine_y = { 'progress' },
+    lualine_z = { { 'location', separator = { left = '', right = '' } } },
   },
   inactive_sections = {
-    lualine_a = {{'filename', separator = {left = '', right = ''}}},
+    lualine_a = { { 'filename', separator = { left = '', right = '' } } },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},

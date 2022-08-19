@@ -2,7 +2,7 @@ local config = {}
 
 function config.telescope()
   local actions = require("telescope.actions")
-  require('telescope').setup{
+  require('telescope').setup {
     defaults = {
       prompt_prefix = " ",
       sorting_strategy = "ascending",
@@ -47,7 +47,7 @@ function config.telescope()
         layout_config = {
           width = 0.8,
           height = 0.5,
-          preview_width=0.8,
+          preview_width = 0.8,
         },
       }),
       lsp_code_actions = require("telescope.themes").get_cursor({
@@ -147,9 +147,9 @@ function config.treesitter()
     },
   }
   -- nvim_treesitter folding
-  vim.wo.foldmethod="expr"
-  vim.o.foldexpr="nvim_treesitter#foldexpr()"
-  vim.wo.foldenable=false -- can be enabled directly in opened file - using 'zi' - toogle fold
+  vim.wo.foldmethod = "expr"
+  vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+  vim.wo.foldenable = false -- can be enabled directly in opened file - using 'zi' - toogle fold
 end
 
 function config.zen_mode()
@@ -208,8 +208,9 @@ function config.nvim_tree()
     end
     vim.cmd('bdelete! ' .. bufferToDelete)
   end
+
   require('nvim-tree').setup {
-    diagnostics = {
+    diagnostics         = {
       enable = true,
     },
     hijack_netrw        = true,
@@ -268,8 +269,8 @@ function config.nvim_tree()
 end
 
 function config.better_escape()
-  require("better_escape").setup{
-    mapping = {"jk", "kj", "jj", "kk"}
+  require("better_escape").setup {
+    mapping = { "jk", "kj", "jj", "kk" }
   }
 end
 
@@ -282,6 +283,7 @@ function config.hydra()
   local function cmd(command)
     return table.concat({ '<Cmd>', command, '<CR>' })
   end
+
   local hint = [[
 ┌───────────────────────────────────────────────┐
 │                   TELESCOPE                  │
@@ -305,7 +307,7 @@ function config.hydra()
       },
     },
     mode = 'n',
-    body = '<Leader>f',
+    body = '<Leader>t',
     heads = {
       { 'f', cmd 'Telescope find_files' },
       { 'b', cmd 'Telescope buffers previewer=false' },
@@ -342,8 +344,8 @@ function config.hydra()
 end
 
 function config.vim_easy_align()
-  vim.g.easy_align_interactive_modes = {'c', 'l', 'r'}
-  vim.g.easy_align_bang_interactive_modes = {'c', 'l', 'r'}
+  vim.g.easy_align_interactive_modes = { 'c', 'l', 'r' }
+  vim.g.easy_align_bang_interactive_modes = { 'c', 'l', 'r' }
 end
 
 function config.registers()
@@ -352,6 +354,35 @@ function config.registers()
   vim.g.registers_window_border = "rounded"
   vim.g.registers_window_max_width = 50
   vim.g.registers_window_min_height = 3
+end
+
+function config.formatter()
+  local format_func = function()
+    return {
+      exe = "dprint",
+      args = { "fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)) },
+      stdin = true
+    }
+  end
+  require('formatter').setup({
+    filetype = {
+      markdown = {
+        format_func
+      },
+      typescriptreact = {
+        format_func
+      },
+      typescript = {
+        format_func
+      },
+      javascript = {
+        format_func
+      },
+      javascriptreact = {
+        format_func
+      },
+    }
+  })
 end
 
 return config

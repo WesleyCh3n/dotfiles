@@ -58,7 +58,7 @@ function config.nvim_cmp()
         side_padding = 0,
       },
       documentation = {
-        border = { '╭', '─' ,'╮', '│', '╯', '─', '╰', '│' },
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
         winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
         max_width = 120,
         max_height = math.floor(vim.o.lines * 0.4),
@@ -67,15 +67,16 @@ function config.nvim_cmp()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or vim_item.abbr
+        vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or
+            vim_item.abbr
         vim_item.menu =
-        "[".. ({
+        "[" .. ({
           buffer = "﬘",
           nvim_lsp = "",
           luasnip = "",
           emoji = "",
           path = "",
-        })[entry.source.name].."] "..vim_item.kind
+        })[entry.source.name] .. "] " .. vim_item.kind
         vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
         return vim_item
       end
@@ -83,7 +84,7 @@ function config.nvim_cmp()
     completion = {
       completeopt = 'menu,menuone,noinsert',
     },
-    sources = cmp.config.sources{
+    sources = cmp.config.sources {
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'buffer' },
@@ -101,7 +102,7 @@ function config.nvim_cmp()
       },
     },
     mapping = {
-      ["<Tab>"] = cmp.mapping(function (fallback)
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif has_any_words_before() then
@@ -109,50 +110,50 @@ function config.nvim_cmp()
         else
           fallback()
         end
-      end, {"i", "s"}),
+      end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         else
           fallback()
         end
-      end, {"i", "s"}),
+      end, { "i", "s" }),
       ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
         behavior = cmp.SelectBehavior.Select
-      }), {'i'}),
+      }), { 'i' }),
       ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
         behavior = cmp.SelectBehavior.Select
-      }), {'i'}),
+      }), { 'i' }),
       ['<C-n>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         else
           fallback()
         end
-      end, {'i', 's'}),
+      end, { 'i', 's' }),
       ['<C-p>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         else
           fallback()
         end
-      end, {'i', 's'}),
-      ['<C-j>'] = cmp.mapping( function (fallback)
+      end, { 'i', 's' }),
+      ['<C-j>'] = cmp.mapping(function(fallback)
         if luasnip and luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
           fallback()
         end
-      end , {'i', 's'}),
-      ['<C-k>'] = cmp.mapping( function (fallback)
+      end, { 'i', 's' }),
+      ['<C-k>'] = cmp.mapping(function(fallback)
         if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
         end
-      end , {'i', 's'}),
-      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i'}),
-      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i'}),
+      end, { 'i', 's' }),
+      ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i' }),
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i' }),
       -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i'}),
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.close(),
@@ -201,6 +202,10 @@ function config.cmp_tabnine()
     ignored_file_types = {};
     show_prediction_strength = false;
   })
+end
+
+function config.symbols_outline()
+  require('symbols-outline').setup()
 end
 
 return config
