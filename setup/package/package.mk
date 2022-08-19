@@ -14,6 +14,7 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-apple-darwin.tar.gz
 	LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_macOS_amd64.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.2/zoxide-0.8.2-x86_64-apple-darwin.tar.gz
+	LINK_DPRINT := https://github.com/dprint/dprint/releases/download/0.30.3/dprint-x86_64-apple-darwin.tar.gz
 else
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
@@ -28,5 +29,6 @@ else
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
 	LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_linux_amd64.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.2/zoxide-0.8.2-x86_64-unknown-linux-musl.tar.gz
+	LINK_DPRINT := https://github.com/dprint/dprint/releases/download/0.30.3/dprint-x86_64-unknown-linux-gnu.zip
 endif
 

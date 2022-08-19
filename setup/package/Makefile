@@ -110,5 +110,11 @@ zoxide:
 	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
+dprint:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_DPRINT))
+	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
+	$(Q)rm -rf $(TMP_DIR)
+
 clean:
 	$(Q)rm -rf $(TMP_DIR)
