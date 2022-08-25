@@ -180,17 +180,6 @@ function config.lspconfig()
   require("modules.completion.lspconfig")
 end
 
-function config.lspsaga()
-  local saga = require("lspsaga")
-  saga.init_lsp_saga({
-    border_style = "rounded",
-    max_preview_lines = 40,
-    show_outline = {
-      win_width = 40,
-    },
-  })
-end
-
 function config.cmp_tabnine()
   local tabnine = require('cmp_tabnine.config')
   tabnine:setup({
