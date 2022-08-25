@@ -15,9 +15,9 @@ source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zsh-users/zsh-autosuggestions
-  zgen load zsh-users/zsh-syntax-highlighting
-  zgen load jeffreytse/zsh-vi-mode
+  zgen load zdharma-continuum/fast-syntax-highlighting
   zgen load Aloxaf/fzf-tab
+  zgen load jeffreytse/zsh-vi-mode
   zgen save
 fi
 
@@ -67,7 +67,10 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 # zsh-autosuggestions
-bindkey '^[[Z' autosuggest-accept
+# bindkey '^[[Z' autosuggest-accept
+function zvm_after_init() {
+  zvm_bindkey viins '^[[Z' autosuggest-accept
+}
 # zoxide
 eval "$(zoxide init zsh)"
 
