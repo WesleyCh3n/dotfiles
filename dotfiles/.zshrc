@@ -16,11 +16,14 @@ if ! zgen saved; then
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-syntax-highlighting
+  zgen load jeffreytse/zsh-vi-mode
   zgen load Aloxaf/fzf-tab
   zgen save
 fi
 
-KEYTIMEOUT=1
+ZVM_KEYTIMEOUT=0.1
+ZVM_VI_HIGHLIGHT_BACKGROUND=yellow
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=$HOME/.zsh_history
