@@ -8,16 +8,16 @@ window:
   opacity: 0.95
 font:
   normal:
-    family: Victor Mono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Medium
   bold:
-    family: Victor Mono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Bold
   italic:
-    family: Victor Mono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Medium Italic
   bold_italic:
-    family: Victor Mono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Bold Italic
   size: 14
   # offset:

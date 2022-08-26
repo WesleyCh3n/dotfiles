@@ -75,6 +75,15 @@ if wezterm.target_triple == "x86_64-apple-darwin" then
     { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
   }
 
+  -- Linux Setup
+elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+  config["font"] = wezterm.font("VictorMono Nerd Font Mono", { weight = 'Medium' })
+  config["font_size"] = 14.0
+  config["keys"] = {
+    { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
+    { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
+  }
+
   -- Win Setup
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config["launch_menu"] = win_launch_menu
