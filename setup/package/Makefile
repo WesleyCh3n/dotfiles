@@ -112,7 +112,13 @@ zoxide:
 
 dprint:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+ifeq ($(shell uname -s),Darwin)
 	$(Q)$(call dl,$(LINK_DPRINT))
+else
+	$(Q)mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
+		curl '-#' -o tmp.zip -fL $(LINK_DPRINT); \
+		unzip tmp.zip;
+endif
 	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
