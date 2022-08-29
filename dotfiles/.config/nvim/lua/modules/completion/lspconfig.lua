@@ -40,7 +40,7 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  "pylsp",
+  "pyright",
   "gopls",
   "tsserver",
   "tailwindcss",
@@ -58,20 +58,6 @@ for _, name in pairs(servers) do
       local default_opts = {
         on_attach = on_attach,
       }
-      if name == 'pylsp' then
-        default_opts = {
-          on_attach = on_attach,
-          settings = {
-            pylsp = {
-              plugins = {
-                jedi = {
-                  environment = vim.g.pylsp_jedi_environment or vim.fn.exepath('python3'),
-                },
-              },
-            },
-          },
-        }
-      end
       if name == 'sumneko_lua' then
         default_opts = {
           on_attach = on_attach,
