@@ -4,24 +4,24 @@ vim.g.gruvbox_material_transparent_background = 1
 vim.cmd('silent! colorscheme gruvbox-material')
 
 local float_group = {
-  NormalFloat = {fg="#ddc7a1", bg = "NONE", blend = 0},
-  FloatBorder = {fg="#928374", bg = "NONE", blend = 0},
-  WhichKeyFloat = {bg = "NONE", ctermbg = "NONE"},
+  NormalFloat = { fg = "#ddc7a1", bg = "NONE", blend = 0 },
+  FloatBorder = { fg = "#928374", bg = "NONE", blend = 0 },
+  WhichKeyFloat = { bg = "NONE", ctermbg = "NONE" },
 
-  ErrorFloat = {fg="#ea6962", bg = "NONE", blend = 0},
-  WarningFloat = {fg="#d8a657", bg = "NONE", blend = 0},
-  InfoFloat = {fg="#7daea3", bg = "NONE", blend = 0},
-  HintFloat = {fg="#a9b665", bg = "NONE", blend = 0},
+  ErrorFloat = { fg = "#ea6962", bg = "NONE", blend = 0 },
+  WarningFloat = { fg = "#d8a657", bg = "NONE", blend = 0 },
+  InfoFloat = { fg = "#7daea3", bg = "NONE", blend = 0 },
+  HintFloat = { fg = "#a9b665", bg = "NONE", blend = 0 },
 
-  DiagnosticError= {fg="#ea6962", bg = "NONE", blend = 0},
-  DiagnosticWarn= {fg="#d8a657", bg = "NONE", blend = 0},
-  DiagnosticInfo= {fg="#7daea3", bg = "NONE", blend = 0},
-  DiagnosticHint= {fg="#a9b665", bg = "NONE", blend = 0},
+  DiagnosticError = { fg = "#ea6962", bg = "NONE", blend = 0 },
+  DiagnosticWarn = { fg = "#d8a657", bg = "NONE", blend = 0 },
+  DiagnosticInfo = { fg = "#7daea3", bg = "NONE", blend = 0 },
+  DiagnosticHint = { fg = "#a9b665", bg = "NONE", blend = 0 },
 
-  DiagnosticVirtualTextError = {link='ErrorFloat'},
-  DiagnosticVirtualTextWarn = {link='WarningFloat'},
-  DiagnosticVirtualTextInfo = {link='InfoFloat'},
-  DiagnosticVirtualTextHint = {link='HintFloat'},
+  DiagnosticVirtualTextError = { link = 'ErrorFloat' },
+  DiagnosticVirtualTextWarn = { link = 'WarningFloat' },
+  DiagnosticVirtualTextInfo = { link = 'InfoFloat' },
+  DiagnosticVirtualTextHint = { link = 'HintFloat' },
 }
 
 for group, spec in pairs(float_group) do
@@ -29,12 +29,12 @@ for group, spec in pairs(float_group) do
 end
 
 local cmp_groups = {
-  PmenuSel = { bg = "#32302f", fg = "NONE" , blend = 10},
-  Pmenu = {fg='#ddc7a1', bg='#45403d', blend = 10},
+  PmenuSel = { bg = "#32302f", fg = "NONE", blend = 10 },
+  Pmenu = { fg = '#ddc7a1', bg = '#45403d', blend = 10 },
 
-  CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", strikethrough=true, italic=true },
-  CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", bold=true },
-  CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", bold=true },
+  CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", strikethrough = true, italic = true },
+  CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", bold = true },
+  CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", bold = true },
   CmpItemMenu = { fg = "#C792EA", bg = "NONE" },
 
   CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },

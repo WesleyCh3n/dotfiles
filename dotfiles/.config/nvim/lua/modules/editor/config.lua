@@ -351,7 +351,7 @@ end
 function config.registers()
   vim.g.registers_show_empty_registers = 0
   vim.g.registers_hide_only_whitespace = 1
-  vim.g.registers_window_border = "rounded"
+  vim.g.registers_window_border = "none"
   vim.g.registers_window_max_width = 50
   vim.g.registers_window_min_height = 3
 end
