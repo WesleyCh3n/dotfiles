@@ -68,6 +68,10 @@ plugin({
   "folke/zen-mode.nvim",
   config = conf.zen_mode
 })
+plugin({
+  "folke/todo-comments.nvim",
+  config = conf.todo_comments
+})
 
 plugin({ 'christoomey/vim-tmux-navigator' })
 plugin({ 'mg979/vim-visual-multi' })

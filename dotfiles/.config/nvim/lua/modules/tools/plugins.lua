@@ -2,10 +2,6 @@ local plugin = require('core.pack').register_plugin
 local conf = require('modules.tools.config')
 
 plugin({
-  "folke/todo-comments.nvim",
-  config = conf.todo_comments
-})
-plugin({
   'norcalli/nvim-colorizer.lua',
   opt = true,
   ft = { "html", "css", "scss", "sass", "vim", "lua", "javascript",

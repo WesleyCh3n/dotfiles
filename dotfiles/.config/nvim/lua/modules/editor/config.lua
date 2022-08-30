@@ -385,4 +385,12 @@ function config.formatter()
   })
 end
 
+function config.todo_comments()
+  require("todo-comments").setup {
+    keywords = {
+      HACK = { icon = " ", color = "warning", alt = { "QUES" } },
+    },
+  }
+end
+
 return config

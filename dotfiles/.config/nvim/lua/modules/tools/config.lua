@@ -1,28 +1,20 @@
 local config = {}
 
-function config.todo_comments()
-  require("todo-comments").setup {
-    keywords = {
-      HACK = { icon = " ", color = "warning", alt = { "QUES" } },
-    },
-  }
-end
-
 function config.colorizer()
   require("colorizer").setup()
   vim.cmd("ColorizerAttachToBuffer")
 end
 
 function config.toggleterm()
-  require("toggleterm").setup{
-    size=10,
+  require("toggleterm").setup {
+    size = 10,
     direction = 'horizontal',
     shell = (vim.loop.os_uname().sysname ~= "Windows_NT") and vim.o.shell or "nu.exe",
     float_opts = {
-      border='curved'
+      border = 'curved'
     }
   }
-  local Terminal  = require('toggleterm.terminal').Terminal
+  local Terminal = require('toggleterm.terminal').Terminal
   local function mycmd(cmd)
     return {
       cmd = cmd,
@@ -30,6 +22,7 @@ function config.toggleterm()
       hidden = true,
     }
   end
+
   local lazygit = Terminal:new(mycmd("lazygit"))
   local top = Terminal:new(
     vim.loop.os_uname().sysname == 'Windows_NT'
@@ -39,8 +32,11 @@ function config.toggleterm()
   local node = Terminal:new(mycmd("node"))
   local python = Terminal:new(mycmd("python3"))
   function _G.lazygit_toggle() lazygit:toggle() end
+
   function _G.top_toggle() top:toggle() end
+
   function _G.node_toggle() node:toggle() end
+
   function _G.python_toggle() python:toggle() end
 end
 
@@ -99,16 +95,16 @@ function config.venn()
     if venn_enabled == "nil" then
       print("Venn Enabled")
       vim.b.venn_enabled = true
-      vim.cmd[[setlocal ve=all]]
-      vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
-      vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
-      vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
-      vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
-      vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+      vim.cmd [[setlocal ve=all]]
+      vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
+      vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
+      vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
+      vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
+      vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
     else
       print("Venn Disable")
-      vim.cmd[[setlocal ve=]]
-      vim.cmd[[mapclear <buffer>]]
+      vim.cmd [[setlocal ve=]]
+      vim.cmd [[mapclear <buffer>]]
       vim.b.venn_enabled = nil
     end
   end
