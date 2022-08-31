@@ -28,7 +28,6 @@ opt.list = true
 opt.listchars = 'tab:>·,trail:█,extends:»,precedes:«'
 opt.termguicolors = true
 opt.colorcolumn = '80'
-opt.guifont = 'VictorMono Nerd Font Mono:h24'
 opt.autochdir = false
 opt.hidden = true
 opt.backup = false
