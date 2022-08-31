@@ -1,7 +1,4 @@
-vim.g.gruvbox_material_background             = 'medium'
-vim.g.gruvbox_material_current_word           = 'grey background'
-vim.g.gruvbox_material_transparent_background = 1
-vim.cmd('silent! colorscheme gruvbox-material')
+local set_hl = {}
 
 local float_group = {
   NormalFloat = { fg = "#ddc7a1", bg = "NONE", blend = 0 },
@@ -24,8 +21,10 @@ local float_group = {
   DiagnosticVirtualTextHint = { link = 'HintFloat' },
 }
 
-for group, spec in pairs(float_group) do
-  vim.api.nvim_set_hl(0, group, spec)
+function set_hl.float()
+  for group, spec in pairs(float_group) do
+    vim.api.nvim_set_hl(0, group, spec)
+  end
 end
 
 local cmp_groups = {
@@ -70,6 +69,39 @@ local cmp_groups = {
   CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
 }
 
-for group, spec in pairs(cmp_groups) do
-  vim.api.nvim_set_hl(0, group, spec)
+function set_hl.cmp()
+  for group, spec in pairs(cmp_groups) do
+    vim.api.nvim_set_hl(0, group, spec)
+  end
 end
+
+local winbar_groups = {
+  NavicIconsFile = { fg = "#C5CDD9", bg = "NONE" },
+  NavicIconsModule = { fg = "#EADFF0", bg = "NONE" },
+  NavicIconsNamespace = { fg = "#D8EEEB", bg = "NONE" },
+  NavicIconsPackage = { fg = "#D8EEEB", bg = "NONE" },
+  NavicIconsClass = { fg = "#EADFF0", bg = "NONE" },
+  NavicIconsMethod = { fg = "#DDE5F5", bg = "NONE" },
+  NavicIconsProperty = { fg = "#EED8DA", bg = "NONE" },
+  NavicIconsField = { fg = "#EED8DA", bg = "NONE" },
+  NavicIconsConstructor = { fg = "#FFE082", bg = "NONE" },
+  NavicIconsEnum = { fg = "#C3E88D", bg = "NONE" },
+  NavicIconsInterface = { fg = "#D8EEEB", bg = "NONE" },
+  NavicIconsFunction = { fg = "#EADFF0", bg = "NONE" },
+  NavicIconsVariable = { fg = "#C5CDD9", bg = "NONE" },
+  NavicIconsConstant = { fg = "#FFE082", bg = "NONE" },
+  NavicIconsNull = { fg = "#7E8294", bg = "NONE" },
+  NavicIconsEnumMember = { fg = "#C3E88D", bg = "NONE" },
+  NavicIconsStruct = { fg = "#EADFF0", bg = "NONE" },
+  NavicIconsEvent = { fg = "#EED8DA", bg = "NONE" },
+  NavicIconsOperator = { fg = "#EADFF0", bg = "NONE" },
+  NavicIconsTypeParameter = { fg = "#D8EEEB", bg = "NONE" },
+}
+
+function set_hl.winbar()
+  for group, spec in pairs(winbar_groups) do
+    vim.api.nvim_set_hl(0, group, spec)
+  end
+end
+
+return set_hl

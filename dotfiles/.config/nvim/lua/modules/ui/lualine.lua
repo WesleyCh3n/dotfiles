@@ -50,7 +50,7 @@ lualine.setup {
     },
     lualine_c = {
       'filename',
-      { 'diagnostics', sources = { 'nvim_lsp' }, }
+      { 'diagnostics', sources = { 'nvim_lsp' }, },
     },
     lualine_x = {
       'encoding',
