@@ -26,6 +26,16 @@ plugin({
   config = conf.lspconfig
 })
 plugin({
+  "SmiteshP/nvim-navic",
+  requires = "neovim/nvim-lspconfig"
+})
+plugin({
+  "utilyre/barbecue.nvim",
+  config = function()
+    require("barbecue").setup()
+  end
+})
+plugin({
   'stevearc/aerial.nvim',
   config = function() require('aerial').setup({
       layout = {

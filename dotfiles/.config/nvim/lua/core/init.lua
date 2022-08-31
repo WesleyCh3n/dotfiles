@@ -13,7 +13,6 @@ pack.load_compile()
 
 -- keymap
 require('keymap')
-
 -- autocmd
 -- remember cursor last place
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
@@ -33,5 +32,18 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   command = "silent! TSBufEnable rainbow"
 })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  command = "lua vim.lsp.buf.formatting_sync()"
+  command = "silent! lua vim.lsp.buf.format()"
 })
+
+if vim.g.neovide == true then
+  vim.opt.guifont                               = 'VictorMono Nerd Font Mono:h13'
+  vim.g.neovide_transparency                    = 0.8
+  vim.g.gruvbox_material_background             = 'medium'
+  vim.g.gruvbox_material_current_word           = 'grey background'
+  vim.g.gruvbox_material_transparent_background = 0
+  vim.cmd('silent! colorscheme gruvbox-material')
+  local set_hl = require("modules.ui.gruvbox")
+  set_hl.float()
+  set_hl.cmp()
+  set_hl.winbar()
+end
