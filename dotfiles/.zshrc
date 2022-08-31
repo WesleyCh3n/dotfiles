@@ -79,7 +79,7 @@ eval "$(zoxide init zsh)"
 ################################################################################
 alias ls='lsd'
 alias vi='nvim'
-alias vv='neovide'
+alias vv='neovide --frame none'
 alias python='python3 -B'
 alias lg='lazygit'
 alias ldk='lazydocker'
