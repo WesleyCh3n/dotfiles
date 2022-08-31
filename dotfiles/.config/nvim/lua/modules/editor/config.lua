@@ -381,6 +381,15 @@ function config.formatter()
       javascriptreact = {
         format_func
       },
+      python = {
+        function()
+          return {
+            exe = "black",
+            args = { '-', '-l', '79' },
+            stdin = true,
+          }
+        end
+      }
     }
   })
 end
