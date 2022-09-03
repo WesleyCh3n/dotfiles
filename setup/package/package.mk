@@ -16,6 +16,18 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.2/zoxide-0.8.2-x86_64-apple-darwin.tar.gz
 	LINK_DPRINT := https://github.com/dprint/dprint/releases/download/0.30.3/dprint-x86_64-apple-darwin.tar.gz
 else
+	ifeq ($(shell arch),aarch64)
+	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.4.0/fd-v8.4.0-aarch64-unknown-linux-gnu.tar.gz
+	LINK_RG := https://github.com/microsoft/ripgrep-prebuilt/releases/download/v13.0.0-4/ripgrep-v13.0.0-4-aarch64-unknown-linux-gnu.tar.gz
+	LINK_FZF := https://github.com/junegunn/fzf/releases/download/0.33.0/fzf-0.33.0-linux_arm64.tar.gz
+	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v0.35/lazygit_0.35_Linux_arm64.tar.gz
+	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v1.2.9/btop-aarch64-linux-musl.tbz
+	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-0.22.0-aarch64-unknown-linux-gnu.tar.gz
+	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.14.0/delta-0.14.0-aarch64-unknown-linux-gnu.tar.gz
+	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-v0.21.0-aarch64-unknown-linux-gnu.tar.gz
+	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.3/zoxide-0.8.3-aarch64-unknown-linux-musl.tar.gz
+	LINK_DPRINT := https://github.com/dprint/dprint/releases/download/0.31.1/dprint-aarch64-unknown-linux-gnu.zip
+	else
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
 	LINK_FZF := https://github.com/junegunn/fzf/releases/download/0.29.0/fzf-0.29.0-linux_amd64.tar.gz
@@ -30,5 +42,6 @@ else
 	LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_linux_amd64.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.2/zoxide-0.8.2-x86_64-unknown-linux-musl.tar.gz
 	LINK_DPRINT := https://github.com/dprint/dprint/releases/download/0.30.3/dprint-x86_64-unknown-linux-gnu.zip
+	endif
 endif
 
