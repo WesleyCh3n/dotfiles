@@ -29,12 +29,14 @@ plugin({
   "SmiteshP/nvim-navic",
   requires = "neovim/nvim-lspconfig"
 })
+if vim.version().minor == 8 then
 plugin({
   "utilyre/barbecue.nvim",
   config = function()
     require("barbecue").setup()
   end
 })
+end
 plugin({
   'stevearc/aerial.nvim',
   config = function() require('aerial').setup({
