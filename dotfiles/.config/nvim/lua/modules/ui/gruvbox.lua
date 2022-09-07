@@ -1,24 +1,24 @@
 local set_hl = {}
 
 local float_group = {
-  NormalFloat = { fg = "#ddc7a1", bg = "NONE", blend = 0 },
-  FloatBorder = { fg = "#928374", bg = "NONE", blend = 0 },
+  NormalFloat   = { fg = "#ddc7a1", bg = "NONE", blend = 0 },
+  FloatBorder   = { fg = "#928374", bg = "NONE", blend = 0 },
   WhichKeyFloat = { bg = "NONE", ctermbg = "NONE" },
 
-  ErrorFloat = { fg = "#ea6962", bg = "NONE", blend = 0 },
+  ErrorFloat   = { fg = "#ea6962", bg = "NONE", blend = 0 },
   WarningFloat = { fg = "#d8a657", bg = "NONE", blend = 0 },
-  InfoFloat = { fg = "#7daea3", bg = "NONE", blend = 0 },
-  HintFloat = { fg = "#a9b665", bg = "NONE", blend = 0 },
+  InfoFloat    = { fg = "#7daea3", bg = "NONE", blend = 0 },
+  HintFloat    = { fg = "#a9b665", bg = "NONE", blend = 0 },
 
   DiagnosticError = { fg = "#ea6962", bg = "NONE", blend = 0 },
-  DiagnosticWarn = { fg = "#d8a657", bg = "NONE", blend = 0 },
-  DiagnosticInfo = { fg = "#7daea3", bg = "NONE", blend = 0 },
-  DiagnosticHint = { fg = "#a9b665", bg = "NONE", blend = 0 },
+  DiagnosticWarn  = { fg = "#d8a657", bg = "NONE", blend = 0 },
+  DiagnosticInfo  = { fg = "#7daea3", bg = "NONE", blend = 0 },
+  DiagnosticHint  = { fg = "#a9b665", bg = "NONE", blend = 0 },
 
   DiagnosticVirtualTextError = { link = 'ErrorFloat' },
-  DiagnosticVirtualTextWarn = { link = 'WarningFloat' },
-  DiagnosticVirtualTextInfo = { link = 'InfoFloat' },
-  DiagnosticVirtualTextHint = { link = 'HintFloat' },
+  DiagnosticVirtualTextWarn  = { link = 'WarningFloat' },
+  DiagnosticVirtualTextInfo  = { link = 'InfoFloat' },
+  DiagnosticVirtualTextHint  = { link = 'HintFloat' },
 }
 
 function set_hl.float()
@@ -29,43 +29,43 @@ end
 
 local cmp_groups = {
   PmenuSel = { bg = "#32302f", fg = "NONE", blend = 10 },
-  Pmenu = { fg = '#ddc7a1', bg = '#45403d', blend = 10 },
+  Pmenu    = { fg = '#ddc7a1', bg = '#45403d', blend = 10 },
 
   CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", strikethrough = true, italic = true },
-  CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", bold = true },
+  CmpItemAbbrMatch      = { fg = "#82AAFF", bg = "NONE", bold = true },
   CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", bold = true },
-  CmpItemMenu = { fg = "#C792EA", bg = "NONE" },
+  CmpItemMenu           = { fg = "#C792EA", bg = "NONE" },
 
-  CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
+  CmpItemKindField    = { fg = "#EED8DA", bg = "#B5585F" },
   CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
-  CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
-  CmpItemKindText = { fg = "#C3E88D", bg = "#9FBD73" },
-  CmpItemKindEnum = { fg = "#C3E88D", bg = "#9FBD73" },
-  CmpItemKindKeyword = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindEvent    = { fg = "#EED8DA", bg = "#B5585F" },
+  CmpItemKindText     = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindEnum     = { fg = "#C3E88D", bg = "#9FBD73" },
+  CmpItemKindKeyword  = { fg = "#C3E88D", bg = "#9FBD73" },
 
-  CmpItemKindConstant = { fg = "#FFE082", bg = "#D4BB6C" },
+  CmpItemKindConstant    = { fg = "#FFE082", bg = "#D4BB6C" },
   CmpItemKindConstructor = { fg = "#FFE082", bg = "#D4BB6C" },
-  CmpItemKindReference = { fg = "#FFE082", bg = "#D4BB6C" },
+  CmpItemKindReference   = { fg = "#FFE082", bg = "#D4BB6C" },
 
   CmpItemKindFunction = { fg = "#EADFF0", bg = "#A377BF" },
-  CmpItemKindStruct = { fg = "#EADFF0", bg = "#A377BF" },
-  CmpItemKindClass = { fg = "#EADFF0", bg = "#A377BF" },
-  CmpItemKindModule = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindStruct   = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindClass    = { fg = "#EADFF0", bg = "#A377BF" },
+  CmpItemKindModule   = { fg = "#EADFF0", bg = "#A377BF" },
   CmpItemKindOperator = { fg = "#EADFF0", bg = "#A377BF" },
 
   CmpItemKindVariable = { fg = "#C5CDD9", bg = "#7E8294" },
-  CmpItemKindFile = { fg = "#C5CDD9", bg = "#7E8294" },
+  CmpItemKindFile     = { fg = "#C5CDD9", bg = "#7E8294" },
 
-  CmpItemKindUnit = { fg = "#F5EBD9", bg = "#D4A959" },
+  CmpItemKindUnit    = { fg = "#F5EBD9", bg = "#D4A959" },
   CmpItemKindSnippet = { fg = "#F5EBD9", bg = "#D4A959" },
-  CmpItemKindFolder = { fg = "#F5EBD9", bg = "#D4A959" },
+  CmpItemKindFolder  = { fg = "#F5EBD9", bg = "#D4A959" },
 
-  CmpItemKindMethod = { fg = "#DDE5F5", bg = "#6C8ED4" },
-  CmpItemKindValue = { fg = "#DDE5F5", bg = "#6C8ED4" },
+  CmpItemKindMethod     = { fg = "#DDE5F5", bg = "#6C8ED4" },
+  CmpItemKindValue      = { fg = "#DDE5F5", bg = "#6C8ED4" },
   CmpItemKindEnumMember = { fg = "#DDE5F5", bg = "#6C8ED4" },
 
-  CmpItemKindInterface = { fg = "#D8EEEB", bg = "#58B5A8" },
-  CmpItemKindColor = { fg = "#D8EEEB", bg = "#58B5A8" },
+  CmpItemKindInterface     = { fg = "#D8EEEB", bg = "#58B5A8" },
+  CmpItemKindColor         = { fg = "#D8EEEB", bg = "#58B5A8" },
   CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
 }
 
@@ -76,26 +76,34 @@ function set_hl.cmp()
 end
 
 local winbar_groups = {
-  NavicIconsFile = { fg = "#C5CDD9", bg = "NONE" },
-  NavicIconsModule = { fg = "#EADFF0", bg = "NONE" },
-  NavicIconsNamespace = { fg = "#D8EEEB", bg = "NONE" },
-  NavicIconsPackage = { fg = "#D8EEEB", bg = "NONE" },
-  NavicIconsClass = { fg = "#EADFF0", bg = "NONE" },
-  NavicIconsMethod = { fg = "#DDE5F5", bg = "NONE" },
-  NavicIconsProperty = { fg = "#EED8DA", bg = "NONE" },
-  NavicIconsField = { fg = "#EED8DA", bg = "NONE" },
-  NavicIconsConstructor = { fg = "#FFE082", bg = "NONE" },
-  NavicIconsEnum = { fg = "#C3E88D", bg = "NONE" },
-  NavicIconsInterface = { fg = "#D8EEEB", bg = "NONE" },
-  NavicIconsFunction = { fg = "#EADFF0", bg = "NONE" },
-  NavicIconsVariable = { fg = "#C5CDD9", bg = "NONE" },
-  NavicIconsConstant = { fg = "#FFE082", bg = "NONE" },
-  NavicIconsNull = { fg = "#7E8294", bg = "NONE" },
-  NavicIconsEnumMember = { fg = "#C3E88D", bg = "NONE" },
-  NavicIconsStruct = { fg = "#EADFF0", bg = "NONE" },
-  NavicIconsEvent = { fg = "#EED8DA", bg = "NONE" },
-  NavicIconsOperator = { fg = "#EADFF0", bg = "NONE" },
-  NavicIconsTypeParameter = { fg = "#D8EEEB", bg = "NONE" },
+  NavicIconsModule        = { link = "AerialModuleIcon", },
+  NavicIconsNamespace     = { link = "AerialNamespaceIcon", },
+  NavicIconsPackage       = { link = "AerialPackageIcon", },
+  NavicIconsClass         = { link = "AerialClassIcon", },
+  NavicIconsMethod        = { link = "AerialMethodIcon", },
+  NavicIconsProperty      = { link = "AerialPropertyIcon", },
+  NavicIconsField         = { link = "AerialFieldIcon", },
+  NavicIconsConstructor   = { link = "AerialConstructorIcon", },
+  NavicIconsEnum          = { link = "AerialEnumIcon", },
+  NavicIconsInterface     = { link = "AerialInterfaceIcon", },
+  NavicIconsFunction      = { link = "AerialFunctionIcon", },
+  NavicIconsVariable      = { link = "AerialVariableIcon", },
+  NavicIconsConstant      = { link = "AerialConstantIcon", },
+  NavicIconsString        = { link = "AerialStringIcon", },
+  NavicIconsNumber        = { link = "AerialNumberIcon", },
+  NavicIconsBoolean       = { link = "AerialBooleanIcon", },
+  NavicIconsArray         = { link = "AerialArrayIcon", },
+  NavicIconsObject        = { link = "AerialObjectIcon", },
+  NavicIconsKey           = { link = "AerialKeyIcon", },
+  NavicIconsNull          = { link = "AerialNullIcon", },
+  NavicIconsEnumMember    = { link = "AerialEnumMemberIcon", },
+  NavicIconsStruct        = { link = "AerialStructIcon", },
+  NavicIconsEvent         = { link = "AerialEventIcon", },
+  NavicIconsOperator      = { link = "AerialOperatorIcon", },
+  NavicIconsTypeParameter = { link = "AerialTypeParameterIcon", },
+  -- NavicIconsFile          = { bg = "NONE", fg = "" },
+  -- NavicText               = { bg = "NONE", fg = "" },
+  -- NavicSeparator          = { bg = "NONE", fg = "" }
 }
 
 function set_hl.winbar()
