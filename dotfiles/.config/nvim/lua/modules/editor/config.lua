@@ -86,6 +86,8 @@ function config.treesitter()
       "javascript",
       "typescript",
       "tsx",
+      "markdown",
+      "markdown_inline",
     },
     highlight = {
       enable = true,
