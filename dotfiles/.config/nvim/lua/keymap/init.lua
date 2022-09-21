@@ -46,3 +46,16 @@ vmap(
     end
   }
 )
+
+nmap(
+  {
+    '<leader>s',
+    function() _G.leap_to_line() end
+  }
+)
+vmap(
+  {
+    '<leader>s',
+    function() _G.leap_to_line() end
+  }
+)
