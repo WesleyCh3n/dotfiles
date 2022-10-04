@@ -158,7 +158,7 @@ function config.zen_mode()
   require("zen-mode").setup {
     plugins = {
       tmux = {
-        enabled = true
+        enabled = false
       }
     }
   }
