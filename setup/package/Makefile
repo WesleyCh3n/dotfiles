@@ -79,7 +79,6 @@ nvim:
 	$(Q)$(call dl,$(LINK_NVIM))
 	$(Q)cp -r $(TMP_DIR)/*/* ${HOME}/.local
 	$(Q)rm -rf $(TMP_DIR)
-	$(Q)pip install pynvim
 
 node:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
