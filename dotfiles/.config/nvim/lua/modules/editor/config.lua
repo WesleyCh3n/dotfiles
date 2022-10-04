@@ -2,6 +2,7 @@ local config = {}
 
 function config.telescope()
   local actions = require("telescope.actions")
+  vim.api.nvim_set_hl(0, "TelescopeSelection", {link="Visual"})
   require('telescope').setup {
     defaults = {
       prompt_prefix = " ",
