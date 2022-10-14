@@ -1,0 +1,18 @@
+snippet lc "leetcode template"
+	pub struct Solution {}
+
+	impl Solution {
+		pub fn ${1:function_name}(${2:parameter}) -> ${3:return} {
+			todo!()
+		}
+	}
+
+	#[cfg(test)]
+	mod tests {
+		use super::*;
+
+		#[test]
+		fn test() {
+			assert_eq!(Solution::$1(${4: test_case}), ${5: test_result});
+		}
+	}
