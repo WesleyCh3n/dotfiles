@@ -74,13 +74,16 @@ function zvm_after_init() {
 # zoxide
 eval "$(zoxide init zsh)"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 ################################################################################
 #                                    alias                                     #
 ################################################################################
 alias ls='lsd'
 alias vi='nvim'
 alias vv='neovide --frame none'
-alias python='python3 -B'
 alias lg='lazygit'
 alias ldk='lazydocker'
 alias a='ansible'

@@ -112,4 +112,6 @@ function set_hl.winbar()
   end
 end
 
+vim.api.nvim_set_hl(0, "TelescopeSelection", {link="Visual"})
+
 return set_hl
