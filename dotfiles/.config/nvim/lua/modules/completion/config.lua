@@ -67,7 +67,10 @@ function config.nvim_cmp()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        vim_item.abbr = (string.len(vim_item.abbr) > 20) and vim.fn.strcharpart(vim_item.abbr, 0, 20) .. "…" or
+        local trancate_length = 25
+        vim_item.abbr = (string.len(vim_item.abbr) > trancate_length) and
+            vim.fn.strcharpart(vim_item.abbr, 0, trancate_length) .. "…"
+            or
             vim_item.abbr
         vim_item.menu =
         "[" .. ({
