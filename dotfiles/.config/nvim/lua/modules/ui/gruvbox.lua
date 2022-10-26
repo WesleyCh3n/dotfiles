@@ -28,8 +28,8 @@ function set_hl.float()
 end
 
 local cmp_groups = {
-  PmenuSel = { bg = "#32302f", fg = "NONE", blend = 10 },
-  Pmenu    = { fg = '#ddc7a1', bg = '#45403d', blend = 10 },
+  PmenuSel = { bg = "#32302f", fg = "NONE", blend = 0 },
+  Pmenu    = { fg = '#ddc7a1', bg = '#45403d', blend = 0 },
 
   CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", strikethrough = true, italic = true },
   CmpItemAbbrMatch      = { fg = "#82AAFF", bg = "NONE", bold = true },
@@ -112,6 +112,6 @@ function set_hl.winbar()
   end
 end
 
-vim.api.nvim_set_hl(0, "TelescopeSelection", {link="Visual"})
+vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "Visual" })
 
 return set_hl
