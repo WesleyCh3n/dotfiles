@@ -2,13 +2,12 @@ local plugin = require('core.pack').register_plugin
 local conf = require('modules.tools.config')
 
 plugin({
-  'norcalli/nvim-colorizer.lua',
-  opt = true,
-  ft = { "html", "css", "scss", "sass", "vim", "lua", "javascript",
-    "typescript", "javascriptreact", "typescriptreact", "dosini",
-    "ini", "conf", "json", "cfg" },
-  cmd = { "ColorizerToggle" },
-  config = conf.colorizer,
+  'brenoprata10/nvim-highlight-colors',
+  config = function()
+    require('nvim-highlight-colors').setup({
+      enable_tailwind = true
+    })
+  end
 })
 
 plugin({
