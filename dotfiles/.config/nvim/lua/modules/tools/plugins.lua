@@ -21,11 +21,11 @@ plugin({
   ft = { 'markdown' },
   config = conf.markdown_preview
 })
-plugin({
-  "nvim-neorg/neorg",
-  config = conf.neorg,
-  requires = "nvim-lua/plenary.nvim"
-})
+-- plugin({
+--   "nvim-neorg/neorg",
+--   config = conf.neorg,
+--   requires = "nvim-lua/plenary.nvim"
+-- })
 plugin({ 'vimwiki/vimwiki', branch = 'dev', config = conf.vimwiki })
 plugin({ 'phaazon/mind.nvim', config = function()
   require 'mind'.setup()
