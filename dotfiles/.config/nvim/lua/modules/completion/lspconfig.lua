@@ -67,6 +67,22 @@ for _, name in pairs(servers) do
           settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
         }
       end
+      if name == 'rust_analyzer' then
+        default_opts = {
+          on_attach = on_attach,
+          settings = {
+            inlayHints = {
+              maxLength = nil,
+              typeHints = {
+                enable = true,
+              }
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+          },
+        }
+      end
       server:setup(default_opts)
     end)
     if not server:is_installed() then
