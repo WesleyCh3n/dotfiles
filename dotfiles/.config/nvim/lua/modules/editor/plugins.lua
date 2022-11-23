@@ -12,7 +12,6 @@ plugin({
     require('nvim-treesitter.install').update({ with_sync = true })
   end,
   config = conf.treesitter,
-  -- commit = "116c72f5c2e4e63bbf0b7d698f9d35e36848605a"
 })
 plugin({ 'p00f/nvim-ts-rainbow',
   event = "BufRead",
