@@ -392,14 +392,6 @@ function config.vim_easy_align()
   vim.g.easy_align_bang_interactive_modes = { 'c', 'l', 'r' }
 end
 
-function config.registers()
-  vim.g.registers_show_empty_registers = 0
-  vim.g.registers_hide_only_whitespace = 1
-  vim.g.registers_window_border = "none"
-  vim.g.registers_window_max_width = 50
-  vim.g.registers_window_min_height = 3
-end
-
 function config.formatter()
   local format_func = function()
     return {

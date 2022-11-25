@@ -75,5 +75,4 @@ plugin({
 plugin({ 'christoomey/vim-tmux-navigator' })
 plugin({ 'mg979/vim-visual-multi' })
 
-plugin({ 'tversteeg/registers.nvim', event = 'BufEnter', config = conf.registers })
 plugin({ 'mhartington/formatter.nvim', config = conf.formatter })
