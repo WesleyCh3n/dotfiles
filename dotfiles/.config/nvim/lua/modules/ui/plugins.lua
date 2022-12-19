@@ -13,3 +13,10 @@ plugin({ 'lewis6991/gitsigns.nvim', config = conf.gitsigns })
 plugin({ "petertriho/nvim-scrollbar", config = conf.scrollbar })
 plugin({ "luukvbaal/stabilize.nvim", config = conf.stabilize })
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
+plugin({
+  'tamton-aquib/duck.nvim',
+  config = function()
+    vim.keymap.set('n', '<leader>k', function() require("duck").hatch() end, {})
+    -- vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+  end
+})
