@@ -19,24 +19,13 @@ plugin({
     { 'honza/vim-snippets' },
   }
 })
+plugin({ "williamboman/mason.nvim", })
+plugin({ "williamboman/mason-lspconfig.nvim", })
 plugin({
   "neovim/nvim-lspconfig",
   event = "BufRead",
-  requires = 'williamboman/nvim-lsp-installer',
   config = conf.lspconfig
 })
-plugin({
-  "SmiteshP/nvim-navic",
-  requires = "neovim/nvim-lspconfig"
-})
-if vim.version().minor == 8 then
-plugin({
-  "utilyre/barbecue.nvim",
-  config = function()
-    require("barbecue").setup()
-  end
-})
-end
 plugin({
   'stevearc/aerial.nvim',
   config = function() require('aerial').setup({

@@ -75,43 +75,6 @@ function set_hl.cmp()
   end
 end
 
-local winbar_groups = {
-  BarbecueContextModule        = { link = "AerialModuleIcon", },
-  BarbecueContextNamespace     = { link = "AerialNamespaceIcon", },
-  BarbecueContextPackage       = { link = "AerialPackageIcon", },
-  BarbecueContextClass         = { link = "AerialClassIcon", },
-  BarbecueContextMethod        = { link = "AerialMethodIcon", },
-  BarbecueContextProperty      = { link = "AerialPropertyIcon", },
-  BarbecueContextField         = { link = "AerialFieldIcon", },
-  BarbecueContextConstructor   = { link = "AerialConstructorIcon", },
-  BarbecueContextEnum          = { link = "AerialEnumIcon", },
-  BarbecueContextInterface     = { link = "AerialInterfaceIcon", },
-  BarbecueContextFunction      = { link = "AerialFunctionIcon", },
-  BarbecueContextVariable      = { link = "AerialVariableIcon", },
-  BarbecueContextConstant      = { link = "AerialConstantIcon", },
-  BarbecueContextString        = { link = "AerialStringIcon", },
-  BarbecueContextNumber        = { link = "AerialNumberIcon", },
-  BarbecueContextBoolean       = { link = "AerialBooleanIcon", },
-  BarbecueContextArray         = { link = "AerialArrayIcon", },
-  BarbecueContextObject        = { link = "AerialObjectIcon", },
-  BarbecueContextKey           = { link = "AerialKeyIcon", },
-  BarbecueContextNull          = { link = "AerialNullIcon", },
-  BarbecueContextEnumMember    = { link = "AerialEnumMemberIcon", },
-  BarbecueContextStruct        = { link = "AerialStructIcon", },
-  BarbecueContextEvent         = { link = "AerialEventIcon", },
-  BarbecueContextOperator      = { link = "AerialOperatorIcon", },
-  BarbecueContextTypeParameter = { link = "AerialTypeParameterIcon", },
-  -- NavicIconsFile          = { bg = "NONE", fg = "" },
-  -- NavicText               = { bg = "NONE", fg = "" },
-  -- NavicSeparator          = { bg = "NONE", fg = "" }
-}
-
-function set_hl.winbar()
-  for group, spec in pairs(winbar_groups) do
-    vim.api.nvim_set_hl(0, group, spec)
-  end
-end
-
 vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "Visual" })
 
 return set_hl

@@ -14,6 +14,17 @@ plugin({ "petertriho/nvim-scrollbar", config = conf.scrollbar })
 plugin({ "luukvbaal/stabilize.nvim", config = conf.stabilize })
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 plugin({
+  "SmiteshP/nvim-navic",
+  requires = { "neovim/nvim-lspconfig" }
+})
+plugin({
+  "utilyre/barbecue.nvim",
+  requires = { "SmiteshP/nvim-navic" },
+  config = function()
+    require("barbecue").setup()
+  end
+})
+plugin({
   'tamton-aquib/duck.nvim',
   config = function()
     vim.keymap.set('n', '<leader>k', function() require("duck").hatch() end, {})

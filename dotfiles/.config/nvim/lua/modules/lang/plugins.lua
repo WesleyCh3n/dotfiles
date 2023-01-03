@@ -6,3 +6,4 @@ plugin({
   config = conf.emmet_vim
 })
 plugin({ 'MaxMEllon/vim-jsx-pretty' })
+plugin({ "simrat39/rust-tools.nvim" })

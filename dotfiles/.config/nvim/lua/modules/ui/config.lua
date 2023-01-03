@@ -10,7 +10,6 @@ function config.gruvbox()
   local set_hl = require("modules.ui.gruvbox")
   set_hl.float()
   set_hl.cmp()
-  set_hl.winbar()
 end
 
 function config.lualine()

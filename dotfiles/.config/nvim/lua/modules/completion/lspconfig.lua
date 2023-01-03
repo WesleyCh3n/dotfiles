@@ -1,7 +1,25 @@
-local present, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not present then
-  return
-end
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+})
+local servers = {
+  "pyright",
+  "gopls",
+  "tsserver",
+  "tailwindcss",
+  "bashls",
+  "clangd",
+  "sumneko_lua",
+  "rust_analyzer"
+}
+require("mason-lspconfig").setup {
+  ensure_installed = servers,
+}
 
 local lspconfig_window = require("lspconfig.ui.windows")
 local old_defaults = lspconfig_window.default_opts
@@ -42,54 +60,79 @@ local on_attach = function(client, bufnr)
   })
 end
 
-local servers = {
-  "pyright",
-  "gopls",
-  "tsserver",
-  "tailwindcss",
-  "bashls",
-  "clangd",
-  "sumneko_lua",
-  "rust_analyzer"
-}
+local status, lspconfig = pcall(require, "lspconfig")
+if (not status) then return end
+
+lspconfig.pyright.setup({ on_attach = on_attach })
+lspconfig.gopls.setup({ on_attach = on_attach })
+lspconfig.tsserver.setup({ on_attach = on_attach })
+lspconfig.tailwindcss.setup({ on_attach = on_attach })
+lspconfig.bashls.setup({ on_attach = on_attach })
+lspconfig.clangd.setup({ on_attach = on_attach })
+lspconfig.sumneko_lua.setup({
+  on_attach = on_attach,
+  settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+})
+
 
 --[[ auto install required lsp server ]]
-for _, name in pairs(servers) do
-  local server_available, server = lsp_installer.get_server(name)
-  if server_available then
-    server:on_ready(function()
-      local default_opts = {
-        on_attach = on_attach,
-      }
-      if name == 'sumneko_lua' then
-        default_opts = {
-          on_attach = on_attach,
-          settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-        }
-      end
-      if name == 'rust_analyzer' then
-        default_opts = {
-          on_attach = on_attach,
-          settings = {
-            inlayHints = {
-              maxLength = nil,
-              typeHints = {
-                enable = true,
-              }
-            },
-            checkOnSave = {
-              command = "clippy",
-            },
-          },
-        }
-      end
-      server:setup(default_opts)
-    end)
-    if not server:is_installed() then
-      server:install()
-    end
-  end
-end
+-- for _, name in pairs(servers) do
+--   local server_available, server = lsp_installer.get_server(name)
+--   if server_available then
+--     server:on_ready(function()
+--       local default_opts = {
+--         on_attach = on_attach,
+--       }
+--       if name == 'sumneko_lua' then
+--         default_opts = {
+--           on_attach = on_attach,
+--           settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+--         }
+--       end
+--       if name ~= 'rust_analyzer' then
+--         server:setup(default_opts)
+--       end
+--       -- if name == 'rust_analyzer' then
+--       --   default_opts = {
+--       --     on_attach = on_attach,
+--       --     settings = {
+--       --       inlayHints = {
+--       --         maxLength = nil,
+--       --         typeHints = {
+--       --           enable = true,
+--       --         }
+--       --       },
+--       --       checkOnSave = {
+--       --         command = "clippy",
+--       --       },
+--       --     },
+--       --   }
+--       -- end
+--     end)
+--     if not server:is_installed() then
+--       server:install()
+--     end
+--   end
+-- end
+
+require("rust-tools").setup({
+  tools = {
+    runnables = {
+      use_telescope = true,
+    },
+  },
+  server = {
+    on_attach = on_attach,
+    settings = {
+      ["rust-analyzer"] = {
+        inlayHints = { locationLinks = false },
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
+  },
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
