@@ -15,7 +15,7 @@ plugin({ "luukvbaal/stabilize.nvim", config = conf.stabilize })
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing })
 plugin({
   "SmiteshP/nvim-navic",
-  requires = { "neovim/nvim-lspconfig" }
+  requires = { { "neovim/nvim-lspconfig" }, { "sainnhe/gruvbox-material" } }
 })
 plugin({
   "utilyre/barbecue.nvim",
