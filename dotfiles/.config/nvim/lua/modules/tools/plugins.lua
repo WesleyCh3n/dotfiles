@@ -27,7 +27,7 @@ plugin({
 --   requires = "nvim-lua/plenary.nvim"
 -- })
 plugin({ 'vimwiki/vimwiki', branch = 'dev', config = conf.vimwiki })
-plugin({ 'phaazon/mind.nvim', config = function()
+plugin({ 'phaazon/mind.nvim', branch = 'v2.2', config = function()
   require 'mind'.setup()
 end })
 plugin({

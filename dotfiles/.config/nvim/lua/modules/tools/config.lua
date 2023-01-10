@@ -6,12 +6,24 @@ function config.colorizer()
 end
 
 function config.toggleterm()
+  local configuration = vim.fn['gruvbox_material#get_configuration']()
+  local c = vim.fn['gruvbox_material#get_palette'](configuration.background, configuration.foreground,
+    configuration.colors_override)
   require("toggleterm").setup {
     size = 10,
     direction = 'horizontal',
     shell = (vim.loop.os_uname().sysname ~= "Windows_NT") and vim.o.shell or "nu.exe",
     float_opts = {
       border = 'curved'
+    },
+    highlights = {
+      NormalFloat = {
+        guibg = c.bg_dim[1],
+      },
+      FloatBorder = {
+        guifg = c.bg_dim[1],
+        guibg = c.bg_dim[1],
+      },
     }
   }
   local Terminal = require('toggleterm.terminal').Terminal

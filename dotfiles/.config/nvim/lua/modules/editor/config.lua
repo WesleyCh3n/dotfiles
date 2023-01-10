@@ -12,6 +12,7 @@ function config.telescope()
           preview_width = 0.6,
         },
       },
+      border = true,
       mappings = {
         i = {
           ["<esc>"] = actions.close,

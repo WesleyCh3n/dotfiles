@@ -1,9 +1,12 @@
 local set_hl = {}
 
+local configuration = vim.fn['gruvbox_material#get_configuration']()
+local c = vim.fn['gruvbox_material#get_palette'](configuration.background, configuration.foreground,
+  configuration.colors_override)
+
 local float_group = {
-  NormalFloat   = { fg = "#ddc7a1", bg = "NONE", blend = 0 },
-  FloatBorder   = { fg = "#928374", bg = "NONE", blend = 0 },
-  WhichKeyFloat = { bg = "NONE", ctermbg = "NONE" },
+  NormalFloat = { fg = c.fg0[1], bg = c.bg1[1] },
+  FloatBorder = { fg = c.bg1[1], bg = c.bg1[1] },
 
   ErrorFloat   = { fg = "#ea6962", bg = "NONE", blend = 0 },
   WarningFloat = { fg = "#d8a657", bg = "NONE", blend = 0 },
@@ -19,6 +22,24 @@ local float_group = {
   DiagnosticVirtualTextWarn  = { link = 'WarningFloat' },
   DiagnosticVirtualTextInfo  = { link = 'InfoFloat' },
   DiagnosticVirtualTextHint  = { link = 'HintFloat' },
+
+  WhichKeyFloat  = { bg = c.bg_dim[1] },
+  WhichKeyBorder = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
+
+  TelescopeNormal        = { bg = "#252525" },
+  TelescopeBorder        = { fg = "#252525", bg = "#252525" },
+  TelescopePromptCounter = { fg = c.fg0[1], bg = c.bg2[1] },
+  TelescopePromptBorder  = { fg = c.bg2[1], bg = c.bg2[1] },
+  TelescopePromptNormal  = { fg = c.fg0[1], bg = c.bg2[1] },
+  TelescopePromptTitle   = { fg = c.bg2[1], bg = c.bg2[1] },
+
+  TelescopePreviewCounter = { fg = c.fg0[1], bg = c.bg_dim[1] },
+  TelescopePreviewBorder = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
+  TelescopePreviewNormal = { fg = c.fg0[1], bg = c.bg_dim[1] },
+  TelescopePreviewTitle = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
+
+  TelescopeSelection = { link = "Visual" },
+
 }
 
 function set_hl.float()
@@ -74,7 +95,5 @@ function set_hl.cmp()
     vim.api.nvim_set_hl(0, group, spec)
   end
 end
-
-vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "Visual" })
 
 return set_hl

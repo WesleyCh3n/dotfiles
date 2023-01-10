@@ -2,9 +2,9 @@ local config = {}
 
 function config.gruvbox()
   if vim.g.neovide == nil then
-    vim.g.gruvbox_material_background             = 'medium'
-    vim.g.gruvbox_material_current_word           = 'grey background'
-    vim.g.gruvbox_material_transparent_background = 1
+    vim.g.gruvbox_material_background = 'medium'
+    -- vim.g.gruvbox_material_current_word           = 'grey background'
+    -- vim.g.gruvbox_material_transparent_background = 1
     vim.cmd('silent! colorscheme gruvbox-material')
   end
   local set_hl = require("modules.ui.gruvbox")

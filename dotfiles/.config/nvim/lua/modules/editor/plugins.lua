@@ -13,7 +13,7 @@ plugin({
   end,
   config = conf.treesitter,
 })
-plugin({ 'p00f/nvim-ts-rainbow',
+plugin({ 'mrjones2014/nvim-ts-rainbow',
   event = "BufRead",
   requires = "nvim-treesitter/nvim-treesitter",
 })
