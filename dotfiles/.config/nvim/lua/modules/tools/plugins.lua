@@ -2,14 +2,9 @@ local plugin = require('core.pack').register_plugin
 local conf = require('modules.tools.config')
 
 plugin({
-  'brenoprata10/nvim-highlight-colors',
-  config = function()
-    require('nvim-highlight-colors').setup({
-      enable_tailwind = true
-    })
-  end
+  'norcalli/nvim-colorizer.lua',
+  config = conf.colorizer
 })
-
 plugin({
   'akinsho/toggleterm.nvim',
   branch = 'main',
