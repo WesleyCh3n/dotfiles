@@ -8,15 +8,15 @@ local float_group = {
   NormalFloat = { fg = c.fg0[1], bg = c.bg1[1] },
   FloatBorder = { fg = c.bg1[1], bg = c.bg1[1] },
 
-  ErrorFloat   = { fg = "#ea6962", bg = "NONE", blend = 0 },
-  WarningFloat = { fg = "#d8a657", bg = "NONE", blend = 0 },
-  InfoFloat    = { fg = "#7daea3", bg = "NONE", blend = 0 },
-  HintFloat    = { fg = "#a9b665", bg = "NONE", blend = 0 },
+  ErrorFloat   = { fg = c.red[1], bg = "NONE", blend = 0 },
+  WarningFloat = { fg = c.yellow[1], bg = "NONE", blend = 0 },
+  InfoFloat    = { fg = c.aqua[1], bg = "NONE", blend = 0 },
+  HintFloat    = { fg = c.green[1], bg = "NONE", blend = 0 },
 
-  DiagnosticError = { fg = "#ea6962", bg = "NONE", blend = 0 },
-  DiagnosticWarn  = { fg = "#d8a657", bg = "NONE", blend = 0 },
-  DiagnosticInfo  = { fg = "#7daea3", bg = "NONE", blend = 0 },
-  DiagnosticHint  = { fg = "#a9b665", bg = "NONE", blend = 0 },
+  DiagnosticError = { link = 'ErrorFloat' },
+  DiagnosticWarn  = { link = 'WarningFloat' },
+  DiagnosticInfo  = { link = 'InfoFloat' },
+  DiagnosticHint  = { link = 'HintFloat' },
 
   DiagnosticVirtualTextError = { link = 'ErrorFloat' },
   DiagnosticVirtualTextWarn  = { link = 'WarningFloat' },
