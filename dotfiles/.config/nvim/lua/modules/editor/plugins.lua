@@ -6,6 +6,9 @@ plugin({
   config = conf.telescope
 })
 plugin({ 'nvim-telescope/telescope-symbols.nvim', })
+plugin({ "nvim-telescope/telescope-file-browser.nvim", config = function()
+  require("telescope").load_extension "file_browser"
+end })
 plugin({
   "nvim-treesitter/nvim-treesitter",
   run = function()

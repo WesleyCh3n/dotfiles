@@ -227,6 +227,10 @@ function config.whichkey()
       spacing = 5,
       align = "center",
     },
+    disable = {
+      buftypes = {},
+      filetypes = { "TelescopePrompt" },
+    },
   }
   local wk_keymap = require('keymap.whichkey')
   wk.register(wk_keymap.space, { prefix = "<space>" })

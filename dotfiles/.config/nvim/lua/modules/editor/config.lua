@@ -23,6 +23,7 @@ function config.telescope()
         },
         n = {
           ["q"] = actions.close,
+          ["<Space>"] = actions.toggle_selection,
         },
       },
       file_ignore_patterns = {

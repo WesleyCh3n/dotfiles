@@ -43,7 +43,7 @@ keymap.space = {
   ["fg"] = { '<cmd>Telescope live_grep<cr>', ' grep' },
   ["ft"] = { '<cmd>TodoTelescope<cr>', ' Todo' },
   ["f<space>"] = { "<cmd>Telescope commands<cr>", " cmd" },
-  ["f<cr>"] = { "<cmd>Telescope<cr>", "Telescope" },
+  ["f<cr>"] = { "<cmd>Telescope file_browser grouped=true<cr>", "Telescope" },
 
   r = { name = '漏re-' },
   ["ri"] = { 'gg=G<C-o>', '漏re-Indent' },
