@@ -9,13 +9,13 @@ require("mason").setup({
 })
 local servers = {
   "pyright",
-  "gopls",
   "tsserver",
   "tailwindcss",
   "bashls",
   "clangd",
-  "sumneko_lua",
-  "rust_analyzer"
+  "rust_analyzer",
+  -- "lua-language-server",
+  -- "gopls",
 }
 require("mason-lspconfig").setup {
   ensure_installed = servers,
@@ -69,7 +69,7 @@ lspconfig.tsserver.setup({ on_attach = on_attach })
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
 lspconfig.bashls.setup({ on_attach = on_attach })
 lspconfig.clangd.setup({ on_attach = on_attach })
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   on_attach = on_attach,
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
 })
