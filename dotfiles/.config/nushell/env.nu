@@ -21,6 +21,6 @@ let-env OPENCV_LINK_LIBS = 'opencv_world460'
 
 
 mkdir ~/.cache/starship
-starship init nu | save ~/.cache/starship/init.nu
+starship init nu | save -f ~/.cache/starship/init.nu
 
-zoxide init nushell --hook prompt | save ~/.zoxide.nu
+zoxide init nushell --hook prompt | save -f ~/.zoxide.nu
