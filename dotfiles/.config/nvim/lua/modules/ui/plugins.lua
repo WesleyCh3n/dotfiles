@@ -20,8 +20,11 @@ plugin({
 plugin({
   "utilyre/barbecue.nvim",
   requires = { "SmiteshP/nvim-navic" },
+  branch = "fix/E36",
   config = function()
-    require("barbecue").setup()
+    require("barbecue").setup({
+      exclude_filetypes = { "gitcommit", "toggleterm", "DressingInput" },
+    })
   end
 })
 plugin({
