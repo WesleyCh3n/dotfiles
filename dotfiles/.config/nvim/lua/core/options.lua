@@ -39,6 +39,8 @@ opt.showtabline = 1
 opt.undofile = true
 opt.pumblend = 10
 opt.pumheight = 10
+opt.cmdheight = 0
+opt.shortmess = 'nocI'
 vim.cmd [[ let &fcs='eob: ' ]]
 
 -- no EX mode
