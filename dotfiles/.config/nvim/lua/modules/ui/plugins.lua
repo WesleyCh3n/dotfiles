@@ -20,7 +20,7 @@ plugin({
 plugin({
   "utilyre/barbecue.nvim",
   requires = { "SmiteshP/nvim-navic" },
-  branch = "fix/E36",
+  tag = "*",
   config = function()
     require("barbecue").setup({
       exclude_filetypes = { "gitcommit", "toggleterm", "DressingInput" },
@@ -32,5 +32,11 @@ plugin({
   config = function()
     vim.keymap.set('n', '<leader>k', function() require("duck").hatch() end, {})
     -- vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+  end
+})
+plugin({
+  'rcarriga/nvim-notify',
+  config = function()
+    vim.notify = require("notify")
   end
 })
