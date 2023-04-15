@@ -27,6 +27,16 @@ plugin({
   config = conf.lspconfig
 })
 plugin({
+  "j-hui/fidget.nvim",
+  config = function()
+    require"fidget".setup{
+      text = {
+        spinner = "dots"
+      }
+    }
+  end
+})
+plugin({
   'stevearc/aerial.nvim',
   config = function() require('aerial').setup({
       layout = {
