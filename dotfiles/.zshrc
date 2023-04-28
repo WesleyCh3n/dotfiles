@@ -89,6 +89,7 @@ alias ldk='lazydocker'
 alias a='ansible'
 alias ap='ansible-playbook'
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
+alias pprint='python -m json.tool'
 
 ################################################################################
 #                                 nnn setting                                  #
