@@ -41,7 +41,6 @@ opt.pumblend = 10
 opt.pumheight = 10
 opt.cmdheight = 0
 opt.shortmess = 'nocIF'
-opt.clipboard = 'unnamedplus'
 vim.cmd [[ let &fcs='eob: ' ]]
 
 -- no EX mode
