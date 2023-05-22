@@ -229,7 +229,12 @@ return {
   },
 
   --
-  { 'numToStr/Comment.nvim', event = "BufRead", },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  },
 
   --
   {
