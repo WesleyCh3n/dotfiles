@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*.md",
   command = "setlocal wrap spell"
 })
-vim.api.nvim_create_autocmd({ "BufReadPost", }, {
+vim.api.nvim_create_autocmd({ "BufWinEnter", }, {
   pattern = "*",
   command = "silent! TSBufEnable rainbow"
 })
