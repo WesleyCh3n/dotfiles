@@ -3,9 +3,10 @@ env:
 window:
   padding:
     x: 6
-    y: 12
-  decorations: None
-  opacity: 0.95
+    y: 3
+  decorations: full
+  startup_mode: Windowed
+  opacity: 0.1
 font:
   normal:
     family: VictorMono Nerd Font Mono
@@ -19,7 +20,7 @@ font:
   bold_italic:
     family: VictorMono Nerd Font Mono
     style: Bold Italic
-  size: 14
+  size: 24
   # offset:
     # y: 2
   # glyph_offset:
