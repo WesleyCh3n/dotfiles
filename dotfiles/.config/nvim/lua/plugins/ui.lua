@@ -319,7 +319,6 @@ return {
   --
   {
     'utilyre/barbecue.nvim',
-    lazy = true,
     opts = {
       exclude_filetypes = { "gitcommit", "toggleterm", "DressingInput" },
     }
