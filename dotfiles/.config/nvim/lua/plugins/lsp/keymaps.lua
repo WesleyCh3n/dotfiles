@@ -22,6 +22,7 @@ M.on_attach = function(client, bufnr)
   end
   require("lsp_signature").on_attach({
     bind = true,
+    hint_enable = false,
     hint_prefix = "🐈 ",
     floating_window_above_cur_line = true,
     hi_parameter = 'WarningMsg',
