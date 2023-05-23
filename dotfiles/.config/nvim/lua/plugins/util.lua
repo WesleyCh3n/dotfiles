@@ -11,9 +11,9 @@ return {
     lazy = true,
     branch = 'main',
     keys = {
-      { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = '  lazygit' },
-      { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = '  btop' },
-      { "<space>ap", '<cmd>lua python_toggle()<cr>',        desc = '  python' },
+      { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = '  lazygit' },
+      { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = '  btop' },
+      { "<space>ap", '<cmd>lua python_toggle()<cr>',        desc = '  python' },
       { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = '  toggle all' },
       { "<space>aj", '<cmd>1ToggleTerm<cr>',                desc = '  #1' },
       { "<space>ak", '<cmd>2ToggleTerm<cr>',                desc = '  #2' },
@@ -75,7 +75,7 @@ return {
     'iamcco/markdown-preview.nvim',
     event = "BufEnter *.md",
     keys = {
-      { '<space>p', '<cmd>MarkdownPreviewToggle<cr>', desc = ' md preview' },
+      { '<space>p', '<cmd>MarkdownPreviewToggle<cr>', desc = 'md preview' },
     },
     build = function() vim.fn['mkdp#util#install']() end,
     config = function()
@@ -99,7 +99,7 @@ return {
       function _G.Toggle_venn()
         local venn_enabled = vim.inspect(vim.b.venn_enabled)
         if venn_enabled == "nil" then
-          print("Venn Enabled")
+          vim.notify("Venn Enabled.\nUsage:\n\tLine: J/K/L/H\n\tBox: f")
           vim.b.venn_enabled = true
           vim.cmd [[setlocal ve=all]]
           vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
@@ -108,7 +108,7 @@ return {
           vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
           vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
         else
-          print("Venn Disable")
+          vim.notify("Venn Disable")
           vim.cmd [[setlocal ve=]]
           vim.cmd [[mapclear <buffer>]]
           vim.b.venn_enabled = nil

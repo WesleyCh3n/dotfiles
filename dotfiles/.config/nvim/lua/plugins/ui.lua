@@ -126,17 +126,18 @@ return {
       },
     },
     keys = {
-      { '<space>1',  '<cmd>BufferLineGoToBuffer 1<cr>' },
-      { '<space>2',  '<cmd>BufferLineGoToBuffer 2<cr>' },
-      { '<space>3',  '<cmd>BufferLineGoToBuffer 3<cr>' },
-      { '<space>4',  '<cmd>BufferLineGoToBuffer 4<cr>' },
-      { '<space>5',  '<cmd>BufferLineGoToBuffer 5<cr>' },
-      { '<space>6',  '<cmd>BufferLineGoToBuffer 6<cr>' },
-      { '<space>7',  '<cmd>BufferLineGoToBuffer 7<cr>' },
-      { '<space>8',  '<cmd>BufferLineGoToBuffer 8<cr>' },
-      { '<space>9',  '<cmd>BufferLineGoToBuffer 9<cr>' },
-      { '<leader>H', '<cmd>BufferLineMovePrev<cr>',    desc = ' tab move left', },
-      { '<leader>L', '<cmd>BufferLineMoveNext<cr>',    desc = ' tab move right', },
+      { '<space>1',  '<cmd>BufferLineGoToBuffer 1<cr>',  desc = 'which_key_ignore' },
+      { '<space>2',  '<cmd>BufferLineGoToBuffer 2<cr>',  desc = 'which_key_ignore' },
+      { '<space>3',  '<cmd>BufferLineGoToBuffer 3<cr>',  desc = 'which_key_ignore' },
+      { '<space>4',  '<cmd>BufferLineGoToBuffer 4<cr>',  desc = 'which_key_ignore' },
+      { '<space>5',  '<cmd>BufferLineGoToBuffer 5<cr>',  desc = 'which_key_ignore' },
+      { '<space>6',  '<cmd>BufferLineGoToBuffer 6<cr>',  desc = 'which_key_ignore' },
+      { '<space>7',  '<cmd>BufferLineGoToBuffer 7<cr>',  desc = 'which_key_ignore' },
+      { '<space>8',  '<cmd>BufferLineGoToBuffer 8<cr>',  desc = 'which_key_ignore' },
+      { '<space>9',  '<cmd>BufferLineGoToBuffer 9<cr>',  desc = 'which_key_ignore' },
+      { '<space>t',  "<cmd>BufferLinePick<cr>",          "pick buf" },
+      { '<leader>H', '<cmd>BufferLineMovePrev<cr>',      desc = ' tab move left', },
+      { '<leader>L', '<cmd>BufferLineMoveNext<cr>',      desc = ' tab move right', },
       { 'gt',        '<cmd>BufferLineCycleNext<cr>', },
       { 'gT',        '<cmd>BufferLineCyclePrev<cr>', },
     },
@@ -365,5 +366,16 @@ return {
         spinner = "dots"
       }
     }
-  }
+  },
+
+  --
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = { "BufReadPost", "BufNewFile" },
+    keys = {
+      { "<space>ft", '<cmd>TodoTelescope<cr>', desc = ' Todo' },
+    },
+    config = true
+  },
 }

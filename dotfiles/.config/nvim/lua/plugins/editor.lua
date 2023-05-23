@@ -72,13 +72,13 @@ return {
       }
     end,
     keys = {
-      { '<space>l',        '<cmd>Telescope diagnostics bufnr=0<cr>',                                 desc = ' diag' },
-      { "<space>ff",       '<cmd>Telescope find_files<cr>',                                          desc = ' files' },
-      { "<space>fb",       '<cmd>Telescope buffers previewer=false<cr>',                             desc = ' bufs' },
-      { "<space>fc",       '<cmd>Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>', desc = ' nvim dots' },
-      { "<space>fd",       '<cmd>Telescope find_files cwd=~/dotfiles/<cr>',                          desc = ' dots' },
-      { "<space>fg",       '<cmd>Telescope live_grep<cr>',                                           desc = ' grep' },
-      { "<space>f<space>", "<cmd>Telescope commands<cr>",                                            desc = " cmd" },
+      { '<space>l',        '<cmd>Telescope diagnostics bufnr=0<cr>',                                 desc = 'diagnostics' },
+      { "<space>ff",       '<cmd>Telescope find_files<cr>',                                          desc = 'files' },
+      { "<space>fb",       '<cmd>Telescope buffers previewer=false<cr>',                             desc = 'bufs' },
+      { "<space>fc",       '<cmd>Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>', desc = 'nvim dots' },
+      { "<space>fd",       '<cmd>Telescope find_files cwd=~/dotfiles/<cr>',                          desc = 'dots' },
+      { "<space>fg",       '<cmd>Telescope live_grep<cr>',                                           desc = 'grep' },
+      { "<space>f<space>", "<cmd>Telescope commands<cr>",                                            desc = "cmd" },
     },
     dependencies = {
       {
@@ -183,29 +183,19 @@ return {
       local keymap = {}
       keymap.space = {
         ['#'] = ' tab #[123]',
-        ['1'] = 'which_key_ignore',
-        ['2'] = 'which_key_ignore',
-        ['3'] = 'which_key_ignore',
-        ['4'] = 'which_key_ignore',
-        ['5'] = 'which_key_ignore',
-        ['6'] = 'which_key_ignore',
-        ['7'] = 'which_key_ignore',
-        ['8'] = 'which_key_ignore',
-        ['9'] = 'which_key_ignore',
         n = { '<cmd>let @/=""<cr>', 'nohl' },
         P = { '<cmd>set paste!<cr>', 'toggle paste' },
-        q = { '<cmd>bp | bd #<cr>', 'quit' },
-        t = { "<cmd>BufferLinePick<cr>", "pick buf" },
         w = { '<cmd>w<cr>', 'write' },
-        o = { '<cmd>AerialToggle!<cr>', 'outline' },
         a = { name = 'term' },
         f = { name = 'tele-' },
         r = { name = 're-' },
+        d = { name = 'magic' },
         ["ri"] = { 'gg=G<C-o>', 're-Indent' },
         ["rn"] = 'rename variable',
       }
       keymap.leader = {
-        ["d"] = { name = 'peek' },
+        l = { '<cmd>Lazy<cr>', 'Lazy' },
+        d = { name = 'peek' },
         ["dd"] = 'diagnostics',
         ["f"] = { '<cmd>FormatWrite<cr>', 'Format' },
         g = { name = 'gitsgns' },
@@ -220,10 +210,17 @@ return {
   {
     'RRethy/vim-illuminate',
     event = { "BufReadPost", "BufNewFile" },
-    opts = { delay = 200 },
-    config = function()
-      vim.g.Illuminate_ftblacklist = { 'NvimTree', 'alpha' }
-    end
+    opts = {
+      delay = 200,
+      filetypes_denylist = { 'neo-tree', 'alpah' },
+    },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
+    keys = {
+      { "<C-j>", "<cmd>lua require('illuminate').goto_next_reference()<cr>" },
+      { "<C-k>", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
+    }
   },
 
   -- file explorer
@@ -232,7 +229,8 @@ return {
     cmd = "Neotree",
     keys = {
       { "<space>e", "<cmd>Neotree toggle<cr>",            desc = "Explorer", },
-      { "<space>E", "<cmd>Neotree git_status toggle<cr>", desc = "Explorer git", }
+      { "<space>E", "<cmd>Neotree git_status toggle<cr>", desc = "Explorer git", },
+      { "<space>c", "<cmd>Neotree reveal_force_cwd<cr>",  desc = "Explorer NeoTree (cwd)", },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])
@@ -333,13 +331,13 @@ return {
     },
   },
 
+  -- buffer remove
   {
-    "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
+    "echasnovski/mini.bufremove",
     keys = {
-      { "<space>ft", '<cmd>TodoTelescope<cr>', desc = ' Todo' },
-    }
+      { "<space>q", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<space>Q", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
+    },
   },
 
   --
@@ -361,7 +359,9 @@ return {
     'tamton-aquib/duck.nvim',
     lazy = true,
     keys = {
-      { '<leader>k', function() require("duck").hatch() end, desc = "DUCK!!!", }
+      { '<space>dd', function() require("duck").hatch() end,       desc = "DUCK!!!", },
+      { '<space>dc', function() require("duck").hatch("🐈") end, desc = "CAT!!!", },
+      { '<space>dk', function() require("duck").cook() end,        desc = "COOK ANIMAL", }
     },
   }
 }
