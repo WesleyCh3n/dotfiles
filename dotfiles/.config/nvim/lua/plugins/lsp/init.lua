@@ -67,7 +67,6 @@ return {
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         rust_analyzer = function(_, _)
           return true
@@ -88,7 +87,7 @@ return {
       })
 
       -- diagnostics
-      local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(signs) do
         local hl = "Diagnostic" .. type
         local sign = "DiagnosticSign" .. type
@@ -185,5 +184,42 @@ return {
     end,
   },
 
-  { 'ray-x/lsp_signature.nvim', event = 'LspAttach' }
+  { 'ray-x/lsp_signature.nvim', event = 'LspAttach' },
+
+  {
+    'stevearc/aerial.nvim',
+    opts = {
+      layout = {
+        min_width = 30,
+      },
+      filter_kind = {
+        "Array",
+        "Boolean",
+        "Class",
+        "Constant",
+        "Constructor",
+        "Enum",
+        "EnumMember",
+        "Event",
+        "Field",
+        "File",
+        "Function",
+        "Interface",
+        "Key",
+        "Method",
+        "Module",
+        "Namespace",
+        "Null",
+        "Number",
+        "Object",
+        "Operator",
+        "Package",
+        "Property",
+        "String",
+        "Struct",
+        "TypeParameter",
+        "Variable",
+      },
+    },
+  }
 }

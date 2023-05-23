@@ -25,38 +25,52 @@ return {
       local luasnip = require('luasnip')
       local cmp = require("cmp")
       local kind_icons = {
-        Text          = "",
-        Method        = "",
-        Function      = "",
-        Constructor   = "",
-        Field         = "ﰠ",
-        Variable      = "",
-        Class         = "ﴯ",
-        Interface     = "",
-        Module        = "",
-        Property      = "ﰠ",
-        Unit          = "",
-        Value         = "",
-        Enum          = "",
-        Keyword       = "",
-        Snippet       = "",
-        Color         = "",
-        File          = "",
-        Reference     = "",
-        Folder        = "",
-        EnumMember    = "",
-        Constant      = "",
-        Struct        = "פּ",
-        Event         = "",
-        Operator      = "",
-        TypeParameter = "T",
+        Array         = "",
+        Boolean       = "",
+        Class         = "",
+        Color         = "",
+        Constant      = "",
+        Constructor   = "",
+        Enum          = "",
+        EnumMember    = "",
+        Event         = "",
+        Field         = "",
+        File          = "",
+        Folder        = "",
+        Function      = "",
+        Interface     = "",
+        Key           = "",
+        Keyword       = "",
+        Method        = "",
+        Misc          = "",
+        Module        = "",
+        Namespace     = "",
+        Null          = "",
+        Number        = "",
+        Numeric       = "",
+        Object        = "",
+        Operator      = "",
+        Package       = "",
+        Parameter     = "",
+        Property      = "",
+        Reference     = "",
+        Ruler         = "",
+        Snippet       = "",
+        String        = "",
+        Struct        = "",
+        Text          = "",
+        TypeParameter = "",
+        Unit          = "",
+        Value         = "",
+        Variable      = "",
       }
       local has_any_words_before = function()
         if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
           return false
         end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        return col ~= 0 and
+            vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
       return {
         completion = {
@@ -89,11 +103,11 @@ return {
                 vim_item.abbr
             vim_item.menu =
                 "[" .. ({
-                  buffer = "﬘",
-                  nvim_lsp = "",
-                  luasnip = "",
-                  emoji = "",
-                  path = "",
+                  buffer = "",
+                  nvim_lsp = "",
+                  luasnip = "",
+                  emoji = "",
+                  path = "",
                 })[entry.source.name] .. "] " .. vim_item.kind
             vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
             return vim_item
@@ -200,7 +214,7 @@ return {
   },
 
   --
-  { "windwp/nvim-autopairs", event = "VeryLazy", },
+  { "windwp/nvim-autopairs", opts = {} },
 
   --
   {
@@ -231,9 +245,7 @@ return {
   --
   {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
+    opts = {},
   },
 
   --

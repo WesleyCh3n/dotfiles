@@ -160,8 +160,8 @@ return {
         ["<space>"] = "SPC",
       },
       icons = {
-        breadcrumb = "»",
-        separator = "",
+        breadcrumb = "",
+        separator = "",
         group = " ",
       },
       window = {
@@ -182,7 +182,7 @@ return {
     config = function(_, opts)
       local keymap = {}
       keymap.space = {
-        ['#'] = 'ﴵ tab #[123]',
+        ['#'] = ' tab #[123]',
         ['1'] = 'which_key_ignore',
         ['2'] = 'which_key_ignore',
         ['3'] = 'which_key_ignore',
@@ -192,26 +192,23 @@ return {
         ['7'] = 'which_key_ignore',
         ['8'] = 'which_key_ignore',
         ['9'] = 'which_key_ignore',
-        c = { '<cmd>cd %:p:h<cr>', 'which_key_ignore' }, -- change to buf path
-        e = { '<cmd>NvimTreeToggle<cr>', ' file explorer' },
-        n = { '<cmd>let @/=""<cr>', ' nohl' },
-        P = { '<cmd>set paste!<cr>', ' toggle paste' },
-        q = { '<cmd>lua CloseBuffer()<cr>', ' quit' },
-        t = { "<cmd>BufferLinePick<cr>", " pick buf" },
-        w = { '<cmd>w<cr>', ' write' },
-        z = { '<cmd>ZenMode<cr>', ' zen' },
-        o = { '<cmd>AerialToggle!<cr>', ' outline' },
-        a = { name = ' term' },
-        f = { name = ' tele-' },
-        r = { name = '漏re-' },
-        ["ri"] = { 'gg=G<C-o>', '漏re-Indent' },
-        ["rn"] = '漏rename variable',
+        n = { '<cmd>let @/=""<cr>', 'nohl' },
+        P = { '<cmd>set paste!<cr>', 'toggle paste' },
+        q = { '<cmd>bp | bd #<cr>', 'quit' },
+        t = { "<cmd>BufferLinePick<cr>", "pick buf" },
+        w = { '<cmd>w<cr>', 'write' },
+        o = { '<cmd>AerialToggle!<cr>', 'outline' },
+        a = { name = 'term' },
+        f = { name = 'tele-' },
+        r = { name = 're-' },
+        ["ri"] = { 'gg=G<C-o>', 're-Indent' },
+        ["rn"] = 'rename variable',
       }
       keymap.leader = {
-        ["d"] = { name = ' peek' },
-        ["dd"] = ' diagnostics',
+        ["d"] = { name = 'peek' },
+        ["dd"] = 'diagnostics',
         ["f"] = { '<cmd>FormatWrite<cr>', 'Format' },
-        g = { name = ' gitsgns' },
+        g = { name = 'gitsgns' },
       }
       local wk = require("which-key")
       wk.setup(opts)
@@ -229,86 +226,85 @@ return {
     end
   },
 
+  -- file explorer
   {
-    'kyazdani42/nvim-tree.lua',
-    tag = 'nightly',
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    keys = {
+      { "<space>e", "<cmd>Neotree toggle<cr>",            desc = "Explorer", },
+      { "<space>E", "<cmd>Neotree git_status toggle<cr>", desc = "Explorer git", }
+    },
+    deactivate = function()
+      vim.cmd([[Neotree close]])
+    end,
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
     opts = {
-      diagnostics         = {
-        enable = true,
+      popup_border_style = "rounded",
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = true,
+        use_libuv_file_watcher = true,
       },
-      hijack_netrw        = true,
-      open_on_tab         = true,
-      update_cwd          = false,
-      update_focused_file = {
-        enable      = true,
-        update_root = true,
-        ignore_list = {}
-      },
-      git                 = {
-        ignore = false,
-      },
-      view                = {
+      window = {
         width = 30,
-        side = 'left',
         mappings = {
-          custom_only = false,
-          list = {
-            { key = "t", cb = require 'nvim-tree.config'.nvim_tree_callback("tabnew") },
-            { key = "v", cb = require 'nvim-tree.config'.nvim_tree_callback("vsplit") },
-            { key = "h", cb = require 'nvim-tree.config'.nvim_tree_callback("dir_up") },
-            { key = "l", cb = require 'nvim-tree.config'.nvim_tree_callback("cd") },
-          }
-        }
-      },
-      renderer            = {
-        indent_markers = {
-          enable = true,
+          ["<space>"] = "none",
         },
-        icons = {
-          glyphs = {
-            git = {
-              unstaged = "",
-              staged = "",
-              unmerged = "",
-              renamed = "➜",
-              untracked = "",
-              deleted = "",
-              ignored = "﯏"
-            },
-            folder = {
-              arrow_open = "",
-              arrow_closed = "",
-              default = "",
-              open = "",
-              empty = "",
-              empty_open = "",
-              symlink = "",
-              symlink_open = "",
-            }
+      },
+      default_component_configs = {
+        indent = {
+          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+          expander_collapsed = "",
+          expander_expanded = "",
+          expander_highlight = "NeoTreeExpander",
+        },
+        git_status = {
+          symbols = {
+            -- Change type
+            added     = "",  -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified  = "",  -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted   = "", -- this can only be used in the git_status source
+            renamed   = "", -- this can only be used in the git_status source
+            -- Status type
+            untracked = "",
+            ignored   = "",
+            unstaged  = "",
+            staged    = "",
+            conflict  = "",
           }
-        }
+        },
+      },
+      source_selector = {
+        winbar = true,
+        statusline = false,
+        sources = {
+          { source = "filesystem", display_name = "  Files " },
+          { source = "buffers",    display_name = "  Buffers" },
+          { source = "git_status", display_name = "  Git " },
+        },
       }
     },
     config = function(_, opts)
-      function _G.CloseBuffer()
-        local treeView = require('nvim-tree.view')
-        local bufferline = require('bufferline')
-        local explorerWindow = treeView.get_winnr()
-        if explorerWindow == nil then
-          vim.cmd('bdelete! ')
-          return
-        end
-        local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
-        local bufferToDelete = vim.api.nvim_get_current_buf()
-        if (wasExplorerOpen) then
-          bufferline.cycle(-1)
-        end
-        vim.cmd('bdelete! ' .. bufferToDelete)
-      end
-
-      require('nvim-tree').setup(opts)
-    end
+      require("neo-tree").setup(opts)
+      vim.api.nvim_create_autocmd("TermClose", {
+        pattern = "*lazygit",
+        callback = function()
+          if package.loaded["neo-tree.sources.git_status"] then
+            require("neo-tree.sources.git_status").refresh()
+          end
+        end,
+      })
+    end,
   },
+  { "MunifTanjim/nui.nvim",  lazy = true },
 
   --
   {
@@ -329,11 +325,11 @@ return {
       keymaps = {},
     },
     keys = {
-      { '<leader>gh', '<cmd>Gitsigns preview_hunk<cr>', desc = ' preview hunk', },
-      { '<leader>gn', '<cmd>Gitsigns next_hunk<cr>',    desc = ' next hunk', },
-      { '<leader>gp', '<cmd>Gitsigns prev_hunk<cr>',    desc = ' prev hunk', },
-      { '<leader>gb', '<cmd>Gitsigns blame_line<cr>',   desc = ' blame line', },
-      { '<leader>gq', '<cmd>Gitsigns setqflist<cr>',    desc = '襁set quickfix list', },
+      { '<leader>gh', '<cmd>Gitsigns preview_hunk<cr>', desc = 'preview hunk', },
+      { '<leader>gn', '<cmd>Gitsigns next_hunk<cr>',    desc = 'next hunk', },
+      { '<leader>gp', '<cmd>Gitsigns prev_hunk<cr>',    desc = 'prev hunk', },
+      { '<leader>gb', '<cmd>Gitsigns blame_line<cr>',   desc = 'blame line', },
+      { '<leader>gq', '<cmd>Gitsigns setqflist<cr>',    desc = 'set quickfix list', },
     },
   },
 

@@ -38,7 +38,7 @@ return {
           theme = gruvbox_theme,
           section_separators = { left = '', right = '' },
           component_separators = { left = '|', right = '|' },
-          disabled_filetypes = { "NvimTree", "lspsagaoutline", "alpha", "aerial" },
+          disabled_filetypes = { "NvimTree", "lspsagaoutline", "alpha", "aerial", "neo-tree" },
           always_divide_middle = true,
         },
         sections = {
@@ -49,7 +49,11 @@ return {
           },
           lualine_c = {
             'filename',
-            { 'diagnostics', sources = { 'nvim_lsp' }, },
+            {
+              'diagnostics',
+              sources = { 'nvim_lsp' },
+              symbols = { error = " ", warn = " ", hint = " ", info = " " },
+            },
           },
           lualine_x = {
             'encoding',
@@ -85,14 +89,17 @@ return {
         left_trunc_marker = '',
         right_trunc_marker = '',
         middle_mouse_command = "vertical sbuffer %d",
-        offsets = { { filetype = "NvimTree", text = " File Explorer", text_align = "center" } },
+        offsets = {
+          { filetype = "NvimTree", text = " File Explorer", text_align = "center" },
+          { filetype = "neo-tree", text = " File Explorer", text_align = "center" },
+        },
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(_, _, diagnostics_dict, _)
           local s = " "
           for e, n in pairs(diagnostics_dict) do
-            local sym = e == "error" and " "
-                or (e == "warning" and " " or " ")
+            local sym = e == "error" and " "
+                or (e == "warning" and " " or " ")
             s = s .. n .. sym
           end
           return s
@@ -136,7 +143,7 @@ return {
   },
 
   --
-  { 'kyazdani42/nvim-web-devicons', lazy = true, },
+  { 'nvim-tree/nvim-web-devicons', lazy = true, },
 
   --
   {
@@ -197,7 +204,7 @@ return {
       }
       local plugin_count = {
         type = "text",
-        val = "└─   " .. plugins .. " plugins in total ─┘",
+        val = "└─   " .. plugins .. " plugins in total ─┘",
         opts = {
           position = "center",
           hl = "Identifier",
@@ -243,7 +250,7 @@ return {
         val = {
           button("e", "  New file", ':ene <BAR> startinsert <CR>'),
           button("f", "  Telescope", ':Telescope find_files<cr>'),
-          button("q", "  Quit NVIM", ':q<CR>'),
+          button("q", "  Quit NVIM", ':q<CR>'),
         },
         opts = {
           spacing = 1,
