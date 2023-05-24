@@ -9,13 +9,11 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     init = function()
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = 'rounded' }
-      )
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+      vim.lsp.handlers["textDocument/hover"] =
+          vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help,
-        { border = 'rounded' }
+        { border = "rounded" }
       )
     end,
     ---@class PluginLspOpts
@@ -27,14 +25,14 @@ return {
         virtual_text = {
           spacing = 4,
           source = "if_many",
-          prefix = ''
+          prefix = "",
         },
         severity_sort = true,
         float = {
-          source = 'if_many',
+          source = "if_many",
           focusable = true,
-          border = 'rounded',
-          severity_sort = true
+          border = "rounded",
+          severity_sort = true,
         },
       },
       capabilities = {},
@@ -53,7 +51,7 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                globals = { 'vim' }
+                globals = { "vim" },
               },
               workspace = {
                 checkThirdParty = false,
@@ -83,15 +81,19 @@ return {
         end,
       })
       vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        command = "silent! lua vim.lsp.buf.format()"
+        command = "silent! lua vim.lsp.buf.format()",
       })
 
       -- diagnostics
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      local signs =
+      { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(signs) do
         local hl = "Diagnostic" .. type
         local sign = "DiagnosticSign" .. type
-        vim.fn.sign_define(sign, { text = icon, texthl = hl, numhl = hl })
+        vim.fn.sign_define(
+          sign,
+          { text = icon, texthl = hl, numhl = hl }
+        )
       end
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
@@ -126,7 +128,9 @@ return {
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
       local all_mslp_servers = {}
       if have_mason then
-        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+        all_mslp_servers = vim.tbl_keys(
+          require("mason-lspconfig.mappings.server").lspconfig_to_package
+        )
       end
 
       local ensure_installed = {} ---@type string[]
@@ -135,7 +139,10 @@ return {
           server_opts = server_opts == true and {} or server_opts
           -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
 
-          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
+          if
+              server_opts.mason == false
+              or not vim.tbl_contains(all_mslp_servers, server)
+          then
             setup(server)
           else
             ensure_installed[#ensure_installed + 1] = server
@@ -149,7 +156,7 @@ return {
     end,
   },
 
-   -- formatters
+  -- formatters
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -157,13 +164,21 @@ return {
     opts = function()
       local nls = require("null-ls")
       return {
-        root_dir = require("null-ls.utils").root_pattern("Makefile", ".git"),
+        root_dir = require("null-ls.utils").root_pattern(
+          "Makefile",
+          ".git"
+        ),
         sources = {
           nls.builtins.formatting.black.with({
-            extra_args = { "--line-length=80" }
+            extra_args = { "--line-length=80" },
           }),
           nls.builtins.formatting.dprint,
-          nls.builtins.formatting.stylua,
+          nls.builtins.formatting.stylua.with({
+            extra_args = {
+              "--column-width 80",
+              "--indent-type Spaces",
+            },
+          }),
         },
       }
     end,
@@ -207,10 +222,10 @@ return {
     end,
   },
 
-  { 'ray-x/lsp_signature.nvim', event = 'LspAttach' },
+  { "ray-x/lsp_signature.nvim", event = "LspAttach" },
 
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {
       layout = {
         min_width = 30,
@@ -245,7 +260,7 @@ return {
       },
     },
     keys = {
-      { '<space>o', '<cmd>AerialToggle!<cr>', desc = 'Outline' },
-    }
-  }
+      { "<space>o", "<cmd>AerialToggle!<cr>", desc = "Outline" },
+    },
+  },
 }
