@@ -149,7 +149,7 @@ return {
   --
   {
     'stevearc/dressing.nvim',
-    lazy = true,
+    event = "LspAttach",
     opts = {
       input = {
         anchor = "NW",
