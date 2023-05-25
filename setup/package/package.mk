@@ -6,9 +6,9 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_FZF := https://github.com/junegunn/fzf/releases/download/0.29.0/fzf-0.29.0-darwin_amd64.zip
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v0.35/lazygit_0.35_Darwin_x86_64.tar.gz
 	LINK_MACCHINA := https://github.com/Macchina-CLI/macchina/releases/download/v6.0.1/macchina-macos-x86_64
-	LINK_NNN := https://github.com/jarun/nnn/releases/download/v4.4/nnn-nerd-static-4.4.x86_64.tar.gz
+	LINK_NNN := https://github.com/jarun/nnn/releases/download/v4.8/nnn-nerd-static-4.8.x86_64.tar.gz
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v1.2.8/btop-x86_64-macos-monterey.tbz
-	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-macos.tar.gz
+	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-macos.tar.gz
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-apple-darwin.tar.gz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-apple-darwin.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-apple-darwin.tar.gz
@@ -34,7 +34,7 @@ else
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v0.35/lazygit_0.35_Linux_x86_64.tar.gz
 	LINK_MACCHINA := https://github.com/Macchina-CLI/macchina/releases/download/v6.0.1/macchina-linux-x86_64
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v4.4/nnn-nerd-static-4.4.x86_64.tar.gz
-	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
+	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v1.2.8/btop-x86_64-linux-musl.tbz
 	LINK_LSD := https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd-0.21.0-x86_64-unknown-linux-gnu.tar.gz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-unknown-linux-musl.tar.gz
