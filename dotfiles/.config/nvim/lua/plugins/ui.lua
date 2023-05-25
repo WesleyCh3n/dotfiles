@@ -106,7 +106,7 @@ return {
         end,
         separator_style = "thick",
         enforce_regular_tabs = true,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         show_close_icon = false,
         show_tab_indicators = false,
       },
@@ -126,18 +126,18 @@ return {
       },
     },
     keys = {
-      { '<space>1',  '<cmd>BufferLineGoToBuffer 1<cr>',  desc = 'which_key_ignore' },
-      { '<space>2',  '<cmd>BufferLineGoToBuffer 2<cr>',  desc = 'which_key_ignore' },
-      { '<space>3',  '<cmd>BufferLineGoToBuffer 3<cr>',  desc = 'which_key_ignore' },
-      { '<space>4',  '<cmd>BufferLineGoToBuffer 4<cr>',  desc = 'which_key_ignore' },
-      { '<space>5',  '<cmd>BufferLineGoToBuffer 5<cr>',  desc = 'which_key_ignore' },
-      { '<space>6',  '<cmd>BufferLineGoToBuffer 6<cr>',  desc = 'which_key_ignore' },
-      { '<space>7',  '<cmd>BufferLineGoToBuffer 7<cr>',  desc = 'which_key_ignore' },
-      { '<space>8',  '<cmd>BufferLineGoToBuffer 8<cr>',  desc = 'which_key_ignore' },
-      { '<space>9',  '<cmd>BufferLineGoToBuffer 9<cr>',  desc = 'which_key_ignore' },
-      { '<space>t',  "<cmd>BufferLinePick<cr>",          "pick buf" },
-      { '<leader>H', '<cmd>BufferLineMovePrev<cr>',      desc = ' tab move left', },
-      { '<leader>L', '<cmd>BufferLineMoveNext<cr>',      desc = ' tab move right', },
+      { '<space>1',  '<cmd>BufferLineGoToBuffer 1<cr>', desc = 'which_key_ignore' },
+      { '<space>2',  '<cmd>BufferLineGoToBuffer 2<cr>', desc = 'which_key_ignore' },
+      { '<space>3',  '<cmd>BufferLineGoToBuffer 3<cr>', desc = 'which_key_ignore' },
+      { '<space>4',  '<cmd>BufferLineGoToBuffer 4<cr>', desc = 'which_key_ignore' },
+      { '<space>5',  '<cmd>BufferLineGoToBuffer 5<cr>', desc = 'which_key_ignore' },
+      { '<space>6',  '<cmd>BufferLineGoToBuffer 6<cr>', desc = 'which_key_ignore' },
+      { '<space>7',  '<cmd>BufferLineGoToBuffer 7<cr>', desc = 'which_key_ignore' },
+      { '<space>8',  '<cmd>BufferLineGoToBuffer 8<cr>', desc = 'which_key_ignore' },
+      { '<space>9',  '<cmd>BufferLineGoToBuffer 9<cr>', desc = 'which_key_ignore' },
+      { '<space>t',  "<cmd>BufferLinePick<cr>",         "pick buf" },
+      { '<leader>H', '<cmd>BufferLineMovePrev<cr>',     desc = ' tab move left', },
+      { '<leader>L', '<cmd>BufferLineMoveNext<cr>',     desc = ' tab move right', },
       { 'gt',        '<cmd>BufferLineCycleNext<cr>', },
       { 'gT',        '<cmd>BufferLineCyclePrev<cr>', },
     },
@@ -183,34 +183,15 @@ return {
           hl = "Title"
         }
       }
-      local date = os.date("%a %d %b")
-      local plugins = ""
-      if (vim.loop.os_uname().sysname ~= "Windows_NT") then
-        local handle = io.popen(
-          'fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
-        if handle then
-          plugins = handle:read("*a")
-          handle:close()
-        end
-      else
-        plugins = "??"
-      end
+      --[[ local date = os.date("%a %d %b")
       local heading = {
         type = "text",
-        val = "┌─   Today is " .. date .. " ─┐",
+        val = "  Today is " .. date,
         opts = {
           position = "center",
           hl = "Identifier",
         }
-      }
-      local plugin_count = {
-        type = "text",
-        val = "└─   " .. plugins .. " plugins in total ─┘",
-        opts = {
-          position = "center",
-          hl = "Identifier",
-        }
-      }
+      } ]]
       local footer = {
         type = "text",
         val = require('alpha.fortune')(),
@@ -260,8 +241,6 @@ return {
       local section = {
         header = header,
         buttons = buttons,
-        plugin_count = plugin_count,
-        heading = heading,
         footer = footer
       }
       local opts = {
@@ -270,7 +249,6 @@ return {
           section.header,
           { type = "padding", val = 2 },
           section.heading,
-          section.plugin_count,
           { type = "padding", val = 2 },
           section.buttons,
           { type = "padding", val = 0 },
