@@ -35,6 +35,7 @@ opt.updatetime = 300
 opt.shortmess = 'at'
 opt.signcolumn = 'yes'
 opt.showtabline = 1
+opt.laststatus = 0
 opt.undofile = true
 opt.pumblend = 10
 opt.pumheight = 10
