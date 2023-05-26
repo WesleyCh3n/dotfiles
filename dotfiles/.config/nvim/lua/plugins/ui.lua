@@ -316,7 +316,16 @@ return {
         end
         return require("notify")(msg, ...)
       end
-    end
+    end,
+    keys = {
+      {
+        "<space>N",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        desc = "Dismiss all Notifications",
+      },
+    },
   },
 
   --
