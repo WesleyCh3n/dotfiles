@@ -90,6 +90,8 @@ alias a='ansible'
 alias ap='ansible-playbook'
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 alias pprint='python -m json.tool'
+alias tn='tmux new ~/.local/bin/tmux-sessionizer'
+alias ta='tmux a'
 
 ################################################################################
 #                                 nnn setting                                  #
