@@ -42,7 +42,16 @@ return {
         timeout_ms = nil,
       },
       servers = {
-        pyright = {},
+        pyright = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = 'openFilesOnly',
+              -- useLibraryCodeForTypes = true,
+              -- typeCheckingMode = 'off'
+            }
+          }
+        },
         tsserver = {},
         tailwindcss = {},
         bashls = {},

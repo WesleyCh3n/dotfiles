@@ -223,8 +223,8 @@ return {
     event = "VeryLazy",
     opts = {
       keymaps = {
-        visual = "gs",
-        visual_line = "gS",
+        -- visual = "gs",
+        -- visual_line = "gS",
       },
     }
   },
