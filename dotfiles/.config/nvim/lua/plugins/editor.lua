@@ -363,5 +363,15 @@ return {
       { '<space>dc', function() require("duck").hatch("🐈") end, desc = "CAT!!!", },
       { '<space>dk', function() require("duck").cook() end,        desc = "COOK ANIMAL", }
     },
-  }
+  },
+
+  --
+  -- Lua
+  {
+    "folke/zen-mode.nvim",
+    opts = {},
+    keys = {
+      { '<space>z', function() require("zen-mode").toggle({}) end, desc = "ZenMode", }
+    }
+  },
 }
