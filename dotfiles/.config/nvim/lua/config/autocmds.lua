@@ -14,3 +14,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", }, {
   pattern = "*",
   command = "silent! TSBufEnable rainbow"
 })
+vim.api.nvim_create_autocmd({ "CmdlineEnter", }, {
+  pattern = "/",
+  command = "set hlsearch"
+})
+vim.api.nvim_create_autocmd({ "CmdlineLeave", }, {
+  pattern = "/",
+  command = "set nohlsearch"
+})
