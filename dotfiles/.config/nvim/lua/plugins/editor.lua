@@ -218,8 +218,8 @@ return {
       require("illuminate").configure(opts)
     end,
     keys = {
-      { "<C-j>", "<cmd>lua require('illuminate').goto_next_reference()<cr>" },
-      { "<C-k>", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
+      -- { "<C-j>", "<cmd>lua require('illuminate').goto_next_reference()<cr>" },
+      -- { "<C-k>", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
     }
   },
 
