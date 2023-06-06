@@ -6,7 +6,6 @@ return {
       -- require("luasnip.loaders.from_snipmate").lazy_load()
     end,
     dependencies = {
-      { 'saadparwaiz1/cmp_luasnip' },
       { 'honza/vim-snippets' },
     }
   },
@@ -16,11 +15,12 @@ return {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
     event = "InsertEnter",
-    requires = {
+    dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-emoji',
+      'saadparwaiz1/cmp_luasnip',
     },
     opts = function()
       local luasnip = require('luasnip')
@@ -121,18 +121,6 @@ return {
           { name = 'buffer' },
           { name = 'path' },
           { name = 'emoji',   options = { insert = true } },
-          {
-            name = "buffer",
-            options = {
-              get_bufnrs = function()
-                local bufs = {}
-                for _, win in ipairs(vim.api.nvim_list_wins()) do
-                  bufs[vim.api.nvim_win_get_buf(win)] = true
-                end
-                return vim.tbl_keys(bufs)
-              end
-            }
-          },
         },
         mapping = {
           ["<Tab>"] = cmp.mapping(function(fallback)
@@ -200,7 +188,9 @@ return {
           }),
         },
         experimental = {
-          ghost_text = true,
+          ghost_text = {
+            hl_group = "LspCodeLens",
+          },
         }
       }
     end
