@@ -6,6 +6,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
       'mrjones2014/nvim-ts-rainbow',
     },
     opts = function()
