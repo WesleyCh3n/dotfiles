@@ -319,7 +319,7 @@ return {
     end,
     keys = {
       {
-        "<space>N",
+        "<space>n",
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
@@ -339,7 +339,7 @@ return {
         color = '#665c54',
       },
       excluded_filetypes = {
-        "NvimTree",
+        "neo-tree",
       },
     }
   },

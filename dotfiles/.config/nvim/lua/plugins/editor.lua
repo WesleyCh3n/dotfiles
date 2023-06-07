@@ -183,7 +183,7 @@ return {
       local keymap = {}
       keymap.space = {
         ['#'] = ' tab #[123]',
-        n = { '<cmd>let @/=""<cr>', 'nohl' },
+        -- n = { '<cmd>let @/=""<cr>', 'nohl' },
         P = { '<cmd>set paste!<cr>', 'toggle paste' },
         w = { '<cmd>w<cr>', 'write' },
         a = { name = 'term' },
