@@ -55,7 +55,9 @@ return {
         tsserver = {},
         tailwindcss = {},
         bashls = {},
-        clangd = {},
+        clangd = {
+          filetypes = { "c", "cpp" }
+        },
         lua_ls = {
           settings = {
             Lua = {
