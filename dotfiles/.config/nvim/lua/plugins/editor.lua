@@ -320,7 +320,7 @@ return {
       update_debounce = 100,
       status_formatter = nil,
       word_diff = false,
-      keymaps = {},
+      -- keymaps = {},
     },
     keys = {
       { '<leader>gh', '<cmd>Gitsigns preview_hunk<cr>', desc = 'preview hunk', },

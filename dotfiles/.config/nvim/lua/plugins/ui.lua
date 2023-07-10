@@ -347,6 +347,7 @@ return {
   --
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     event = { "BufReadPost" },
     opts = {
       text = {
