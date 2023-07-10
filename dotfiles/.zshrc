@@ -76,7 +76,9 @@ eval "$(zoxide init zsh)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [[ $(command -v pyenv) ]]; then
+  eval "$(pyenv init -)"
+fi
 
 ################################################################################
 #                                    alias                                     #
