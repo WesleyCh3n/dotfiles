@@ -253,4 +253,15 @@ return {
       { 'ga', '<Plug>(EasyAlign)', { noremap = false, silent = true }, mode = "n" }
     }
   },
+  {
+    'Exafunction/codeium.vim',
+    event = "InsertEnter",
+    keys = {
+      { '<C-e>', function() return vim.fn['codeium#Accept']() end, expr = true, mode = "i" },
+    },
+    config = function()
+      vim.g.codeium_no_map_tab = 1
+      -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+    end
+  },
 }
