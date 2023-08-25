@@ -348,7 +348,7 @@ return {
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
-    event = { "BufReadPost" },
+    event = "LspAttach",
     opts = {
       text = {
         spinner = "dots"
