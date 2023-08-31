@@ -2,7 +2,7 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	PRINTF = printf
-	SHELL := /usr/local/bin/zsh
+	SHELL := /bin/zsh
 else
 	PRINTF = env printf
 	SHELL := /usr/bin/zsh
