@@ -3,7 +3,7 @@
 cls
 call:header Start linking files and folders
 
-call:link_file %CD%\win\starship.toml %userprofile%\.config starship.toml
+call:link_file %CD%\scripts\win\starship.toml %userprofile%\.config starship.toml
 call:link_file %CD%\dotfiles\.config\nushell\config.nu %APPDATA%\nushell config.nu
 call:link_file %CD%\dotfiles\.config\nushell\env.nu %APPDATA%\nushell env.nu
 call:link_file %CD%\dotfiles\.config\fd\ignore %APPDATA%\fd ignore

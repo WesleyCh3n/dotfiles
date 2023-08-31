@@ -1,9 +1,29 @@
-include common.mk
-include package.mk
+# basic setup
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	PRINTF = printf
+	SHELL := /usr/local/bin/zsh
+else
+	PRINTF = env printf
+	SHELL := /usr/bin/zsh
+endif
+
+# Control the build verbosity
+ifeq ("$(VERBOSE)","1")
+	Q :=
+else
+	Q := @
+endif
+
+PASS_COLOR = \e[32;01m
+NO_COLOR = \e[0m
+
+include pkg-list.mk
 
 INSTALL_PATH := ${HOME}/.local/bin
 MKDIR := $(shell mkdir -p $(INSTALL_PATH))
-TMP_DIR := ./tmp
+TMP_DIR := /tmp/dottmp/
+MKDIR := $(shell mkdir -p $(TMP_DIR))
 
 define dl
 mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
@@ -12,9 +32,17 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit nnn btop node nvim zoxide
+all: fd rg fzf lazygit nnn btop node nvim zoxide exa delta
 
-.PHONY: clean fd rg fzf lazygit macchina lsd nnn btop node nvim
+.PHONY: clean zsh tpm fd rg fzf lazygit macchina lsd nnn btop node nvim
+zsh:
+	$(Q)chsh -s "$(shell which zsh)"
+	$(Q)git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
+
+tpm:
+	$(Q)git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+	$(Q)${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
+
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_FD))
@@ -41,9 +69,10 @@ lsd:
 
 exa:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
-	$(Q)$(call dl,$(LINK_EXA))
-	$(Q)rm $(TMP_DIR)/tmp.tar
-	$(Q)cp -r $(TMP_DIR)/* ~/.local/
+	$(Q)mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
+		curl '-#' -o tmp.zip -fL $(LINK_EXA); \
+		unzip tmp.zip;
+	$(Q)cp $(TMP_DIR)/bin/exa ~/.local/bin/
 	$(Q)rm -rf $(TMP_DIR)
 
 fzf:
@@ -55,7 +84,7 @@ fzf:
 btop:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_BTOP))
-	cd $(TMP_DIR); make PREFIX=${HOME}/.local
+	cd $(TMP_DIR)/btop; make PREFIX=${HOME}/.local
 	$(Q)rm -rf $(TMP_DIR)
 
 nnn:
