@@ -83,8 +83,8 @@ fi
 ################################################################################
 #                                    alias                                     #
 ################################################################################
-alias ls='lsd'
-alias vi='nvim'
+[ -s "$HOME/.local/bin/exa" ] && alias ls='exa'
+[ -s "$HOME/.local/bin/nvim" ] && alias vi='nvim'
 alias vv='neovide --frame none'
 alias lg='lazygit'
 alias ldk='lazydocker'
