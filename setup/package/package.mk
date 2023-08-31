@@ -4,6 +4,7 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-apple-darwin.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-apple-darwin.tar.gz
 	LINK_FZF := https://github.com/junegunn/fzf/releases/download/0.29.0/fzf-0.29.0-darwin_amd64.zip
+	LINK_EXA := https://github.com/ogham/exa/releases/download/v0.10.1/exa-macos-x86_64-v0.10.1.zip
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v0.35/lazygit_0.35_Darwin_x86_64.tar.gz
 	LINK_MACCHINA := https://github.com/Macchina-CLI/macchina/releases/download/v6.0.1/macchina-macos-x86_64
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v4.8/nnn-nerd-static-4.8.x86_64.tar.gz

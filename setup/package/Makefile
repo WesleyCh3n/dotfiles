@@ -12,7 +12,7 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit macchina lsd nnn btop node nvim zoxide
+all: fd rg fzf lazygit nnn btop node nvim zoxide
 
 .PHONY: clean fd rg fzf lazygit macchina lsd nnn btop node nvim
 fd:
@@ -37,6 +37,13 @@ lsd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)$(call dl,$(LINK_LSD))
 	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
+	$(Q)rm -rf $(TMP_DIR)
+
+exa:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_EXA))
+	$(Q)rm $(TMP_DIR)/tmp.tar
+	$(Q)cp -r $(TMP_DIR)/* ~/.local/
 	$(Q)rm -rf $(TMP_DIR)
 
 fzf:
