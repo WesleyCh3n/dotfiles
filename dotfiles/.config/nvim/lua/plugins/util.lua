@@ -11,13 +11,13 @@ return {
     lazy = true,
     branch = 'main',
     keys = {
-      { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = '  lazygit' },
-      { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = '  btop' },
-      { "<space>ap", '<cmd>lua python_toggle()<cr>',        desc = '  python' },
-      { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = '  toggle all' },
-      { "<space>aj", '<cmd>1ToggleTerm<cr>',                desc = '  #1' },
-      { "<space>ak", '<cmd>2ToggleTerm<cr>',                desc = '  #2' },
-      { "<space>al", '<cmd>3ToggleTerm<cr>',                desc = '  #3' },
+      { "<space>ag", '<cmd>lua lazygit_toggle()<cr>', desc = '  lazygit' },
+      { "<space>ab", '<cmd>lua top_toggle()<cr>', desc = '  btop' },
+      { "<space>ap", '<cmd>lua python_toggle()<cr>', desc = '  python' },
+      { "<space>as", '<cmd>ToggleTermToggleAll<cr>', desc = '  toggle all' },
+      { "<space>aj", '<cmd>1ToggleTerm<cr>', desc = '  #1' },
+      { "<space>ak", '<cmd>2ToggleTerm<cr>', desc = '  #2' },
+      { "<space>al", '<cmd>3ToggleTerm<cr>', desc = '  #3' },
       { "<space>a;", '<cmd>ToggleTerm direction=float<cr>', desc = '  #float' },
     },
     config = function()
@@ -73,7 +73,8 @@ return {
   --
   {
     'iamcco/markdown-preview.nvim',
-    event = "BufEnter *.md",
+    ft = "markdown",
+    lazy = true,
     keys = {
       { '<space>p', '<cmd>MarkdownPreviewToggle<cr>', desc = 'md preview' },
     },
