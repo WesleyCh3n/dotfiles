@@ -257,7 +257,7 @@ return {
     'Exafunction/codeium.vim',
     event = "InsertEnter",
     keys = {
-      { '<C-e>', function() return vim.fn['codeium#Accept']() end, expr = true, mode = "i" },
+      { '<C-t>', function() return vim.fn['codeium#Accept']() end, expr = true, mode = "i" },
     },
     config = function()
       vim.g.codeium_no_map_tab = 1
