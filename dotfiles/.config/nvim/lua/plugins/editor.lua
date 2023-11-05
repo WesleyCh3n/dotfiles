@@ -267,8 +267,8 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = "",  -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified  = "",  -- or "", but this is redundant info if you use git_status_colors on the name
+            added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
             deleted   = "", -- this can only be used in the git_status source
             renamed   = "", -- this can only be used in the git_status source
             -- Status type
@@ -285,7 +285,7 @@ return {
         statusline = false,
         sources = {
           { source = "filesystem", display_name = "  Files " },
-          { source = "buffers",    display_name = "  Buffers" },
+          { source = "buffers", display_name = "  Buffers" },
           { source = "git_status", display_name = "  Git " },
         },
       }
@@ -362,9 +362,9 @@ return {
     'tamton-aquib/duck.nvim',
     lazy = true,
     keys = {
-      { '<space>dd', function() require("duck").hatch() end,       desc = "DUCK!!!", },
+      { '<space>dd', function() require("duck").hatch() end, desc = "DUCK!!!", },
       { '<space>dc', function() require("duck").hatch("🐈") end, desc = "CAT!!!", },
-      { '<space>dk', function() require("duck").cook() end,        desc = "COOK ANIMAL", }
+      { '<space>dk', function() require("duck").cook() end, desc = "COOK ANIMAL", }
     },
   },
 
@@ -389,6 +389,27 @@ return {
       { '<leader>2', function() require("harpoon.ui").nav_file(2) end },
       { '<leader>3', function() require("harpoon.ui").nav_file(3) end },
       { '<leader>4', function() require("harpoon.ui").nav_file(4) end },
+    }
+  },
+
+  -- overseer
+  {
+    'stevearc/overseer.nvim',
+    opts = {
+      --[[ strategy = {
+        "toggleterm",
+        direction = "tab",
+      }, ]]
+      templates = {
+        "builtin",
+        "cmake.build",
+        "cmake.configure",
+        "cmake.cpm",
+      },
+    },
+    keys = {
+      { '<leader>rr', '<cmd>OverseerRun<cr>',          desc = "Run tasks", },
+      { '<leader>ro', '<cmd>OverseerToggle right<cr>', desc = "Toggle overseer", },
     }
   },
 }

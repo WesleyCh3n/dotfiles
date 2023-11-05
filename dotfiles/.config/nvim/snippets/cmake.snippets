@@ -5,17 +5,37 @@ snippet t "init template"
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 	set(CMAKE_CXX_STANDARD 17)
 
-	add_library(${2:library_name} STATIC
-		${3:source_file}
-	)
+	add_executable(main \${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc)
 
-	add_executable(main
-		main.cc
-	)
+snippet cpm
+	include(\${CMAKE_CURRENT_SOURCE_DIR}/cmake/CPM.cmake)
 
-	target_link_libraries(main
-		$1
-	)
+snippet fmt
+  CPMAddPackage(
+    NAME fmt
+    GIT_TAG 10.1.1
+    GITHUB_REPOSITORY fmtlib/fmt
+    OPTIONS "FMT_INSTALL YES"
+  )
+
+snippet spdlog
+  CPMAddPackage(
+    NAME fmt
+    GIT_TAG 10.1.1
+    GITHUB_REPOSITORY fmtlib/fmt
+    OPTIONS "FMT_INSTALL YES"
+  )
+  CPMAddPackage(
+    NAME spdlog
+    GIT_TAG v1.12.0
+    GITHUB_REPOSITORY gabime/spdlog
+    OPTIONS "SPDLOG_INSTALL YES"
+    "SPDLOG_FMT_EXTERNAL YES"
+  )
+  add_dependencies(spdlog fmt)
+
+snippet cxxopts
+	CPMAddPackage("gh:jarro2783/cxxopts@3.1.1")
 
 snippet proj
 	project(${0:Name})
