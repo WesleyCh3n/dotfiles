@@ -83,15 +83,6 @@ return {
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-    --[[ config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_auto_close = 0
-      vim.g.mkdp_port = '8080'
-      vim.g.mkdp_echo_preview_url = 1
-      vim.g.mkdp_highlight_css =
-          os.getenv("HOME") ..
-          "/dotfiles/dotfiles/.config/nvim/gruvbox-dark-medium.css"
-    end ]]
   },
 
   --
