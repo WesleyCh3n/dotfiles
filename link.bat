@@ -9,6 +9,7 @@ call:link_file %CD%\dotfiles\.config\nushell\env.nu %APPDATA%\nushell env.nu
 call:link_file %CD%\dotfiles\.config\fd\ignore %APPDATA%\fd ignore
 call:link_file %CD%\dotfiles\.config\lazygit\config.yml %APPDATA%\lazygit config.yml
 call:link_file %CD%\dotfiles\.config\rustfmt\rustfmt.toml %APPDATA%\rustfmt rustfmt.toml
+call:link_file %CD%\dotfiles\.wezterm.lua %userprofile%\ .wezterm.lua
 
 call:link_dir %CD%\dotfiles\.config\nvim %LocalAppData%\nvim
 

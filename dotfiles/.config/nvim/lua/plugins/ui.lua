@@ -265,27 +265,29 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     event = { "BufReadPost", "BufNewFile" },
-    opts = function()
-      vim.cmd [[highlight IndentBlanklineContextChar guifg=#fabd2f gui=nocombine]]
-      vim.g.indent_blankline_context_patterns = {
-        '^if',
-        '^while',
-        '^for',
-        '^try',
-        '^catch',
-        '^type',
-        '^struct',
-        '^match',
-        'method',
-        'function',
-        'class',
-      }
-      return {
-        buftype_exclude = { 'terminal', 'help', 'nofile' },
-        filetype_exclude = { "alpha", 'NvimTree', 'Outline', 'vimwiki', 'markdown' },
-        show_current_context = true,
-      }
-    end
+    main = "ibl",
+    opts = {},
+    -- function()
+    --   vim.cmd [[highlight IndentBlanklineContextChar guifg=#fabd2f gui=nocombine]]
+    --   vim.g.indent_blankline_context_patterns = {
+    --     '^if',
+    --     '^while',
+    --     '^for',
+    --     '^try',
+    --     '^catch',
+    --     '^type',
+    --     '^struct',
+    --     '^match',
+    --     'method',
+    --     'function',
+    --     'class',
+    --   }
+    --   return {
+    --     buftype_exclude = { 'terminal', 'help', 'nofile' },
+    --     filetype_exclude = { "alpha", 'NvimTree', 'Outline', 'vimwiki', 'markdown' },
+    --     show_current_context = true,
+    --   }
+    -- end,
   },
 
   --
@@ -305,6 +307,9 @@ return {
   --
   {
     'rcarriga/nvim-notify',
+    opts = {
+      background_colour = "#000000",
+    },
     init = function()
       local banned_messages = { "No information available" }
       vim.notify = function(msg, ...)

@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm';
 local act = wezterm.action
+local opacity = 0.4
 
 local win_launch_menu = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
@@ -35,7 +36,7 @@ wezterm.on("toggle-opacity", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   print(overrides.window_background_opacity)
   if overrides.window_background_opacity == 1 then
-    overrides.window_background_opacity = 0.85;
+    overrides.window_background_opacity = opacity;
   else
     overrides.window_background_opacity = 1;
   end
@@ -56,11 +57,12 @@ end)
 
 
 local config = {
-  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-  font_size = 14.0,
-  window_background_opacity = 0.85,
-  color_scheme = "Gruvbox Dark",
-  hide_tab_bar_if_only_one_tab = true,
+  -- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+  font_size = 11.0,
+  window_background_opacity = opacity,
+  win32_system_backdrop = "Acrylic",
+  color_scheme = "Gruvbox Dark (Gogh)",
+  hide_tab_bar_if_only_one_tab = false,
   window_decorations = "RESIZE",
   default_cursor_style = "BlinkingBlock",
   cursor_blink_rate = 800,
@@ -88,43 +90,36 @@ elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config["launch_menu"] = win_launch_menu
   config["default_prog"] = { "nu.exe" }
-  config["font"] = wezterm.font("VictorMono NF")
+  config["font"] = wezterm.font("VictorMono NFP", { weight = 'Medium' })
   config["leader"] = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
   config["keys"] = {
     -- my tmux like config
     -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-    { key = "a", mods = "LEADER|CTRL", action = act.SendString("\x01") },
-    { key = 'x', mods = 'LEADER', action = act.CloseCurrentPane { confirm = true } },
-
-    { key = "v", mods = "LEADER", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
-    { key = "s", mods = "LEADER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
-
-    { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
-    { key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
-    { key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
-    { key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
-
-    { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-    { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
-
-    { key = "LeftArrow", mods = "CTRL|ALT", action = act.MoveTabRelative(-1) },
-    { key = "RightArrow", mods = "CTRL|ALT", action = act.MoveTabRelative(1) },
-
-    { key = "1", mods = "CTRL", action = act.ActivateTab(0) },
-    { key = "2", mods = "CTRL", action = act.ActivateTab(1) },
-    { key = "3", mods = "CTRL", action = act.ActivateTab(2) },
-    { key = "4", mods = "CTRL", action = act.ActivateTab(3) },
-    { key = "5", mods = "CTRL", action = act.ActivateTab(4) },
-    { key = "6", mods = "CTRL", action = act.ActivateTab(5) },
-    { key = "7", mods = "CTRL", action = act.ActivateTab(6) },
-    { key = "8", mods = "CTRL", action = act.ActivateTab(7) },
-    { key = "9", mods = "CTRL", action = act.ActivateTab(8) },
-
-    { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
-    { key = "m", mods = "LEADER", action = wezterm.action.ShowLauncher },
-
-    { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
-    { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
+    { key = "a",          mods = "LEADER|CTRL", action = act.SendString("\x01") },
+    { key = 'x',          mods = 'LEADER',      action = act.CloseCurrentPane { confirm = true } },
+    { key = "v",          mods = "LEADER",      action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
+    { key = "s",          mods = "LEADER",      action = act.SplitVertical { domain = "CurrentPaneDomain" } },
+    { key = "h",          mods = "CTRL|SHIFT",  action = act.ActivatePaneDirection("Left") },
+    { key = "l",          mods = "CTRL|SHIFT",  action = act.ActivatePaneDirection("Right") },
+    { key = "j",          mods = "CTRL|SHIFT",  action = act.ActivatePaneDirection("Down") },
+    { key = "k",          mods = "CTRL|SHIFT",  action = act.ActivatePaneDirection("Up") },
+    { key = "p",          mods = "LEADER",      action = act.ActivateTabRelative(-1) },
+    { key = "n",          mods = "LEADER",      action = act.ActivateTabRelative(1) },
+    { key = "LeftArrow",  mods = "CTRL|ALT",    action = act.MoveTabRelative(-1) },
+    { key = "RightArrow", mods = "CTRL|ALT",    action = act.MoveTabRelative(1) },
+    { key = "1",          mods = "CTRL",        action = act.ActivateTab(0) },
+    { key = "2",          mods = "CTRL",        action = act.ActivateTab(1) },
+    { key = "3",          mods = "CTRL",        action = act.ActivateTab(2) },
+    { key = "4",          mods = "CTRL",        action = act.ActivateTab(3) },
+    { key = "5",          mods = "CTRL",        action = act.ActivateTab(4) },
+    { key = "6",          mods = "CTRL",        action = act.ActivateTab(5) },
+    { key = "7",          mods = "CTRL",        action = act.ActivateTab(6) },
+    { key = "8",          mods = "CTRL",        action = act.ActivateTab(7) },
+    { key = "9",          mods = "CTRL",        action = act.ActivateTab(8) },
+    { key = "z",          mods = "LEADER",      action = wezterm.action.TogglePaneZoomState },
+    { key = "m",          mods = "LEADER",      action = wezterm.action.ShowLauncher },
+    { key = 't',          mods = 'CTRL|ALT',    action = act.EmitEvent "toggle-opacity" },
+    { key = ',',          mods = 'CTRL',        action = act.EmitEvent "toggle-leader" },
   }
 end
 
