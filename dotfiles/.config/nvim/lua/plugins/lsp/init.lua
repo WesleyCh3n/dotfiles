@@ -167,34 +167,6 @@ return {
     end,
   },
 
-  -- formatters
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require("null-ls")
-      return {
-        root_dir = require("null-ls.utils").root_pattern(
-          "Makefile",
-          ".git"
-        ),
-        sources = {
-          nls.builtins.formatting.black.with({
-            extra_args = { "--line-length=80" },
-          }),
-          nls.builtins.formatting.dprint,
-          nls.builtins.formatting.stylua.with({
-            extra_args = {
-              "--column-width 80",
-              "--indent-type Spaces",
-            },
-          }),
-        },
-      }
-    end,
-  },
-
   -- cmdline tools and lsp servers
   {
     "williamboman/mason.nvim",

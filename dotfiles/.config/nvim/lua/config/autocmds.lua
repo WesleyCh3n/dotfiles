@@ -10,10 +10,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*.md",
   command = "setlocal wrap spell"
 })
-vim.api.nvim_create_autocmd({ "BufWinEnter", }, {
-  pattern = "*",
-  command = "silent! TSBufEnable rainbow"
-})
 vim.api.nvim_create_autocmd({ "CmdlineEnter", }, {
   pattern = "/",
   command = "set hlsearch"
@@ -21,4 +17,9 @@ vim.api.nvim_create_autocmd({ "CmdlineEnter", }, {
 vim.api.nvim_create_autocmd({ "CmdlineLeave", }, {
   pattern = "/",
   command = "set nohlsearch"
+})
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = "*.nu",
+  command = [[set syntax=python]]
 })
