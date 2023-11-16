@@ -1,6 +1,9 @@
 # Nushell config file
 
-let-env config = {
+# let-env config = {
+#     show_banner: false
+# }
+$env.config = {
     show_banner: false
 }
 
