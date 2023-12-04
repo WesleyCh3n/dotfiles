@@ -9,12 +9,9 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     init = function()
-      vim.lsp.handlers["textDocument/hover"] =
-          vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = "rounded" }
-      )
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+      vim.lsp.handlers["textDocument/signatureHelp"] =
+          vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
     end,
     ---@class PluginLspOpts
     opts = {
@@ -46,17 +43,17 @@ return {
           python = {
             analysis = {
               autoSearchPaths = true,
-              diagnosticMode = 'openFilesOnly',
+              diagnosticMode = "openFilesOnly",
               -- useLibraryCodeForTypes = true,
               -- typeCheckingMode = 'off'
-            }
-          }
+            },
+          },
         },
         tsserver = {},
         tailwindcss = {},
         bashls = {},
         clangd = {
-          filetypes = { "c", "cpp" }
+          filetypes = { "c", "cpp" },
         },
         lua_ls = {
           settings = {
@@ -96,15 +93,11 @@ return {
       })
 
       -- diagnostics
-      local signs =
-      { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(signs) do
         local hl = "Diagnostic" .. type
         local sign = "DiagnosticSign" .. type
-        vim.fn.sign_define(
-          sign,
-          { text = icon, texthl = hl, numhl = hl }
-        )
+        vim.fn.sign_define(sign, { text = icon, texthl = hl, numhl = hl })
       end
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
@@ -139,9 +132,7 @@ return {
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
       local all_mslp_servers = {}
       if have_mason then
-        all_mslp_servers = vim.tbl_keys(
-          require("mason-lspconfig.mappings.server").lspconfig_to_package
-        )
+        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
       end
 
       local ensure_installed = {} ---@type string[]
@@ -150,10 +141,7 @@ return {
           server_opts = server_opts == true and {} or server_opts
           -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
 
-          if
-              server_opts.mason == false
-              or not vim.tbl_contains(all_mslp_servers, server)
-          then
+          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
             setup(server)
           else
             ensure_installed[#ensure_installed + 1] = server
@@ -183,6 +171,7 @@ return {
         "pyright",
         "black",
         "dprint",
+        "prettier",
         "stylua",
       },
     },
@@ -244,6 +233,24 @@ return {
     },
     keys = {
       { "<space>o", "<cmd>AerialToggle!<cr>", desc = "Outline" },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      formatters_by_ft = {
+        -- lua = { "stylua" },
+        python = { "isort", "black" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        rust = { "rustfmt" },
+      },
+      format_on_save = {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 500,
+      },
     },
   },
 }
