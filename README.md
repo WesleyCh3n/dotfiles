@@ -15,6 +15,12 @@
 
 My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
 
+## One-line installation
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/WesleyCh3n/dotfiles/main/install.sh | sh
+```
+
 ## 🌟 Neovim Setup
 
 Required Neovim >= 0.7
