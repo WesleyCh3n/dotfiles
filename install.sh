@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# set error exit
+set -e
 
 sudo apt-get update -y
 
