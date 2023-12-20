@@ -3,18 +3,10 @@ sudo apt-get update -y
 
 sudo apt-get install -y --no-install-recommends git zsh tmux make
 
-OUTPUT_DIR=/tmp/dotfiles
-mkdir -p $OUTPUT_DIR
-cd $OUTPUT_DIR
+[ -d "$HOME/dotfiles/" ] && echo ERROR: dotfiles already exists && exit 1
+git clone https://github.com/WesleyCh3n/dotfiles $HOME/dotfiles
 
-echo Download to $OUTPUT_DIR/Makefile
-curl --progress-bar -fLO https://raw.githubusercontent.com/WesleyCh3n/dotfiles/main/Makefile
-
-echo Download to $OUTPUT_DIR/pkg.mk
-curl --progress-bar -fLO https://raw.githubusercontent.com/WesleyCh3n/dotfiles/main/pkg.mk
-
-echo Download to $OUTPUT_DIR/pkg-list.mk
-curl --progress-bar -fLO https://raw.githubusercontent.com/WesleyCh3n/dotfiles/main/pkg-list.mk
+cd $HOME/dotfiles && make
 
 echo Setting up zsh
 [ -d "$HOME/.zgen" ] && echo Skip
