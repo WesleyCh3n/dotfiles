@@ -1,7 +1,7 @@
 
 sudo apt-get update -y
 
-sudo apt-get install -y --no-install-recommends git zsh tmux make
+sudo apt-get install -y --no-install-recommends git zsh tmux make stow
 
 [ -d "$HOME/dotfiles/" ] && echo ERROR: dotfiles already exists && exit 1
 git clone https://github.com/WesleyCh3n/dotfiles $HOME/dotfiles
