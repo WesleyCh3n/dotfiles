@@ -36,7 +36,7 @@ all: fd rg fzf lazygit nnn btop node nvim zoxide exa delta
 
 .PHONY: clean zsh tpm fd rg fzf lazygit macchina lsd nnn btop node nvim
 zsh:
-	$(Q)chsh -s "$(shell which zsh)"
+	$(Q)sudo chsh -s "$(shell which zsh)"
 	$(Q)git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
 
 tpm:
