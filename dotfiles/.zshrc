@@ -85,6 +85,7 @@ fi
 ################################################################################
 [ -s "$HOME/.local/bin/exa" ] && alias ls='exa'
 [ -s "$HOME/.local/bin/nvim" ] && alias vi='nvim'
+alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
 alias vv='neovide --frame none'
 alias lg='lazygit'
 alias ldk='lazydocker'
