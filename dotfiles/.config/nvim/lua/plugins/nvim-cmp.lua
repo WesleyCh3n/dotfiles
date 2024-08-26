@@ -1,15 +1,4 @@
 return {
-  {
-    'L3MON4D3/LuaSnip',
-    -- version = "1.*",
-    config = function()
-      require("luasnip.loaders.from_snipmate").lazy_load()
-    end,
-    dependencies = {
-      { 'honza/vim-snippets' },
-    }
-  },
-
   --
   {
     "hrsh7th/nvim-cmp",
@@ -194,63 +183,5 @@ return {
         }
       }
     end
-  },
-
-  --
-  {
-    'wellle/targets.vim',
-    event = "VeryLazy",
-    config = function()
-      vim.g.targets_aiAI = 'aIAi'
-    end
-  },
-
-  --
-  { "windwp/nvim-autopairs", opts = {} },
-
-  --
-  {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
-    opts = {
-      keymaps = {
-        -- visual = "gs",
-        -- visual_line = "gS",
-      },
-    }
-  },
-
-  --
-  {
-    'abecodes/tabout.nvim',
-    event = "VeryLazy",
-    opts = {
-      tabkey = '<A-n>',
-      backwards_tabkey = '<A-p>',
-    },
-    keys = {
-      { '<A-n>', "<Plug>(TaboutMulti)",     { noremap = false, silent = true }, mode = "i" },
-      { '<A-p>', "<Plug>(TaboutBackMulti)", { noremap = false, silent = true }, mode = "i" },
-    }
-  },
-
-  --
-  {
-    'numToStr/Comment.nvim',
-    opts = {},
-  },
-
-  --
-  {
-    'junegunn/vim-easy-align',
-    event = "VeryLazy",
-    config = function()
-      vim.g.easy_align_interactive_modes = { 'c', 'l', 'r' }
-      vim.g.easy_align_bang_interactive_modes = { 'c', 'l', 'r' }
-    end,
-    keys = {
-      { 'ga', '<Plug>(EasyAlign)', { noremap = false, silent = true }, mode = "x" },
-      { 'ga', '<Plug>(EasyAlign)', { noremap = false, silent = true }, mode = "n" }
-    }
   },
 }
