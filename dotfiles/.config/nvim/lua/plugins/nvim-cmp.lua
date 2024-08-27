@@ -94,12 +94,12 @@ return {
                 vim_item.abbr
             vim_item.menu =
                 "[" .. ({
-                  buffer = "",
-                  nvim_lsp = "",
-                  luasnip = "",
-                  emoji = "",
-                  path = "",
-                })[entry.source.name] .. "] " .. vim_item.kind
+                  buffer = "Buffer",
+                  nvim_lsp = "LSP",
+                  luasnip = "LuaSnip",
+                  emoji = "Emoji",
+                  path = "Path",
+                })[entry.source.name] .. "]"
             vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
             return vim_item
           end
