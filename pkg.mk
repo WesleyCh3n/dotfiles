@@ -36,7 +36,7 @@ all: fd rg fzf lazygit nnn btop node nvim zoxide exa delta
 
 .PHONY: clean zsh tpm fd rg fzf lazygit macchina lsd nnn btop node nvim
 zsh:
-	$(Q)sudo chsh -s "$(shell which zsh)"
+	sudo chsh -s "$(shell which zsh)" ${USER}
 	$(Q)git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
 
 tpm:
@@ -120,6 +120,7 @@ node:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 	$(Q)source ${HOME}/.zshrc && nvm install --lts
+	$(Q)npm install -g yarn
 
 delta:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
