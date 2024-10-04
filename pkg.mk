@@ -120,7 +120,6 @@ node:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 	$(Q)source ${HOME}/.zshrc && nvm install --lts
-	$(Q)npm install -g yarn
 
 delta:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
