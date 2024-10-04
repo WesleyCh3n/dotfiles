@@ -49,7 +49,7 @@ return {
             },
           },
         },
-        tsserver = {},
+        ts_ls = {},
         tailwindcss = {},
         bashls = {},
         clangd = {
