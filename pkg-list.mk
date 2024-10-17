@@ -21,7 +21,7 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v$(LAZYGIT_VER)/lazygit_$(LAZYGIT_VER)_Darwin_x86_64.tar.gz
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v$(NNN_VER)/nnn-nerd-static-$(NNN_VER).x86_64.tar.gz
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v$(BTOP_VER)/btop-x86_64-macos-monterey.tbz
-	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v$(NVIM_VER)/nvim-macos.tar.gz
+	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v$(NVIM_VER)/nvim-macos-x86_64.tar.gz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/$(DELTA_VER)/delta-$(DELTA_VER)-x86_64-apple-darwin.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v$(BAT_VER)/bat-v$(BAT_VER)-x86_64-apple-darwin.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v$(ZOXIDE_VER)/zoxide-$(ZOXIDE_VER)-x86_64-apple-darwin.tar.gz
