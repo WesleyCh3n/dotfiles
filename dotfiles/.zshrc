@@ -41,6 +41,7 @@ fi
 [ -f /usr/bin/microsoft-edge-dev ] && export BROWSER=/usr/bin/microsoft-edge-dev
 [ -d /usr/local/opt/coreutils/libexec/gnubin/ ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 [ -f $HOME/.config/wsl/wsl.sh ] && source $HOME/.config/wsl/wsl.sh
+[ -d $HOME/.docker/completions ] && export FPATH="$HOME/.docker/completions:$FPATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
