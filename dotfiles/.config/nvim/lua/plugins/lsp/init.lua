@@ -88,9 +88,6 @@ return {
           require("plugins.lsp.keymaps").on_attach(client, buffer)
         end,
       })
-      vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        command = "silent! lua vim.lsp.buf.format()",
-      })
 
       -- diagnostics
       local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -170,7 +167,6 @@ return {
         "lua-language-server",
         "pyright",
         "black",
-        "dprint",
         "prettier",
         "stylua",
       },
