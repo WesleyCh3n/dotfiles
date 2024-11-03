@@ -12,6 +12,7 @@ NVIM_VER := 0.10.1
 DELTA_VER := 0.16.5
 BAT_VER := 0.24.0
 ZOXIDE_VER := 0.9.2
+JUST_VER := 1.36.0
 
 ifeq ($(UNAME_S),Darwin)
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v$(FD_VER)/fd-v$(FD_VER)-x86_64-apple-darwin.tar.gz
@@ -25,6 +26,7 @@ ifeq ($(UNAME_S),Darwin)
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/$(DELTA_VER)/delta-$(DELTA_VER)-x86_64-apple-darwin.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v$(BAT_VER)/bat-v$(BAT_VER)-x86_64-apple-darwin.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v$(ZOXIDE_VER)/zoxide-$(ZOXIDE_VER)-x86_64-apple-darwin.tar.gz
+	LINK_JUST := https://github.com/casey/just/releases/download/$(JUST_VER)/just-$(JUST_VER)-x86_64-apple-darwin.tar.gz
 	# LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_macOS_amd64.tar.gz
 else
 	ifeq ($(shell arch),aarch64)
@@ -49,6 +51,7 @@ else
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/$(DELTA_VER)/delta-$(DELTA_VER)-x86_64-unknown-linux-musl.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v$(BAT_VER)/bat-v$(BAT_VER)-x86_64-unknown-linux-musl.tar.gz
 	LINK_ZOXIDE := https://github.com/ajeetdsouza/zoxide/releases/download/v$(ZOXIDE_VER)/zoxide-$(ZOXIDE_VER)-x86_64-unknown-linux-musl.tar.gz
+	LINK_JUST := https://github.com/casey/just/releases/download/$(JUST_VER)/just-$(JUST_VER)-x86_64-unknown-linux-musl.tar.gz
 	# LINK_GH := https://github.com/cli/cli/releases/download/v2.11.3/gh_2.11.3_linux_amd64.tar.gz
 	endif
 endif

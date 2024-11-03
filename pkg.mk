@@ -157,5 +157,12 @@ endif
 	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
+just:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)$(call dl,$(LINK_JUST))
+	$(Q)mv $(TMP_DIR)/$(@) $(INSTALL_PATH)
+	$(Q)mkdir -p $$HOME/.zsh/completions/
+	$(Q)mv $(TMP_DIR)/completions/just.zsh $$HOME/.zsh/completions/
+
 clean:
 	$(Q)rm -rf $(TMP_DIR)
