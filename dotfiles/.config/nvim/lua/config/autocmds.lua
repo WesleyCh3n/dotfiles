@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "txt", "gitcommit", "tex" },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*",
   command = [[if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]

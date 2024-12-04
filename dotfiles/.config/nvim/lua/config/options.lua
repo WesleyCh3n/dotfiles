@@ -42,3 +42,5 @@ opt.pumheight = 10
 opt.cmdheight = 0
 opt.shortmess = 'nocIF'
 vim.cmd [[ let &fcs='eob: ' ]]
+
+vim.g.tex_flavor = "latex"
