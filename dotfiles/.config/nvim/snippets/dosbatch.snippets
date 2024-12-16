@@ -1,0 +1,31 @@
+snippet env "load env file"
+  REM call :loadenv
+  :loadenv
+    set ENV_FILE=make.env
+    if not exist %ENV_FILE% (
+        echo .env file not found!
+        goto exit
+    )
+    REM Read env file
+    FOR /F "tokens=*" %%i in (%ENV_FILE%) do SET %%i
+    exit /b
+
+snippet make "make like batch"
+  @echo off
+  setlocal enabledelayedexpansion
+
+  setlocal
+  call :"%~1"
+  exit /b
+  endlocal
+
+  :""
+    goto "help"
+
+  :"help"
+    findstr /r /c:"^:\"" make.cmd
+    goto /b
+
+  :"build"
+    REM TODO
+    exit /b
