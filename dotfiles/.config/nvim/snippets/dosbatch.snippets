@@ -1,3 +1,12 @@
+snippet ss "set command output to varible"
+  FOR /F "tokens=* USEBACKQ" %%F IN (\`${1:command}\`) DO (
+    SET ${2:variable}=%%F
+  )
+
+snippet err "check error code"
+  if %errorlevel% neq 0 exit /b %errorlevel%
+
+
 snippet env "load env file"
   REM call :loadenv
   :loadenv
