@@ -37,7 +37,13 @@ return {
           theme = gruvbox_theme,
           section_separators = { left = '', right = '' },
           component_separators = { left = '|', right = '|' },
-          disabled_filetypes = { "NvimTree", "lspsagaoutline", "alpha", "aerial", "neo-tree" },
+          disabled_filetypes = {
+            "NvimTree",
+            "lspsagaoutline",
+            "alpha",
+            "aerial",
+            "neo-tree",
+          },
           always_divide_middle = true,
         },
         sections = {
