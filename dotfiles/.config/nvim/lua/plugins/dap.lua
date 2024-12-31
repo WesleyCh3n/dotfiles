@@ -15,6 +15,11 @@ return {
         command = "gdb",
         args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
       }
+      dap.adapters.riscv = {
+        type = "executable",
+        command = "/home/wesley/buildroot/output/host/bin/riscv64-linux-gdb",
+        args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+      }
       dap.configurations.c = {
         {
           name = "Launch",
@@ -29,6 +34,17 @@ return {
         {
           name = 'Attach to gdbserver :1234',
           type = 'gdb',
+          request = 'attach',
+          target = 'localhost:1234',
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopAtBeginningOfMainSubprogram = true,
+        },
+        {
+          name = 'Attach to riscv gdbserver :1234',
+          type = 'riscv',
           request = 'attach',
           target = 'localhost:1234',
           program = function()
