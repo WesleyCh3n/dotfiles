@@ -16,7 +16,6 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>fa', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   buf_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-  buf_set_keymap('n', '<space>l', '<cmd>Telescope diagnostics bufnr=0<cr>', opts)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end

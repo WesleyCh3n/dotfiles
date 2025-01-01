@@ -5,8 +5,8 @@ return {
     branch = 'main',
     keys = {
       { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = 'lazygit' },
+      { "<space>an", '<cmd>lua nnn_toggle()<cr>',           desc = 'nnn' },
       { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = 'btop' },
-      { "<space>ap", '<cmd>lua python_toggle()<cr>',        desc = 'python' },
       { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = 'toggle all' },
       { "<space>aj", '<cmd>1ToggleTerm<cr>',                desc = '#1' },
       { "<space>ak", '<cmd>2ToggleTerm<cr>',                desc = '#2' },
@@ -45,21 +45,18 @@ return {
           hidden = true,
         }
       end
+      local nnn = Terminal:new(mycmd("nnn"))
       local lazygit = Terminal:new(mycmd("lazygit"))
       local top = Terminal:new(
         vim.loop.os_uname().sysname == 'Windows_NT'
         and mycmd("btm")
         or mycmd("btop")
       )
-      local node = Terminal:new(mycmd("node"))
-      local python = Terminal:new(mycmd("python3"))
       function _G.lazygit_toggle() lazygit:toggle() end
 
+      function _G.nnn_toggle() nnn:toggle() end
+
       function _G.top_toggle() top:toggle() end
-
-      function _G.node_toggle() node:toggle() end
-
-      function _G.python_toggle() python:toggle() end
     end
   },
 }

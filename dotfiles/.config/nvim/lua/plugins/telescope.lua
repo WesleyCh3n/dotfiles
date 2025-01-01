@@ -1,11 +1,29 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    lazy = true,
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
-    opts = function()
+    dependencies = {
+      {
+        'nvim-telescope/telescope-symbols.nvim',
+        keys = {
+          { "<space>fe", '<cmd>Telescope symbols<cr>', desc = 'emoji' },
+        },
+      },
+      {
+        'nvim-telescope/telescope-file-browser.nvim',
+        config = function()
+          require("telescope").load_extension "file_browser"
+        end,
+        keys = {
+          { "<space>f<cr>", "<cmd>Telescope file_browser grouped=true<cr>", desc = "Telescope" },
+        }
+      }
+    },
+    config = function()
       local actions = require("telescope.actions")
-      return {
+      require("telescope").setup {
         defaults = {
           prompt_prefix = " ",
           sorting_strategy = "ascending",
@@ -69,32 +87,21 @@ return {
           }
         },
       }
-    end,
-    keys = {
-      { '<space>l',        '<cmd>Telescope diagnostics bufnr=0<cr>',                                 desc = 'diagnostics' },
-      { "<space>ff",       '<cmd>Telescope find_files<cr>',                                          desc = 'files' },
-      { "<space>fb",       '<cmd>Telescope buffers previewer=false<cr>',                             desc = 'bufs' },
-      { "<space>fc",       '<cmd>Telescope find_files cwd=~/dotfiles/dotfiles/.config/nvim/lua<cr>', desc = 'nvim dots' },
-      { "<space>fd",       '<cmd>Telescope find_files cwd=~/dotfiles/<cr>',                          desc = 'dots' },
-      { "<space>fg",       '<cmd>Telescope live_grep<cr>',                                           desc = 'grep' },
-      { "<space>f<space>", "<cmd>Telescope commands<cr>",                                            desc = "cmd" },
-    },
-    dependencies = {
-      {
-        'nvim-telescope/telescope-symbols.nvim',
-        keys = {
-          { "<space>fe", '<cmd>Telescope symbols<cr>', desc = 'emoji' },
-        },
-      },
-      {
-        'nvim-telescope/telescope-file-browser.nvim',
-        config = function()
-          require("telescope").load_extension "file_browser"
-        end,
-        keys = {
-          { "<space>f<cr>", "<cmd>Telescope file_browser grouped=true<cr>", desc = "Telescope" },
-        }
-      }
-    }
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<space>ff", builtin.find_files)
+      vim.keymap.set("n", "<space>fr", builtin.live_grep)
+      vim.keymap.set("n", '<space>l', function()
+        builtin.diagnostics { severity_bound = 0, bufnr = nil }
+      end)
+      vim.keymap.set("n", "<space>fb", function()
+        builtin.buffers { previewer = false }
+      end)
+      vim.keymap.set("n", "<space>fc", function()
+        builtin.find_files { cwd = "~/dotfiles/dotfiles/.config/nvim/lua" }
+      end)
+      vim.keymap.set("n", "<space>fd", function()
+        builtin.find_files { cwd = "~/dotfiles" }
+      end)
+    end
   },
 }

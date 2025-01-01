@@ -4,6 +4,11 @@ return {
   config = function()
     require('oil').setup {
       default_file_explorer = true,
+      keymaps = {
+        ["q"] = { "actions.close", mode = "n" },
+        ["<BS>"] = { "actions.parent", mode = "n" },
+        ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+      },
       float = {
         padding = 8,
         win_options = {
