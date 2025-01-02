@@ -89,7 +89,7 @@ return {
       }
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<space>ff", builtin.find_files)
-      vim.keymap.set("n", "<space>fr", builtin.live_grep)
+      vim.keymap.set("n", "<space>fg", builtin.live_grep)
       vim.keymap.set("n", '<space>l', function()
         builtin.diagnostics { severity_bound = 0, bufnr = nil }
       end)
