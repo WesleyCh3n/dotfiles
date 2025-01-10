@@ -4,7 +4,6 @@ return {
     return {
       cmd = { "cmake" },
       args = { "-B", "build", "." },
-      components = { { "on_output_quickfix", open = true }, "default" },
     }
   end,
   condition = {

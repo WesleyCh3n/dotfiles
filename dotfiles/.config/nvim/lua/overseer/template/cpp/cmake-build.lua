@@ -11,7 +11,6 @@ return {
             { cmd = "cmake", args = { "-B", "build", "." } }
           },
         },
-        { "on_output_quickfix", open = false },
         "default",
       },
     }

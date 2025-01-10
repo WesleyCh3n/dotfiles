@@ -3,15 +3,16 @@ return {
   {
     'stevearc/overseer.nvim',
     opts = {
-      --[[ strategy = {
+      strategy = {
         "toggleterm",
-        direction = "tab",
-      }, ]]
+        direction = "horizontal",
+      },
       templates = {
         "builtin",
-        "cmake.build",
-        "cmake.configure",
-        "cmake.cpm",
+        "cpp.cmake-build",
+        "cpp.cmake-configure",
+        "cpp.cmake-cpm",
+        "cpp.valgrind",
       },
     },
     keys = {

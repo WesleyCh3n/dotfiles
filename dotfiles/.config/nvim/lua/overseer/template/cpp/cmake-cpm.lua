@@ -18,7 +18,6 @@ return {
             { cmd = "mkdir", args = { "-p", "cmake" } }
           },
         },
-        { "on_output_quickfix", open = false },
         "default",
       },
     }
