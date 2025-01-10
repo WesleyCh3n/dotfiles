@@ -6,6 +6,7 @@ return {
       strategy = {
         "toggleterm",
         direction = "horizontal",
+        quit_on_exit = "success",
       },
       templates = {
         "builtin",
@@ -17,7 +18,7 @@ return {
     },
     keys = {
       { '<leader>rr', '<cmd>OverseerRun<cr>',          desc = "Run tasks", },
-      { '<leader>ro', '<cmd>OverseerToggle right<cr>', desc = "Toggle overseer", },
+      { '<leader>R',  '<cmd>OverseerToggle right<cr>', desc = "Toggle overseer", },
     }
   },
 }
