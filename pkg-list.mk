@@ -3,7 +3,7 @@ UNAME_S := $(shell uname -s)
 
 FD_VER := 8.7.1
 RG_VER := 14.0.3
-FZF_VER := 0.44.1
+FZF_VER := 0.57.0
 EXA_VER := 0.10.1
 LAZYGIT_VER := 0.44.1
 NNN_VER := 4.9
@@ -17,7 +17,7 @@ JUST_VER := 1.36.0
 ifeq ($(UNAME_S),Darwin)
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v$(FD_VER)/fd-v$(FD_VER)-x86_64-apple-darwin.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VER)/ripgrep-$(RG_VER)-x86_64-apple-darwin.tar.gz
-	LINK_FZF := https://github.com/junegunn/fzf/releases/download/$(FZF_VER)/fzf-$(FZF_VER)-darwin_amd64.zip
+	LINK_FZF := https://github.com/junegunn/fzf/releases/download/v$(FZF_VER)/fzf-$(FZF_VER)-darwin_amd64.tar.gz
 	LINK_EXA := https://github.com/ogham/exa/releases/download/v$(EXA_VER)/exa-macos-x86_64-v$(EXA_VER).zip
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v$(LAZYGIT_VER)/lazygit_$(LAZYGIT_VER)_Darwin_x86_64.tar.gz
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v$(NNN_VER)/nnn-nerd-static-$(NNN_VER).x86_64.tar.gz
