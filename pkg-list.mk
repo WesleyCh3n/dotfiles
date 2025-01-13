@@ -42,7 +42,7 @@ else
 	else
 	LINK_FD := https://github.com/sharkdp/fd/releases/download/v$(FD_VER)/fd-v$(FD_VER)-x86_64-unknown-linux-gnu.tar.gz
 	LINK_RG := https://github.com/BurntSushi/ripgrep/releases/download/$(RG_VER)/ripgrep-$(RG_VER)-x86_64-unknown-linux-musl.tar.gz
-	LINK_FZF := https://github.com/junegunn/fzf/releases/download/$(FZF_VER)/fzf-$(FZF_VER)-linux_amd64.tar.gz
+	LINK_FZF := https://github.com/junegunn/fzf/releases/download/v$(FZF_VER)/fzf-$(FZF_VER)-linux_amd64.tar.gz
 	LINK_EXA := https://github.com/ogham/exa/releases/download/v$(EXA_VER)/exa-linux-x86_64-v$(EXA_VER).zip
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v$(LAZYGIT_VER)/lazygit_$(LAZYGIT_VER)_Linux_x86_64.tar.gz
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v$(NNN_VER)/nnn-nerd-static-$(NNN_VER).x86_64.tar.gz
