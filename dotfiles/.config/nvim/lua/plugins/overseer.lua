@@ -11,6 +11,7 @@ return {
       templates = {
         "builtin",
         "cpp.cmake-build",
+        "cpp.cmake-debug",
         "cpp.cmake-configure",
         "cpp.cmake-cpm",
         "cpp.valgrind",
