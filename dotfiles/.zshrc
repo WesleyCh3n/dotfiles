@@ -39,6 +39,7 @@ setopt hist_find_no_dups
 
 # bindkey
 bindkey -v
+bindkey '^[[Z' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
