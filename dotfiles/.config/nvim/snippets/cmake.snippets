@@ -7,6 +7,21 @@ snippet t "init template"
 
 	add_executable(main \${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc)
 
+snippet gt "init gtest"
+  include(FetchContent)
+  FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/releases/download/v1.15.2/googletest-1.15.2.tar.gz
+  )
+  FetchContent_MakeAvailable(googletest)
+  include(GoogleTest)
+  enable_testing()
+
+  add_executable(${1} test_task.cpp)
+  target_link_libraries(${1} PRIVATE gtest_main ${2})
+  target_include_directories(${1} PRIVATE ${3})
+  gtest_discover_tests(${1})
+
 snippet cpm
 	include(\${CMAKE_CURRENT_SOURCE_DIR}/cmake/CPM.cmake)
 
