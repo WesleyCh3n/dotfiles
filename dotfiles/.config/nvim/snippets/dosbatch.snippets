@@ -32,8 +32,8 @@ snippet make "make like batch"
     goto "help"
 
   :"help"
-    findstr /r /c:"^:\"" make.cmd
-    goto /b
+    findstr /r /c:"^:\"" ${1}.cmd
+    exit /b
 
   :"build"
     REM TODO
