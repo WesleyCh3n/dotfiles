@@ -57,6 +57,9 @@ return {
       function _G.nnn_toggle() nnn:toggle() end
 
       function _G.top_toggle() top:toggle() end
+
+      vim.keymap.set('n', '<leader>s', "<cmd>ToggleTermSendCurrentLine<cr>")
+      vim.keymap.set('v', '<leader>s', "<cmd>ToggleTermSendVisualLines<cr>")
     end
   },
 }
