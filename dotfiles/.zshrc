@@ -39,6 +39,10 @@ setopt hist_find_no_dups
 
 # bindkey
 bindkey -v
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^A" vi-beginning-of-line
+bindkey "^E" vi-end-of-line
 bindkey '^[[Z' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
