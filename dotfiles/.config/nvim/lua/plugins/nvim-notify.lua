@@ -19,6 +19,7 @@ return {
     },
     config = function()
       require("notify").setup {
+        render = "compact",
         stages = "static",
       }
       local banned_messages = { "No information available" }
