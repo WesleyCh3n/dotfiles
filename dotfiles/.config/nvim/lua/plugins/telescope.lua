@@ -87,9 +87,13 @@ return {
           }
         },
       }
+
+      -- set keymap
       local builtin = require("telescope.builtin")
+      local extensions = require("telescope").extensions
       vim.keymap.set("n", "<space>ff", builtin.find_files)
       vim.keymap.set("n", "<space>fg", builtin.live_grep)
+      vim.keymap.set("n", "<space>fm", extensions.notify.notify)
       vim.keymap.set("n", '<space>l', function()
         builtin.diagnostics { severity_bound = 0, bufnr = nil }
       end)
