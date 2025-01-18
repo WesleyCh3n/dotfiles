@@ -53,7 +53,7 @@ return {
         tailwindcss = {},
         bashls = {},
         clangd = {
-          filetypes = { "c", "cpp" },
+          filetypes = { "c", "cpp", "cuda" },
         },
         lua_ls = {
           settings = {
@@ -165,6 +165,7 @@ return {
         "tailwindcss-language-server",
         "bash-language-server",
         "lua-language-server",
+        "cmake-language-server",
         "pyright",
         "black",
         "prettier",
