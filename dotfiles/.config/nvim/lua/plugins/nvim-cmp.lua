@@ -11,7 +11,7 @@ return {
       'hrsh7th/cmp-emoji',
       'saadparwaiz1/cmp_luasnip',
     },
-    opts = function()
+    config = function()
       local luasnip = require('luasnip')
       local cmp = require("cmp")
       local kind_icons = {
@@ -63,7 +63,24 @@ return {
         return col ~= 0 and
             vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-      return {
+
+      -- toggle cmp
+      local function toggle_autocomplete()
+        local current_setting = cmp.get_config().completion.autocomplete
+        if current_setting and #current_setting > 0 then
+          cmp.setup({ completion = { autocomplete = false } })
+          vim.notify('Autocomplete disabled')
+        else
+          cmp.setup({ completion = { autocomplete = { cmp.TriggerEvent.TextChanged } } })
+          vim.notify('Autocomplete enabled')
+        end
+      end
+
+
+      vim.api.nvim_create_user_command('CmpToggle', toggle_autocomplete, {})
+      vim.keymap.set("n", "<leader>c", toggle_autocomplete)
+
+      cmp.setup {
         completion = {
           completeopt = 'menu,menuone,noinsert',
         },
