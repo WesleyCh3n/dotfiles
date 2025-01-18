@@ -11,15 +11,6 @@ return {
           { "<space>fe", '<cmd>Telescope symbols<cr>', desc = 'emoji' },
         },
       },
-      {
-        'nvim-telescope/telescope-file-browser.nvim',
-        config = function()
-          require("telescope").load_extension "file_browser"
-        end,
-        keys = {
-          { "<space>f<cr>", "<cmd>Telescope file_browser grouped=true<cr>", desc = "Telescope" },
-        }
-      }
     },
     config = function()
       local actions = require("telescope.actions")
