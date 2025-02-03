@@ -20,7 +20,7 @@ return {
         gruvbox_conf.foreground,
         gruvbox_conf.colors_override)
       require("toggleterm").setup {
-        size = 10,
+        persist_size = false,
         direction = 'horizontal',
         shell = (vim.loop.os_uname().sysname ~= "Windows_NT")
             and vim.o.shell or "cmd.exe",

@@ -10,8 +10,10 @@ return {
       },
       templates = {
         "builtin",
-        "cpp.cmake-build",
+        "cpp.cmake-release",
         "cpp.cmake-debug",
+        "cpp.cmake-ninja-release",
+        "cpp.cmake-ninja-debug",
         "cpp.cmake-configure",
         "cpp.cmake-cpm",
         "cpp.valgrind",

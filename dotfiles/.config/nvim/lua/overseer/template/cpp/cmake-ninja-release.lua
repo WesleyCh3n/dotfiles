@@ -1,5 +1,5 @@
 return {
-  name = "cmake build",
+  name = "cmake ninja release",
   builder = function()
     return {
       cmd = { "cmake" },
@@ -8,7 +8,7 @@ return {
         {
           "dependencies",
           task_names = {
-            { cmd = "cmake", args = { "-B", "build", "." } }
+            { cmd = "cmake", args = { "-B", "build", "-G", "Ninja Multi-Config", "." } }
           },
         },
         "default",
