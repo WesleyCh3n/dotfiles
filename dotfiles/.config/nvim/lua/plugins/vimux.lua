@@ -3,8 +3,8 @@ return {
     'preservim/vimux',
     config = function()
       local function run_cmd_in_tmux()
-        vim.ui.input({ prompt = "Enter command: " }, function(input)
-          if input ~= "" then
+        vim.ui.input({ prompt = "Run Command:" }, function(input)
+          if input ~= "" and input ~= vim.v.null and input ~= nil then
             vim.fn.VimuxRunCommand(input)
           else
             vim.notify("No input provided.")
