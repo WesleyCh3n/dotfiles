@@ -69,7 +69,6 @@ return {
           buffers = {
             theme = "dropdown",
             show_all_buffers = true,
-            ignore_current_buffer = true,
             mappings = {
               n = {
                 ["dd"] = "delete_buffer",
@@ -85,11 +84,21 @@ return {
       vim.keymap.set("n", "<space>ff", builtin.find_files)
       vim.keymap.set("n", "<space>fg", builtin.live_grep)
       vim.keymap.set("n", "<space>fm", extensions.notify.notify)
+      -- find file without ignore
+      vim.keymap.set("n", "<space>fj", function()
+        builtin.find_files { no_ignore = true }
+      end)
+
+      -- grep without ignore
+      vim.keymap.set("n", "<space>fk", function()
+        builtin.live_grep { additional_args = { '--no-ignore' } }
+      end)
+
       vim.keymap.set("n", '<space>l', function()
         builtin.diagnostics { severity_bound = 0, bufnr = nil }
       end)
       vim.keymap.set("n", "<space>fb", function()
-        builtin.buffers { previewer = false }
+        builtin.buffers { previewer = false, sort_mru = true, ignore_current_buffer = true }
       end)
       vim.keymap.set("n", "<space>fc", function()
         builtin.find_files { cwd = "~/dotfiles/dotfiles/.config/nvim/lua" }
