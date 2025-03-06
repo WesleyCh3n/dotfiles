@@ -82,18 +82,16 @@ return {
       local builtin = require("telescope.builtin")
       local extensions = require("telescope").extensions
       vim.keymap.set("n", "<space>ff", builtin.find_files)
-      vim.keymap.set("n", "<space>fg", builtin.live_grep)
-      vim.keymap.set("n", "<space>fm", extensions.notify.notify)
       -- find file without ignore
-      vim.keymap.set("n", "<space>fj", function()
+      vim.keymap.set("n", "<space>f<space>f", function()
         builtin.find_files { no_ignore = true }
       end)
-
+      vim.keymap.set("n", "<space>fg", builtin.live_grep)
       -- grep without ignore
-      vim.keymap.set("n", "<space>fk", function()
+      vim.keymap.set("n", "<space>f<space>g", function()
         builtin.live_grep { additional_args = { '--no-ignore' } }
       end)
-
+      vim.keymap.set("n", "<space>fm", extensions.notify.notify)
       vim.keymap.set("n", '<space>l', function()
         builtin.diagnostics { severity_bound = 0, bufnr = nil }
       end)
