@@ -17,7 +17,7 @@ return {
       vim.keymap.set('n', '<space>vv', vim.fn.VimuxTogglePane)
       vim.keymap.set('n', '<space>vz', vim.fn.VimuxZoomRunner)
       vim.keymap.set('n', '<space>vo', vim.fn.VimuxOpenRunner)
-      vim.keymap.set('n', '<space>vc', vim.fn.VimuxCloseRunner)
+      vim.keymap.set('n', '<space>vx', vim.fn.VimuxCloseRunner)
     end
   },
 }
