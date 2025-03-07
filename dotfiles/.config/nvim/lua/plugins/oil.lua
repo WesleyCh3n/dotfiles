@@ -19,6 +19,9 @@ return {
         win_options = {
           winblend = 30,
         },
+      },
+      view_options = {
+        show_hidden = true
       }
     }
     vim.keymap.set("n", "<space>e", require("oil").toggle_float)
