@@ -167,7 +167,6 @@ return {
         "lua-language-server",
         "cmake-language-server",
         "pyright",
-        "black",
         "prettier",
         "stylua",
       },
