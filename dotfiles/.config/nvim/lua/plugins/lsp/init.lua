@@ -159,6 +159,7 @@ return {
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
+        "ruff",
         "clangd",
         "rust-analyzer",
         "typescript-language-server",
