@@ -100,10 +100,14 @@ return {
 
       -- fast directory
       vim.keymap.set("n", "<space>tn", function()
-        builtin.find_files { cwd = "~/dotfiles/dotfiles/.config/nvim/lua" }
+        local dir = "~/dotfiles/dotfiles/.config/nvim/lua"
+        vim.api.nvim_set_current_dir(dir)
+        builtin.find_files { cwd = dir }
       end, { desc = "find nvim lua file" })
-      vim.keymap.set("n", "<space>fd", function()
-        builtin.find_files { cwd = "~/dotfiles" }
+      vim.keymap.set("n", "<space>td", function()
+        local dir = "~/dotfiles"
+        vim.api.nvim_set_current_dir(dir)
+        builtin.find_files { cwd = dir }
       end, { desc = "find dotfiles" })
     end
   },
