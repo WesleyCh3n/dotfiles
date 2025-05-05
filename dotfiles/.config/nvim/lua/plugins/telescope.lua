@@ -81,29 +81,30 @@ return {
       -- set keymap
       local builtin = require("telescope.builtin")
       local extensions = require("telescope").extensions
-      vim.keymap.set("n", "<space>ff", builtin.find_files)
+      vim.keymap.set("n", "<space>tt", builtin.find_files, { desc = "find files" })
       -- find file without ignore
-      vim.keymap.set("n", "<space>f<space>f", function()
+      vim.keymap.set("n", "<space>t<space>f", function()
         builtin.find_files { no_ignore = true }
-      end)
-      vim.keymap.set("n", "<space>fg", builtin.live_grep)
+      end, { desc = "find file without ignore" })
+      vim.keymap.set("n", "<space>tf", builtin.live_grep, { desc = "grep string" })
       -- grep without ignore
-      vim.keymap.set("n", "<space>f<space>g", function()
+      vim.keymap.set("n", "<space>t<space>f", function()
         builtin.live_grep { additional_args = { '--no-ignore' } }
-      end)
-      vim.keymap.set("n", "<space>fm", extensions.notify.notify)
-      vim.keymap.set("n", '<space>l', function()
-        builtin.diagnostics { severity_bound = 0, bufnr = nil }
-      end)
-      vim.keymap.set("n", "<space>fb", function()
+      end, { desc = "grep without ignore" })
+      -- notify history
+      vim.keymap.set("n", "<space>tm", extensions.notify.notify, { desc = "list notify history" })
+      -- list buffers
+      vim.keymap.set("n", "<space>tr", function()
         builtin.buffers { previewer = false, sort_mru = true, ignore_current_buffer = true }
-      end)
-      vim.keymap.set("n", "<space>fc", function()
+      end, { desc = "list buffers" })
+
+      -- fast directory
+      vim.keymap.set("n", "<space>tn", function()
         builtin.find_files { cwd = "~/dotfiles/dotfiles/.config/nvim/lua" }
-      end)
+      end, { desc = "find nvim lua file" })
       vim.keymap.set("n", "<space>fd", function()
         builtin.find_files { cwd = "~/dotfiles" }
-      end)
+      end, { desc = "find dotfiles" })
     end
   },
 }

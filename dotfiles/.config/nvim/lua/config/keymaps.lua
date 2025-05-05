@@ -24,7 +24,4 @@ map('i', '.', '.<c-g>u')
 map('i', '!', '!<c-g>u')
 map('i', '?', '?<c-g>u')
 
--- yank to system clipboard
-map('v', '<C-c>', '"+y')
-
 map('t', '<C-\\>', '<C-\\><C-n>', { silent = false })

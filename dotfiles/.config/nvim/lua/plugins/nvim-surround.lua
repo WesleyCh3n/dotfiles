@@ -4,8 +4,8 @@ return {
     event = "VeryLazy",
     opts = {
       keymaps = {
-        -- visual = "gs",
-        -- visual_line = "gS",
+        change = "ts",
+        change_line = "tS"
       },
     }
   },

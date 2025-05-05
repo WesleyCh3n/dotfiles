@@ -5,7 +5,7 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     keys = {
-      { "<space>ft", '<cmd>TodoTelescope<cr>', desc = 'Todo' },
+      { "<space>to", '<cmd>TodoTelescope<cr>', desc = 'todo' },
     },
     config = true
   },

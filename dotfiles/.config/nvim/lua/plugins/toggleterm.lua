@@ -8,10 +8,10 @@ return {
       { "<space>an", '<cmd>lua nnn_toggle()<cr>',           desc = 'nnn' },
       { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = 'btop' },
       { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = 'toggle all' },
-      { "<space>aj", '<cmd>1ToggleTerm<cr>',                desc = '#1' },
-      { "<space>ak", '<cmd>2ToggleTerm<cr>',                desc = '#2' },
-      { "<space>al", '<cmd>3ToggleTerm<cr>',                desc = '#3' },
-      { "<space>a;", '<cmd>ToggleTerm direction=float<cr>', desc = '#float' },
+      { "<space>an", '<cmd>1ToggleTerm<cr>',                desc = '#1' },
+      { "<space>ae", '<cmd>2ToggleTerm<cr>',                desc = '#2' },
+      { "<space>ai", '<cmd>3ToggleTerm<cr>',                desc = '#3' },
+      { "<space>ao", '<cmd>ToggleTerm direction=float<cr>', desc = '#float' },
     },
     config = function()
       local gruvbox_conf = vim.fn['gruvbox_material#get_configuration']()

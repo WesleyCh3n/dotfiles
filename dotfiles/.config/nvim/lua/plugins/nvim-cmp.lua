@@ -78,7 +78,7 @@ return {
 
 
       vim.api.nvim_create_user_command('CmpToggle', toggle_autocomplete, {})
-      vim.keymap.set("n", "<leader>c", toggle_autocomplete)
+      vim.keymap.set("n", "<leader>c", toggle_autocomplete, { desc = "toggle autocomplete" })
 
       cmp.setup {
         completion = {

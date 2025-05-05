@@ -4,9 +4,9 @@ return {
     'tamton-aquib/duck.nvim',
     lazy = true,
     keys = {
-      { '<space>dd', function() require("duck").hatch() end, desc = "DUCK!!!", },
-      { '<space>dc', function() require("duck").hatch("🐈") end, desc = "CAT!!!", },
-      { '<space>dk', function() require("duck").cook() end, desc = "COOK ANIMAL", }
+      { '<leader>dd', function() require("duck").hatch() end, desc = "DUCK!!!", },
+      { '<leader>dc', function() require("duck").hatch("🐈") end, desc = "CAT!!!", },
+      { '<leader>dk', function() require("duck").cook() end, desc = "COOK ANIMAL", }
     },
   },
 }
