@@ -3,6 +3,11 @@ return {
   {
     "petertriho/nvim-scrollbar",
     opts = {
+      marks = {
+        Cursor = {
+          text = ""
+        }
+      },
       handle = {
         color = '#665c54',
       },
