@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm';
 local act = wezterm.action
-local opacity = 0.4
+local opacity = 0.5
 
 local win_launch_menu = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
@@ -60,9 +60,8 @@ local config = {
   -- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
   font_size = 11.0,
   window_background_opacity = opacity,
-  win32_system_backdrop = "Acrylic",
-  color_scheme = "Gruvbox Dark (Gogh)",
-  hide_tab_bar_if_only_one_tab = false,
+  color_scheme = "GruvboxDark",
+  hide_tab_bar_if_only_one_tab = true,
   window_decorations = "RESIZE",
   default_cursor_style = "BlinkingBlock",
   cursor_blink_rate = 800,
@@ -70,12 +69,14 @@ local config = {
 
 -- Mac Setup
 if wezterm.target_triple == "x86_64-apple-darwin" then
-  config["font"] = wezterm.font("VictorMono Nerd Font Mono", { weight = 'Medium' })
-  config["font_size"] = 24.0
+  config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
+  config["font_size"] = 19.0
   config["keys"] = {
     { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
     { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
   }
+  config.macos_window_background_blur = 40
+  config.line_height = 1
 
   -- Linux Setup
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
@@ -88,6 +89,7 @@ elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 
   -- Win Setup
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  -- win32_system_backdrop = "Acrylic",
   config["launch_menu"] = win_launch_menu
   config["default_prog"] = { "nu.exe" }
   config["font"] = wezterm.font("VictorMono NFP", { weight = 'Medium' })

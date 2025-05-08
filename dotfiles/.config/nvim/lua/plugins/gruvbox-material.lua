@@ -9,7 +9,7 @@ return {
         vim.g.gruvbox_material_enable_bold            = 1
         vim.g.gruvbox_material_better_performance     = 1
         vim.g.gruvbox_material_transparent_background = 1
-        vim.cmd('silent! colorscheme gruvbox-material')
+        vim.cmd.colorscheme('gruvbox-material')
       end
 
       local gruv_conf = vim.fn['gruvbox_material#get_configuration']()
