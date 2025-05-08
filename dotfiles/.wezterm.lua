@@ -68,7 +68,7 @@ local config = {
 }
 
 -- Mac Setup
-if wezterm.target_triple == "x86_64-apple-darwin" then
+if wezterm.target_triple == "x86_64-apple-darwin" or wezterm.target_triple == "aarch64-apple-darwin" then
   config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
   config["font_size"] = 19.0
   config["keys"] = {
