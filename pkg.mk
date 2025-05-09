@@ -32,7 +32,7 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit nnn btop node nvim zoxide exa delta
+all: fd rg fzf lazygit node nvim zoxide delta
 
 .PHONY: clean zsh tpm fd rg fzf lazygit macchina lsd nnn btop node nvim
 zsh:
