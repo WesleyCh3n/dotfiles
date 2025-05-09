@@ -83,7 +83,7 @@ return {
       local extensions = require("telescope").extensions
       vim.keymap.set("n", "<space>tt", builtin.find_files, { desc = "find files" })
       -- find file without ignore
-      vim.keymap.set("n", "<space>t<space>f", function()
+      vim.keymap.set("n", "<space>t<space>t", function()
         builtin.find_files { no_ignore = true }
       end, { desc = "find file without ignore" })
       vim.keymap.set("n", "<space>tf", builtin.live_grep, { desc = "grep string" })
