@@ -101,6 +101,8 @@ return {
       for group, spec in pairs(cmp_groups) do
         vim.api.nvim_set_hl(0, group, spec)
       end
+      vim.api.nvim_set_hl(0, "WinBar", { fg = "NONE", bg = "NONE" })
+      vim.api.nvim_set_hl(0, "WinBarNC", { fg = "NONE", bg = "NONE" })
       vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
     end
