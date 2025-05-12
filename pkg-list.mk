@@ -62,7 +62,7 @@ else
 	LINK_EXA := https://github.com/ogham/exa/releases/download/v$(EXA_VER)/exa-linux-x86_64-v$(EXA_VER).zip
 	LINK_LAZYGIT := https://github.com/jesseduffield/lazygit/releases/download/v$(LAZYGIT_VER)/lazygit_$(LAZYGIT_VER)_Linux_x86_64.tar.gz
 	LINK_NNN := https://github.com/jarun/nnn/releases/download/v$(NNN_VER)/nnn-nerd-static-$(NNN_VER).x86_64.tar.gz
-	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v$(NVIM_VER)/nvim-linux64.tar.gz
+	LINK_NVIM := https://github.com/neovim/neovim/releases/download/v$(NVIM_VER)/nvim-linux-x86_64.tar.gz
 	LINK_BTOP := https://github.com/aristocratos/btop/releases/download/v$(BTOP_VER)/btop-x86_64-linux-musl.tbz
 	LINK_DELTA := https://github.com/dandavison/delta/releases/download/$(DELTA_VER)/delta-$(DELTA_VER)-x86_64-unknown-linux-musl.tar.gz
 	LINK_BAT := https://github.com/sharkdp/bat/releases/download/v$(BAT_VER)/bat-v$(BAT_VER)-x86_64-unknown-linux-musl.tar.gz
