@@ -12,10 +12,11 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+zinit wait lucid depth=1 atload'_zsh_autosuggest_start' light-mode for \
+  zsh-users/zsh-autosuggestions \
+  zdharma-continuum/fast-syntax-highlighting \
+  zsh-users/zsh-completions \
+  Aloxaf/fzf-tab
 
 autoload -Uz compinit && compinit
 zinit cdreplay -q
@@ -39,11 +40,10 @@ setopt hist_find_no_dups
 
 # bindkey
 bindkey -v
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
-bindkey '^[[Z' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
