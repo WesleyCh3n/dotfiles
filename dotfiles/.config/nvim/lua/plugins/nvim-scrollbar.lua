@@ -1,5 +1,4 @@
 return {
-  --
   {
     "petertriho/nvim-scrollbar",
     opts = {
@@ -12,7 +11,8 @@ return {
         color = '#665c54',
       },
       excluded_filetypes = {
-        "neo-tree",
+        "cmp_menu",
+        "cmp_docs"
       },
     }
   },

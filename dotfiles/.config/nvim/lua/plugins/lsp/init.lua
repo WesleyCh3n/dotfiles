@@ -5,14 +5,9 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
       "hrsh7th/cmp-nvim-lsp",
     },
-    init = function()
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-          vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-    end,
     ---@class PluginLspOpts
     opts = {
       -- options for vim.diagnostic.config()
@@ -40,14 +35,22 @@ return {
       },
       servers = {
         pyright = {
+          pyright = {
+            disableOrganizeImports = true, -- Using Ruff
+          },
           python = {
             analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "openFilesOnly",
-              -- useLibraryCodeForTypes = true,
-              -- typeCheckingMode = 'off'
+              ignore = { '*' },         -- Using Ruff
+              typeCheckingMode = 'off', -- Using mypy
             },
           },
+        },
+        ruff = {
+          capabilities = {
+            general = {
+              positionEncodings = { "utf-16" }
+            },
+          }
         },
         ts_ls = {},
         tailwindcss = {},
@@ -83,19 +86,22 @@ return {
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
+          local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+          vim.diagnostic.config({
+            signs = {
+              text = {
+                [vim.diagnostic.severity.ERROR] = signs.Error,
+                [vim.diagnostic.severity.WARN] = signs.Warn,
+                [vim.diagnostic.severity.INFO] = signs.Info,
+                [vim.diagnostic.severity.HINT] = signs.Hint,
+              },
+            },
+          })
           local buffer = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           require("plugins.lsp.keymaps").on_attach(client, buffer)
         end,
       })
-
-      -- diagnostics
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "Diagnostic" .. type
-        local sign = "DiagnosticSign" .. type
-        vim.fn.sign_define(sign, { text = icon, texthl = hl, numhl = hl })
-      end
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
@@ -155,6 +161,7 @@ return {
   -- cmdline tools and lsp servers
   {
     "williamboman/mason.nvim",
+    version = "^1.0.0",
     cmd = "Mason",
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
@@ -190,8 +197,6 @@ return {
       end
     end,
   },
-
-  { "ray-x/lsp_signature.nvim", event = "LspAttach" },
 
   {
     "stevearc/aerial.nvim",
