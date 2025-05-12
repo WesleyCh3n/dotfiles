@@ -15,6 +15,7 @@ return {
       vim.wo.foldenable = false -- can be enabled directly in opened file - using 'zi' - toogle fold
       return {
         ensure_installed = {
+          "regex",
           "python",
           "html",
           "c",
