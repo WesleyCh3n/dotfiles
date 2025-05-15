@@ -25,3 +25,6 @@ map('i', '!', '!<c-g>u')
 map('i', '?', '?<c-g>u')
 
 map('t', '<C-\\>', '<C-\\><C-n>', { silent = false })
+
+-- clear last used search pattern
+map('n', "<leader>n", ':let @/ =""<cr>')

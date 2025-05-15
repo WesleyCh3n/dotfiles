@@ -4,6 +4,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.wrap = true
   end,
 })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.conceallevel = 1
+    vim.cmd([[syntax match @conceal /```/ conceal cchar=x]])
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*",
   command = [[if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]

@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+if [ -z "$1" ]; then
+  echo "Error: A file name must be set, e.g. on \"how git work\"."
+  exit 1
+fi
+
+if [ -z "$HOME" ]; then
+  echo "Error: HOME env not found"
+  exit 1
+fi
+
+vault_dir="$HOME/Documents/notes"
+file_name=$(echo "$1" | tr ' ' '-')
+formatted_file_name=$(date "+%Y-%m-%d")_${file_name}.md
+
+touch "${vault_dir}/inbox/${formatted_file_name}"
+nvim -c "cd ${vault_dir}" "inbox/${formatted_file_name}"
