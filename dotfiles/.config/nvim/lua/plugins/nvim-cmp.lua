@@ -43,7 +43,7 @@ return {
         Package       = "",
         Parameter     = "",
         Property      = "",
-        Reference     = "",
+        Reference     = "",
         Ruler         = "",
         Snippet       = "",
         String        = "",
@@ -116,7 +116,10 @@ return {
                   luasnip = "LuaSnip",
                   emoji = "Emoji",
                   path = "Path",
+                  obsidian = "Obsidian",
+                  obsidian_new = "Obsidian New",
                 })[entry.source.name] .. "]"
+            print(vim_item.kind)
             vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
             return vim_item
           end
