@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+if [ -z "$HOME" ]; then
+  echo "Error: HOME env not found"
+  exit 1
+fi
+
+vault_dir="$HOME/Documents/notes"
+cd ${vault_dir}
+git add .
+git commit -m "update"
+git push
+# rclone sync --dry-run ${vault_dir} google-one:/Documents/notes/
+# rclone sync -i ${vault_dir} google-one:/Documents/notes/

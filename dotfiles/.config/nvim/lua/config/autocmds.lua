@@ -8,7 +8,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },
   callback = function()
     vim.opt_local.conceallevel = 1
-    vim.cmd([[syntax match @conceal /```/ conceal cchar=x]])
   end,
 })
 
