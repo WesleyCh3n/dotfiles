@@ -175,18 +175,18 @@ return {
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
-        "ruff",
-        "clangd",
         "rust-analyzer",
-        "typescript-language-server",
-        "tailwindcss-language-server",
-        "bash-language-server",
-        "lua-language-server",
-        "cmake-language-server",
+        "clangd",
         "pyright",
-        "prettier",
-        "stylua",
-        "tinymist"
+        "ruff",
+        -- "tinymist"
+        -- "typescript-language-server",
+        -- "tailwindcss-language-server",
+        -- "prettier",
+        -- "bash-language-server",
+        -- "lua-language-server",
+        -- "stylua",
+        -- "cmake-language-server",
       },
     },
     config = function(_, opts)
