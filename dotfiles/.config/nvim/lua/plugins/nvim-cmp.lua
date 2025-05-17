@@ -109,17 +109,11 @@ return {
                 vim.fn.strcharpart(vim_item.abbr, 0, trancate_length) .. "…"
                 or
                 vim_item.abbr
-            vim_item.menu =
-                "[" .. ({
-                  buffer = "Buffer",
-                  nvim_lsp = "LSP",
-                  luasnip = "LuaSnip",
-                  emoji = "Emoji",
-                  path = "Path",
-                  obsidian = "Obsidian",
-                  obsidian_new = "Obsidian New",
-                })[entry.source.name] .. "]"
-            print(vim_item.kind)
+            if entry.source.name == "nvim_lsp" then
+              vim_item.menu = "[lsp]"
+            else
+              vim_item.menu = "[" .. entry.source.name .. "]"
+            end
             vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
             return vim_item
           end
