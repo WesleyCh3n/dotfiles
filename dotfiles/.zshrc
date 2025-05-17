@@ -74,30 +74,25 @@ export NVM_DIR="$HOME/.nvm"
 
 ################################################################################
 # fzf
-export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top'
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ $(command -v fzf) ]]; then
+  export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top'
+  export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="fd --type d"
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# fzf-tab
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-source <(fzf --zsh)
-eval "$(zoxide init zsh)"
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if [[ $(command -v pyenv) ]]; then
-  eval "$(pyenv init -)"
+  # fzf-tab
+  zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+  zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+  zstyle ':completion:*' menu no
+  zstyle ':completion:*:git-checkout:*' sort false
+  zstyle ':completion:*:descriptions' format '[%d]'
+  zstyle ':fzf-tab:*' use-fzf-default-opts yes
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+  zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+  source <(fzf --zsh)
 fi
+[[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
 ################################################################################
 #                                    alias                                     #
@@ -109,28 +104,6 @@ alias lg='lazygit'
 alias tn='tmux new ~/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
-
-# nnn config
-export NNN_BMS=$NNN_BMS"\
-g:$HOME/GitHub;\
-m:$HOME/.config/nnn/mounts/;\
-d:$HOME/dotfiles;\
-c:$HOME/.config;"
-export NNN_PLUG='x:!chmod +x $nnn'
-export MANPAGER="nvim +Man! -"
-
-n () {
-  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-    echo "nnn is already running"
-    return
-  fi
-  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-  nnn "$@"
-  if [ -f "$NNN_TMPFILE" ]; then
-    . "$NNN_TMPFILE"
-    rm -f "$NNN_TMPFILE" > /dev/null
-  fi
-}
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
