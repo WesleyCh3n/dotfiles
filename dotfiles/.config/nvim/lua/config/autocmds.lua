@@ -11,6 +11,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.json",
+  callback = function()
+    vim.bo.filetype = "jsonc"
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*",
   command = [[if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
