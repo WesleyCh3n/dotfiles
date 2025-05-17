@@ -117,6 +117,7 @@ m:$HOME/.config/nnn/mounts/;\
 d:$HOME/dotfiles;\
 c:$HOME/.config;"
 export NNN_PLUG='x:!chmod +x $nnn'
+export MANPAGER="nvim +Man! -"
 
 n () {
   if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
@@ -129,4 +130,13 @@ n () {
     . "$NNN_TMPFILE"
     rm -f "$NNN_TMPFILE" > /dev/null
   fi
+}
+
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }

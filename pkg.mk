@@ -67,6 +67,15 @@ lsd:
 	$(Q)mv $(TMP_DIR)/*/$(@) $(INSTALL_PATH)
 	$(Q)rm -rf $(TMP_DIR)
 
+yazi:
+	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
+	$(Q)mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
+		curl '-#' -o tmp.zip -fL $(LINK_YAZI); \
+		unzip tmp.zip;
+	$(Q)cp $(TMP_DIR)/*/yazi ~/.local/bin/
+	$(Q)cp $(TMP_DIR)/*/ya ~/.local/bin/
+	$(Q)rm -rf $(TMP_DIR)
+
 exa:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"
 	$(Q)mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
