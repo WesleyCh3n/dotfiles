@@ -34,6 +34,15 @@ return {
         timeout_ms = nil,
       },
       servers = {
+        tinymist = {
+          cmd = { "tinymist" },
+          filetypes = { "typst" },
+          settings = {
+            formatterMode = "typstyle",
+            exportPdf = "onType",
+            semanticTokens = "disable"
+          }
+        },
         pyright = {
           pyright = {
             disableOrganizeImports = true, -- Using Ruff
@@ -177,6 +186,7 @@ return {
         "pyright",
         "prettier",
         "stylua",
+        "tinymist"
       },
     },
     config = function(_, opts)
