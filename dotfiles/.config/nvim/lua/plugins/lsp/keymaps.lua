@@ -18,7 +18,7 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set("n", 'gl', function()
     telescope.diagnostics { severity_bound = 0, bufnr = nil }
   end, { buffer = bufnr, noremap = true, silent = true, desc = "diagnostics" })
-  vim.keymap.set('n', 'gs', '<cmd>lua vim.diagnostic.open_float()<cr>',
+  vim.keymap.set('n', 'gx', '<cmd>lua vim.diagnostic.open_float()<cr>',
     { buffer = bufnr, noremap = true, silent = true, desc = "diagnostic expand" })
   vim.keymap.set('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>',
     { buffer = bufnr, noremap = true, silent = true, desc = "diagnostic next" })
