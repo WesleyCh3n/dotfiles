@@ -37,8 +37,10 @@ return {
         DiagnosticVirtualTextInfo  = { link = 'InfoFloat' },
         DiagnosticVirtualTextHint  = { link = 'HintFloat' },
 
-        WhichKeyFloat              = { bg = c.bg_dim[1] },
-        WhichKeyBorder             = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
+        WhichKeyTitle              = { bold = true, fg = "#e78a4e", bg = "NONE" },
+        WhichKeyNormal             = { fg = c.fg0[1], bg = "NONE" },
+        WhichKeyFloat              = { bg = "NONE" },
+        WhichKeyBorder             = { fg = c.fg0[1], bg = "NONE" },
 
         TelescopeNormal            = { bg = "#252525" },
         TelescopeBorder            = { fg = "#252525", bg = "#252525" },

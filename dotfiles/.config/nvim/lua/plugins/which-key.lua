@@ -5,7 +5,7 @@ return {
     event = "VeryLazy",
     opts = {
       win = {
-        border = "none",
+        border = "rounded",
       },
       disable = {
         buftypes = {},
