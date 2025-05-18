@@ -19,6 +19,13 @@ return {
         desc = 'Btop'
       },
       {
+        "<space>ay",
+        function()
+          require("snacks").terminal("yazi", { start_insert = true, auto_close = true, auto_insert = true })
+        end,
+        desc = 'Yazi'
+      },
+      {
         "<space>ao",
         function()
           require("snacks").terminal()
