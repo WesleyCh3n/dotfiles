@@ -36,6 +36,7 @@ end
 return {
   {
     'ggandor/leap.nvim',
+    enabled = false,
     keys = {
       {
         "s",
