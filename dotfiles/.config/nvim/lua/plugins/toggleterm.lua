@@ -1,17 +1,18 @@
 return {
   {
     'akinsho/toggleterm.nvim',
+    enabled = false,
     lazy = true,
     branch = 'main',
     keys = {
-      { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = 'lazygit' },
-      { "<space>an", '<cmd>lua nnn_toggle()<cr>',           desc = 'nnn' },
-      { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = 'btop' },
-      { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = 'toggle all' },
-      { "<space>an", '<cmd>1ToggleTerm<cr>',                desc = '#1' },
-      { "<space>ae", '<cmd>2ToggleTerm<cr>',                desc = '#2' },
-      { "<space>ai", '<cmd>3ToggleTerm<cr>',                desc = '#3' },
-      { "<space>ao", '<cmd>ToggleTerm direction=float<cr>', desc = '#float' },
+      -- { "<space>ag", '<cmd>lua lazygit_toggle()<cr>',       desc = 'lazygit' },
+      -- { "<space>an", '<cmd>lua nnn_toggle()<cr>',           desc = 'nnn' },
+      -- { "<space>ab", '<cmd>lua top_toggle()<cr>',           desc = 'btop' },
+      -- { "<space>as", '<cmd>ToggleTermToggleAll<cr>',        desc = 'toggle all' },
+      -- { "<space>an", '<cmd>1ToggleTerm<cr>',                desc = '#1' },
+      -- { "<space>ae", '<cmd>2ToggleTerm<cr>',                desc = '#2' },
+      -- { "<space>ai", '<cmd>3ToggleTerm<cr>',                desc = '#3' },
+      -- { "<space>ao", '<cmd>ToggleTerm direction=float<cr>', desc = '#float' },
     },
     config = function()
       local gruvbox_conf = vim.fn['gruvbox_material#get_configuration']()

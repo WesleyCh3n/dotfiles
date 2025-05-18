@@ -93,19 +93,19 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
+      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = signs.Error,
+            [vim.diagnostic.severity.WARN] = signs.Warn,
+            [vim.diagnostic.severity.INFO] = signs.Info,
+            [vim.diagnostic.severity.HINT] = signs.Hint,
+          },
+        },
+      })
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
-          local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-          vim.diagnostic.config({
-            signs = {
-              text = {
-                [vim.diagnostic.severity.ERROR] = signs.Error,
-                [vim.diagnostic.severity.WARN] = signs.Warn,
-                [vim.diagnostic.severity.INFO] = signs.Info,
-                [vim.diagnostic.severity.HINT] = signs.Hint,
-              },
-            },
-          })
           local buffer = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           require("plugins.lsp.keymaps").on_attach(client, buffer)
