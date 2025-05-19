@@ -9,7 +9,28 @@ return {
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<leader>ot", ":ObsidianTemplate note<cr>GVd:.s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>:let @/ = \"\"<cr>", desc = "Apply note template", },
+      {
+        "<leader>on",
+        function()
+          vim.ui.input({ prompt = "Note title" }, function(title)
+            local file_name = string.gsub(title, "%s", "-")
+            local date = os.date("%Y-%m-%d")
+            local formatted_file_name = date .. "_" .. file_name .. ".md"
+            local full_path = vault_path .. "/inbox/" .. formatted_file_name
+            vim.cmd("e " .. full_path)
+
+            vim.cmd("ObsidianTemplate note")
+            vim.cmd("norm! GVd")                    -- delete last empty line
+            vim.cmd([[silent! s/\(# \)[^_]*_/\1/]]) -- add & remove date
+            vim.cmd([[silent! s/-/ /g]])            -- replace - with space
+            vim.cmd([[norm! _w~]])                  -- first char capital
+            vim.cmd("norm! 6ggf]")                  -- find insert position in categories
+            vim.api.nvim_feedkeys("i", "n", false)  -- start insert mode
+            vim.fn.setreg("/", "")
+          end)
+        end,
+        desc = "Create new note",
+      },
       {
         "<leader>or",
         ":next " .. vault_path .. "/inbox/*.md<cr>",
