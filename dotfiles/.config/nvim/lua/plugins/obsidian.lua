@@ -1,5 +1,20 @@
+local uv = vim.uv
 local vault_path = os.getenv("HOME") .. "/Documents/notes"
-local vault_exist = vim.uv.fs_stat(vault_path)
+local vault_exist = uv.fs_stat(vault_path)
+
+local function get_markdown_files(path)
+  local handle = uv.fs_scandir(path)
+
+  local md_files = {}
+  while true do
+    local name, t = uv.fs_scandir_next(handle)
+    if not name then break end
+    if t == "file" and name:match("%.md$") then
+      table.insert(md_files, path .. "/" .. name)
+    end
+  end
+  return md_files
+end
 
 local keymaps = {
   {
@@ -19,7 +34,7 @@ local keymaps = {
         vim.cmd("norm! GVd")                    -- delete last empty line
         vim.cmd([[silent! s/\(# \)[^_]*_/\1/]]) -- add & remove date
         vim.cmd([[silent! s/-/ /g]])            -- replace - with space
-        vim.cmd([[norm! _w~]])                  -- first char capital
+        vim.cmd("norm! _wvgU")                  -- first char capital
         vim.cmd("norm! 6ggf]")                  -- find insert position in categories
         vim.fn.setreg("/", "")
         vim.api.nvim_feedkeys("i", "n", false)  -- start insert mode
@@ -30,18 +45,8 @@ local keymaps = {
   {
     "<leader>or",
     function()
-      local uv = vim.loop
       local inbox = vault_path .. "/inbox"
-      local handle = uv.fs_scandir(inbox)
-
-      local md_files = {}
-      while true do
-        local name, t = uv.fs_scandir_next(handle)
-        if not name then break end
-        if t == "file" and name:match("%.md$") then
-          table.insert(md_files, inbox .. "/" .. name)
-        end
-      end
+      local md_files = get_markdown_files(inbox)
 
       if #md_files == 0 then
         vim.notify("No .md files found in: " .. inbox)
@@ -53,6 +58,11 @@ local keymaps = {
       end
     end,
     desc = "Review notes",
+  },
+  {
+    "<leader>op",
+    ":ObsidianTemplate note",
+    desc = "Apply template"
   },
   {
     "<leader>og",
@@ -72,6 +82,56 @@ local keymaps = {
       vim.cmd("bd")
     end,
     desc = "Remove note"
+  },
+  {
+    "<leader>oc",
+    function()
+      local zettelkasten = vault_path .. "/zettelkasten"
+      local markdown_files = get_markdown_files(zettelkasten)
+      for _, file in ipairs(markdown_files) do
+        print("Processing " .. file)
+
+        -- Read file to extract tag (line after "tags:")
+        local tag = nil
+        local f = io.open(file, "r")
+        if f then
+          local lines = {}
+          for line in f:lines() do table.insert(lines, line) end
+          f:close()
+
+          for i = 1, #lines do
+            if lines[i]:match("^tags:") and lines[i + 1] then
+              tag = lines[i + 1]:gsub("^%s*%-?%s*", ""):gsub("^%s+", ""):gsub("%s+$", "")
+              break
+            end
+          end
+        end
+
+        if tag and tag ~= "" then
+          print("Found tag: " .. tag)
+          local target_dir = vault_path .. "/notes/" .. tag
+
+          -- Create target dir if not exists
+          if not uv.fs_stat(target_dir) then
+            uv.fs_mkdir(target_dir, 493) -- 0755
+          end
+
+          -- Move file
+          local filename = file:match("^.+/(.+)$")
+          local new_path = target_dir .. "/" .. filename
+          local ok, err = os.rename(file, new_path)
+          if ok then
+            print("Moved " .. file .. " to " .. target_dir)
+          else
+            vim.notify("Failed to move file: " .. err, vim.log.levels.ERROR)
+          end
+        else
+          vim.notify("No tag found for " .. file, vim.log.levels.WARN)
+        end
+      end
+      vim.notify("Done 🪷")
+    end,
+    desc = "Classify zettelkasten"
   }
 }
 
@@ -92,10 +152,20 @@ return {
       return keymaps
     end,
     opts = {
-      ui = {
-      },
+      ui = {},
       notes_subdir = "inbox",
       disable_frontmatter = true,
+      note_id_func = function(title)
+        local suffix = ""
+        if title ~= nil then
+          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        else
+          for _ = 1, 4 do
+            suffix = suffix .. string.char(math.random(65, 90))
+          end
+        end
+        return tostring(os.date("%Y-%m-%d")) .. "-" .. suffix
+      end,
       workspaces = {
         {
           name = "personal",
@@ -106,6 +176,21 @@ return {
         subdir = "templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M:%S",
+      },
+      picker = {
+        name = "telescope.nvim",
+        note_mappings = {
+          -- Create a new note from your query.
+          new = "<C-x>",
+          -- Insert a link to the selected note.
+          insert_link = "<C-l>",
+        },
+        tag_mappings = {
+          -- Add tag(s) to current note.
+          tag_note = "<C-x>",
+          -- Insert a tag at the current location.
+          insert_tag = "<C-l>",
+        },
       },
     },
   }
