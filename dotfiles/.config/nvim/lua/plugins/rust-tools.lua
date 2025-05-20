@@ -8,7 +8,7 @@ return {
         },
       },
       server = {
-        on_attach = require("plugins.lsp.keymaps").on_attach,
+        -- on_attach = require("plugins.lsp.keymaps").on_attach, // FIXME:
         settings = {
           ["rust-analyzer"] = {
             inlayHints = { locationLinks = false },
