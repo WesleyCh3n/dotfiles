@@ -7,6 +7,7 @@ return {
     dependencies = {
       {
         'nvim-telescope/telescope-symbols.nvim',
+        'nvim-telescope/telescope-ui-select.nvim',
         keys = {
           { "<space>fe", '<cmd>Telescope symbols<cr>', desc = 'emoji' },
         },
@@ -43,6 +44,11 @@ return {
             ".git/*"
           }
         },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {}
+          },
+        },
         pickers = {
           find_files = {
             -- theme = "ivy",
@@ -77,6 +83,7 @@ return {
           }
         },
       }
+      require("telescope").load_extension("ui-select")
 
       -- set keymap
       local builtin = require("telescope.builtin")
