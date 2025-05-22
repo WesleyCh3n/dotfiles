@@ -31,9 +31,8 @@ local on_attach = function(client, bufnr)
 
   -- code action
   vim.cmd [[silent! umap gra]]
-  -- vim.keymap.del("n", "gra", { buffer = bufnr, silent = true })
   vim.keymap.set('n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>',
-    { buffer = bufnr, noremap = true, silent = true, desc = "code action" })
+    { buffer = bufnr, noremap = true, silent = true, desc = "vim.lsp.buf.code_action()" })
 
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
