@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
   end, { buffer = bufnr, noremap = true, silent = true, desc = "definitions" })
 
   -- list references
-  vim.keymap.del("n", "grr")
+  vim.cmd [[silent! umap grr]]
   vim.keymap.set('n', 'grr', function()
     telescope.lsp_references {}
   end, { buffer = bufnr, noremap = true, silent = true, desc = "vim.lsp.buf.references()" })
@@ -30,7 +30,8 @@ local on_attach = function(client, bufnr)
     { buffer = bufnr, noremap = true, silent = true, desc = "diagnostic prev" })
 
   -- code action
-  vim.keymap.del("n", "gra")
+  vim.cmd [[silent! umap gra]]
+  -- vim.keymap.del("n", "gra", { buffer = bufnr, silent = true })
   vim.keymap.set('n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>',
     { buffer = bufnr, noremap = true, silent = true, desc = "code action" })
 
@@ -48,7 +49,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      { "mason-org/mason.nvim", opts = {} },
+      { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
       "neovim/nvim-lspconfig",
       "ray-x/lsp_signature.nvim"
     },
@@ -134,7 +135,7 @@ return {
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
       local mason = require('mason')
-      local mason_lspconfig = require 'mason-lspconfig'
+      local mason_lspconfig = require('mason-lspconfig')
       mason.setup()
       mason_lspconfig.setup {
         automatic_enable = false, -- NOTE: use vim.lsp.config and vim.lsp.enable myself

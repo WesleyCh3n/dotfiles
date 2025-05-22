@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*",
-  command = [[if line("'\"") > 2 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
+  command = [[if line("'\"") > 2 && line("'\"") <= line("$") | silent exe "normal! g`\"" | endif]]
 })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",
