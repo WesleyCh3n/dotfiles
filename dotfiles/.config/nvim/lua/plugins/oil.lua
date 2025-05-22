@@ -12,7 +12,7 @@ return {
       float = {
         padding = 8,
         win_options = {
-          winblend = 10,
+          winblend = 0,
         },
       },
       preview_win = {

@@ -19,8 +19,8 @@ return {
         gruv_conf.colors_override
       )
       local float_group = {
-        NormalFloat                = { fg = c.fg0[1], bg = c.bg1[1] },
-        FloatBorder                = { fg = c.bg1[1], bg = c.bg1[1] },
+        NormalFloat                = { fg = c.fg0[1], bg = "NONE" },
+        FloatBorder                = { fg = c.fg0[1], bg = "NONE" },
 
         ErrorFloat                 = { fg = c.red[1], bg = "NONE", blend = 0 },
         WarningFloat               = { fg = c.yellow[1], bg = "NONE", blend = 0 },

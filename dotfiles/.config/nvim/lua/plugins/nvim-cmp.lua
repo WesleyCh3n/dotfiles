@@ -93,12 +93,14 @@ return {
           completion = {
             col_offset = -3,
             side_padding = 0,
+            winblend = 10
           },
           documentation = {
             border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:HintFloat",
             max_width = 120,
             max_height = math.floor(vim.o.lines * 0.4),
+            winblend = 0
           },
         },
         formatting = {
