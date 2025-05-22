@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.bufremove",
+    enabled = false,
     opts = {
       silent = true,
     },

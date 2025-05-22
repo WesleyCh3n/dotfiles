@@ -4,6 +4,7 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
+      { "<space>q", function() require("snacks").bufdelete() end, desc = "Delete Buffer" },
       {
         "<space>ag",
         function()
@@ -32,7 +33,7 @@ return {
         end,
         desc = 'Float terminal'
       },
-      { '<space>z', function() require("snacks").zen() end, desc = "Zen Mode", }
+      { '<space>z', function() require("snacks").zen() end,       desc = "Zen Mode", }
     },
     opts = {
       -- bigfile = { enabled = true },
