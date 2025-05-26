@@ -38,8 +38,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# bindkey
-bindkey -v
+# bindkey: vim mode
+bindkey -v '^?' backward-delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 bindkey "^A" vi-beginning-of-line
