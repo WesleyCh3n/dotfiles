@@ -29,7 +29,10 @@ map('t', '<C-_>', '<C-\\><C-n>', { silent = false })
 
 -- clear last used search pattern
 map('n', "<leader>n", ':let @/ =""<cr>', { desc = "Clear search" })
+
+-- make ctrl c -> esc (prevent lsp not detach when leaving insert mode)
 map({ 'i', 'n' }, '<C-C>', '<esc>', { desc = 'Make Ctrl+C behave exactly like escape.' })
 
+-- move in insert mode
 map('i', "<M-Left>", '<C-O>b')
 map('i', "<M-Right>", '<C-O>w')
