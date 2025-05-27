@@ -99,7 +99,7 @@ return {
     -- event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
+      { 'nvim-treesitter/nvim-treesitter-context', opts = { max_lines = 2 } },
       'hiphish/rainbow-delimiters.nvim',
     },
     opts = function()
