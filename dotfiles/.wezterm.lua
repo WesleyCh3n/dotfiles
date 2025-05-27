@@ -75,7 +75,7 @@ if wezterm.target_triple == "x86_64-apple-darwin" or wezterm.target_triple == "a
     { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
     { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
   }
-  config.macos_window_background_blur = 40
+  config.macos_window_background_blur = 45
   config.line_height = 1
 
   -- Linux Setup
