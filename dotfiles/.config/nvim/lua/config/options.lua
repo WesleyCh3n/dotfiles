@@ -1,5 +1,6 @@
 local opt = vim.opt
 opt.syntax = 'enable'
+opt.synmaxcol = 500
 opt.smartindent = true
 opt.expandtab = true
 opt.tabstop = 2
