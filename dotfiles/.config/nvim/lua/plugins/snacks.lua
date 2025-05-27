@@ -15,6 +15,7 @@ return {
       { "<space>tn",        function() Snacks.picker.files { dirs = { vim.fn.stdpath("config") }, follow = true, ignored = true } end, desc = "Nvim config" },
       { "<space>t.",        function() Snacks.picker.files { dirs = { "~/dotfiles/" }, follow = true, ignored = true } end,            desc = "Dotfiles" },
       { "<space>tm",        function() Snacks.picker.notifications {} end,                                                             desc = "Notifications" },
+      { "<space>ti",        function() Snacks.picker.treesitter {} end,                                                                desc = "Treesitter outline" },
 
       { "<leader>g",        function() Snacks.git.blame_line() end,                                                                    desc = "Blame line" },
       {
