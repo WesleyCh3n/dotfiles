@@ -72,6 +72,7 @@ return {
       picker = {
         sources = {
           files = { hidden = true },
+          todo_comments = { hidden = true },
         },
       },
       scope = { enabled = true },

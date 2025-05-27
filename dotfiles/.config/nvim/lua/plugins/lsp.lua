@@ -1,5 +1,4 @@
 local on_attach = function(client, bufnr)
-  -- local telescope = require("telescope.builtin")
   local picker = require("snacks").picker
   -- go to definitions
   vim.keymap.set('n', 'gf', function()

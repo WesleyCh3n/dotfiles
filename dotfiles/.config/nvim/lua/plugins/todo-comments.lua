@@ -2,10 +2,10 @@ return {
   --
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    cmd = { "TodoTrouble" },
     event = { "BufReadPost", "BufNewFile" },
     keys = {
-      { "<space>to", '<cmd>TodoTelescope<cr>', desc = 'todo' },
+      { "<space>to", function() Snacks.picker.todo_comments() end, desc = "Todo/Fix" },
     },
     config = true
   },

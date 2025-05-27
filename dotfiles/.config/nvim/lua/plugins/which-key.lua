@@ -9,7 +9,6 @@ return {
       },
       disable = {
         buftypes = {},
-        filetypes = { "TelescopePrompt" },
       },
       icons = {
         rules = false,

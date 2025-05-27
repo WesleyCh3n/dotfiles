@@ -41,20 +41,6 @@ return {
         WhichKeyNormal             = { fg = c.fg0[1], bg = "NONE" },
         WhichKeyFloat              = { bg = "NONE" },
         WhichKeyBorder             = { fg = c.fg0[1], bg = "NONE" },
-
-        TelescopeNormal            = { bg = "#252525" },
-        TelescopeBorder            = { fg = "#252525", bg = "#252525" },
-        TelescopePromptCounter     = { fg = c.fg0[1], bg = c.bg2[1] },
-        TelescopePromptBorder      = { fg = c.bg2[1], bg = c.bg2[1] },
-        TelescopePromptNormal      = { fg = c.fg0[1], bg = c.bg2[1] },
-        TelescopePromptTitle       = { fg = c.bg2[1], bg = c.bg2[1] },
-
-        TelescopePreviewCounter    = { fg = c.fg0[1], bg = c.bg_dim[1] },
-        TelescopePreviewBorder     = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
-        TelescopePreviewNormal     = { fg = c.fg0[1], bg = c.bg_dim[1] },
-        TelescopePreviewTitle      = { fg = c.bg_dim[1], bg = c.bg_dim[1] },
-
-        TelescopeSelection         = { link = "Visual" },
       }
       local cmp_groups = {
         PmenuSel                 = { bg = "#32302f", fg = "NONE", blend = 0 },
