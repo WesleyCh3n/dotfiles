@@ -20,12 +20,11 @@ return {
         { "<space>P",  "<cmd>set paste!<cr>", desc = "Toggle paste" },
         { "<leader>i", "<cmd>Lazy<cr>",       desc = "Lazy" },
 
-        { "<space>r",  group = "Tmux-" },
+        { "<space>r",  group = "Overseer-" },
         { "<space>a",  group = "Terminal-" },
         { "<space>t",  group = "Picker-" },
-        { "<leader>d", group = "Summon-" },
         { "<leader>o", group = "Obsidian-" },
-        { "<leader>r", group = "Overseer-" },
+        { "<leader>d", group = "Summon-" },
       }
       local wk = require("which-key")
       wk.setup(opts)

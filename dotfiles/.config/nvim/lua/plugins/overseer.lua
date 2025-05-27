@@ -4,7 +4,7 @@ return {
     'stevearc/overseer.nvim',
     opts = {
       strategy = {
-        "toggleterm",
+        "terminal",
         direction = "horizontal",
         quit_on_exit = "success",
       },
@@ -20,8 +20,8 @@ return {
       },
     },
     keys = {
-      { '<leader>rr', '<cmd>OverseerRun<cr>',          desc = "Overseer run tasks", },
-      { '<leader>ro', '<cmd>OverseerToggle right<cr>', desc = "Overseer", },
+      { '<space>rr', '<cmd>OverseerRun<cr>',          desc = "Overseer run tasks", },
+      { '<space>ro', '<cmd>OverseerToggle right<cr>', desc = "Overseer", },
     }
   },
 }

@@ -1,6 +1,7 @@
 return {
   {
     'preservim/vimux',
+    enabled = false,
     config = function()
       local function run_cmd_in_tmux()
         vim.ui.input({ prompt = "Run Command:" }, function(input)
