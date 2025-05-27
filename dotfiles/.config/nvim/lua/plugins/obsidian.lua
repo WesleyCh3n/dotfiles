@@ -138,7 +138,7 @@ local keymaps = {
 
 return {
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     enabled = vault_exist,
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
@@ -179,7 +179,7 @@ return {
         time_format = "%H:%M:%S",
       },
       picker = {
-        name = "telescope.nvim",
+        name = "snacks.pick",
         note_mappings = {
           -- Create a new note from your query.
           new = "<C-x>",
