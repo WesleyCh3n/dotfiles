@@ -28,7 +28,7 @@ map('t', '<C-\\>', '<C-\\><C-n>', { silent = false })
 map('t', '<C-_>', '<C-\\><C-n>', { silent = false })
 
 -- clear last used search pattern
-map('n', "<leader>n", ':let @/ =""<cr>')
+map('n', "<leader>n", ':let @/ =""<cr>', { desc = "Clear search" })
 map({ 'i', 'n' }, '<C-C>', '<esc>', { desc = 'Make Ctrl+C behave exactly like escape.' })
 
 map('i', "<M-Left>", '<C-O>b')
