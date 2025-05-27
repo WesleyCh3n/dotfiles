@@ -20,8 +20,8 @@ return {
       },
     },
     keys = {
-      { '<leader>rr', '<cmd>OverseerRun<cr>',          desc = "Run tasks", },
-      { '<leader>R',  '<cmd>OverseerToggle right<cr>', desc = "Toggle overseer", },
+      { '<leader>rr', '<cmd>OverseerRun<cr>',          desc = "Overseer run tasks", },
+      { '<leader>ro', '<cmd>OverseerToggle right<cr>', desc = "Overseer", },
     }
   },
 }

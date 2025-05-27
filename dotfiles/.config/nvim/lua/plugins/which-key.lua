@@ -17,19 +17,16 @@ return {
     },
     config = function(_, opts)
       local keymap = {
-        { "<space>#",  desc = "tab #[123]" },
-        { "<space>P",  "<cmd>set paste!<cr>",    desc = "toggle paste" },
-        { "<space>a",  group = "term" },
-        { "<space>t",  group = "tele-" },
-        { "<space>r",  group = "re-" },
-        { "<space>ri", "gg=G<C-o>",              desc = "re-Indent" },
-        { "<space>rn", desc = "rename variable" },
-        { "<space>w",  "<cmd>w<cr>",             desc = "write" },
+        { "<space>w",  "<cmd>w<cr>",          desc = "Write" },
+        { "<space>P",  "<cmd>set paste!<cr>", desc = "Toggle paste" },
+        { "<leader>i", "<cmd>Lazy<cr>",       desc = "Lazy" },
 
-        { "<leader>d", group = "summon creature" },
-        -- { "<leader>f",  "<cmd>FormatWrite<cr>",  desc = "Format" },
-        { "<leader>g", group = "gitsgns" },
-        { "<leader>i", "<cmd>Lazy<cr>",          desc = "Lazy" },
+        { "<space>r",  group = "Tmux-" },
+        { "<space>a",  group = "Terminal-" },
+        { "<space>t",  group = "Picker-" },
+        { "<leader>d", group = "Summon-" },
+        { "<leader>o", group = "Obsidian-" },
+        { "<leader>r", group = "Overseer-" },
       }
       local wk = require("which-key")
       wk.setup(opts)

@@ -67,6 +67,7 @@ local keymaps = {
   {
     "<leader>og",
     function()
+      os.execute("mkdir " .. vault_path .. "/zettelkasten/")
       local file_path = vim.fn.expand("%:p")
       local target_path = vault_path .. "/zettelkasten/" .. vim.fn.fnamemodify(file_path, ":t")
       os.execute("mv " .. vim.fn.shellescape(file_path) .. " " .. vim.fn.shellescape(target_path))

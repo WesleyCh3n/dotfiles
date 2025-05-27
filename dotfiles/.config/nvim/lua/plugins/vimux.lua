@@ -13,11 +13,11 @@ return {
         )
       end
 
-      vim.keymap.set('n', '<space>vr', run_cmd_in_tmux)
-      vim.keymap.set('n', '<space>vv', vim.fn.VimuxTogglePane)
-      vim.keymap.set('n', '<space>vz', vim.fn.VimuxZoomRunner)
-      vim.keymap.set('n', '<space>vo', vim.fn.VimuxOpenRunner)
-      vim.keymap.set('n', '<space>vx', vim.fn.VimuxCloseRunner)
+      vim.keymap.set('n', '<space>rr', run_cmd_in_tmux, { desc = "Tmux runner cmd" })
+      vim.keymap.set('n', '<space>rv', vim.fn.VimuxTogglePane, { desc = "Tmux runner toggle" })
+      vim.keymap.set('n', '<space>rz', vim.fn.VimuxZoomRunner, { desc = "Tmux runner zoom" })
+      vim.keymap.set('n', '<space>ro', vim.fn.VimuxOpenRunner, { desc = "Tmux runner open" })
+      vim.keymap.set('n', '<space>rx', vim.fn.VimuxCloseRunner, { desc = "Tmux runner close" })
     end
   },
 }

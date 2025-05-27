@@ -17,11 +17,11 @@ return {
       -- keymaps = {},
     },
     keys = {
-      { '<leader>gh', '<cmd>Gitsigns preview_hunk<cr>', desc = 'preview hunk', },
-      { '<leader>gn', '<cmd>Gitsigns next_hunk<cr>',    desc = 'next hunk', },
-      { '<leader>gp', '<cmd>Gitsigns prev_hunk<cr>',    desc = 'prev hunk', },
-      { '<leader>gb', '<cmd>Gitsigns blame_line<cr>',   desc = 'blame line', },
-      { '<leader>gq', '<cmd>Gitsigns setqflist<cr>',    desc = 'set quickfix list', },
+      -- { '<leader>gh', '<cmd>Gitsigns preview_hunk<cr>', desc = 'preview hunk', },
+      -- { '<leader>gn', '<cmd>Gitsigns next_hunk<cr>',    desc = 'next hunk', },
+      -- { '<leader>gp', '<cmd>Gitsigns prev_hunk<cr>',    desc = 'prev hunk', },
+      -- { '<leader>gb', '<cmd>Gitsigns blame_line<cr>',   desc = 'blame line', },
+      -- { '<leader>gq', '<cmd>Gitsigns setqflist<cr>',    desc = 'set quickfix list', },
     },
   },
 }

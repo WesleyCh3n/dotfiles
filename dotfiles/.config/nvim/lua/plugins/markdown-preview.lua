@@ -6,7 +6,7 @@ return {
     lazy = true,
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     keys = {
-      { '<space>p', '<cmd>MarkdownPreviewToggle<cr>', desc = 'md preview' },
+      { '<leader>p', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown preview' },
     },
     build = "cd app && yarn install",
     init = function()

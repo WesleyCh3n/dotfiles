@@ -24,6 +24,6 @@ return {
         show_hidden = true
       }
     }
-    vim.keymap.set("n", "<space>e", require("oil").toggle_float)
+    vim.keymap.set("n", "<space>e", require("oil").toggle_float, { desc = "Oil" })
   end
 }

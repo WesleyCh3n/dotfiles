@@ -1,14 +1,15 @@
 local on_attach = function(client, bufnr)
-  local telescope = require("telescope.builtin")
+  -- local telescope = require("telescope.builtin")
+  local picker = require("snacks").picker
   -- go to definitions
   vim.keymap.set('n', 'gf', function()
-    telescope.lsp_definitions {}
+    picker.lsp_definitions {}
   end, { buffer = bufnr, noremap = true, silent = true, desc = "definitions" })
 
   -- list references
   vim.cmd [[silent! umap grr]]
   vim.keymap.set('n', 'grr', function()
-    telescope.lsp_references {}
+    picker.lsp_references {}
   end, { buffer = bufnr, noremap = true, silent = true, desc = "vim.lsp.buf.references()" })
 
   -- definitions
@@ -20,7 +21,7 @@ local on_attach = function(client, bufnr)
 
   -- diagnostic
   vim.keymap.set("n", 'gl', function()
-    telescope.diagnostics { severity_bound = 0, bufnr = nil }
+    picker.diagnostics { severity_bound = 0, bufnr = nil }
   end, { buffer = bufnr, noremap = true, silent = true, desc = "diagnostics" })
   vim.keymap.set('n', 'gx', '<cmd>lua vim.diagnostic.open_float()<cr>',
     { buffer = bufnr, noremap = true, silent = true, desc = "diagnostic expand" })
@@ -93,7 +94,7 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                globals = { "vim" },
+                globals = { "vim", "Snacks" },
               },
               workspace = {
                 checkThirdParty = false,
