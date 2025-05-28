@@ -81,9 +81,15 @@ local keymaps = {
   {
     "<leader>odd",
     function()
-      local file_path = vim.fn.expand("%:p")
-      os.remove(file_path)
-      vim.cmd("bd")
+      vim.ui.select({ "y", "n" }, {
+        prompt = "Do you want to delete current file (" .. vim.fn.expand("%:t") .. ")?",
+      }, function(choice)
+        if choice == "y" then
+          local file_path = vim.fn.expand("%:p")
+          vim.cmd("bd!")
+          os.remove(file_path)
+        end
+      end)
     end,
     desc = "Delete note"
   },
