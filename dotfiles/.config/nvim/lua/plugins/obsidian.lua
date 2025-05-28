@@ -17,6 +17,11 @@ local function get_markdown_files(path)
 end
 
 local keymaps = {
+  { "<leader>oo", function() Snacks.picker.files { dirs = { vault_path }, follow = true, ignored = true } end, desc = "Obsidian vault files" },
+  { "gd",         ":Obsidian follow_links<cr>",                                                                desc = "Obsidian follow links" },
+  { "gra",        ":Obsidian backlinks<cr>",                                                                   desc = "Obsidian backlinks" },
+  { "<leader>os", ":Obsidian search<cr>",                                                                      desc = "Obsidian grep" },
+  { "<leader>ot", ":Obsidian tags<cr>",                                                                        desc = "Obsidian tags" },
   {
     "<leader>on",
     function()
