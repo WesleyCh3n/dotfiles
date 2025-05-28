@@ -17,11 +17,13 @@ local function get_markdown_files(path)
 end
 
 local keymaps = {
-  { "<leader>oo", function() Snacks.picker.files { dirs = { vault_path }, follow = true, ignored = true } end, desc = "Obsidian vault files" },
-  { "gd",         ":Obsidian follow_links<cr>",                                                                desc = "Obsidian follow links" },
-  { "gra",        ":Obsidian backlinks<cr>",                                                                   desc = "Obsidian backlinks" },
-  { "<leader>os", ":Obsidian search<cr>",                                                                      desc = "Obsidian grep" },
-  { "<leader>ot", ":Obsidian tags<cr>",                                                                        desc = "Obsidian tags" },
+  { "<leader>oo", function() Snacks.picker.files { dirs = { vault_path }, follow = true, ignored = true } end, desc = "Open vault files" },
+  { "<leader>ob", ":Obsidian open<cr>",                                                                        desc = "Open current note" },
+  { "<leader>os", ":Obsidian search<cr>",                                                                      desc = "Grep note" },
+  { "<leader>ot", ":Obsidian tags<cr>",                                                                        desc = "Tags list" },
+  { "<leader>ol", ":Obsidian paste_image<cr>",                                                                 desc = "Paste image (clipboard)" },
+  { "gd",         ":Obsidian follow_links<cr>",                                                                desc = "Follow links" },
+  { "gra",        ":Obsidian backlinks<cr>",                                                                   desc = "Backlinks" },
   {
     "<leader>on",
     function()
@@ -62,13 +64,9 @@ local keymaps = {
         vim.cmd("edit " .. vim.fn.fnameescape(filepath))
       end
     end,
-    desc = "Review notes",
+    desc = "Review notes (inbox)",
   },
-  {
-    "<leader>op",
-    ":ObsidianTemplate note",
-    desc = "Apply template"
-  },
+  { "<leader>ol", ":ObsidianTemplate note", desc = "Apply template" },
   {
     "<leader>og",
     function()
@@ -78,7 +76,7 @@ local keymaps = {
       os.execute("mv " .. vim.fn.shellescape(file_path) .. " " .. vim.fn.shellescape(target_path))
       vim.cmd("bd")
     end,
-    desc = "Move to zettelkasten"
+    desc = "Move zettelkasten"
   },
   {
     "<leader>odd",
@@ -87,7 +85,7 @@ local keymaps = {
       os.remove(file_path)
       vim.cmd("bd")
     end,
-    desc = "Remove note"
+    desc = "Delete note"
   },
   {
     "<leader>oc",
