@@ -44,8 +44,11 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^p' history-beginning-search-backward-end
+bindkey '^n' history-beginning-search-forward-end
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
