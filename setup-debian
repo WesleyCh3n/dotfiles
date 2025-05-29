@@ -3,9 +3,10 @@
 sudo apt-get update -qq -y
 sudo apt-get install -qq -y git make curl zsh tmux unzip python3-venv
 
-ln -sf "./dotfiles/.zshrc" "~/.zshrc" \
-ln -sf "./dotfiles/.p10k.zsh" "~/.p10k.zsh" \
-ln -sf "./dotfiles/.config/" "~/.config" \
-make -f pkg.mk fd rg nvim fzf node \
-zsh -c "source ~/.zshrc && npm update -g npm && npm install -g yarn" \
-zsh -c "source ~/.zshrc && nvim --headless \"+Lazy! sync\" +qa"
+ln -sf "$PWD/dotfiles/.zshrc" "$HOME/.zshrc" \
+  && ln -sf "$PWD/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh" \
+  && ln -sf "$PWD/dotfiles/.config/" "$HOME/.config" \
+  && make -f pkg.mk fd rg nvim fzf node \
+  && zsh -c "source $HOME/.zshrc && npm update -g npm && npm install -g yarn" \
+  && zsh -c "source $HOME/.zshrc && nvim --headless \"+Lazy! sync\" +qa"
+
