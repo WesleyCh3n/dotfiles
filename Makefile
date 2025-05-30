@@ -1,5 +1,5 @@
 MKDIR_CONFIG = $(subst dotfiles, ~, $(wildcard dotfiles/.config/*))
-MKDIR_CONFIG += ~/.local/bin/ ~/.config/nnn ~/.config/configstore
+MKDIR_CONFIG += ~/.local/bin/ ~/.config/configstore
 
 all:
 	@mkdir -p $(MKDIR_CONFIG)
