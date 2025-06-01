@@ -37,10 +37,6 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end
-  require "lsp_signature".on_attach({
-    bind = true,
-    hint_enable = false,
-  }, bufnr)
 end
 
 return {
