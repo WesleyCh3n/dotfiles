@@ -37,10 +37,6 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end
-  require "lsp_signature".on_attach({
-    bind = true,
-    hint_enable = false,
-  }, bufnr)
 end
 
 return {
@@ -50,7 +46,6 @@ return {
     dependencies = {
       { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
       "neovim/nvim-lspconfig",
-      "ray-x/lsp_signature.nvim"
     },
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {},
@@ -129,9 +124,8 @@ return {
         },
       }
 
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
       local mason = require('mason')
       local mason_lspconfig = require('mason-lspconfig')
