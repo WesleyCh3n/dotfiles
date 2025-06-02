@@ -153,6 +153,7 @@ return {
     lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "saghen/blink.cmp"
     },
     keys = function()
       if not vault_exist then
@@ -164,6 +165,12 @@ return {
       ui = {},
       notes_subdir = "inbox",
       disable_frontmatter = true,
+      completion = {
+        blink = true,
+        nvim_cmp = false,
+        min_chars = 0,
+      },
+
       note_id_func = function(title)
         local suffix = ""
         if title ~= nil then
