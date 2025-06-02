@@ -43,45 +43,45 @@ return {
         WhichKeyBorder             = { fg = c.fg0[1], bg = "NONE" },
       }
       local cmp_groups = {
-        PmenuSel = { bg = "#32302f", fg = "NONE", blend = 0 },
-        Pmenu    = { fg = '#ddc7a1', bg = '#45403d', blend = 0 },
+        PmenuSel                      = { bg = "#32302f", fg = "NONE", blend = 0 },
+        Pmenu                         = { fg = '#ddc7a1', bg = '#45403d', blend = 0 },
 
-        -- BlinkCmpItemAbbrDeprecated    = { fg = "#7E8294", bg = "NONE", strikethrough = true, italic = true },
-        -- BlinkCmpItemAbbrMatch         = { fg = "#82AAFF", bg = "NONE", bold = true },
-        -- BlinkCmpItemAbbrMatchFuzzy    = { fg = "#82AAFF", bg = "NONE", bold = true },
-        -- BlinkCmpItemMenu              = { fg = "#C792EA", bg = "NONE" },
-        --
-        -- BlinkCmpItemKindField         = { fg = "#EED8DA", bg = "#B5585F" },
-        -- BlinkCmpItemKindProperty      = { fg = "#EED8DA", bg = "#B5585F" },
-        -- BlinkCmpItemKindEvent         = { fg = "#EED8DA", bg = "#B5585F" },
-        -- BlinkCmpItemKindText          = { fg = "#C3E88D", bg = "#9FBD73" },
-        -- BlinkCmpItemKindEnum          = { fg = "#C3E88D", bg = "#9FBD73" },
-        -- BlinkCmpItemKindKeyword       = { fg = "#C3E88D", bg = "#9FBD73" },
-        --
-        -- BlinkCmpItemKindConstant      = { fg = "#FFE082", bg = "#D4BB6C" },
-        -- BlinkCmpItemKindConstructor   = { fg = "#FFE082", bg = "#D4BB6C" },
-        -- BlinkCmpItemKindReference     = { fg = "#FFE082", bg = "#D4BB6C" },
-        --
-        -- BlinkCmpItemKindFunction      = { fg = "#EADFF0", bg = "#A377BF" },
-        -- BlinkCmpItemKindStruct        = { fg = "#EADFF0", bg = "#A377BF" },
-        -- BlinkCmpItemKindClass         = { fg = "#EADFF0", bg = "#A377BF" },
-        -- BlinkCmpItemKindModule        = { fg = "#EADFF0", bg = "#A377BF" },
-        -- BlinkCmpItemKindOperator      = { fg = "#EADFF0", bg = "#A377BF" },
-        --
-        -- BlinkCmpItemKindVariable      = { fg = "#C5CDD9", bg = "#7E8294" },
-        -- BlinkCmpItemKindFile          = { fg = "#C5CDD9", bg = "#7E8294" },
-        --
-        -- BlinkCmpItemKindUnit          = { fg = "#F5EBD9", bg = "#D4A959" },
-        -- BlinkCmpItemKindSnippet       = { fg = "#F5EBD9", bg = "#D4A959" },
-        -- BlinkCmpItemKindFolder        = { fg = "#F5EBD9", bg = "#D4A959" },
-        --
-        -- BlinkCmpItemKindMethod        = { fg = "#DDE5F5", bg = "#6C8ED4" },
-        -- BlinkCmpItemKindValue         = { fg = "#DDE5F5", bg = "#6C8ED4" },
-        -- BlinkCmpItemKindEnumMember    = { fg = "#DDE5F5", bg = "#6C8ED4" },
-        --
-        -- BlinkCmpItemKindInterface     = { fg = "#D8EEEB", bg = "#58B5A8" },
-        -- BlinkCmpItemKindColor         = { fg = "#D8EEEB", bg = "#58B5A8" },
-        -- BlinkCmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
+        BlinkCmpItemAbbrDeprecated    = { fg = "#7E8294", bg = "NONE", strikethrough = true, italic = true },
+        BlinkCmpItemAbbrMatch         = { fg = "#82AAFF", bg = "NONE", bold = true },
+        BlinkCmpItemAbbrMatchFuzzy    = { fg = "#82AAFF", bg = "NONE", bold = true },
+        BlinkCmpItemMenu              = { fg = "#C792EA", bg = "NONE" },
+
+        BlinkCmpKindIconField         = { fg = "#EED8DA", bg = "#B5585F" },
+        BlinkCmpKindIconProperty      = { fg = "#EED8DA", bg = "#B5585F" },
+        BlinkCmpKindIconEvent         = { fg = "#EED8DA", bg = "#B5585F" },
+        BlinkCmpKindIconText          = { fg = "#C3E88D", bg = "#9FBD73" },
+        BlinkCmpKindIconEnum          = { fg = "#C3E88D", bg = "#9FBD73" },
+        BlinkCmpKindIconKeyword       = { fg = "#C3E88D", bg = "#9FBD73" },
+
+        BlinkCmpKindIconConstant      = { fg = "#FFE082", bg = "#D4BB6C" },
+        BlinkCmpKindIconConstructor   = { fg = "#FFE082", bg = "#D4BB6C" },
+        BlinkCmpKindIconReference     = { fg = "#FFE082", bg = "#D4BB6C" },
+
+        BlinkCmpKindIconFunction      = { fg = "#EADFF0", bg = "#A377BF" },
+        BlinkCmpKindIconStruct        = { fg = "#EADFF0", bg = "#A377BF" },
+        BlinkCmpKindIconClass         = { fg = "#EADFF0", bg = "#A377BF" },
+        BlinkCmpKindIconModule        = { fg = "#EADFF0", bg = "#A377BF" },
+        BlinkCmpKindIconOperator      = { fg = "#EADFF0", bg = "#A377BF" },
+
+        BlinkCmpKindIconVariable      = { fg = "#C5CDD9", bg = "#7E8294" },
+        BlinkCmpKindIconFile          = { fg = "#C5CDD9", bg = "#7E8294" },
+
+        BlinkCmpKindIconUnit          = { fg = "#F5EBD9", bg = "#D4A959" },
+        BlinkCmpKindIconSnippet       = { fg = "#F5EBD9", bg = "#D4A959" },
+        BlinkCmpKindIconFolder        = { fg = "#F5EBD9", bg = "#D4A959" },
+
+        BlinkCmpKindIconMethod        = { fg = "#DDE5F5", bg = "#6C8ED4" },
+        BlinkCmpKindIconValue         = { fg = "#DDE5F5", bg = "#6C8ED4" },
+        BlinkCmpKindIconEnumMember    = { fg = "#DDE5F5", bg = "#6C8ED4" },
+
+        BlinkCmpKindIconInterface     = { fg = "#D8EEEB", bg = "#58B5A8" },
+        BlinkCmpKindIconColor         = { fg = "#D8EEEB", bg = "#58B5A8" },
+        BlinkCmpKindIconTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
       }
       for group, spec in pairs(float_group) do
         vim.api.nvim_set_hl(0, group, spec)

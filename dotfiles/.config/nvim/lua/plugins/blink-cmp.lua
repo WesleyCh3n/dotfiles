@@ -27,6 +27,16 @@ return {
               { "kind", },
               -- { "source_name" },
             },
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  return " " .. ctx.kind_icon .. " "
+                end,
+                highlight = function(ctx)
+                  return { { group = "BlinkCmpKindIcon" .. ctx.kind, priority = 50000 } }
+                end,
+              }
+            }
           }
         }
       },
