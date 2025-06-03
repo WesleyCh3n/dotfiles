@@ -19,8 +19,8 @@ return {
         documentation = { auto_show = true, window = { border = "rounded" }, auto_show_delay_ms = 100 },
         ghost_text = { enabled = true },
         menu = {
+          auto_show = true,
           draw = {
-            auto_show = true,
             columns = {
               { "kind_icon", },
               { "label", },
