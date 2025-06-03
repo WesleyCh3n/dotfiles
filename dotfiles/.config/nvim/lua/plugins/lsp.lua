@@ -1,4 +1,10 @@
 local on_attach = function(client, bufnr)
+  vim.api.nvim_create_user_command('LspRestartAll', function()
+    vim.lsp.stop_client(vim.lsp.get_clients())
+  end, {
+    desc = 'Restart All Lsp client',
+  })
+
   local picker = require("snacks").picker
   -- go to definitions
   vim.keymap.set('n', 'gf', function()
