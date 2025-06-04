@@ -11,6 +11,7 @@ return {
         ["<C-k>"] = { "snippet_backward", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ['<C-n>'] = { 'select_next', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
