@@ -44,8 +44,10 @@ local keys = {
     mods = 'LEADER',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
-  { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
-  { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative(1) },
+  { key = 'p', mods = 'LEADER',      action = act.ActivateTabRelative(-1) },
+  { key = 'p', mods = 'LEADER|CTRL', action = act.ActivateTabRelative(-1) },
+  { key = 'n', mods = 'LEADER',      action = act.ActivateTabRelative(1) },
+  { key = 'n', mods = 'LEADER|CTRL', action = act.ActivateTabRelative(1) },
   {
     key = 'c',
     mods = 'LEADER',
