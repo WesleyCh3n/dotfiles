@@ -10,16 +10,6 @@ local keys = {
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
   {
-    key = 'v',
-    mods = 'LEADER',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  },
-  {
-    key = 's',
-    mods = 'LEADER',
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-  },
-  {
     key = "o",
     mods = "LEADER",
     action = wezterm.action { PaneSelect = {} }
@@ -44,15 +34,14 @@ local keys = {
     mods = 'LEADER',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
+  { key = 'v', mods = 'LEADER',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 's', mods = 'LEADER',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'p', mods = 'LEADER',      action = act.ActivateTabRelative(-1) },
   { key = 'p', mods = 'LEADER|CTRL', action = act.ActivateTabRelative(-1) },
   { key = 'n', mods = 'LEADER',      action = act.ActivateTabRelative(1) },
   { key = 'n', mods = 'LEADER|CTRL', action = act.ActivateTabRelative(1) },
-  {
-    key = 'c',
-    mods = 'LEADER',
-    action = act.SpawnTab 'CurrentPaneDomain'
-  },
+  { key = 'c', mods = 'LEADER',      action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 'c', mods = 'LEADER|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 }
 
 for i = 1, 8 do
