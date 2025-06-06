@@ -10,8 +10,11 @@ local config = {
   window_decorations = "RESIZE",
   default_cursor_style = "BlinkingBlock",
   cursor_blink_rate = 800,
-  leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 1000 },
-  keys = require("keys")
+  leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 2000 },
+  keys = require("keys"),
+  colors = {
+    compose_cursor = 'orange', -- leader key indication
+  },
 }
 
 local os = ""
