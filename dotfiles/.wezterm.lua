@@ -14,12 +14,14 @@ local config = {
   keys = require("keys")
 }
 
+local os = ""
 if wezterm.target_triple == "x86_64-apple-darwin" or wezterm.target_triple == "aarch64-apple-darwin" then
-  require("mac").apply_to_config(config)
+  os = "mac"
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
-  require("linux").apply_to_config(config)
+  os = "linux"
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
-  require("win").apply_to_config(config)
+  os = "win"
 end
+require(os).apply_to_config(config)
 
 return config

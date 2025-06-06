@@ -5,6 +5,11 @@ local keys = {
   { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
   { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
   {
+    key = 'x',
+    mods = 'LEADER',
+    action = wezterm.action.CloseCurrentPane { confirm = true },
+  },
+  {
     key = 'v',
     mods = 'LEADER',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },

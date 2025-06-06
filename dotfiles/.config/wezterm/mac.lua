@@ -1,13 +1,11 @@
 local wezterm = require 'wezterm';
-local act = wezterm.action
+-- local act = wezterm.action
 
 local module = {}
 function module.apply_to_config(config)
   config["font"] = wezterm.font("VictorMono Nerd Font", { weight = 'Medium' })
   config["font_size"] = 19.0
   local keys = {
-    { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
-    { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
   }
   for _, value in ipairs(keys) do
     table.insert(config["keys"], value)
