@@ -1,2 +1,7 @@
 [mgr]
 ratio=[1,2,5]
+
+[preview]
+# change following need to `yazi --clear-cache` to take effect
+max_width  = 1000
+max_height = 1000
