@@ -2,3 +2,33 @@
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = [ "A" ]
+run  = "toggle_all --state=on"
+desc = "Toggle all"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "-" ]
+run  = "back"
+desc = "Go back to previous directory"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m", "d" ]
+run  = "cd ~/Documents/"
+desc = "Cd to ~/Documents/"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m", "l" ]
+run  = "cd ~/Downloads/"
+desc = "Cd to ~/Downloads/"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m", "g" ]
+run  = "cd ~/GitHub/"
+desc = "Cd to ~/GitHub/"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m", "." ]
+run  = "cd ~/dotfiles/"
+desc = "Cd to ~/dotfiles/"
