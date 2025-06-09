@@ -11,7 +11,7 @@ return {
       { "<space>t<space>e", function() Snacks.picker.files { hidden = true, ignored = true } end,                                      desc = "Find files (show ignored)" },
       { "<space>tf",        function() Snacks.picker.grep { hidden = true } end,                                                       desc = "Grep" },
       { "<space>t<space>f", function() Snacks.picker.grep { hidden = true, ignored = true } end,                                       desc = "Grep (show ignored)" },
-      { "<space>tr",        function() Snacks.picker.buffers { current = false } end,                                                  desc = "List buffers" },
+      { "<space>tl",        function() Snacks.picker.buffers { current = false } end,                                                  desc = "List buffers" },
       { "<space>tn",        function() Snacks.picker.files { dirs = { vim.fn.stdpath("config") }, follow = true, ignored = true } end, desc = "Nvim config" },
       { "<space>t.",        function() Snacks.picker.files { dirs = { "~/dotfiles/" }, follow = true, ignored = true } end,            desc = "Dotfiles" },
       { "<space>tm",        function() Snacks.picker.notifications {} end,                                                             desc = "Notifications" },
