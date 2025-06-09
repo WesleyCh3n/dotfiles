@@ -1,8 +1,4 @@
-[[mgr.prepend_keymap]]
-on   = "T"
-run  = "plugin toggle-pane max-preview"
-desc = "Maximize or restore the preview pane"
-
+# general
 [[mgr.prepend_keymap]]
 on   = [ "A" ]
 run  = "toggle_all --state=on"
@@ -13,6 +9,18 @@ on   = [ "g", "-" ]
 run  = "back"
 desc = "Go back to previous directory"
 
+# plugin
+[[mgr.prepend_keymap]]
+on   = "T"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# bookmark
 [[mgr.prepend_keymap]]
 on   = [ "g", "m", "d" ]
 run  = "cd ~/Documents/"
