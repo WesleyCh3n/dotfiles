@@ -3,7 +3,9 @@ local act = wezterm.action
 
 local module = {}
 function module.apply_to_config(config)
-  config["font"] = wezterm.font("VictorMono Nerd Font Mono", { weight = 'Medium' })
+  config["window_decorations"] = "TITLE | RESIZE"
+  config["window_background_opacity"] = 1
+  config["font"] = wezterm.font("VictorMono NF", { weight = 'Medium' })
   config["font_size"] = 14.0
   config["keys"] = {
     { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
