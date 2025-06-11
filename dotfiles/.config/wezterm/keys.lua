@@ -34,6 +34,7 @@ local keys = {
     mods = 'LEADER',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
+  { key = 's', mods = 'LEADER|CTRL', action = wezterm.action.SendKey { key = 's', mods = 'CTRL' } },
   { key = 'v', mods = 'LEADER',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = 's', mods = 'LEADER',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'p', mods = 'LEADER',      action = act.ActivateTabRelative(-1) },
