@@ -53,7 +53,19 @@ return {
       { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
       "neovim/nvim-lspconfig",
     },
-    keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
+    keys = {
+      { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" },
+      {
+        "<leader>r",
+        function()
+          vim.lsp.stop_client(vim.lsp.get_clients())
+          vim.defer_fn(function()
+            vim.cmd.e() -- restart lsp client
+          end, 500)     -- wait for client stopped
+        end,
+        desc = "Restart Lsp client"
+      },
+    },
     opts = {},
     config = function()
       local servers = {
