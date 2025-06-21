@@ -1,0 +1,10 @@
+[tools]
+delta = "latest"
+fd = "latest"
+fzf = "latest"
+lazygit = "latest"
+neovim = "0.11.1"
+node = "lts"
+ripgrep = "latest"
+yazi = "latest"
+zoxide = "latest"

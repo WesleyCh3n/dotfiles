@@ -32,7 +32,7 @@ mkdir -p $(TMP_DIR); cd $(TMP_DIR); \
 endef
 
 
-all: fd rg fzf lazygit node nvim zoxide delta
+all: mise
 
 .PHONY: clean zsh tpm fd rg fzf lazygit macchina lsd nnn btop node nvim
 zsh:
@@ -42,6 +42,9 @@ zsh:
 tpm:
 	$(Q)git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 	$(Q)${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+mise:
+	$(Q)curl https://mise.run | sh
 
 fd:
 	$(Q)$(PRINTF) "$(PASS_COLOR)Installing $(@)$(NO_COLOR)\n"

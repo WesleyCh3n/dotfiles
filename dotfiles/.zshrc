@@ -58,6 +58,9 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 ################################################################################
+# mise setup dev tools (as early as possible)
+[[ $(command -v mise) ]] && eval "$(mise activate zsh)"
+
 # PATH
 export PATH=$PATH:$HOME/.local/bin/
 
@@ -101,7 +104,7 @@ fi
 ################################################################################
 #                                    alias                                     #
 ################################################################################
-[ -s "$HOME/.local/bin/nvim" ] && alias vi='nvim'
+alias v='nvim'
 alias ls="ls --color"
 alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
 alias lg='lazygit'
