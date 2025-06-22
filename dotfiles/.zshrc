@@ -58,11 +58,11 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 ################################################################################
+# PATH
+export PATH=$PATH:$HOME/.local/bin
+
 # mise setup dev tools (as early as possible)
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
-
-# PATH
-export PATH=$PATH:$HOME/.local/bin/
 
 # golang
 if [[ $(command -v go) ]]; then
