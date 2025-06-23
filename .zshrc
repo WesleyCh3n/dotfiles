@@ -111,7 +111,7 @@ alias v='nvim'
 alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
 alias ls="ls --color"
 alias lg='lazygit'
-alias tn='tmux new ~/.local/bin/tmux-sessionizer'
+alias tn='tmux new $HOME/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 
