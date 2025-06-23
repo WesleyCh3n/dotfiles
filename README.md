@@ -11,7 +11,16 @@
 
 ## 💭 About
 
-My personal dotfiles for Arch/MacOS/Ubuntu/Windows. If you see something useful feel free to use.
+My personal dotfiles for MacOS/Ubuntu/Windows.
+
+## Install
+
+```sh
+git --no-replace-objects clone --bare --depth 1 \
+    https://github.com/WesleyCh3n/dotfiles.git $HOME/.dot;
+git --work-tree $HOME --git-dir $HOME/.dot config --local status.showUntrackedFiles no;
+git --work-tree $HOME --git-dir $HOME/.dot checkout -f
+```
 
 ## License
 
