@@ -106,9 +106,10 @@ fi
 ################################################################################
 alias gd="git --work-tree $HOME --git-dir $HOME/.dot"
 alias lgd="lazygit --work-tree $HOME --git-dir $HOME/.dot"
+
 alias v='nvim'
-alias ls="ls --color"
 alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
+alias ls="ls --color"
 alias lg='lazygit'
 alias tn='tmux new ~/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
