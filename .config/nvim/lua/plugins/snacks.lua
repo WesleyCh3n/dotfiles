@@ -1,6 +1,8 @@
 return {
   {
-    "folke/snacks.nvim",
+    "wesleych3n/snacks.nvim",
+    branch = "feat-git_lstree",
+    pin = true,
     priority = 1000,
     lazy = false,
     keys = {
@@ -13,11 +15,18 @@ return {
       { "<space>t<space>f", function() Snacks.picker.grep { hidden = true, ignored = true } end,                                       desc = "Grep (show ignored)" },
       { "<space>tl",        function() Snacks.picker.buffers { current = false } end,                                                  desc = "List buffers" },
       { "<space>tn",        function() Snacks.picker.files { dirs = { vim.fn.stdpath("config") }, follow = true, ignored = true } end, desc = "Nvim config" },
-      { "<space>t.",        function() Snacks.picker.files { dirs = { "~/dotfiles/" }, follow = true, ignored = true } end,            desc = "Dotfiles" },
-      { "<space>tm",        function() Snacks.picker.notifications {} end,                                                             desc = "Notifications" },
-      { "<space>ti",        function() Snacks.picker.treesitter {} end,                                                                desc = "Treesitter outline" },
+      {
+        "<space>t.",
+        function()
+          Snacks.picker.git_lstree {
+            cwd = vim.env.HOME, args = { "--work-tree", vim.env.HOME, "--git-dir", vim.env.HOME .. "/.dot" }, branch = "dev", ignored = true }
+        end,
+        desc = "Dotfiles"
+      },
+      { "<space>tm", function() Snacks.picker.notifications {} end, desc = "Notifications" },
+      { "<space>ti", function() Snacks.picker.treesitter {} end,    desc = "Treesitter outline" },
 
-      { "<leader>g",        function() Snacks.git.blame_line() end,                                                                    desc = "Blame line" },
+      { "<leader>g", function() Snacks.git.blame_line() end,        desc = "Blame line" },
       {
         "<space>ag",
         function()
