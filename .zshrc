@@ -22,7 +22,7 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # p10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.config/p10k/p10k.zsh ]] || source $HOME/.config/p10k/p10k.zsh
 typeset -g powerlevel9k_instant_prompt=quiet
 
 # History
