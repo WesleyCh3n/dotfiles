@@ -35,6 +35,14 @@ return {
         desc = 'Lazygit'
       },
       {
+        "<space>a.",
+        function()
+          Snacks.terminal({ "lazygit", "--work-tree", vim.env.HOME, "--git-dir", vim.env.HOME .. "/.dot" },
+            { cwd = vim.env.HOME, start_insert = true, auto_close = true, auto_insert = true })
+        end,
+        desc = 'Lazygit'
+      },
+      {
         "<space>ab",
         function()
           Snacks.terminal("btop", { start_insert = true, auto_close = true, auto_insert = true })
