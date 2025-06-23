@@ -1,7 +1,0 @@
-long_uptime = false
-long_shell = false
-long_kernel = false
-current_shell = true
-theme = "mytheme"
-
-show = ["OperatingSystem", "Kernel", "Uptime", "Packages", "Memory"]
