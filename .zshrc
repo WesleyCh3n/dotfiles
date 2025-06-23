@@ -22,7 +22,7 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # p10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.config/p10k/p10k.zsh ]] || source $HOME/.config/p10k/p10k.zsh
 typeset -g powerlevel9k_instant_prompt=quiet
 
 # History
@@ -104,11 +104,14 @@ fi
 ################################################################################
 #                                    alias                                     #
 ################################################################################
+alias gd="git --work-tree $HOME --git-dir $HOME/.dot"
+alias lgd="lazygit --work-tree $HOME --git-dir $HOME/.dot"
+
 alias v='nvim'
-alias ls="ls --color"
 alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
+alias ls="ls --color"
 alias lg='lazygit'
-alias tn='tmux new ~/.local/bin/tmux-sessionizer'
+alias tn='tmux new $HOME/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 
