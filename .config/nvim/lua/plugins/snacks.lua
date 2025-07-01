@@ -19,7 +19,7 @@ return {
         "<space>t.",
         function()
           Snacks.picker.git_lstree {
-            cwd = vim.env.HOME, args = { "--work-tree", vim.env.HOME, "--git-dir", vim.env.HOME .. "/.dot" }, branch = "dev", ignored = true }
+            cwd = vim.env.HOME, args = { "--work-tree", vim.env.HOME, "--git-dir", vim.env.HOME .. "/.dot" }, branch = "main", ignored = true }
         end,
         desc = "Dotfiles"
       },
