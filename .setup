@@ -66,14 +66,14 @@ dotfiles_init() {
 }
 
 main() {
-  # install_package
+  install_package
 
   if [ "$1" == "link" ]; then
     dotfiles_link
   fi
 
-  # install_tpm
-  # install_mise
+  install_tpm
+  install_mise
 }
 
-main $@
+main link
