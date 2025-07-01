@@ -16,9 +16,7 @@ install_tpm() {
 # mise installation
 install_mise() {
   curl https://mise.run | sh
-  zsh -c "source $HOME/.zshrc"
-  zsh -c "mise trust $(realpath $HOME/.config/mise/mise.toml) && mise install"
-  zsh -c "npm install -g yarn"
+  echo "To install mise tools: mise install"
 }
 
 dotfiles_link() {
