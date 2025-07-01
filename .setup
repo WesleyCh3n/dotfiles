@@ -22,10 +22,18 @@ install_mise() {
 }
 
 dotfiles_link() {
-  ln -s $(pwd)/.zshrc $HOME/.zshrc
+  if [ -e "$HOME/.zshrc" ]; then
+    echo "Warning: $HOME/.zshrc exists. Skipping."
+  else
+    ln -s $(pwd)/.zshrc $HOME/.zshrc
+  fi
 
   mkdir -p $HOME/.docker
-  ln -s $(pwd)/.docker/config.json $HOME/.docker/config.json
+  if [ -e "$HOME/.docker/config.json" ]; then
+    echo "Warning: $HOME/.docker/config.json exists. Skipping."
+  else
+    ln -s $(pwd)/.docker/config.json $HOME/.docker/config.json
+  fi
 
   mkdir -p $HOME/.local/bin/
   for item in $(find .local/bin -maxdepth 1 ! -path .local/bin); do
