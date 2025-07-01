@@ -20,10 +20,10 @@ install_mise() {
 }
 
 dotfiles_link() {
-  ln -s .zshrc $HOME/.zshrc
+  ln -s $(pwd)/.zshrc $HOME/.zshrc
 
   mkdir -p $HOME/.docker
-  ln -s .docker/config.json $HOME/.docker/config.json
+  ln -s $(pwd)/.docker/config.json $HOME/.docker/config.json
 
   mkdir -p $HOME/.local/bin/
   for item in $(find .local/bin -maxdepth 1 ! -path .local/bin); do
