@@ -20,29 +20,34 @@ install_mise() {
 }
 
 dotfiles_link() {
-  find "$SOURCE_DIR" -maxdepth 1 -type d ! -path "$SOURCE_DIR" -print0 | while IFS= read -r -d $'\0' folder_path; do
-    folder_name=$(basename "$folder_path")
-    link_name="${LINK_PREFIX}${folder_name}"
-    link_path="${TARGET_DIR}/${link_name}"
-
-    # Check if the link already exists
-    if [ -e "$link_path" ]; then
-      echo "Warning: Link '$link_path' already exists. Skipping."
-      continue  # Move to the next folder
-    fi
-
-    # Create the soft link (or simulate it)
-    if [ "$DRY_RUN" = "true" ]; then
-      echo "Dry run: Would create link: ln -s \"$folder_path\" \"$link_path\""
-    else
-      ln -s "$folder_path" "$link_path"
-      if [ $? -eq 0 ]; then
-        echo "Created link: $link_path -> $folder_path"
-      else
-        echo "Error: Failed to create link: $link_path -> $folder_path"
-      fi
-    fi
+  for dir in $(find "$(pwd)" -maxdepth 1 -type d ! -path "$(pwd)"); do
+    echo $dir
   done
+
+#   find "$(pwd)" -maxdepth 1 -type d ! -path "$(pwd)" -print0 | while IFS= read -r -d $'\0' folder_path; do
+#     echo $folder_path
+#     # folder_name=$(basename "$folder_path")
+#     # link_name="${LINK_PREFIX}${folder_name}"
+#     # link_path="${TARGET_DIR}/${link_name}"
+#     #
+#     # # Check if the link already exists
+#     # if [ -e "$link_path" ]; then
+#     #   echo "Warning: Link '$link_path' already exists. Skipping."
+#     #   continue  # Move to the next folder
+#     # fi
+#     #
+#     # # Create the soft link (or simulate it)
+#     # if [ "$DRY_RUN" = "true" ]; then
+#     #   echo "Dry run: Would create link: ln -s \"$folder_path\" \"$link_path\""
+#     # else
+#     #   ln -s "$folder_path" "$link_path"
+#     #   if [ $? -eq 0 ]; then
+#     #     echo "Created link: $link_path -> $folder_path"
+#     #   else
+#     #     echo "Error: Failed to create link: $link_path -> $folder_path"
+#     #   fi
+#     # fi
+#   done
 }
 
 dotfiles_init() {
@@ -54,16 +59,14 @@ dotfiles_init() {
 }
 
 main() {
-  echo "1: " $1
+  # install_package
 
   if [ "$1" == "link" ]; then
-    echo "Starting the process..."
+    dotfiles_link
   fi
 
-  install_package
-
-  install_tpm
-  install_mise
+  # install_tpm
+  # install_mise
 }
 
 main $@
