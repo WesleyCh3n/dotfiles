@@ -44,15 +44,11 @@ dotfiles_link() {
       echo "Warning: $target exists. Skipping."
       continue
     fi
-    if [ "$DRY_RUN" = "true" ]; then
-      echo "Dry run: ln -s $dir $target"
+    ln -s "$dir" "$target"
+    if [ $? -eq 0 ]; then
+      echo "Created link: $target -> $dir"
     else
-      ln -s "$dir" "$target"
-      if [ $? -eq 0 ]; then
-        echo "Created link: $target -> $dir"
-      else
-        echo "Error: Failed to create link: $target -> $dir"
-      fi
+      echo "Error: Failed to create link: $target -> $dir"
     fi
   done
 }
