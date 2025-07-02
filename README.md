@@ -17,7 +17,7 @@ My personal dotfiles for MacOS/Ubuntu/Windows.
 
 You can either use `bare git repo` or `softlink`
 
-### Bare Git Repo
+### Opt 1. Bare Git Repo
 
 ```sh
 git --no-replace-objects clone --bare --depth 1 \
@@ -26,10 +26,16 @@ git --work-tree $HOME --git-dir $HOME/.dot config --local status.showUntrackedFi
 git --work-tree $HOME --git-dir $HOME/.dot checkout -f
 ```
 
-### Soft link
+### Opt 2. Soft link
 
-TODO
+See [`.setup`](https://github.com/WesleyCh3n/dotfiles/blob/main/.setup).
+
+### Opt 3. Use in Devcontainer
+
 ```sh
+devcontainer up --workspace-folder . \
+  --dotfiles-repository https://github.com/WesleyCh3n/dotfiles \
+  --dotfiles-install-command ".setup"
 ```
 
 ## License
