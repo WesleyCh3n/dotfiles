@@ -43,10 +43,12 @@ dotfiles_link() {
 
   create_link $(pwd)/.docker/config.json $HOME/.docker/config.json
 
-  for item in $(find .local/bin -maxdepth 1 ! -path .local/bin); do
-    create_link $item $HOME/.local/bin/$(basename $item)
+  local bin_dir=$(pwd)/.local/bin
+  for bin in $(find $bin_dir -maxdepth 1 ! -path $bin_dir); do
+    create_link $bin $HOME/.local/bin/$(basename $bin)
   done
 
+  local config_dir=$(pwd)/.config
   for dir in $(find $config_dir -maxdepth 1 -type d ! -path $config_dir); do
     create_link "$dir" "$HOME/.config/$(basename $dir)"
   done
