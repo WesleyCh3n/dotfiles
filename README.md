@@ -24,6 +24,7 @@ git --no-replace-objects clone --bare --depth 1 \
     https://github.com/WesleyCh3n/dotfiles.git $HOME/.dot
 git --work-tree $HOME --git-dir $HOME/.dot config --local status.showUntrackedFiles no
 git --work-tree $HOME --git-dir $HOME/.dot checkout -f
+git --work-tree $HOME --git-dir $HOME/.dot push --set-upstream origin main
 ```
 
 ### Opt 2. Soft link
