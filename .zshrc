@@ -73,16 +73,16 @@ if [[ $(command -v go) ]]; then
   export GOPATH=$HOME/golib
   export PATH=$PATH:$(go env GOPATH)/bin
 fi
-# npm & nvm
+
+# npm
 [ -d $HOME/.npm-global ] && export PATH=$HOME/.npm-global/bin:$PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # docker
 [ -d $HOME/.docker/completions ] && export FPATH="$HOME/.docker/completions:$FPATH"
 
-################################################################################
+# zoxide
+[[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
+
 # fzf
 if [[ $(command -v fzf) ]]; then
   export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top'
@@ -102,7 +102,9 @@ if [[ $(command -v fzf) ]]; then
   zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
   source <(fzf --zsh)
 fi
-[[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
+
+# lmstudio
+[ -d $HOME/.lmstudio/bin ] && export PATH="$PATH:$HOME/.lmstudio/bin"
 
 ################################################################################
 #                                    alias                                     #
