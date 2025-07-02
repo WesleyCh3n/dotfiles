@@ -62,7 +62,7 @@ export EDITOR="$VISUAL"
 export PATH=$PATH:$HOME/.local/bin
 
 # XDG_CONFIG_HOME
-export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # mise setup dev tools (as early as possible)
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
