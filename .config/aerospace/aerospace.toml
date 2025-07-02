@@ -223,22 +223,28 @@ automatically-unhide-macos-hidden-apps = false
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
+# Terminal - workspace t
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace T'
 
+# Browser - workspace f
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace F'
 
+# Social - workspace w
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 run = ['layout floating', 'move-node-to-workspace W']
-
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = ['move-node-to-workspace W']
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace W'
 
+# Preview - workspace p
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace P'
