@@ -19,49 +19,40 @@ install_mise() {
   echo "To install mise tools: mise install"
 }
 
+create_link() {
+  local source="$1"
+  local target="$2"
+
+  if [ -e "$target" ]; then
+    echo "Warning: $target exists. Skipping."
+    return 0 # Not an error, just skipping
+  fi
+
+  local parent_dir=$(dirname $target)
+  if [ ! -d $parent_dir ]; then
+    echo "$parent_dir not exists. Creating."
+    mkdir -p $parent_dir
+  fi
+
+  ln -s "$source" "$target"
+  echo "Created link: $target -> $source"
+}
+
 dotfiles_link() {
-  if [ -e "$HOME/.zshrc" ]; then
-    echo "Warning: $HOME/.zshrc exists. Skipping."
-  else
-    ln -s $(pwd)/.zshrc $HOME/.zshrc
-  fi
+  create_link $(pwd)/.zshrc $HOME/.zshrc
 
-  mkdir -p $HOME/.docker
-  if [ -e "$HOME/.docker/config.json" ]; then
-    echo "Warning: $HOME/.docker/config.json exists. Skipping."
-  else
-    ln -s $(pwd)/.docker/config.json $HOME/.docker/config.json
-  fi
+  create_link $(pwd)/.docker/config.json $HOME/.docker/config.json
 
-  mkdir -p $HOME/.local/bin/
   for item in $(find .local/bin -maxdepth 1 ! -path .local/bin); do
-    target=$HOME/.local/bin/$(basename $item)
-    if [ -e "$target" ]; then
-      echo "Warning: $target exists. Skipping."
-      continue
-    fi
-    ln -s $item $target
+    create_link $item $HOME/.local/bin/$(basename $item)
   done
 
-
-  config_dir=$(pwd)/.config
-  mkdir -p $HOME/.config
   for dir in $(find $config_dir -maxdepth 1 -type d ! -path $config_dir); do
-    target=$HOME/.config/$(basename $dir)
-    if [ -e "$target" ]; then
-      echo "Warning: $target exists. Skipping."
-      continue
-    fi
-    ln -s "$dir" "$target"
-    if [ $? -eq 0 ]; then
-      echo "Created link: $target -> $dir"
-    else
-      echo "Error: Failed to create link: $target -> $dir"
-    fi
+    create_link "$dir" "$HOME/.config/$(basename $dir)"
   done
 }
 
-dotfiles_init() {
+dotfiles_git() {
   mkdir -p $1
   git --no-replace-objects clone --bare --depth 1 \
       https://github.com/WesleyCh3n/dotfiles.git $1/.dot;
@@ -71,13 +62,9 @@ dotfiles_init() {
 
 main() {
   install_package
-
-  if [ "$1" == "link" ]; then
-    dotfiles_link
-  fi
-
+  dotfiles_link
   install_tpm
   install_mise
 }
 
-main link
+main
