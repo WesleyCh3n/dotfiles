@@ -246,5 +246,8 @@ run = 'move-node-to-workspace W'
 
 # Preview - workspace p
 [[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace P'
+[[on-window-detected]]
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace P'
