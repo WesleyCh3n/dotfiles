@@ -109,8 +109,8 @@ fi
 ################################################################################
 #                                    alias                                     #
 ################################################################################
-alias gd="git --work-tree $HOME --git-dir $HOME/.dot"
-alias lgd="lazygit --work-tree $HOME --git-dir $HOME/.dot"
+alias gf="git --work-tree $HOME --git-dir $HOME/.dot"
+alias lgf="lazygit --work-tree $HOME --git-dir $HOME/.dot"
 
 alias v='nvim'
 alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
