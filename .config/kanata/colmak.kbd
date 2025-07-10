@@ -1,0 +1,123 @@
+(defcfg
+  process-unmapped-keys no
+)
+
+(defsrc
+esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
+    1    2    3    4    5       6    7    8    9    0
+     q    w    e    r    t       y    u    i    o    p
+      a    s    d    f    g       h    j    k    l    ;
+lsft   z    x    c    v    b       n    m    ,    .    /    rsft
+lctl    lalt lmet             spc             rmet ralt
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+  hold-time-slow 300
+)
+
+(defalias
+  meh  (multi ctl alt sft)
+  tmeh (tap-hold $tap-time $hold-time spc @meh)
+  o_cmd (one-shot 1000 lmet)
+  l_sym (layer-toggle symbol)
+  l_num (layer-toggle number)
+  l_nav (layer-toggle navigate)
+  l_mda (layer-toggle media)
+
+  td_nm (tap-dance 200 (@l_nav @l_mda))
+
+  spc (tap-hold 150 150 spc @l_sym)
+  a (tap-hold $tap-time $hold-time a ctl)
+  o (tap-hold $tap-time $hold-time o ctl)
+  e (tap-hold $tap-time $hold-time e lmet)
+  s (tap-hold $tap-time $hold-time s lmet)
+  i (tap-hold $tap-time $hold-time i alt)
+  t (tap-hold $tap-time $hold-time t sft)
+  n (tap-hold $tap-time $hold-time n sft)
+
+  w (tap-hold $tap-time $hold-time w @l_mda)
+  u (tap-hold $tap-time $hold-time u @l_num)
+
+  c_u (chord backspace u)
+  c_y (chord backspace y)
+
+  c_n (chord home_r n)
+  c_e (chord home_r e)
+  c_i (chord home_r i)
+
+  c_r (chord home_l r)
+  c_s (chord home_l s)
+  c_t (chord home_l t)
+
+  ray M-spc
+  cpy M-c
+  pst M-v
+)
+
+(defchords backspace 15
+  (u  ) @u
+  (  y) y
+  (u y) bspc
+)
+
+(defchords home_r 15
+  (n    ) @n
+  (  e  ) @e
+  (    i) @i
+  (  e i) S-;
+  ;; (n e i) @o_cmd
+)
+
+(defchords home_l 15
+  (r    ) r
+  (  s  ) @s
+  (    t) @t
+  ;; (r s t) @o_cmd
+)
+
+(deflayer colemakdh
+esc   🔅   🔆  mctl @ray   dtn   dnd   ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
+    1    2    3    4    5       6    7    8    9    0
+     q    @w   f    p    b       j    l    @c_u @c_y esc
+      @a   @c_r @c_s @c_t g       m    @c_n @c_e @c_i @o
+lsft   z    x    c    d    v       k    h    ,    .    /   rsft
+lctl    lalt @td_nm          @spc             @l_num ralt
+)
+
+(deflayer symbol
+esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
+    XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+     S-1  S-2  S-3  S-4  S-5     S-6  S-7  S-8  XX   XX
+      S-apo S-[  [   S-9  S-`     /    -    =    S-;  ;
+XX     apo   S-]  ]   S-0  `       \    S--  S-=  S-\  S-/  XX
+lctl    lalt lmet             spc             @ray ralt
+)
+
+(deflayer number
+esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
+    XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+     S-8  7    8    9    S-=     XX   XX   XX   XX   XX
+      /    4    5    6    -       XX   XX   XX   XX   XX
+lsft   .    1    2    3    =       XX   XX   ,    .    XX   rsft
+lctl    lalt lmet              0              rmet ralt
+)
+
+(deflayer navigate
+esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
+    XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+     XX   XX   XX   XX   XX      XX   del  bspc tab  esc
+      lctl lalt lmet lsft XX      lft  down up   rght XX
+lsft   XX   XX   XX   XX   XX      XX   XX   XX   XX   XX   rsft
+lctl    lalt lmet             @ray          rmet ralt
+)
+
+(deflayer media
+esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
+    XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+     XX   XX   XX   @pst XX      XX   XX   XX   @cpy XX
+      XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+lsft   XX   XX   XX   XX   XX      XX   XX   XX   XX   XX   rsft
+lctl    lalt lmet             @ray          rmet ralt
+)
