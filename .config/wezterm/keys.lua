@@ -2,8 +2,8 @@ local wezterm = require 'wezterm';
 local act = wezterm.action
 
 local keys = {
-  { key = 't', mods = 'CTRL', action = act.EmitEvent "toggle-opacity" },
-  { key = ',', mods = 'CTRL', action = act.EmitEvent "toggle-leader" },
+  { key = 't', mods = 'CTRL|ALT', action = act.EmitEvent "toggle-opacity" },
+  { key = ',', mods = 'CTRL',     action = act.EmitEvent "toggle-leader" },
   {
     key = 'x',
     mods = 'LEADER',
