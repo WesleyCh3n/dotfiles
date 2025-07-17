@@ -21,14 +21,14 @@ local keymaps = {
     "<leader>oo",
     function()
       Snacks.picker.files { dirs = { vault_path }, follow = true, ignored = true,
-        exclude = { ".obsidian" } }
+        exclude = { ".obsidian", "hubs", "templates", ".gitignore" } }
     end,
     desc = "Open vault files"
   },
   { "<leader>ob", ":Obsidian open<cr>",         desc = "Open current note" },
   { "<leader>os", ":Obsidian search<cr>",       desc = "Grep note" },
   { "<leader>ot", ":Obsidian tags<cr>",         desc = "Tags list" },
-  { "<leader>ol", ":Obsidian paste_image<cr>",  desc = "Paste image (clipboard)" },
+  { "<leader>op", ":Obsidian paste_img<cr>",    desc = "Paste image (clipboard)" },
   { "gd",         ":Obsidian follow_links<cr>", desc = "Follow links" },
   { "gra",        ":Obsidian backlinks<cr>",    desc = "Backlinks" },
   {
