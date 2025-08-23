@@ -2,6 +2,7 @@
 delta = "latest"
 fd = "latest"
 fzf = "latest"
+github-cli = "latest"
 lazygit = "latest"
 neovim = "0.11.1"
 node = "lts"
