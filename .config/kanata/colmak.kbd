@@ -33,6 +33,7 @@ lctl    lalt lmet             spc             rmet ralt
   o (tap-hold $tap-time $hold-time o ctl)
   e (tap-hold $tap-time $hold-time e lmet)
   s (tap-hold $tap-time $hold-time s lmet)
+  r (tap-hold $tap-time $hold-time r alt)
   i (tap-hold $tap-time $hold-time i alt)
   t (tap-hold $tap-time $hold-time t sft)
   n (tap-hold $tap-time $hold-time n sft)
@@ -51,6 +52,9 @@ lctl    lalt lmet             spc             rmet ralt
   c_s (chord home_l s)
   c_t (chord home_l t)
 
+  c_camma (chord caps_l ,)
+  c_period (chord caps_l .)
+
   ray M-spc
   cpy M-c
   pst M-v
@@ -67,14 +71,18 @@ lctl    lalt lmet             spc             rmet ralt
   (  e  ) @e
   (    i) @i
   (  e i) S-;
-  ;; (n e i) @o_cmd
 )
 
 (defchords home_l 15
-  (r    ) r
+  (r    ) @r
   (  s  ) @s
   (    t) @t
-  ;; (r s t) @o_cmd
+)
+
+(defchords caps_l 15
+  (,   ) ,
+  (   .) .
+  (,  .) caps
 )
 
 (deflayer colemakdh
@@ -82,7 +90,7 @@ esc   🔅   🔆  mctl @ray   dtn   dnd   ◀◀   ▶⏸   ▶▶   🔇   �
     1    2    3    4    5       6    7    8    9    0
      q    @w   f    p    b       j    l    @c_u @c_y esc
       @a   @c_r @c_s @c_t g       m    @c_n @c_e @c_i @o
-lsft   z    x    c    d    v       k    h    ,    .    /   rsft
+lsft   z    x    c    d    v       k    h    @c_camma @c_period / rsft
 lctl    lalt @td_nm          @spc             @l_num ralt
 )
 
@@ -92,7 +100,7 @@ esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
      S-1  S-2  S-3  S-4  S-5     S-6  S-7  S-8  XX   XX
       S-apo S-[  [   S-9  S-`     /    -    =    S-;  ;
 XX     apo   S-]  ]   S-0  `       \    S--  S-=  S-\  S-/  XX
-lctl    lalt lmet             spc             @ray ralt
+lctl    lalt lmet             spc             lmet ralt
 )
 
 (deflayer number
@@ -106,7 +114,7 @@ lctl    lalt lmet              0              rmet ralt
 
 (deflayer navigate
 esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
-    XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+    1    2    3    4    5       6    7    8    9    0
      XX   XX   XX   XX   XX      XX   del  bspc tab  esc
       lctl lalt lmet lsft XX      lft  down up   rght XX
 lsft   XX   XX   XX   XX   XX      XX   XX   XX   XX   XX   rsft
