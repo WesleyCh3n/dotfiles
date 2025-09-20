@@ -67,6 +67,8 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 # mise setup dev tools (as early as possible)
 [[ $(command -v mise) ]] && eval "$(mise activate zsh)"
 
+[[ $(command -v uv) ]] && eval "$(uv generate-shell-completion zsh)"
+
 # golang
 if [[ $(command -v go) ]]; then
   export PATH=$PATH:/usr/local/go/bin
