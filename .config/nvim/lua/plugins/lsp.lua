@@ -48,7 +48,7 @@ end
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufNewFile", "BufReadPost", "BufReadPre" },
     dependencies = {
       { "mason-org/mason.nvim", opts = { ui = { border = "rounded" } } },
       "neovim/nvim-lspconfig",
