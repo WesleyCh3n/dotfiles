@@ -1,3 +1,13 @@
+local function search_cnt()
+  local res = vim.fn.searchcount()
+
+  if res.total > 0 then
+    return string.format("%s/%d %s", res.current, res.total, vim.fn.getreg('/'))
+  else
+    return ""
+  end
+end
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -73,6 +83,7 @@ return {
               color = { fg = "#ff9e64" },
               draw_empty = false,
             },
+            { search_cnt },
             'encoding',
             'fileformat',
             { 'filetype', icon_only = true }
