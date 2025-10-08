@@ -62,11 +62,58 @@ dotfiles_git() {
   git --work-tree $1 --git-dir $1/.dot checkout -f
 }
 
-main() {
-  install_package
-  dotfiles_link
-  install_tpm
-  install_mise
+show_help() {
+  echo "Usage: $0 [OPTION]"
+  echo "Setup development environment"
+  echo ""
+  echo "Options:"
+  echo "  all         Install all components (default)"
+  echo "  packages    Install system packages"
+  echo "  dotfiles    Create dotfiles symlinks"
+  echo "  tpm         Install tmux plugin manager"
+  echo "  mise        Install mise tool"
+  echo "  git [DIR]   Clone dotfiles git repo to DIR"
+  echo "  help        Show this help message"
 }
 
-main
+main() {
+  case "${1}" in
+    "all")
+      install_package
+      dotfiles_link
+      install_tpm
+      install_mise
+      ;;
+    "packages")
+      install_package
+      ;;
+    "dotfiles")
+      dotfiles_link
+      ;;
+    "tpm")
+      install_tpm
+      ;;
+    "mise")
+      install_mise
+      ;;
+    "git")
+      if [ -z "${2:-}" ]; then
+        echo "Error: git option requires a directory argument"
+        echo "Usage: $0 git <directory>"
+        exit 1
+      fi
+      dotfiles_git "$2"
+      ;;
+    "help"|"-h"|"--help")
+      show_help
+      exit 0
+      ;;
+    *)
+      echo "Error: Unknown option '$1'"
+      echo "Use '$0 help' to see available options"
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"
