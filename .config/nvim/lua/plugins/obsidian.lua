@@ -44,14 +44,14 @@ local keymaps = {
         local full_path = vault_path .. "/inbox/" .. formatted_file_name
         vim.cmd("e " .. full_path)
 
-        vim.cmd("ObsidianTemplate note")        -- apply template
-        vim.cmd("norm! GVd")                    -- delete last empty line
-        vim.cmd([[silent! s/\(# \)[^_]*_/\1/]]) -- add & remove date
-        vim.cmd([[silent! s/-/ /g]])            -- replace - with space
-        vim.cmd("norm! _wvgU")                  -- first char capital
-        vim.cmd("norm! 6ggf]")                  -- find insert position in categories
+        vim.cmd("Obsidian new_from_template " .. input .. " note") -- apply template
+        vim.cmd("norm! GVd")                                       -- delete last empty line
+        vim.cmd([[silent! s/\(# \)[^_]*_/\1/]])                    -- add & remove date
+        vim.cmd([[silent! s/-/ /g]])                               -- replace - with space
+        vim.cmd("norm! _wvgU")                                     -- first char capital
+        vim.cmd("norm! 6ggf]")                                     -- find insert position in categories
         vim.fn.setreg("/", "")
-        vim.api.nvim_feedkeys("i", "n", false)  -- start insert mode
+        vim.api.nvim_feedkeys("i", "n", false)                     -- start insert mode
       end)
     end,
     desc = "Create new note",
@@ -169,6 +169,7 @@ return {
       return keymaps
     end,
     opts = {
+      legacy_commands = false,
       ui = {},
       notes_subdir = "inbox",
       disable_frontmatter = true,
