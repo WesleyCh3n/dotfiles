@@ -68,8 +68,9 @@ show_help() {
   echo ""
   echo "Options:"
   echo "  all         Install all components (default)"
-  echo "  packages    Install system packages"
-  echo "  dotfiles    Create dotfiles symlinks"
+  echo "  after       Run post-installation steps after cloning dotfiles"
+  echo "  pkg         Install system packages"
+  echo "  link        Create dotfiles symlinks"
   echo "  tpm         Install tmux plugin manager"
   echo "  mise        Install mise tool"
   echo "  git [DIR]   Clone dotfiles git repo to DIR"
@@ -77,6 +78,12 @@ show_help() {
 }
 
 main() {
+  # check if no arguments provided
+  if [ $# -eq 0 ]; then
+    show_help
+    exit 0
+  fi
+
   case "${1}" in
     "all")
       install_package
@@ -84,10 +91,10 @@ main() {
       install_tpm
       install_mise
       ;;
-    "packages")
+    "pkg")
       install_package
       ;;
-    "dotfiles")
+    "link")
       dotfiles_link
       ;;
     "tpm")
@@ -103,6 +110,14 @@ main() {
         exit 1
       fi
       dotfiles_git "$2"
+      ;;
+    "after")
+      install_mise
+      source $HOME/.zshrc
+      mise install
+      install_tpm
+      ya pkg install
+      exit 0
       ;;
     "help"|"-h"|"--help")
       show_help
