@@ -11,6 +11,7 @@ return {
       },
       float = {
         padding = 8,
+        border = "rounded",
         win_options = {
           winblend = 0,
         },
