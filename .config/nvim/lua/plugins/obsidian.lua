@@ -43,15 +43,16 @@ local keymaps = {
         local formatted_file_name = date .. "_" .. file_name .. ".md"
         local full_path = vault_path .. "/inbox/" .. formatted_file_name
         vim.cmd("e " .. full_path)
+        vim.cmd("setlocal filetype=markdown")
 
-        vim.cmd("Obsidian new_from_template " .. input .. " note") -- apply template
-        vim.cmd("norm! GVd")                                       -- delete last empty line
-        vim.cmd([[silent! s/\(# \)[^_]*_/\1/]])                    -- add & remove date
-        vim.cmd([[silent! s/-/ /g]])                               -- replace - with space
-        vim.cmd("norm! _wvgU")                                     -- first char capital
-        vim.cmd("norm! 6ggf]")                                     -- find insert position in categories
+        vim.cmd("Obsidian template note")       -- apply template
+        vim.cmd("norm! GVd")                    -- delete last empty line
+        vim.cmd([[silent! s/\(# \)[^_]*_/\1/]]) -- add & remove date
+        vim.cmd([[silent! s/-/ /g]])            -- replace - with space
+        vim.cmd("norm! _wvgU")                  -- first char capital
+        vim.cmd("norm! 6ggf]")                  -- find insert position in categories
         vim.fn.setreg("/", "")
-        vim.api.nvim_feedkeys("i", "n", false)                     -- start insert mode
+        vim.api.nvim_feedkeys("i", "n", false)  -- start insert mode
       end)
     end,
     desc = "Create new note",
@@ -77,8 +78,14 @@ local keymaps = {
   {
     "<leader>og",
     function()
-      os.execute("mkdir " .. vault_path .. "/zettelkasten/")
+      -- check current file is in vault
       local file_path = vim.fn.expand("%:p")
+      if not file_path:find(vault_path .. "/inbox/", 1, true) then
+        vim.notify("Current file is not in vault: " .. vault_path, vim.log.levels.ERROR)
+        return
+      end
+
+      os.execute("mkdir " .. vault_path .. "/zettelkasten/")
       local target_path = vault_path .. "/zettelkasten/" .. vim.fn.fnamemodify(file_path, ":t")
       os.execute("mv " .. vim.fn.shellescape(file_path) .. " " .. vim.fn.shellescape(target_path))
       vim.cmd("bd")
@@ -170,9 +177,13 @@ return {
     end,
     opts = {
       legacy_commands = false,
-      ui = {},
+      ui = {
+        ignore_conceal_warn = true,
+      },
       notes_subdir = "inbox",
-      disable_frontmatter = true,
+      frontmatter = {
+        enabled = false,
+      },
       completion = {
         blink = true,
         nvim_cmp = false,
