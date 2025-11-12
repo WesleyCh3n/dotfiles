@@ -48,11 +48,12 @@ return {
           section_separators = { left = '', right = '' },
           component_separators = { left = '|', right = '|' },
           disabled_filetypes = {
-            "NvimTree",
-            "lspsagaoutline",
-            "alpha",
-            "aerial",
-            "neo-tree",
+            -- "NvimTree",
+            -- "lspsagaoutline",
+            -- "alpha",
+            -- "aerial",
+            -- "neo-tree",
+            "snacks_dashboard"
           },
           always_divide_middle = true,
         },
