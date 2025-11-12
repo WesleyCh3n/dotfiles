@@ -1,4 +1,5 @@
 local opt = vim.opt
+vim.g.maplocalleader = '/'
 opt.syntax = 'enable'
 opt.synmaxcol = 500
 opt.smartindent = true
