@@ -2,7 +2,6 @@ return {
   {
     "wesleych3n/snacks.nvim",
     branch = "feat-git_lstree",
-    pin = true,
     priority = 1000,
     lazy = false,
     keys = {
@@ -92,6 +91,23 @@ return {
           files = { hidden = true },
           todo_comments = { hidden = true },
         },
+        win = {
+          input = {
+            keys = {
+              ["<c-y>"] = { "cycle_win", mode = { "i", "n" } },
+            }
+          },
+          list = {
+            keys = {
+              ["<c-y>"] = { "cycle_win", mode = { "i", "n" } },
+            },
+          },
+          preview = {
+            keys = {
+              ["<c-y>"] = { "cycle_win", mode = { "i", "n" } },
+            },
+          }
+        }
       },
       scope = { enabled = true },
       dashboard = {
