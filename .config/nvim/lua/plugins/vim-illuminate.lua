@@ -1,5 +1,6 @@
 return {
   {
+    -- highlight other uses of the word under the cursor
     'RRethy/vim-illuminate',
     event = { "BufReadPost", "BufNewFile" },
     opts = {
