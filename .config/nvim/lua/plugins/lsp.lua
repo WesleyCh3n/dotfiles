@@ -79,21 +79,25 @@ return {
           }
         },
         pyright = {
-          pyright = {
-            disableOrganizeImports = true, -- Using Ruff
-          },
-          python = {
-            analysis = {
-              ignore = { '*' },         -- Using Ruff
-              typeCheckingMode = 'off', -- Using mypy
+          settings = {
+            pyright = {
+              disableOrganizeImports = true, -- Using Ruff
+            },
+            python = {
+              analysis = {
+                -- ignore = { '*' }, -- Using Ruff
+                -- typeCheckingMode = 'off', -- Using mypy
+              },
             },
           },
         },
         ruff = {
-          capabilities = {
-            general = {
-              positionEncodings = { "utf-16" }
-            },
+          settings = {
+            capabilities = {
+              general = {
+                positionEncodings = { "utf-16" }
+              },
+            }
           }
         },
         ts_ls = {},
