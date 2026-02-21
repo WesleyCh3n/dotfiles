@@ -1,2 +1,26 @@
 snippet pf "print format"
   print(f"{${1}=}")
+
+snippet args "parse args"
+  import argparse
+  parser = argparse.ArgumentParser(description="${1:description}")
+  parser.add_argument("${2:--arg}", help="${3:help text}")
+  args = parser.parse_args()
+
+snippet mf "main function"
+  def main():
+      ${1:pass}
+
+  if __name__ == "__main__":
+      main()
+
+snippet ma "main function with args"
+  import argparse
+
+  def main():
+      parser = argparse.ArgumentParser(description="${1:description}")
+      parser.add_argument("${2:--arg}", help="${3:help text}")
+      args = parser.parse_args()
+
+  if __name__ == "__main__":
+      main()
