@@ -135,6 +135,11 @@ return {
       -- scroll = { enabled = true },
       -- statuscolumn = { enabled = true },
       -- words = { enabled = true },
+      zen = {
+        toggles = {
+          dim = false
+        }
+      }
     },
   }
 }
