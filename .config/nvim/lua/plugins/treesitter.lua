@@ -161,16 +161,20 @@ return {
             goto_next_start = {
               ["]m"] = "@function.outer",
               ["]]"] = "@class.outer",
+              ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
             },
             goto_previous_start = {
               ["[m"] = "@function.outer",
               ["[["] = "@class.outer",
+              ["[o"] = { query = { "@loop.inner", "@loop.outer" } }
             },
             goto_next_end = {
+              ["]O"] = "@loop.inner",
               ["]M"] = "@function.outer",
               ["]["] = "@class.outer",
             },
             goto_previous_end = {
+              ["[O"] = "@loop.inner",
               ["[M"] = "@function.outer",
               ["[]"] = "@class.outer",
             },
