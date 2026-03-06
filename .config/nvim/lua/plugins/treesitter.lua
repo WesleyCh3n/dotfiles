@@ -107,6 +107,9 @@ return {
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"
       vim.wo.foldenable = false -- can be enabled directly in opened file - using 'zi' - toogle fold
       require("vim.treesitter.query").set("markdown", "highlights", markdown_treesitter)
+      vim.keymap.set("n", "[c", function()
+        require("treesitter-context").go_to_context(vim.v.count1)
+      end, { silent = true })
       return {
         ensure_installed = {
           "regex",
