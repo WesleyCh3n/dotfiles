@@ -64,6 +64,9 @@ return {
             score_offset = 2,
             opts = {
               show_hidden_files_by_default = true,
+              get_cwd = function(_)
+                return vim.fn.getcwd()
+              end,
             }
           },
           buffer = {
