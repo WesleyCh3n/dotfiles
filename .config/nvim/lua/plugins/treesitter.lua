@@ -148,66 +148,125 @@ return {
         indent = {
           enable = true
         },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            }
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-              ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-              ["[o"] = { query = { "@loop.inner", "@loop.outer" } }
-            },
-            goto_next_end = {
-              ["]O"] = "@loop.inner",
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[O"] = "@loop.inner",
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-          lsp_interop = {
-            -- NOTE: I use vim.lsp.buf.hover
-            -- enable = true,
-            -- border = 'single',
-            -- peek_definition_code = {
-            --   ["<leader>df"] = "@function.outer",
-            --   ["<leader>dF"] = "@class.outer",
-            -- },
-          },
-        },
       }
     end,
     config = function(_, opts)
-      -- if type(opts.ensure_installed) == "table" then
-      --   ---@type table<string, boolean>
-      --   local added = {}
-      --   opts.ensure_installed = vim.tbl_filter(function(lang)
-      --     if added[lang] then
-      --       return false
-      --     end
-      --     added[lang] = true
-      --     return true
-      --   end, opts.ensure_installed)
-      -- end
       require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    config = function()
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          lookahead = true,
+        },
+        move = {
+          -- whether to set jumps in the jumplist
+          set_jumps = true,
+        },
+      })
+      -- textobjects = {
+      --   move = {
+      --     enable = true,
+      --     set_jumps = true, -- whether to set jumps in the jumplist
+      --     goto_next_start = {
+      --       ["]m"] = "@function.outer",
+      --       ["]]"] = "@class.outer",
+      --       ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+      --     },
+      --     goto_previous_start = {
+      --       ["[m"] = "@function.outer",
+      --       ["[["] = "@class.outer",
+      --       ["[o"] = { query = { "@loop.inner", "@loop.outer" } }
+      --     },
+      --     goto_next_end = {
+      --       ["]O"] = "@loop.inner",
+      --       ["]M"] = "@function.outer",
+      --       ["]["] = "@class.outer",
+      --     },
+      --     goto_previous_end = {
+      --       ["[O"] = "@loop.inner",
+      --       ["[M"] = "@function.outer",
+      --       ["[]"] = "@class.outer",
+      --     },
+      --   },
+      --   lsp_interop = {
+      --     -- NOTE: I use vim.lsp.buf.hover
+      --     -- enable = true,
+      --     -- border = 'single',
+      --     -- peek_definition_code = {
+      --     --   ["<leader>df"] = "@function.outer",
+      --     --   ["<leader>dF"] = "@class.outer",
+      --     -- },
+      --   },
+      -- },
+
+      vim.keymap.set({ "x", "o" }, "af", function()
+        require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "x", "o" }, "if", function()
+        require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+      end)
+      vim.keymap.set({ "x", "o" }, "ac", function()
+        require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
+      end)
+      vim.keymap.set({ "x", "o" }, "ic", function()
+        require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
+      end)
+      -- You can also use captures from other query groups like `locals.scm`
+      vim.keymap.set({ "x", "o" }, "as", function()
+        require "nvim-treesitter-textobjects.select".select_textobject("@local.scope", "locals")
+      end)
+
+      vim.keymap.set({ "n", "x", "o" }, "]m", function()
+        require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "]]", function()
+        require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+      end)
+      -- You can also pass a list to group multiple queries.
+      vim.keymap.set({ "n", "x", "o" }, "]o", function()
+        require("nvim-treesitter-textobjects.move").goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects")
+      end)
+      -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
+      vim.keymap.set({ "n", "x", "o" }, "]s", function()
+        require("nvim-treesitter-textobjects.move").goto_next_start("@local.scope", "locals")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "]z", function()
+        require("nvim-treesitter-textobjects.move").goto_next_start("@fold", "folds")
+      end)
+
+      vim.keymap.set({ "n", "x", "o" }, "]M", function()
+        require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "][", function()
+        require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+      end)
+
+      vim.keymap.set({ "n", "x", "o" }, "[m", function()
+        require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "[[", function()
+        require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+      end)
+
+      vim.keymap.set({ "n", "x", "o" }, "[M", function()
+        require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "[]", function()
+        require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+      end)
+
+      -- Go to either the start or the end, whichever is closer.
+      -- Use if you want more granular movements
+      vim.keymap.set({ "n", "x", "o" }, "]d", function()
+        require("nvim-treesitter-textobjects.move").goto_next("@conditional.outer", "textobjects")
+      end)
+      vim.keymap.set({ "n", "x", "o" }, "[d", function()
+        require("nvim-treesitter-textobjects.move").goto_previous("@conditional.outer", "textobjects")
+      end)
     end,
   },
   {
