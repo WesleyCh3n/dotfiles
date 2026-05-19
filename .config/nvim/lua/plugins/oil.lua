@@ -8,6 +8,7 @@ return {
         ["q"] = { "actions.close", mode = "n" },
         ["<BS>"] = { "actions.parent", mode = "n" },
         ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-c>"] = { "actions.yank_entry", mode = "n" },
       },
       float = {
         padding = 8,
