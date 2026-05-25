@@ -26,19 +26,48 @@ zinit cdreplay -q
 typeset -g powerlevel9k_instant_prompt=quiet
 
 # History
-HISTSIZE=5000
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
 HISTFILE=$HOME/.zsh_history
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+setopt AUTOCD
+setopt NOBEEP
+setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
 # bindkey: vim mode
+export KEYTIMEOUT=1
+
+# Change cursor with support for inside/outside tmux
+function _set_cursor() {
+    if [[ $TMUX = '' ]]; then
+      echo -ne $1
+    else
+      echo -ne "\ePtmux;\e\e$1\e\\"
+    fi
+}
+
+function _set_block_cursor() { _set_cursor '\e[2 q' }
+function _set_beam_cursor() { _set_cursor '\e[6 q' }
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+      _set_block_cursor
+  else
+      _set_beam_cursor
+  fi
+}
+zle -N zle-keymap-select
+# ensure beam cursor when starting new terminal
+precmd_functions+=(_set_beam_cursor) #
+# ensure insert mode and beam cursor when exiting vim
+zle-line-init() { zle -K viins; _set_beam_cursor }
 bindkey -v '^?' backward-delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
@@ -87,7 +116,14 @@ fi
 
 # fzf
 if [[ $(command -v fzf) ]]; then
-  export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top'
+  export FZF_DEFAULT_OPTS='
+  --height=60%
+  --layout=reverse
+  --border=rounded
+  --prompt="  "
+  --pointer="  "
+  --preview-window=right:65%:wrap:border-left
+  '
   export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="fd --type d"
