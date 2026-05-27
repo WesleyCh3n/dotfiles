@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=4.0 hidpi=on'
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=2.0 hidpi=on'
 ]
 
 # Start AeroSpace at login
@@ -23,7 +23,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 8
+accordion-padding = 20
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -68,8 +68,9 @@ automatically-unhide-macos-hidden-apps = false
     outer.right =      10
 
 [workspace-to-monitor-force-assignment]
-    M = '^built-in retina display$'  # Case insensitive regex match
-    S = '^Sidecar.*$'          # Sidecar monitor
+    W = '^built-in retina display$'  # Case insensitive regex match
+    A = '^Sidecar.*$'          # Sidecar monitor
+    S = ['secondary', 'dell']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -133,6 +134,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-w = 'workspace W'
     alt-n = 'workspace N'
     alt-s = 'workspace S'
+    alt-a = 'workspace A'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-f = ['move-node-to-workspace F', 'workspace F']
@@ -142,6 +144,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-w = ['move-node-to-workspace W', 'workspace W']
     alt-shift-n = ['move-node-to-workspace N', 'workspace N']
     alt-shift-s = ['move-node-to-workspace S', 'workspace S']
+    alt-shift-a = ['move-node-to-workspace A', 'workspace A']
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     ctrl-alt-tab = 'workspace-back-and-forth'
@@ -151,6 +154,8 @@ automatically-unhide-macos-hidden-apps = false
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-cmd-backspace = 'mode service'
 
+    alt-cmd-w = 'exec-and-forget ~/bin/aerowidth.sh 4'
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
@@ -158,6 +163,10 @@ automatically-unhide-macos-hidden-apps = false
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
+
+    1 = 'exec-and-forget ~/bin/aerowidth.sh 1'
+    2 = 'exec-and-forget ~/bin/aerowidth.sh 2'
+    w = ['exec-and-forget ~/bin/aerowidth.sh 3']
 
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
     #s = ['layout sticky tiling', 'mode main']
@@ -179,10 +188,18 @@ run = ['layout floating']
 if.window-title-regex-substring = 'MiniPlayer'
 run = ['layout floating']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenSharing'
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.7431BDA1-F4A8-42D1-8BDA-B74D24005A0D'
 run = ['move-node-to-workspace N']
+
+# Zotero - workspace a
+[[on-window-detected]]
+if.app-id = 'org.zotero.zotero'
+run = 'move-node-to-workspace A'
 
 # Terminal - workspace t
 [[on-window-detected]]
@@ -193,17 +210,20 @@ run = 'move-node-to-workspace T'
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace F'
-
-# Social - workspace w
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = ['layout floating', 'move-node-to-workspace W']
+run = ['layout floating', 'move-node-to-workspace F']
+
+# Social - workspace w
 [[on-window-detected]]
 if.app-id = 'jp.naver.line.mac'
 run = ['layout floating', 'move-node-to-workspace W']
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace W']
+run = [
+  "layout accordion",
+  'move-node-to-workspace W'
+]
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace W'
@@ -221,3 +241,10 @@ run = 'move-node-to-workspace P'
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace P'
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout floating",
+  "move-node-to-workspace T"
+]
