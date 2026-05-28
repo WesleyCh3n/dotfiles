@@ -26,8 +26,6 @@ lctl    lalt lmet             spc             rmet ralt
   l_nav (layer-toggle navigate)
   l_mda (layer-toggle media)
 
-  td_nm (tap-dance 200 (@l_nav @l_mda))
-
   spc (tap-hold 150 150 spc @l_sym)
   a (tap-hold $tap-time $hold-time a ctl)
   o (tap-hold $tap-time $hold-time o ctl)
@@ -41,9 +39,6 @@ lctl    lalt lmet             spc             rmet ralt
   w (tap-hold $tap-time $hold-time w @l_mda)
   u (tap-hold $tap-time $hold-time u @l_num)
 
-  c_u (chord backspace u)
-  c_y (chord backspace y)
-
   c_n (chord home_r n)
   c_e (chord home_r e)
   c_i (chord home_r i)
@@ -55,15 +50,12 @@ lctl    lalt lmet             spc             rmet ralt
   c_camma (chord caps_l ,)
   c_period (chord caps_l .)
 
+
   ray M-spc
   cpy M-c
   pst M-v
-)
 
-(defchords backspace 15
-  (u  ) @u
-  (  y) y
-  (u y) bspc
+  sht M-S-5
 )
 
 (defchords home_r 15
@@ -88,10 +80,10 @@ lctl    lalt lmet             spc             rmet ralt
 (deflayer colemakdh
 esc   🔅   🔆  mctl @ray   dtn   dnd   ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
     1    2    3    4    5       6    7    8    9    0
-     q    @w   f    p    b       j    l    @c_u @c_y esc
+     q    @w   f    p    b       j    l    @u   y    esc
       @a   @c_r @c_s @c_t g       m    @c_n @c_e @c_i @o
 lsft   z    x    c    d    v       k    h    @c_camma @c_period / rsft
-lctl    lalt @td_nm          @spc             @l_num ralt
+@l_mda  lalt  @l_nav         @spc             @l_sym  ralt
 )
 
 (deflayer symbol
@@ -107,16 +99,16 @@ lctl    lalt lmet             spc             lmet ralt
 esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
     XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
      S-8  7    8    9    S-=     XX   XX   XX   XX   XX
-      /    4    5    6    -       XX   XX   XX   XX   XX
-lsft   .    1    2    3    =       XX   XX   ,    .    XX   rsft
-lctl    lalt lmet              0              rmet ralt
+      /    4    5    6    -       XX   rsft rmet ralt rctl
+lsft   .    1    2    3    =       XX   XX   ,    .    XX   XX
+lctl    lalt lmet              0              XX   XX
 )
 
 (deflayer navigate
 esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
     1    2    3    4    5       6    7    8    9    0
      XX   XX   XX   XX   XX      XX   del  bspc tab  esc
-      lctl lalt lmet lsft XX      lft  down up   rght XX
+      lctl lalt lmet lsft XX      lft  down up   rght ret
 lsft   XX   XX   XX   XX   XX      XX   XX   XX   XX   XX   rsft
 lctl    lalt lmet             @ray          rmet ralt
 )
@@ -124,8 +116,8 @@ lctl    lalt lmet             @ray          rmet ralt
 (deflayer media
 esc   f1   f2   f3   f4     f5    f6   f7   f8   f9   f10   f11   f12
     XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
-     XX   XX   XX   @pst XX      XX   XX   XX   @cpy XX
-      XX   XX   XX   XX   XX      XX   XX   XX   XX   XX
+     XX   XX   XX   @pst XX      XX   @sht XX   @cpy XX
+      lctl lalt lmet lsft XX      XX   XX   XX   XX   ret
 lsft   XX   XX   XX   XX   XX      XX   XX   XX   XX   XX   rsft
 lctl    lalt lmet             @ray          rmet ralt
 )
