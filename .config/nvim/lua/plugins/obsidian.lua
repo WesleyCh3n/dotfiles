@@ -38,21 +38,7 @@ local keymaps = {
         if input == nil or input == "" then
           return
         end
-        local file_name = string.gsub(input, "%s", "-")
-        local date = os.date("%Y-%m-%d")
-        local formatted_file_name = date .. "_" .. file_name .. ".md"
-        local full_path = vault_path .. "/inbox/" .. formatted_file_name
-        vim.cmd("e " .. full_path)
-        vim.cmd("setlocal filetype=markdown")
-
-        vim.cmd("Obsidian template note")       -- apply template
-        vim.cmd("norm! GVd")                    -- delete last empty line
-        vim.cmd([[silent! s/\(# \)[^_]*_/\1/]]) -- add & remove date
-        vim.cmd([[silent! s/-/ /g]])            -- replace - with space
-        vim.cmd("norm! _wvgU")                  -- first char capital
-        vim.cmd("norm! 6ggf]")                  -- find insert position in categories
-        vim.fn.setreg("/", "")
-        vim.api.nvim_feedkeys("i", "n", false)  -- start insert mode
+        vim.cmd("Obsidian new_from_template " .. input .. " note")
       end)
     end,
     desc = "Create new note",
