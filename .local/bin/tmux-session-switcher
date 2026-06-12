@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Switch tmux sessions from anywhere, including popup sessions.
+# When inside a popup session (claude-* or popup-*), switches the outer
+# (parent) client so the visible window changes, then closes the popup.
+
+current_session=$(tmux display-message -p '#S')
+
+target=$(tmux list-sessions | sed -E 's/:.*$//' \
+  | grep -v "^${current_session}$" \
+  | grep -vE '^(popup-|claude-)' \
+  | fzf --reverse)
+
+[ -z "$target" ] && exit 0
+
+if echo "$current_session" | grep -qE '^(popup-|claude-)'; then
+  # Inside a popup session — find the outer (non-popup) client and switch it
+  outer_client=$(tmux list-clients -F '#{client_name} #{session_name}' \
+    | grep -vE ' (popup-|claude-)' \
+    | awk 'NR==1{print $1}')
+  if [ -n "$outer_client" ]; then
+    tmux switch-client -c "$outer_client" -t "$target"
+    tmux detach-client -s "$current_session"  # closes the popup
+    exit 0
+  fi
+fi
+
+tmux switch-client -t "$target"

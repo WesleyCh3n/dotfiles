@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Toggle the current tmux popup between 80% and full-screen.
+# Must be called via bind-key with #{session_name} as $1.
+
+current_session="${1:-}"
+
+if ! echo "$current_session" | grep -qE '^(popup-|claude-)'; then
+  exit 0
+fi
+
+# Find the outer (non-popup) client
+outer_client=$(tmux list-clients -F '#{client_name} #{session_name}' \
+  | grep -vE ' (popup-|claude-)' \
+  | awk 'NR==1{print $1}')
+[ -z "$outer_client" ] && exit 0
+
+state_key="@popup_max_$(echo "$current_session" | tr '-' '_')"
+state=$(tmux show-option -gqv "$state_key" 2>/dev/null)
+
+# Close the current popup on the outer client
+tmux display-popup -C -c "$outer_client"
+
+if [ "$state" = "1" ]; then
+  tmux set-option -g "$state_key" "0"
+  tmux display-popup -c "$outer_client" -w 80% -h 80% \
+    -E "tmux attach-session -t '${current_session}'"
+else
+  tmux set-option -g "$state_key" "1"
+  tmux display-popup -c "$outer_client" -w 100% -h 100% \
+    -E "tmux attach-session -t '${current_session}'"
+fi
