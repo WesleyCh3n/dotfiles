@@ -1,6 +1,7 @@
 onboarding = false
 [keys]
 prefix = "ctrl+a"
+detach = "prefix+d"
 
 [theme]
 name = "terminal"
