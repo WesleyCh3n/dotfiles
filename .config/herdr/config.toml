@@ -1,0 +1,7 @@
+onboarding = false
+[keys]
+prefix = "ctrl+a"
+
+[theme]
+name = "terminal"
+auto_switch = false
