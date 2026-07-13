@@ -2,7 +2,28 @@ onboarding = false
 [keys]
 prefix = "ctrl+a"
 detach = "prefix+d"
+split_horizontal = "prefix+s"
+focus_pane_left = ["prefix+h", "ctrl+h"]
+focus_pane_down = ["prefix+j", "ctrl+j"]
+focus_pane_up = ["prefix+k", "ctrl+k"]
+focus_pane_right = ["prefix+l", "ctrl+l"]
+
+[terminal]
+default_shell = "/bin/zsh"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+
+[[keys.command]]
+key = "prefix+t"
+type = "pane"
+command = "zsh"
 
 [theme]
-name = "terminal"
+name = "gruvbox"
 auto_switch = false
+
+[ui.toast]
+delivery = "herdr"
