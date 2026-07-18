@@ -1,8 +1,8 @@
 gui:
   nerdFontsVersion: "3"
 git:
-  paging:
-    colorArg: always
-    pager: delta --syntax-theme gruvbox-dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --syntax-theme gruvbox-dark --paging=never
 os:
   editPreset: 'nvim'
