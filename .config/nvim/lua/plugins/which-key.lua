@@ -16,7 +16,7 @@ return {
     },
     config = function(_, opts)
       local keymap = {
-        { "<space>w",  "<cmd>w<cr>",          desc = "Write" },
+        { "<space>w",  "<cmd>silent w<cr>",   desc = "Write" },
         { "<space>P",  "<cmd>set paste!<cr>", desc = "Toggle paste" },
         { "<leader>i", "<cmd>Lazy<cr>",       desc = "Lazy" },
 
