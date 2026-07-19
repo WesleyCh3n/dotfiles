@@ -6,3 +6,14 @@ ratio = [1,2,5]
 tab_size = 2
 max_width  = 1000
 max_height = 1000
+
+[open]
+prepend_rules = [
+  { url = "*.html", use = "browser" },
+  { mime = "text/html", use = "browser" }
+]
+
+[opener]
+browser = [
+  { run = 'open "$1"', desc = "Open in Browser" }
+]
