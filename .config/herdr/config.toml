@@ -13,13 +13,35 @@ default_shell = "/bin/zsh"
 
 [[keys.command]]
 key = "prefix+alt+g"
-type = "pane"
+type = "popup"
 command = "lazygit"
+description = "run lazygit"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+alt+e"
+type = "popup"
+command = "lazygit --work-tree \"${HOME}\" --git-dir \"${HOME}\"/.dot"
+description = "run lazygit for dotfiles"
+width = "80%"
+height = "80%"
 
 [[keys.command]]
 key = "prefix+t"
-type = "pane"
-command = "zsh"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "yazi"
+description = "open yazi"
+width = "80%"
+height = "80%"
 
 [theme]
 name = "gruvbox"
