@@ -3,10 +3,6 @@ onboarding = false
 prefix = "ctrl+a"
 detach = "prefix+d"
 split_horizontal = "prefix+s"
-focus_pane_left = ["prefix+h", "ctrl+h"]
-focus_pane_down = ["prefix+j", "ctrl+j"]
-focus_pane_up = ["prefix+k", "ctrl+k"]
-focus_pane_right = ["prefix+l", "ctrl+l"]
 
 [terminal]
 default_shell = "/bin/zsh"
@@ -43,9 +39,17 @@ description = "open yazi"
 width = "80%"
 height = "80%"
 
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "herdr-sessionizer"
+
 [theme]
 name = "gruvbox"
 auto_switch = false
 
 [ui.toast]
 delivery = "herdr"
+
+[ui]
+agent_panel_sort = "spaces"

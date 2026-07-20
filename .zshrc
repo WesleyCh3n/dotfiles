@@ -155,6 +155,8 @@ alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
 alias lg='lazygit'
 alias tn='tmux new $HOME/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
+alias h='herdr-sessionizer && herdr'   # pick project via sessionizer, then attach (mirrors tn)
+alias ha='herdr'                        # attach persistent session (mirrors ta)
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 
 # Better ls
