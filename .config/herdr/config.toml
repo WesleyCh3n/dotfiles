@@ -49,7 +49,10 @@ name = "gruvbox"
 auto_switch = false
 
 [ui.toast]
-delivery = "herdr"
+delivery = "system"
 
 [ui]
 agent_panel_sort = "spaces"
+
+[experimental]
+kitty_graphics = true
