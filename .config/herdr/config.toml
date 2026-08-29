@@ -3,6 +3,7 @@ onboarding = false
 prefix = "ctrl+a"
 detach = "prefix+d"
 split_horizontal = "prefix+s"
+toggle_sidebar = "ctrl+shift+c"
 
 [terminal]
 default_shell = "/bin/zsh"
