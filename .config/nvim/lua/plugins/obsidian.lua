@@ -29,6 +29,7 @@ local keymaps = {
   { "<leader>os", ":Obsidian search<cr>",       desc = "Grep note" },
   { "<leader>ot", ":Obsidian tags<cr>",         desc = "Tags list" },
   { "<leader>op", ":Obsidian paste_img<cr>",    desc = "Paste image (clipboard)" },
+  { "<leader>oc", ":Obsidian extract_note<cr>", desc = "Create new note from visual selection", mode = "v" },
   { "gd",         ":Obsidian follow_links<cr>", desc = "Follow links" },
   { "gra",        ":Obsidian backlinks<cr>",    desc = "Backlinks" },
   {
@@ -153,7 +154,6 @@ return {
     lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "saghen/blink.cmp"
     },
     keys = function()
       if not vault_exist then
@@ -171,8 +171,6 @@ return {
         enabled = false,
       },
       completion = {
-        blink = true,
-        nvim_cmp = false,
         min_chars = 0,
       },
 
