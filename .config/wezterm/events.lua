@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm';
-local opacity = 0.5
+local opacity = 0.75
 
 wezterm.on("toggle-opacity", function(window, _)
   local overrides = window:get_config_overrides() or {}

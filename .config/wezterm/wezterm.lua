@@ -3,8 +3,9 @@ local wezterm = require 'wezterm';
 require("events")
 
 local config = {
-  font_size = 11.0,
-  window_background_opacity = 0.5,
+  font_size = 20.0,
+  window_background_opacity = 0.8,
+  use_fancy_tab_bar = false,
   color_scheme = "GruvboxDark",
   hide_tab_bar_if_only_one_tab = true,
   window_decorations = "RESIZE",
@@ -12,6 +13,7 @@ local config = {
   cursor_blink_rate = 800,
   leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 2000 },
   keys = require("keys"),
+  max_fps = 80,
   colors = {
     compose_cursor = 'orange', -- leader key indication
   },
