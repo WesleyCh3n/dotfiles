@@ -8,7 +8,7 @@ return {
       { "<space>q",         function() Snacks.bufdelete() end,                                                                         desc = "Delete Buffer" },
 
       { "<space>ts",        function() Snacks.picker {} end,                                                                           desc = "Picker" },
-      { "<space>te",        function() Snacks.picker.files { hidden = true } end,                                                      desc = "Find files" },
+      { "<space>te",        function() Snacks.picker.smart {} end,                                                                     desc = "Find files" },
       { "<space>t<space>e", function() Snacks.picker.files { hidden = true, ignored = true } end,                                      desc = "Find files (show ignored)" },
       { "<space>tf",        function() Snacks.picker.grep { hidden = true } end,                                                       desc = "Grep" },
       { "<space>t<space>f", function() Snacks.picker.grep { hidden = true, ignored = true } end,                                       desc = "Grep (show ignored)" },
@@ -72,6 +72,13 @@ return {
           enabled = false,
         }
       },
+      image = {
+        enabled = true,
+        doc = {
+          inline = false,
+          float = true,
+        },
+      },
       input = { enabled = true },
       styles = {
         terminal = {
@@ -83,7 +90,11 @@ return {
           keys = {
             ["<C-_>"] = "hide"
           }
-        }
+        },
+        snacks_image = {
+          relative = "editor",
+          col = -1,
+        },
       },
       terminal = {},
       picker = {
