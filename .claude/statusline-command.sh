@@ -11,9 +11,6 @@ input=$(cat)
 cwd=$(echo "$input"   | jq -r '.workspace.current_dir // .cwd // empty')
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 
-# Shorten home directory to ~
-short_cwd="${cwd/#$HOME/~}"
-
 # ANSI truecolor helpers
 C0='\033[38;2;221;199;161m'   # #ddc7a1 — primary text
 C1='\033[38;2;168;153;132m'   # #a89984 — secondary / separators
@@ -22,10 +19,12 @@ BG_C2='\033[48;2;80;73;69m'   # #504945 — block background
 BOLD='\033[1m'
 RESET='\033[0m'
 
-# Get git branch and dirty status (no optional locks, suppress errors)
+# Get git repo root, branch and dirty status (no optional locks, suppress errors)
+repo_root=""
 branch=""
 dirty=""
 if git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
+  repo_root=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null)
   branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null \
     || git -C "$cwd" describe --tags --exact-match HEAD 2>/dev/null \
     || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
@@ -34,12 +33,42 @@ if git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
   fi
 fi
 
-# Context usage
-used_raw=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+# Shorten every parent component to its first character (keeping a leading dot),
+# leaving the final component intact:  ~/.config/nvim/lua  ->  ~/.c/n/lua
+abbreviate_path() {
+  local path="$1" out="" IFS='/'
+  read -r -a parts <<< "$path"
+  local n=${#parts[@]} i=0
+  for part in "${parts[@]}"; do
+    i=$(( i + 1 ))
+    if [ -z "$part" ]; then
+      continue
+    elif [ "$i" -eq "$n" ] || [ "$part" = "~" ]; then
+      out="${out}/${part}"
+    elif [ "${part#.}" != "$part" ]; then
+      out="${out}/${part:0:2}"          # hidden dir: keep the dot + one char
+    else
+      out="${out}/${part:0:1}"
+    fi
+  done
+  printf '%s' "${out#/}"
+}
 
-# Session usage (5-hour window) and weekly usage
-session_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
-week_pct=$(echo "$input"    | jq -r '.rate_limits.seven_day.used_percentage // empty')
+# Path segment: inside a repo show <repo-name>[/subdir], otherwise abbreviate
+if [ -n "$repo_root" ]; then
+  rel="${cwd#$repo_root}"
+  short_cwd="$(basename "$repo_root")${rel}"
+elif [ -n "$cwd" ]; then
+  home_cwd="${cwd/#$HOME/\~}"
+  case "$home_cwd" in
+    /*|\~*) short_cwd=$(abbreviate_path "$home_cwd") ;;
+    *)      short_cwd="$home_cwd" ;;
+  esac
+  # keep the leading slash for absolute paths
+  case "$home_cwd" in /*) short_cwd="/${short_cwd}" ;; esac
+else
+  short_cwd=""
+fi
 
 # Build the status line — pattern mirrors tmux config:
 # secondary-colored separators, primary text, dark-brown blocks
@@ -62,6 +91,7 @@ if [ -n "$model" ]; then
 fi
 
 # Context usage bar: dark brown pipe + muted bar + primary percentage
+used_raw=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 if [ -n "$used_raw" ]; then
   used_int=$(printf '%.0f' "$used_raw")
   filled=$(( used_int * 10 / 100 ))
@@ -75,7 +105,9 @@ if [ -n "$used_raw" ]; then
   out="${out}$(printf "  ${C2}|${RESET}  ${C1}${bar}${RESET} ${C0}${used_int}%%${RESET}")"
 fi
 
-# Session usage segment: 5h window + weekly, as labeled percentages
+# Session usage segment: 5h window (+ weekly), as labeled percentages
+session_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+week_pct=$(echo "$input"    | jq -r '.rate_limits.seven_day.used_percentage // empty')
 if [ -n "$session_pct" ]; then
   session_int=$(printf '%.0f' "$session_pct")
   out="${out}$(printf "  ${C2}|${RESET}  ${C1}ses${RESET} ${C0}${session_int}%%${RESET}")"
