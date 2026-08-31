@@ -8,11 +8,13 @@ font-style = Medium
 font-size = 18
 
 # ── Appearance ────────────────────────────────────────────────────────────────
-background-opacity = 0.8
+background-opacity = 0.95
 background-blur = 50
 theme = Gruvbox Dark Hard
 cursor-style = block
 cursor-style-blink = true
+
+custom-shader = ./shaders/cursor_warp.glsl
 
 # ── Window ────────────────────────────────────────────────────────────────────
 macos-titlebar-style = transparent
