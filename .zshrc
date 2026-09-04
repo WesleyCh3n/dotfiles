@@ -89,6 +89,7 @@ export EDITOR="$VISUAL"
 ################################################################################
 # PATH
 export PATH=$PATH:$HOME/.local/bin
+[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -155,24 +156,25 @@ alias vl='nvim -u $HOME/.config/nvim/leetcode.lua'
 alias lg='lazygit'
 alias tn='tmux new $HOME/.local/bin/tmux-sessionizer'
 alias ta='tmux a'
-alias h='herdr-sessionizer && herdr'   # pick project via sessionizer, then attach (mirrors tn)
-alias ha='herdr'                        # attach persistent session (mirrors ta)
+
 alias aria2c='/usr/local/aria2/bin/aria2c  --enable-rpc'
 
-# Better ls
-alias ls='eza --icons'
+alias h='herdr-sessionizer && herdr'   # pick project via sessionizer, then attach (mirrors tn)
+alias ha='herdr'                        # attach persistent session (mirrors ta)
+alias hr='herdr --remote-keybindings server --remote'
 
-# Detailed listing
-alias ll='eza -lh --icons --git'
-
-# Detailed listing including hidden files
-alias la='eza -lah --icons --git'
-
-# Tree view
-alias tree='eza --tree --icons'
-
+alias l='eza'
+alias ll='eza -lh --git'
+alias la='eza -lah --git'
+alias tree='eza --tree'
 # Reuse ls completions for eza (avoids defining a separate completion function)
 compdef eza=ls
+
+# Better cat
+alias cat='bat'
+
+alias hl="rg --passthru --"
+
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
