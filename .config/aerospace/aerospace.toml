@@ -200,6 +200,9 @@ run = ['move-node-to-workspace N']
 [[on-window-detected]]
 if.app-id = 'org.zotero.zotero'
 run = 'move-node-to-workspace A'
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace A'
 
 # Terminal - workspace t
 [[on-window-detected]]
@@ -220,10 +223,8 @@ if.app-id = 'jp.naver.line.mac'
 run = ['layout floating', 'move-node-to-workspace W']
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = [
-  "layout accordion",
-  'move-node-to-workspace W'
-]
+run = [ 'move-node-to-workspace W' ]
+
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace W'
