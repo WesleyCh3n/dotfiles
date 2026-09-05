@@ -37,6 +37,7 @@ return {
         "tsx",
         "markdown",
         "markdown_inline",
+        "latex"
       }
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
       local parsersToInstall = vim.iter(ensureInstalled)

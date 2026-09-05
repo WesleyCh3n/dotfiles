@@ -2,6 +2,12 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "txt", "gitcommit", "tex" },
   callback = function()
     vim.opt_local.wrap = true
+    vim.opt_local.list = false               -- 'linebreak' is ignored while 'list' is on
+    vim.opt_local.linebreak = true           -- wrap at spaces, not mid-word
+    vim.opt_local.breakindent = true
+    vim.opt_local.breakindentopt = "shift:2" -- hanging indent for zero-indent prose
+    vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+    vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
   end,
 })
 vim.api.nvim_create_autocmd("FileType", {
