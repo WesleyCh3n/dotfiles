@@ -54,6 +54,7 @@ delivery = "system"
 
 [ui]
 agent_panel_sort = "spaces"
+pane_scrollbars = false
 
 [experimental]
 kitty_graphics = true
